@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assistente AI — FORMA.</title>
+<meta name="description" content="Tire dúvidas instantâneas sobre os serviços da FORMA. com o nosso assistente AI disponível 24/7.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Raleway,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%238C5A3A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F1EB;--bg-2:#ECE7DD;--paper:#FFFFFF;--ink:#0E0E0C;
+    --ink-2:rgba(14,14,12,.68);--muted:rgba(14,14,12,.45);
+    --line:rgba(14,14,12,.12);--line-2:rgba(14,14,12,.06);
+    --accent:#8C5A3A;
+    --sans:'Raleway',system-ui,-apple-system,sans-serif;
+    --serif:'Cormorant Garamond',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-weight:400;line-height:1.5;letter-spacing:.01em;-webkit-font-smoothing:antialiased;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:var(--serif);font-style:italic;color:var(--accent);font-weight:400}
+
+  /* NAV */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:18px 48px;display:flex;align-items:center;justify-content:space-between;
+    background:rgba(244,241,235,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .logo{font-weight:500;letter-spacing:.15em;font-size:13px;color:var(--ink)}
+  nav.top .logo b{color:var(--accent);font-weight:700;font-size:18px;letter-spacing:0;vertical-align:-1px}
+  nav.top .back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-2);transition:color .2s}
+  nav.top .back:hover{color:var(--ink)}
+  nav.top .back .arr{font-size:16px;line-height:1}
+  @media(max-width:780px){nav.top{padding:14px 20px}}
+
+  /* PAGE */
+  .page{
+    min-height:100vh;
+    display:grid;grid-template-columns:1fr 1.05fr;
+  }
+  @media(max-width:980px){.page{grid-template-columns:1fr}}
+
+  /* LEFT panel */
+  .panel-left{
+    background:#0E0E0C;color:#F4F1EB;
+    padding:140px 64px 80px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;min-height:100vh;
+  }
+  .panel-left::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 20% 25%, rgba(140,90,58,.22), transparent 55%);
+    pointer-events:none;
+  }
+  .panel-left .content{position:relative;z-index:1}
+  .panel-left .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,241,235,.45);margin-bottom:24px;display:inline-flex;align-items:center;gap:10px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:#5EBB7C;box-shadow:0 0 0 0 rgba(94,187,124,.6);animation:livePulse 2s ease-in-out infinite}
+  @keyframes livePulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(94,187,124,.6)}
+    50%{box-shadow:0 0 0 6px rgba(94,187,124,0)}
+  }
+  .panel-left h1{
+    font-size:clamp(40px,5vw,68px);font-weight:300;letter-spacing:-0.035em;line-height:.98;
+    max-width:14ch;margin-bottom:24px;
+  }
+  .panel-left h1 .serif{color:var(--accent)}
+  .panel-left p.lead{font-size:16px;color:rgba(244,241,235,.65);line-height:1.65;max-width:40ch}
+  .panel-left .bottom{position:relative;z-index:1}
+
+  .promises{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(244,241,235,.1);margin-top:56px}
+  .promise-item{
+    display:flex;align-items:flex-start;gap:16px;
+    padding:18px 0;border-bottom:1px solid rgba(244,241,235,.08);
+    font-size:14px;color:rgba(244,241,235,.6);line-height:1.45;
+  }
+  .promise-item .ico{
+    width:22px;height:22px;border-radius:50%;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:#fff;flex-shrink:0;margin-top:1px;
+  }
+  .promise-item strong{color:#F4F1EB;font-weight:500}
+
+  .human-fallback{
+    margin-top:36px;padding:20px 22px;border-radius:14px;
+    background:rgba(244,241,235,.04);border:1px solid rgba(244,241,235,.1);
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .human-fallback .txt{font-size:13px;color:rgba(244,241,235,.55);line-height:1.5}
+  .human-fallback .txt strong{color:#F4F1EB;font-weight:500;display:block;margin-bottom:2px;font-size:14px}
+  .human-fallback a{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;border-radius:999px;
+    background:#F4F1EB;color:#0E0E0C;
+    font-size:12px;font-weight:500;letter-spacing:.02em;
+    transition:transform .2s,background .2s;white-space:nowrap;
+  }
+  .human-fallback a:hover{transform:translateY(-1px);background:#fff}
+  .human-fallback a .arr{font-size:11px;line-height:1}
+
+  @media(max-width:980px){
+    .panel-left{min-height:auto;padding:110px 28px 56px}
+    .promises{margin-top:36px}
+  }
+
+  /* RIGHT panel — chat */
+  .panel-right{
+    padding:120px 48px 40px;
+    display:flex;flex-direction:column;
+    min-height:100vh;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
+  }
+  @media(max-width:1100px){.panel-right{padding:120px 32px 32px}}
+  @media(max-width:780px){.panel-right{padding:32px 16px 24px;min-height:calc(100vh - 60px)}}
+
+  .chat-wrap{
+    flex:1;display:flex;flex-direction:column;
+    max-width:640px;margin:0 auto;width:100%;
+    background:var(--paper);border:1px solid var(--line);border-radius:24px;
+    box-shadow:0 30px 80px -40px rgba(14,14,12,.25),0 8px 24px -16px rgba(14,14,12,.1);
+    overflow:hidden;min-height:560px;
+  }
+
+  /* Chat header */
+  .chat-header{
+    padding:18px 22px;border-bottom:1px solid var(--line-2);
+    display:flex;align-items:center;gap:14px;background:#fff;
+  }
+  .chat-avatar{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,#0E0E0C,#3a3a36);
+    display:flex;align-items:center;justify-content:center;
+    color:#F4F1EB;font-weight:500;font-size:14px;letter-spacing:.05em;
+    position:relative;flex-shrink:0;
+  }
+  .chat-avatar b{color:var(--accent);font-weight:700;font-size:18px}
+  .chat-avatar::after{
+    content:"";position:absolute;bottom:1px;right:1px;
+    width:11px;height:11px;border-radius:50%;background:#5EBB7C;
+    border:2px solid #fff;
+  }
+  .chat-meta{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+  .chat-meta .name{font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+  .chat-meta .name b{color:var(--accent);font-weight:700}
+  .chat-meta .status{font-size:12px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+  .chat-meta .status .dot{width:6px;height:6px;border-radius:50%;background:#5EBB7C}
+  .chat-clear{
+    background:transparent;border:1px solid var(--line);color:var(--ink-2);
+    font-family:inherit;font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;cursor:pointer;transition:.2s;
+  }
+  .chat-clear:hover{background:var(--bg);color:var(--ink)}
+
+  /* Messages */
+  .chat-body{
+    flex:1;padding:24px 22px;overflow-y:auto;
+    display:flex;flex-direction:column;gap:14px;
+    background:#fff;scroll-behavior:smooth;
+  }
+  .chat-body::-webkit-scrollbar{width:6px}
+  .chat-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+
+  .msg{display:flex;gap:10px;max-width:88%;animation:msgIn .3s ease-out}
+  @keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg.bot{align-self:flex-start}
+  .msg.user{align-self:flex-end;flex-direction:row-reverse}
+  .msg .bubble{
+    padding:12px 16px;border-radius:16px;
+    font-size:14.5px;line-height:1.55;letter-spacing:.005em;
+    word-wrap:break-word;overflow-wrap:break-word;
+  }
+  .msg.bot .bubble{
+    background:var(--bg);color:var(--ink);
+    border:1px solid var(--line-2);border-top-left-radius:6px;
+  }
+  .msg.user .bubble{
+    background:var(--ink);color:var(--bg);
+    border-top-right-radius:6px;
+    white-space:pre-wrap;
+  }
+  .msg .bubble strong{font-weight:600}
+  .msg .bubble em{font-style:normal;color:var(--accent);font-weight:500}
+  .msg.user .bubble em{color:#d8b89a}
+  .msg .bubble a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+  .msg.user .bubble a{color:#e5c7a8}
+  .msg .meta-time{
+    font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.04em;
+  }
+  .msg.user .meta-time{text-align:right}
+
+  /* Typing indicator */
+  .typing{display:none;align-self:flex-start;gap:10px;align-items:center}
+  .typing.show{display:flex}
+  .typing-bubble{
+    padding:14px 16px;border-radius:16px;border-top-left-radius:6px;
+    background:var(--bg);border:1px solid var(--line-2);
+    display:flex;gap:5px;
+  }
+  .typing-bubble span{
+    width:6px;height:6px;border-radius:50%;background:var(--muted);
+    animation:typeDot 1.2s ease-in-out infinite;
+  }
+  .typing-bubble span:nth-child(2){animation-delay:.15s}
+  .typing-bubble span:nth-child(3){animation-delay:.3s}
+  @keyframes typeDot{
+    0%,60%,100%{transform:translateY(0);opacity:.5}
+    30%{transform:translateY(-4px);opacity:1}
+  }
+
+  /* Suggestion chips */
+  .suggestions{
+    padding:8px 22px 0;display:flex;flex-wrap:wrap;gap:8px;
+    background:#fff;
+  }
+  .chip{
+    padding:8px 14px;border-radius:999px;
+    background:var(--bg);border:1px solid var(--line);
+    font-family:inherit;font-size:12.5px;font-weight:500;color:var(--ink);
+    cursor:pointer;transition:.2s;letter-spacing:.01em;
+  }
+  .chip:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-1px)}
+
+  /* Input */
+  .chat-input{
+    padding:16px 22px 18px;border-top:1px solid var(--line-2);
+    display:flex;gap:10px;align-items:flex-end;background:#fff;
+  }
+  .chat-input textarea{
+    flex:1;border:1px solid var(--line);border-radius:14px;
+    padding:12px 16px;font-family:inherit;font-size:14.5px;line-height:1.5;
+    color:var(--ink);background:var(--bg);outline:none;
+    resize:none;min-height:44px;max-height:140px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .chat-input textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(140,90,58,.1)}
+  .chat-input textarea::placeholder{color:var(--muted)}
+  .send-btn{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--ink);color:var(--bg);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .15s,background .2s;flex-shrink:0;
+  }
+  .send-btn:hover{transform:translateY(-1px);background:#2a2a28}
+  .send-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .send-btn svg{width:18px;height:18px}
+
+  .chat-footer-note{
+    font-size:11px;color:var(--muted);text-align:center;
+    margin-top:14px;letter-spacing:.04em;
+  }
+  .chat-footer-note a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+
+  /* Language */
+  .lang{
+    display:flex;align-items:center;gap:0;padding:2px;border-radius:999px;
+    border:1px solid var(--line);font-size:11px;font-weight:500;letter-spacing:.04em;
+  }
+  .lang button{background:transparent;border:0;color:var(--ink-2);font:inherit;
+    padding:6px 10px;border-radius:999px;cursor:pointer;transition:.2s}
+  .lang button.active{background:var(--ink);color:var(--bg)}
+
+  @media(max-width:780px){
+    .chat-wrap{min-height:520px;border-radius:18px}
+    .chat-body{padding:18px 16px}
+    .suggestions,.chat-input,.chat-header{padding-left:16px;padding-right:16px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="FORMA.html" class="logo">FORMA<b>.</b></a>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="lang" id="langSwitch">
+      <button data-lang="pt" class="active">PT</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+    <a href="FORMA.html" class="back"><span class="arr">←</span> <span data-i18n="back">Voltar ao site</span></a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="panel-left">
+    <div class="content">
+      <p class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">Online · 24/7</span></p>
+      <h1 data-i18n="h1">Pergunta-nos <span class="serif">qualquer coisa</span>, a qualquer hora.</h1>
+      <p class="lead" data-i18n="lead">O nosso assistente responde de imediato sobre serviços, preços, prazos e como podemos ajudar a tua imobiliária a crescer. Sem espera, sem formulários.</p>
+
+      <div class="promises">
+        <div class="promise-item">
+          <span class="ico">✓</span>
+          <span><strong data-i18n="p1s">Resposta instantânea</strong> <span data-i18n="p1t">— sem espera, a qualquer hora do dia ou da noite.</span></span>
+        </div>
+        <div class="promise-item">
+          <span class="ico">✓</span>
+          <span><strong data-i18n="p2s">Sabe tudo sobre nós</strong> <span data-i18n="p2t">— serviços, prazos, processo e casos de estudo.</span></span>
+        </div>
+        <div class="promise-item">
+          <span class="ico">✓</span>
+          <span><strong data-i18n="p3s">Encaminha quando preciso</strong> <span data-i18n="p3t">— se precisares de falar com a equipa, ligamos-te.</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="human-fallback">
+        <div class="txt">
+          <strong data-i18n="hfs">Preferes falar com uma pessoa?</strong>
+          <span data-i18n="hft">A nossa equipa responde em menos de 24h úteis.</span>
+        </div>
+        <a href="contacto.html">
+          <span data-i18n="hfb">Marcar reunião</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="panel-right">
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="chat-avatar">F<b>.</b></div>
+        <div class="chat-meta">
+          <div class="name">FORMA<b>.</b> AI</div>
+          <div class="status"><span class="dot"></span><span data-i18n="status">A responder em segundos</span></div>
+        </div>
+        <button class="chat-clear" id="chatClear" data-i18n="clear">Limpar</button>
+      </div>
+
+      <div class="chat-body" id="chatBody" role="log" aria-live="polite"></div>
+
+      <div class="suggestions" id="suggestions"></div>
+
+      <div class="chat-input">
+        <textarea id="chatInput" rows="1" data-i18n-ph="placeholder" placeholder="Escreve a tua dúvida..." aria-label="Mensagem"></textarea>
+        <button class="send-btn" id="sendBtn" aria-label="Enviar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="chat-footer-note">
+      <span data-i18n="note">Respostas geradas automaticamente. Para propostas, agenda uma reunião em</span>
+      <a href="contacto.html">contacto</a>.
+    </p>
+  </div>
+
+</div>
+
+<script>
+/* ---------- i18n (only trusted, hard-coded strings) ---------- */
+const I18N = {
+  pt: {
+    back: "Voltar ao site",
+    eyebrow: "Online · 24/7",
+    h1: 'Pergunta-nos <span class="serif">qualquer coisa</span>, a qualquer hora.',
+    lead: "O nosso assistente responde de imediato sobre serviços, preços, prazos e como podemos ajudar a tua imobiliária a crescer. Sem espera, sem formulários.",
+    p1s: "Resposta instantânea", p1t: "— sem espera, a qualquer hora do dia ou da noite.",
+    p2s: "Sabe tudo sobre nós",  p2t: "— serviços, prazos, processo e casos de estudo.",
+    p3s: "Encaminha quando preciso", p3t: "— se precisares de falar com a equipa, ligamos-te.",
+    hfs: "Preferes falar com uma pessoa?", hft: "A nossa equipa responde em menos de 24h úteis.",
+    hfb: "Marcar reunião",
+    status: "A responder em segundos",
+    clear: "Limpar",
+    placeholder: "Escreve a tua dúvida...",
+    note: "Respostas geradas automaticamente. Para propostas, agenda uma reunião em",
+    greeting: 'Olá! 👋 Sou o assistente da <strong>FORMA<em>.</em></strong> Posso esclarecer dúvidas sobre os nossos serviços, processos, prazos e preços. Em que te posso ajudar?',
+    chips: ["Que serviços oferecem?", "Quanto custa um site?", "Em quanto tempo entregam?", "Trabalham com imobiliárias pequenas?", "Como funciona o processo?"],
+    fallback: 'Boa pergunta. Não tenho a resposta exata para isso, mas a nossa equipa explica num instante — podes <a href="contacto.html">marcar uma reunião gratuita</a> ou enviar email para forma.work@gmail.com.'
+  },
+  en: {
+    back: "Back to site",
+    eyebrow: "Online · 24/7",
+    h1: 'Ask us <span class="serif">anything</span>, anytime.',
+    lead: "Our assistant answers instantly about services, pricing, timelines and how we can help your agency grow. No waiting, no forms.",
+    p1s: "Instant answers", p1t: "— no waiting, any time of day or night.",
+    p2s: "Knows everything about us",  p2t: "— services, timelines, process and case studies.",
+    p3s: "Hands off when needed", p3t: "— if you need to talk to the team, we will call you.",
+    hfs: "Prefer to talk to a person?", hft: "Our team replies in under 24 working hours.",
+    hfb: "Book a call",
+    status: "Replies in seconds",
+    clear: "Clear",
+    placeholder: "Type your question...",
+    note: "Replies generated automatically. For proposals, book a call at",
+    greeting: 'Hi! 👋 I am the <strong>FORMA<em>.</em></strong> assistant. I can answer questions about our services, process, timelines and pricing. How can I help?',
+    chips: ["What services do you offer?", "How much is a website?", "How long does delivery take?", "Do you work with small agencies?", "How does the process work?"],
+    fallback: 'Good question. I do not have the exact answer for that, but the team can explain in a minute — <a href="contacto.html">book a free call</a> or email forma.work@gmail.com.'
+  },
+  es: {
+    back: "Volver al sitio",
+    eyebrow: "En línea · 24/7",
+    h1: 'Pregúntanos <span class="serif">cualquier cosa</span>, a cualquier hora.',
+    lead: "Nuestro asistente responde al instante sobre servicios, precios, plazos y cómo podemos ayudar a tu inmobiliaria a crecer. Sin esperas, sin formularios.",
+    p1s: "Respuesta inmediata", p1t: "— sin esperas, a cualquier hora del día o de la noche.",
+    p2s: "Lo sabe todo sobre nosotros",  p2t: "— servicios, plazos, proceso y casos de estudio.",
+    p3s: "Te deriva cuando es necesario", p3t: "— si necesitas hablar con el equipo, te llamamos.",
+    hfs: "¿Prefieres hablar con una persona?", hft: "Nuestro equipo responde en menos de 24h laborables.",
+    hfb: "Reservar reunión",
+    status: "Respuestas en segundos",
+    clear: "Limpiar",
+    placeholder: "Escribe tu duda...",
+    note: "Respuestas generadas automáticamente. Para propuestas, agenda una reunión en",
+    greeting: '¡Hola! 👋 Soy el asistente de <strong>FORMA<em>.</em></strong> Puedo resolver dudas sobre nuestros servicios, procesos, plazos y precios. ¿En qué te puedo ayudar?',
+    chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta una web?", "¿En cuánto tiempo entregan?", "¿Trabajan con inmobiliarias pequeñas?", "¿Cómo funciona el proceso?"],
+    fallback: 'Buena pregunta. No tengo la respuesta exacta, pero el equipo te lo explica en un momento — puedes <a href="contacto.html">reservar una reunión gratuita</a> o escribir a forma.work@gmail.com.'
+  }
+};
+
+/* ---------- Knowledge base (trusted, hard-coded responses) ---------- */
+const KB = [
+  {
+    match: ["servic","serviço","serviços","service","ofrec","oferta","ofereçam","oferecem","que faz","what do you do","qué hac"],
+    answer: {
+      pt: 'Trabalhamos com imobiliárias em 6 áreas: <strong>Websites</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Anúncios pagos</strong> (Google/Meta), <strong>Conteúdo e redes sociais</strong> e <strong>CRM &amp; automações</strong> (incluindo chatbots como este). Queres saber mais sobre algum deles?',
+      en: 'We work with real estate agencies in 6 areas: <strong>Websites</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Paid ads</strong> (Google/Meta), <strong>Content &amp; social</strong> and <strong>CRM &amp; automations</strong> (including chatbots like this one). Want to dive into any of them?',
+      es: 'Trabajamos con inmobiliarias en 6 áreas: <strong>Webs</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Anuncios pagados</strong> (Google/Meta), <strong>Contenido y redes</strong> y <strong>CRM y automatizaciones</strong> (incluidos chatbots como este). ¿Quieres saber más sobre alguno?'
+    }
+  },
+  {
+    match: ["preço","preco","quanto custa","custo","valor","budget","orçamento","how much","cost","price","cuánto cuesta","precio","cuanto"],
+    answer: {
+      pt: 'O preço depende muito do que precisas — âmbito, complexidade e serviços envolvidos. Cada projeto tem proposta à medida, por isso para te dar um valor concreto o melhor é <a href="contacto.html">marcares uma reunião</a>. É rápida, gratuita e sem compromisso.',
+      en: 'Pricing really depends on what you need — scope, complexity and the services involved. Every project gets a tailored proposal, so for a real number the best is to <a href="contacto.html">book a call</a>. Quick, free and no commitment.',
+      es: 'El precio depende mucho de lo que necesites — alcance, complejidad y servicios. Cada proyecto lleva propuesta a medida, así que para darte una cifra concreta lo mejor es <a href="contacto.html">reservar una reunión</a>. Rápida, gratuita y sin compromiso.'
+    }
+  },
+  {
+    match: ["site","website","web","página","pagina","landing"],
+    answer: {
+      pt: 'Construímos sites para imobiliárias do zero: <strong>multilíngue</strong> (PT/EN/ES/FR), rápido, otimizado para SEO, com integração de CRM e ficha de imóvel inteligente. Tipicamente entregamos em <em>4 a 8 semanas</em>. Quanto à orientação visual: minimalista, com foco em conversão.',
+      en: 'We build real estate websites from scratch: <strong>multilingual</strong> (PT/EN/ES/FR), fast, SEO-ready, with CRM integration and smart property pages. Typical delivery <em>4–8 weeks</em>. Visual direction: minimalist, conversion-focused.',
+      es: 'Creamos webs inmobiliarias desde cero: <strong>multilingües</strong> (PT/EN/ES/FR), rápidas, optimizadas para SEO, con integración CRM y fichas de inmueble inteligentes. Entrega típica <em>4–8 semanas</em>. Dirección visual: minimalista y enfocada a conversión.'
+    }
+  },
+  {
+    match: ["seo","google","aparecer","ranking","search","posicionamiento","posicionamento"],
+    answer: {
+      pt: 'SEO técnico + conteúdo + autoridade local. Trabalhamos páginas de imóveis individuais, páginas de bairro/zona em várias línguas e link building com fontes de imobiliário. Resultados visíveis tipicamente em <em>3 a 6 meses</em>.',
+      en: 'Technical SEO + content + local authority. We build out individual property pages, neighbourhood pages in multiple languages, and link building from real estate sources. Visible results typically in <em>3–6 months</em>.',
+      es: 'SEO técnico + contenido + autoridad local. Trabajamos fichas individuales, páginas de barrio/zona en varios idiomas y link building desde fuentes inmobiliarias. Resultados visibles típicamente en <em>3 a 6 meses</em>.'
+    }
+  },
+  {
+    match: ["ads","anúncio","anuncio","ad","google ads","meta","facebook","instagram","paid","pago"],
+    answer: {
+      pt: 'Campanhas Google e Meta segmentadas por <strong>país, idioma e perfil de comprador</strong>. Optimizamos por <em>contactos qualificados</em>, não por cliques. Trabalhamos com orçamentos a partir de 500€/mês de ad spend (excluindo gestão).',
+      en: 'Google and Meta campaigns segmented by <strong>country, language and buyer profile</strong>. We optimise for <em>qualified leads</em>, not clicks. Minimum recommended ad spend: €500/month (management fee separate).',
+      es: 'Campañas en Google y Meta segmentadas por <strong>país, idioma y perfil de comprador</strong>. Optimizamos por <em>leads cualificados</em>, no por clics. Inversión recomendada desde 500€/mes (gestión aparte).'
+    }
+  },
+  {
+    match: ["crm","automa","chatbot","bot","whatsapp","integra"],
+    answer: {
+      pt: 'Integramos o teu CRM (HubSpot, Pipedrive, Zoho, ou desenvolvido à medida) com o site, formulários e WhatsApp. Os chatbots qualificam leads <em>antes</em> de chegarem à equipa — funcionam 24/7, em várias línguas. Este chat é um exemplo simples.',
+      en: 'We connect your CRM (HubSpot, Pipedrive, Zoho or custom) to your site, forms and WhatsApp. Chatbots qualify leads <em>before</em> they reach the team — 24/7, multilingual. This chat is a simple example.',
+      es: 'Integramos tu CRM (HubSpot, Pipedrive, Zoho o a medida) con web, formularios y WhatsApp. Los chatbots cualifican leads <em>antes</em> de llegar al equipo — 24/7, multilingües. Este chat es un ejemplo simple.'
+    }
+  },
+  {
+    match: ["brand","branding","logo","identidade","identidad","identity"],
+    answer: {
+      pt: 'Trabalhamos identidade visual completa: <strong>logo, paleta, tipografia, sistema de fotografia, templates de redes sociais e brand guidelines</strong>. Tipicamente 3 a 5 semanas, com 2 rondas de revisão incluídas.',
+      en: 'Full visual identity: <strong>logo, palette, typography, photography system, social templates and brand guidelines</strong>. Typically 3–5 weeks, 2 revision rounds included.',
+      es: 'Identidad visual completa: <strong>logo, paleta, tipografía, sistema de fotografía, plantillas de redes y guidelines de marca</strong>. Típicamente 3–5 semanas, 2 rondas de revisión incluidas.'
+    }
+  },
+  {
+    match: ["tempo","prazo","quando","entrega","duraç","cuanto tiempo","cuánto tarda","timeline","how long","delivery"],
+    answer: {
+      pt: 'Tipicamente entre <strong>2 a 3 semanas</strong>, dependendo do que precisas — quanto mais complexo o projeto, mais tempo leva. Para um prazo concreto adaptado ao teu caso, <a href="contacto.html">marca uma reunião</a> e damos-te uma estimativa real.',
+      en: 'Typically between <strong>2 and 3 weeks</strong>, depending on what you need — the more complex the project, the longer it takes. For a real timeline tailored to your case, <a href="contacto.html">book a call</a> and we will give you a concrete estimate.',
+      es: 'Normalmente entre <strong>2 y 3 semanas</strong>, dependiendo de lo que necesites — cuanto más complejo el proyecto, más tiempo lleva. Para un plazo concreto adaptado a tu caso, <a href="contacto.html">reserva una reunión</a> y te damos una estimación real.'
+    }
+  },
+  {
+    match: ["process","como funciona","como trabalham","fluxo","etapa","fase","steps","cómo funciona"],
+    answer: {
+      pt: 'Quatro etapas: <strong>1. Descoberta</strong> (entendemos o teu negócio), <strong>2. Estratégia</strong> (plano + proposta), <strong>3. Execução</strong> (design + dev + launch), <strong>4. Evolução</strong> (medimos e iteramos). Sem surpresas.',
+      en: 'Four phases: <strong>1. Discovery</strong> (we get your business), <strong>2. Strategy</strong> (plan + proposal), <strong>3. Execution</strong> (design + dev + launch), <strong>4. Evolution</strong> (measure + iterate). No surprises.',
+      es: 'Cuatro fases: <strong>1. Descubrimiento</strong> (entendemos tu negocio), <strong>2. Estrategia</strong> (plan + propuesta), <strong>3. Ejecución</strong> (diseño + dev + launch), <strong>4. Evolución</strong> (medimos e iteramos). Sin sorpresas.'
+    }
+  },
+  {
+    match: ["pequena","pequenas","small","pequeñ","independent","solo","freelance","começar","start","starting"],
+    answer: {
+      pt: 'Sim — trabalhamos com imobiliárias de qualquer dimensão, incluindo agentes independentes e equipas a começar. Para projetos mais pequenos temos um <em>pacote essencial</em> com site + SEO base + CRM por preços mais acessíveis.',
+      en: 'Yes — we work with agencies of any size, including independent agents and teams just starting. For smaller projects we have an <em>essentials package</em> (site + base SEO + CRM) at more accessible pricing.',
+      es: 'Sí — trabajamos con inmobiliarias de cualquier tamaño, incluidos agentes independientes y equipos que empiezan. Para proyectos más pequeños tenemos un <em>pack esencial</em> (web + SEO base + CRM) a precios más accesibles.'
+    }
+  },
+  {
+    match: ["lingua","idioma","language","multi","traduç","translation","traducción","ingles","inglês","espanol","english","frances"],
+    answer: {
+      pt: 'Construímos sites multilíngues por default: <strong>PT, EN, ES, FR</strong> são as línguas mais pedidas, mas podemos adicionar outras (DE, IT, NL). Cada versão é tratada como SEO próprio, não tradução automática.',
+      en: 'Multilingual by default: <strong>PT, EN, ES, FR</strong> are the most requested, but we can add others (DE, IT, NL). Each language is treated as its own SEO target, not auto-translated.',
+      es: 'Multilingües por defecto: <strong>PT, EN, ES, FR</strong> son las más solicitadas, pero podemos añadir otras (DE, IT, NL). Cada idioma tiene su propio SEO, no traducción automática.'
+    }
+  },
+  {
+    match: ["contact","contacto","email","telef","phone","ligar","call","reunion","reunião","meeting","agendar","marcar","book"],
+    answer: {
+      pt: 'Podes marcar uma reunião gratuita em <a href="contacto.html">contacto</a> ou enviar email para forma.work@gmail.com. Respondemos sempre em menos de 24h úteis.',
+      en: 'Book a free call at <a href="contacto.html">contact</a> or email forma.work@gmail.com. We always reply in under 24 working hours.',
+      es: 'Reserva una reunión gratuita en <a href="contacto.html">contacto</a> o escribe a forma.work@gmail.com. Siempre respondemos en menos de 24h laborables.'
+    }
+  },
+  {
+    match: ["local","onde","sede","based","localizaç","ubicaci","portugal","lisboa","lisbon"],
+    answer: {
+      pt: 'Estamos sediados em <strong>Lisboa</strong>, mas trabalhamos com imobiliárias em Portugal, Espanha e resto da Europa. Reuniões presenciais em Lisboa, remotas para os outros.',
+      en: 'We are based in <strong>Lisbon</strong>, but work with agencies across Portugal, Spain and the rest of Europe. In-person meetings in Lisbon, remote for everyone else.',
+      es: 'Estamos en <strong>Lisboa</strong>, pero trabajamos con inmobiliarias en Portugal, España y el resto de Europa. Reuniones presenciales en Lisboa, remotas para el resto.'
+    }
+  },
+  {
+    match: ["case","cases","caso","clientes","clients","portfolio","portfólio","exemplos","examples","ejemplos"],
+    answer: {
+      pt: 'Temos casos no site principal — <em>ACUTA</em> é um dos exemplos mais recentes. Se quiseres ver projetos específicos para o teu nicho (luxury, arrendamento, internacional…), <a href="contacto.html">marca uma reunião</a> e enviamos cases relevantes.',
+      en: 'You can see cases on the main site — <em>ACUTA</em> is one of the latest. If you want examples relevant to your niche (luxury, rentals, international…), <a href="contacto.html">book a call</a> and we will send curated cases.',
+      es: 'Puedes ver casos en la web principal — <em>ACUTA</em> es uno de los últimos. Si quieres ejemplos para tu nicho (lujo, alquiler, internacional…), <a href="contacto.html">reserva una reunión</a> y te enviamos casos relevantes.'
+    }
+  },
+  {
+    match: ["garantia","guarantee","reembolso","refund","devoluc","money back"],
+    answer: {
+      pt: 'Não vendemos "garantias mágicas", mas trabalhamos com <em>contratos curtos</em> e KPIs claros: se ao fim do primeiro trimestre não vires resultados mensuráveis, podes sair sem penalização.',
+      en: 'We do not sell "magic guarantees", but we use <em>short contracts</em> with clear KPIs: if you do not see measurable results by end of the first quarter, you can leave without penalty.',
+      es: 'No vendemos "garantías mágicas", pero usamos <em>contratos cortos</em> con KPIs claros: si al final del primer trimestre no ves resultados medibles, puedes salir sin penalización.'
+    }
+  },
+  {
+    match: ["ola","olá","hello","hi","hey","oi","buenas","hola","bom dia","boa tarde","boa noite","good morning","good afternoon","good evening"],
+    answer: {
+      pt: 'Olá! Como posso ajudar? Posso falar-te sobre <em>serviços</em>, <em>preços</em>, <em>prazos</em>, ou o nosso processo.',
+      en: 'Hi! How can I help? I can tell you about <em>services</em>, <em>pricing</em>, <em>timelines</em> or our process.',
+      es: '¡Hola! ¿En qué te ayudo? Puedo hablarte de <em>servicios</em>, <em>precios</em>, <em>plazos</em> o de nuestro proceso.'
+    }
+  },
+  {
+    match: ["obrigad","gracias","thanks","thank you","valeu","cheers"],
+    answer: {
+      pt: 'De nada! Se quiseres avançar com algo concreto, <a href="contacto.html">marca uma reunião</a> — é rápido e sem compromisso.',
+      en: 'You are welcome! When you want to move forward, <a href="contacto.html">book a call</a> — quick and no strings attached.',
+      es: '¡De nada! Cuando quieras avanzar, <a href="contacto.html">reserva una reunión</a> — rápido y sin compromiso.'
+    }
+  }
+];
+
+/* ---------- State ---------- */
+let currentLang = 'pt';
+
+/* ---------- DOM ---------- */
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+const sendBtn = document.getElementById('sendBtn');
+const suggestionsEl = document.getElementById('suggestions');
+const langSwitch = document.getElementById('langSwitch');
+const chatClear = document.getElementById('chatClear');
+
+/* ---------- i18n apply (only writes hard-coded strings into the DOM) ---------- */
+function applyI18n(){
+  const t = I18N[currentLang];
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(t[k]) el.innerHTML = t[k]; // trusted hard-coded copy
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-ph');
+    if(t[k]) el.placeholder = t[k];
+  });
+}
+
+/* ---------- Render helpers ---------- */
+function fmtTime(){
+  const d = new Date();
+  const loc = currentLang==='pt'?'pt-PT':currentLang==='es'?'es-ES':'en-GB';
+  return d.toLocaleTimeString(loc, {hour:'2-digit', minute:'2-digit'});
+}
+
+/* Renders a bot message. `trustedHtml` MUST come from the hard-coded KB / I18N
+   tables above — never from user input. Uses DOM APIs and only assigns
+   innerHTML on the dedicated bubble node whose content we own. */
+function renderBotMsg(trustedHtml){
+  const wrap = document.createElement('div');
+  wrap.className = 'msg bot';
+  const col = document.createElement('div');
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.innerHTML = trustedHtml; // safe: hard-coded strings only
+  const time = document.createElement('div');
+  time.className = 'meta-time';
+  time.textContent = fmtTime();
+  col.appendChild(bubble);
+  col.appendChild(time);
+  wrap.appendChild(col);
+  chatBody.appendChild(wrap);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+/* Renders a user message. Uses textContent so any HTML the visitor types is
+   rendered as plain text — no XSS surface. */
+function renderUserMsg(plainText){
+  const wrap = document.createElement('div');
+  wrap.className = 'msg user';
+  const col = document.createElement('div');
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = plainText; // safe: never parsed as HTML
+  const time = document.createElement('div');
+  time.className = 'meta-time';
+  time.textContent = fmtTime();
+  col.appendChild(bubble);
+  col.appendChild(time);
+  wrap.appendChild(col);
+  chatBody.appendChild(wrap);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function showTyping(){
+  const el = document.createElement('div');
+  el.className = 'typing show';
+  el.id = 'typing';
+  const bubble = document.createElement('div');
+  bubble.className = 'typing-bubble';
+  for(let i=0;i<3;i++) bubble.appendChild(document.createElement('span'));
+  el.appendChild(bubble);
+  chatBody.appendChild(el);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+function hideTyping(){
+  const el = document.getElementById('typing');
+  if(el) el.remove();
+}
+
+function renderSuggestions(){
+  suggestionsEl.replaceChildren();
+  I18N[currentLang].chips.forEach(text=>{
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.type = 'button';
+    b.textContent = text; // safe: hard-coded
+    b.addEventListener('click', ()=>{
+      chatInput.value = text;
+      send();
+    });
+    suggestionsEl.appendChild(b);
+  });
+}
+
+/* ---------- Keyword matching ---------- */
+function normalize(s){
+  return s.toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[^a-z0-9 ]/g,' ');
+}
+function findAnswer(q){
+  const n = normalize(q);
+  let best = null, bestScore = 0;
+  for(const entry of KB){
+    let score = 0;
+    for(const kw of entry.match){
+      if(n.includes(normalize(kw))) score += kw.length;
+    }
+    if(score > bestScore){ bestScore = score; best = entry; }
+  }
+  if(!best) return null;
+  return best.answer[currentLang] || best.answer.pt;
+}
+
+/* ---------- Send flow ---------- */
+function send(){
+  const text = chatInput.value.trim();
+  if(!text) return;
+  renderUserMsg(text);
+  chatInput.value = '';
+  autosize();
+  sendBtn.disabled = true;
+
+  showTyping();
+  const delay = 600 + Math.min(text.length*18, 1400);
+  setTimeout(()=>{
+    hideTyping();
+    const ans = findAnswer(text) || I18N[currentLang].fallback;
+    renderBotMsg(ans);
+    sendBtn.disabled = false;
+    chatInput.focus();
+  }, delay);
+}
+
+/* ---------- Events ---------- */
+function autosize(){
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 140) + 'px';
+}
+chatInput.addEventListener('input', autosize);
+chatInput.addEventListener('keydown', e=>{
+  if(e.key === 'Enter' && !e.shiftKey){
+    e.preventDefault();
+    send();
+  }
+});
+sendBtn.addEventListener('click', send);
+
+chatClear.addEventListener('click', ()=>{
+  chatBody.replaceChildren();
+  greet();
+});
+
+langSwitch.addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-lang]');
+  if(!btn) return;
+  langSwitch.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b===btn));
+  currentLang = btn.getAttribute('data-lang');
+  applyI18n();
+  chatBody.replaceChildren();
+  greet();
+  renderSuggestions();
+});
+
+function greet(){
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    renderBotMsg(I18N[currentLang].greeting);
+  }, 700);
+}
+
+/* boot */
+applyI18n();
+renderSuggestions();
+greet();
+chatInput.focus();
+</script>
+</body>
+</html>

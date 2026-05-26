@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImoFlow CRM — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0D0D0F;
+      --surface:   #141416;
+      --card:      #1A1A1E;
+      --border:    #262629;
+      --gold:      #C9A84C;
+      --gold-dim:  #8B6F30;
+      --gold-glow: rgba(201,168,76,0.12);
+      --text:      #E8E4DC;
+      --muted:     #7A7870;
+      --green:     #4ECCA3;
+      --red:       #E05C5C;
+      --blue:      #5C9EE0;
+      --sidebar-w: 240px;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-height: 100vh;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 28px 0;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+      opacity: 0.4;
+    }
+
+    .logo {
+      padding: 0 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+    .logo-sub {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav {
+      padding: 24px 0;
+      flex: 1;
+    }
+    .nav-section {
+      margin-bottom: 8px;
+    }
+    .nav-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 24px;
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 24px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      transition: all 0.2s;
+      position: relative;
+    }
+    .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+    .nav-item.active {
+      color: var(--gold);
+      background: var(--gold-glow);
+    }
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 2px; height: 100%;
+      background: var(--gold);
+    }
+    .nav-icon { font-size: 15px; width: 18px; text-align: center; }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--gold);
+      color: #0D0D0F;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    .sidebar-user {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: #0D0D0F;
+      flex-shrink: 0;
+    }
+    .user-info { flex: 1; min-width: 0; }
+    .user-name { font-size: 12px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-role { font-size: 10px; color: var(--muted); }
+
+    /* ── MAIN ── */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .topbar-left p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-notif {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      position: relative;
+    }
+    .notif-dot {
+      position: absolute;
+      top: 6px; right: 6px;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #0D0D0F;
+      border: none;
+      border-radius: 8px;
+      padding: 0 16px;
+      height: 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { background: #d4b05a; }
+
+    .content {
+      padding: 28px 32px;
+      flex: 1;
+    }
+
+    /* ── STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+      opacity: 0.5;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-change {
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .stat-change.up { color: var(--green); }
+    .stat-change.down { color: var(--red); }
+    .stat-icon {
+      position: absolute;
+      top: 18px; right: 18px;
+      font-size: 22px;
+      opacity: 0.2;
+    }
+
+    /* ── GRID LAYOUT ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .section-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      color: var(--gold);
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PIPELINE ── */
+    .pipeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .pipeline-stages {
+      display: flex;
+      gap: 2px;
+      height: 6px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .pipeline-stage-bar { border-radius: 0; transition: opacity 0.2s; }
+    .pipeline-stage-bar:hover { opacity: 0.8; }
+    .ps-lead    { background: #5C9EE0; width: 35%; }
+    .ps-visit   { background: #9B7FE8; width: 25%; }
+    .ps-prop    { background: #E0A35C; width: 20%; }
+    .ps-neg     { background: #E0595C; width: 12%; }
+    .ps-closed  { background: var(--green); width: 8%; }
+
+    .pipeline-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    .deals-list { display: flex; flex-direction: column; gap: 8px; }
+    .deal-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .deal-avatar {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600; color: #0D0D0F;
+    }
+    .deal-name { font-weight: 500; color: var(--text); }
+    .deal-prop { font-size: 10px; color: var(--muted); margin-top: 1px; }
+    .deal-value { font-weight: 600; color: var(--text); font-size: 13px; white-space: nowrap; }
+    .deal-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tag-lead    { background: rgba(92,158,224,0.15); color: #5C9EE0; }
+    .tag-visit   { background: rgba(155,127,232,0.15); color: #9B7FE8; }
+    .tag-prop    { background: rgba(224,163,92,0.15); color: #E0A35C; }
+    .tag-neg     { background: rgba(224,89,92,0.15); color: #E0595C; }
+    .tag-closed  { background: rgba(78,204,163,0.15); color: var(--green); }
+
+    /* ── ACTIVITY ── */
+    .activity-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .activity-list { display: flex; flex-direction: column; gap: 0; }
+    .activity-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .activity-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .activity-dot-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding-top: 4px;
+    }
+    .activity-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .activity-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+      margin-top: 4px;
+      min-height: 20px;
+    }
+    .activity-body { flex: 1; }
+    .activity-text { color: var(--text); line-height: 1.5; }
+    .activity-text strong { color: var(--gold); font-weight: 500; }
+    .activity-time { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* ── LEADS TABLE ── */
+    .leads-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .leads-header { padding: 20px 22px; border-bottom: 1px solid var(--border); }
+    .leads-table { width: 100%; border-collapse: collapse; }
+    .leads-table th {
+      text-align: left;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 22px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+    .leads-table td {
+      padding: 11px 22px;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(38,38,41,0.5);
+    }
+    .leads-table tr:last-child td { border-bottom: none; }
+    .leads-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .lead-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+    }
+    .score-bar {
+      width: 60px; height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .score-fill { height: 100%; border-radius: 2px; background: var(--gold); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-card   { animation: fadeUp 0.4s ease both; }
+    .stat-card:nth-child(1) { animation-delay: 0.05s; }
+    .stat-card:nth-child(2) { animation-delay: 0.10s; }
+    .stat-card:nth-child(3) { animation-delay: 0.15s; }
+    .stat-card:nth-child(4) { animation-delay: 0.20s; }
+    .pipeline-card { animation: fadeUp 0.4s 0.25s ease both; }
+    .activity-card { animation: fadeUp 0.4s 0.3s ease both; }
+    .leads-card    { animation: fadeUp 0.4s 0.35s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-name">ImoFlow</div>
+    <div class="logo-sub">CRM Imobiliário</div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Principal</div>
+      <div class="nav-item active"><span class="nav-icon">▦</span> Dashboard</div>
+      <div class="nav-item"><span class="nav-icon">◎</span> Leads <span class="nav-badge">12</span></div>
+      <div class="nav-item"><span class="nav-icon">◈</span> Pipeline</div>
+      <div class="nav-item"><span class="nav-icon">⬡</span> Imóveis</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Gestão</div>
+      <div class="nav-item"><span class="nav-icon">✉</span> Emails <span class="nav-badge">3</span></div>
+      <div class="nav-item"><span class="nav-icon">◷</span> Tarefas</div>
+      <div class="nav-item"><span class="nav-icon">⊞</span> Calendário</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Análise</div>
+      <div class="nav-item"><span class="nav-icon">↗</span> Relatórios</div>
+      <div class="nav-item"><span class="nav-icon">⚙</span> Automações</div>
+    </div>
+  </nav>
+
+  <div class="sidebar-user">
+    <div class="avatar">JM</div>
+    <div class="user-info">
+      <div class="user-name">João Martins</div>
+      <div class="user-role">Diretor Comercial</div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Bom dia, João</h1>
+      <p>Quarta-feira, 20 de maio de 2026 · 12 leads novos esta semana</p>
+    </div>
+    <div class="topbar-right">
+      <div class="btn-notif">🔔 <div class="notif-dot"></div></div>
+      <button class="btn-primary">+ Novo Lead</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">◎</div>
+        <div class="stat-label">Leads Ativos</div>
+        <div class="stat-value">84</div>
+        <div class="stat-change up">↑ +12 esta semana</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">◈</div>
+        <div class="stat-label">Em Negociação</div>
+        <div class="stat-value">23</div>
+        <div class="stat-change up">↑ +4 vs. mês passado</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✓</div>
+        <div class="stat-label">Escrituras (mês)</div>
+        <div class="stat-value">7</div>
+        <div class="stat-change up">↑ +2 vs. mês passado</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">€</div>
+        <div class="stat-label">Volume Faturado</div>
+        <div class="stat-value">1.4M</div>
+        <div class="stat-change down">↓ −8% vs. mês passado</div>
+      </div>
+    </div>
+
+    <!-- PIPELINE + ACTIVITY -->
+    <div class="grid-2">
+
+      <div class="pipeline-card">
+        <div class="section-title">
+          Pipeline de Vendas
+          <span class="section-link">Ver tudo →</span>
+        </div>
+        <div class="pipeline-stages">
+          <div class="pipeline-stage-bar ps-lead"></div>
+          <div class="pipeline-stage-bar ps-visit"></div>
+          <div class="pipeline-stage-bar ps-prop"></div>
+          <div class="pipeline-stage-bar ps-neg"></div>
+          <div class="pipeline-stage-bar ps-closed"></div>
+        </div>
+        <div class="pipeline-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#5C9EE0"></div> Lead (35)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#9B7FE8"></div> Visita (21)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E0A35C"></div> Proposta (16)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E0595C"></div> Negociação (9)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#4ECCA3"></div> Fechado (7)</div>
+        </div>
+        <div class="deals-list">
+          <div class="deal-row">
+            <div class="deal-avatar" style="background:linear-gradient(135deg,#5C9EE0,#3a7bc8)">AM</div>
+            <div>
+              <div class="deal-name">Ana Mota</div>
+              <div class="deal-prop">T3 · Cascais · 450.000€</div>
+            </div>
+            <div class="deal-value">450K€</div>
+            <div class="deal-tag tag-neg">Negociação</div>
+          </div>
+          <div class="deal-row">
+            <div class="deal-avatar" style="background:linear-gradient(135deg,#9B7FE8,#7458c4)">RC</div>
+            <div>
+              <div class="deal-name">Rui Carvalho</div>
+              <div class="deal-prop">T4 · Sintra · 680.000€</div>
+            </div>
+            <div class="deal-value">680K€</div>
+            <div class="deal-tag tag-prop">Proposta</div>
+          </div>
+          <div class="deal-row">
+            <div class="deal-avatar" style="background:linear-gradient(135deg,#E0A35C,#c4823a)">MF</div>
+            <div>
+              <div class="deal-name">Mariana Ferreira</div>
+              <div class="deal-prop">T2 · Lisboa · 320.000€</div>
+            </div>
+            <div class="deal-value">320K€</div>
+            <div class="deal-tag tag-visit">Visita</div>
+          </div>
+          <div class="deal-row">
+            <div class="deal-avatar" style="background:linear-gradient(135deg,#4ECCA3,#2ba882)">PS</div>
+            <div>
+              <div class="deal-name">Paulo Santos</div>
+              <div class="deal-prop">T3 · Oeiras · 395.000€</div>
+            </div>
+            <div class="deal-value">395K€</div>
+            <div class="deal-tag tag-closed">Fechado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="section-title">Atividade Recente</div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-dot-wrap">
+              <div class="activity-dot" style="background:var(--green)"></div>
+              <div class="activity-line"></div>
+            </div>
+            <div class="activity-body">
+              <div class="activity-text">Escritura assinada com <strong>Paulo Santos</strong> — T3 Oeiras</div>
+              <div class="activity-time">Hoje, 10:42</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-wrap">
+              <div class="activity-dot" style="background:#5C9EE0"></div>
+              <div class="activity-line"></div>
+            </div>
+            <div class="activity-body">
+              <div class="activity-text">Novo lead <strong>Carlos Brito</strong> via formulário site</div>
+              <div class="activity-time">Hoje, 09:15</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-wrap">
+              <div class="activity-dot" style="background:#9B7FE8"></div>
+              <div class="activity-line"></div>
+            </div>
+            <div class="activity-body">
+              <div class="activity-text">Visita agendada com <strong>Mariana Ferreira</strong> — T2 Lisboa</div>
+              <div class="activity-time">Ontem, 16:30</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-wrap">
+              <div class="activity-dot" style="background:var(--gold)"></div>
+              <div class="activity-line"></div>
+            </div>
+            <div class="activity-body">
+              <div class="activity-text">Proposta enviada a <strong>Rui Carvalho</strong> para T4 Sintra</div>
+              <div class="activity-time">Ontem, 14:05</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-wrap">
+              <div class="activity-dot" style="background:var(--red)"></div>
+            </div>
+            <div class="activity-body">
+              <div class="activity-text">Lead <strong>Sofia Lopes</strong> sem resposta há 3 dias — follow-up pendente</div>
+              <div class="activity-time">18 Mai, 11:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADS TABLE -->
+    <div class="leads-card">
+      <div class="leads-header">
+        <div class="section-title" style="margin-bottom:0">
+          Leads Recentes
+          <span class="section-link">Ver todos os 84 leads →</span>
+        </div>
+      </div>
+      <table class="leads-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Contacto</th>
+            <th>Interesse</th>
+            <th>Origem</th>
+            <th>Score</th>
+            <th>Fase</th>
+            <th>Agente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span style="font-weight:500;color:var(--text)">Carlos Brito</span></td>
+            <td style="color:var(--muted)">+351 912 345 678</td>
+            <td style="color:var(--muted)">T3 · Lisboa · até 400K€</td>
+            <td><span class="lead-source">🌐 Site</span></td>
+            <td><div class="score-bar"><div class="score-fill" style="width:85%"></div></div></td>
+            <td><span class="deal-tag tag-lead">Lead</span></td>
+            <td style="color:var(--muted)">João M.</td>
+          </tr>
+          <tr>
+            <td><span style="font-weight:500;color:var(--text)">Ana Mota</span></td>
+            <td style="color:var(--muted)">+351 963 456 789</td>
+            <td style="color:var(--muted)">T3 · Cascais · até 500K€</td>
+            <td><span class="lead-source">📱 Instagram</span></td>
+            <td><div class="score-bar"><div class="score-fill" style="width:92%"></div></div></td>
+            <td><span class="deal-tag tag-neg">Negociação</span></td>
+            <td style="color:var(--muted)">Sara P.</td>
+          </tr>
+          <tr>
+            <td><span style="font-weight:500;color:var(--text)">Rui Carvalho</span></td>
+            <td style="color:var(--muted)">+351 934 567 890</td>
+            <td style="color:var(--muted)">T4 · Sintra · até 700K€</td>
+            <td><span class="lead-source">👤 Referência</span></td>
+            <td><div class="score-bar"><div class="score-fill" style="width:78%"></div></div></td>
+            <td><span class="deal-tag tag-prop">Proposta</span></td>
+            <td style="color:var(--muted)">João M.</td>
+          </tr>
+          <tr>
+            <td><span style="font-weight:500;color:var(--text)">Mariana Ferreira</span></td>
+            <td style="color:var(--muted)">+351 915 678 901</td>
+            <td style="color:var(--muted)">T2 · Lisboa · até 350K€</td>
+            <td><span class="lead-source">🌐 Site</span></td>
+            <td><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></td>
+            <td><span class="deal-tag tag-visit">Visita</span></td>
+            <td style="color:var(--muted)">Miguel A.</td>
+          </tr>
+          <tr>
+            <td><span style="font-weight:500;color:var(--text)">Sofia Lopes</span></td>
+            <td style="color:var(--muted)">+351 926 789 012</td>
+            <td style="color:var(--muted)">T2 · Oeiras · até 300K€</td>
+            <td><span class="lead-source">📱 Facebook</span></td>
+            <td><div class="score-bar"><div class="score-fill" style="width:40%;background:var(--red)"></div></div></td>
+            <td><span class="deal-tag tag-lead" style="background:rgba(224,89,92,0.1);color:var(--red)">⚠ Frio</span></td>
+            <td style="color:var(--muted)">Sara P.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
