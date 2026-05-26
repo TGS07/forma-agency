@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZ9JW5F533"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WZ9JW5F533');</script>
 <title>Contacto — FORMA.</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Geist,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%23D94A1F'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -247,32 +250,61 @@
       <div class="success-icon">✓</div>
       <h3>Mensagem enviada!</h3>
       <p>Recebemos o teu contacto e respondemos em menos de 24 horas úteis.</p>
-      <a href="FORMA.html">← Voltar ao site</a>
+      <a href="index.html">← Voltar ao site</a>
     </div>
   </div>
 
 </div>
 
 <script>
+// REPLACE this URL with your Google Apps Script Web App URL
+var SHEETS_URL = 'REPLACE_WITH_YOUR_APPS_SCRIPT_URL';
+
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const nome = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const interesse = document.getElementById('interesse').value;
+  var form = this;
+  var nome = document.getElementById('nome').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var interesse = document.getElementById('interesse').value;
 
   if(!nome || !email || !interesse){
-    const fields = [];
+    var fields = [];
     if(!nome) fields.push(document.getElementById('nome'));
     if(!email) fields.push(document.getElementById('email'));
     if(!interesse) fields.push(document.getElementById('interesse'));
-    fields.forEach(f=>{ f.style.borderColor='#c0392b'; f.focus(); });
-    fields.forEach(f=>f.addEventListener('input', ()=>{ f.style.borderColor=''; }, {once:true}));
+    fields.forEach(function(f){ f.style.borderColor='#c0392b'; f.focus(); });
+    fields.forEach(function(f){ f.addEventListener('input', function(){ f.style.borderColor=''; }, {once:true}); });
     return;
   }
 
-  this.style.display = 'none';
-  document.querySelector('.form-head').style.display = 'none';
-  document.getElementById('successMsg').classList.add('show');
+  var btn = form.querySelector('.submit-btn');
+  btn.textContent = 'A enviar...';
+  btn.disabled = true;
+
+  var data = {
+    nome: nome,
+    email: email,
+    empresa: document.getElementById('empresa').value.trim(),
+    telefone: document.getElementById('telefone').value.trim(),
+    interesse: interesse,
+    mensagem: document.getElementById('mensagem').value.trim(),
+    data: new Date().toLocaleString('pt-PT')
+  };
+
+  fetch(SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(function(){
+    form.style.display = 'none';
+    document.querySelector('.form-head').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  }).catch(function(){
+    form.style.display = 'none';
+    document.querySelector('.form-head').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  });
 });
 </script>
 </body>
