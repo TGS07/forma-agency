@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZ9JW5F533"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WZ9JW5F533');</script>
+  <!-- Google Analytics — only loads after cookie consent -->
+  <script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  function loadGA(){if(document.getElementById('ga-script'))return;var s=document.createElement('script');s.id='ga-script';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-WZ9JW5F533';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-WZ9JW5F533');}
+  if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
+  </script>
   <title>ImoFlow CRM — Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -754,5 +757,18 @@
   </div>
 </main>
 
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;border-top:1px solid rgba(244,241,235,.1)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <p style="color:rgba(244,241,235,.8);font-size:13px;line-height:1.5;margin:0;max-width:680px">Este site utiliza cookies para análise de tráfego (Google Analytics). Ao aceitar, consente a recolha de dados anónimos de navegação.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="cookieReject()" style="padding:9px 18px;border-radius:999px;border:1px solid rgba(244,241,235,.25);background:transparent;color:rgba(244,241,235,.7);font-size:13px;font-weight:500;cursor:pointer;transition:border-color .2s">Rejeitar</button>
+      <button onclick="cookieAccept()" style="padding:9px 18px;border-radius:999px;border:0;background:#8C5A3A;color:#F4F1EB;font-size:13px;font-weight:500;cursor:pointer;transition:transform .2s">Aceitar</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){var b=document.getElementById('cookieBanner');if(!localStorage.getItem('cookie-consent')){b.style.display='block';}window.cookieAccept=function(){localStorage.setItem('cookie-consent','accepted');b.style.display='none';loadGA();};window.cookieReject=function(){localStorage.setItem('cookie-consent','rejected');b.style.display='none';};})();
+</script>
 </body>
 </html>
