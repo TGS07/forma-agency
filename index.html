@@ -306,7 +306,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .hero h1{text-shadow:0 2px 32px rgba(0,0,0,.6), 0 1px 4px rgba(0,0,0,.35)}
   .hero .sub{text-shadow:0 1px 16px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.4)}
   .hero-meta{text-shadow:0 1px 10px rgba(0,0,0,.6)}
-  .hero-content{position:relative;z-index:2;padding:0 48px 64px;width:100%}
+  .hero-content{position:relative;z-index:2;padding:0 48px 120px;width:100%}
   .hero h1{
     font-size:clamp(44px, 7.5vw, 116px);
     font-weight:300;letter-spacing:-0.02em;line-height:.95;
@@ -1068,10 +1068,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <nav class="menu-nav">
       <a href="#hero" class="menu-link"><span data-i18n="menu.home">Início</span></a>
       <a href="#services" class="menu-link"><span data-i18n="menu.services">Serviços</span></a>
-      <a href="#case" class="menu-link"><span data-i18n="menu.clients">Clientes</span></a>
       <a href="#faq" class="menu-link"><span data-i18n="menu.faq">FAQ</span></a>
-      <a href="#testimonials" class="menu-link"><span data-i18n="menu.test">Testemunhos</span></a>
       <a href="contacto.html" class="menu-link"><span data-i18n="menu.contact">Contacto</span></a>
+      <a href="ai-chat.html" class="menu-link"><span data-i18n="menu.ai">Fale connosco</span></a>
     </nav>
     <div class="menu-foot">
       <div class="menu-foot-row">
@@ -1105,11 +1104,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   <div class="hero-content">
     <div class="wrap">
       <h1><span data-i18n="hero.t1">Damos</span> <span class="hero-rotator" id="heroRotator" aria-live="polite"><span class="rt-text">forma</span></span> <span data-i18n="hero.t3">a imobiliárias que<br>querem crescer.</span></h1>
-      <p class="sub" data-i18n="hero.sub">Sites, SEO e marketing para agências imobiliárias que perdem leads todos os dias e não sabem porquê.</p>
-      <div class="hero-meta">
-        <span data-i18n="hero.meta1">Real Estate · 2026</span>
-        <span class="scroll-cue"><span data-i18n="hero.scroll">Scroll</span><span class="arrow"></span></span>
-      </div>
+      <p class="sub" data-i18n="hero.sub">Enquanto os seus concorrentes têm sites bonitos, os nossos clientes têm sites que vendem.</p>
     </div>
   </div>
 </section>
@@ -1166,13 +1161,13 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
             <div class="top">
               <span class="tag"><span class="num">01</span><span data-i18n="serv.1.tag">Websites</span></span>
               <h3 data-i18n="serv.1.h">Websites que <em>convertem</em>.</h3>
-              <p class="desc" data-i18n="serv.1.d">Sites <em>rápidos</em>, com base de dados própria de imóveis, multi-idioma e construídos a pensar em SEO desde a primeira linha de código.</p>
+              <p class="desc" data-i18n="serv.1.d">Sites <em>rápidos</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.</p>
             </div>
             <ul class="features">
-              <li data-i18n="serv.1.f1">Base de dados de imóveis integrada</li>
-              <li data-i18n="serv.1.f2">Pesquisa e filtros avançados</li>
-              <li data-i18n="serv.1.f3">PT · EN · ES nativo</li>
-              <li data-i18n="serv.1.f4">PageSpeed > 90 em mobile</li>
+              <li data-i18n="serv.1.f1">Design exclusivo para a sua agência</li>
+              <li data-i18n="serv.1.f2">Formulários e captação de leads</li>
+              <li data-i18n="serv.1.f3">Otimizado para mobile</li>
+              <li data-i18n="serv.1.f4">Carregamento ultra-rápido</li>
             </ul>
           </div>
           <div class="visual">
@@ -1219,9 +1214,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <p class="desc" data-i18n="serv.2.d">Aparecer no Google quando alguém procura "comprar casa em Lisboa" deixou de ser <em>opcional</em>. Otimizamos cada palavra, cada imagem, cada milissegundo.</p>
             </div>
             <ul class="features">
-              <li data-i18n="serv.2.f1">Pesquisa de palavras-chave por idioma</li>
+              <li data-i18n="serv.2.f1">Pesquisa de palavras-chave do setor</li>
               <li data-i18n="serv.2.f2">SEO técnico e Core Web Vitals</li>
-              <li data-i18n="serv.2.f3">Conteúdo otimizado em 3 línguas</li>
+              <li data-i18n="serv.2.f3">Otimização on-page e off-page</li>
               <li data-i18n="serv.2.f4">Relatórios mensais transparentes</li>
             </ul>
           </div>
@@ -1515,7 +1510,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <div class="case-info">
           <div class="label" style="text-align:center">Case · Satus · 2026</div>
           <h3><em>Satus.</em></h3>
-          <p class="desc" data-i18n="case.desc">Construímos um site para a Satus com uma <em>base de dados própria</em> de imóveis (sem dependência de portais terceiros), três idiomas, SEO forte e ligação automática a um Google Sheets e WhatsApp. Hoje recebem novas leads todos os dias.</p>
+          <p class="desc" data-i18n="case.desc">Construímos um site para a Satus com uma <em>base de dados própria</em> de imóveis, sem depender de portais terceiros. Cada imóvel é gerido diretamente pelo cliente, com formulários estratégicos e ligação automática ao WhatsApp. Hoje recebem novas leads todos os dias.</p>
           <div class="tags">
             <span class="tag">Website</span>
             <span class="tag">Base de dados</span>
@@ -1531,7 +1526,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <div class="case-stats">
         <div class="stat"><div class="n" data-count="130" data-prefix="+">+130<span class="serif" style="color:var(--accent)">%</span></div><div class="l" data-i18n="case.s1">tráfego em 6 meses</div></div>
         <div class="stat"><div class="n" data-count="40">40<span class="serif" style="color:var(--accent)">%</span></div><div class="l" data-i18n="case.s2">leads do estrangeiro</div></div>
-        <div class="stat"><div class="n" data-count="3">3<span class="serif" style="color:var(--accent)">×</span></div><div class="l" data-i18n="case.s3">idiomas nativos no site</div></div>
+        <div class="stat"><div class="n" data-count="2">2<span class="serif" style="color:var(--accent)"> sem</span></div><div class="l" data-i18n="case.s3">do zero ao site online</div></div>
         <div class="stat"><div class="n" data-count="0" data-from="24">0<span class="serif" style="color:var(--accent)">s</span></div><div class="l" data-i18n="case.s4">delay entre lead e o seu Telefone</div></div>
       </div>
     </div>
@@ -1616,17 +1611,17 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <div class="testimonial-slider">
         <!-- Set 1 -->
         <div class="testimonial-slide">
-          <p class="quote" data-i18n="t.1.q">A FORMA percebeu o nosso problema melhor do que nós. Em 2 semanas tínhamos um site novo, em três línguas, e <em>leads do estrangeiro a cair todos os dias</em> no nosso telefone.</p>
+          <p class="quote" data-i18n="t.1.q">A FORMA percebeu o nosso problema. Em duas semanas tínhamos um site novo disponível, em três línguas diferentes e <em>leads do estrangeiro a chegar quase todos os dias</em> ao nosso telefone.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">AL</div>
-              <div class="who-text"><b data-i18n="t.1.n">Afonso Lucas</b><span data-i18n="t.1.r">CEO · Satus Imobiliária</span></div>
+              <div class="who-text"><b data-i18n="t.1.n">Afonso Cunha</b><span data-i18n="t.1.r">CEO · Satus Imobiliária</span></div>
             </div>
             <div class="right"><span class="logo">SATUS<b>.</b></span></div>
           </div>
         </div>
         <div class="testimonial-slide">
-          <p class="quote" data-i18n="t.2.q">Queríamos começar a ter uma presença maior online mas não sabiamos como. <em>Foi a Forma quem nos ajudou</em> Começámos logo a ter resultados positivos e não podiamos pedir melhor.</p>
+          <p class="quote" data-i18n="t.2.q">Queríamos aumentar a nossa presença online, mas não sabíamos por onde começar. <em>A FORMA tratou de tudo.</em> Os resultados apareceram quase de imediato, não podíamos ter pedido melhor.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">CC</div>
@@ -1636,7 +1631,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           </div>
         </div>
         <div class="testimonial-slide">
-          <p class="quote" data-i18n="t.3.q">Precisava de um site construido <em>à minha medida</em> e a FORMA conseguiu fazê-lo em tempo recorde, sempre bastante presente e profissional em todas as reuniões.</p>
+          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">MP</div>
@@ -1647,17 +1642,17 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         </div>
         <!-- Set 2 (duplicate for seamless loop) -->
         <div class="testimonial-slide" aria-hidden="true">
-          <p class="quote" data-i18n="t.1.q">A FORMA percebeu o nosso problema melhor do que nós. Em 2 semanas tínhamos um site novo, em três línguas, e <em>leads do estrangeiro a cair todos os dias</em> no nosso telefone.</p>
+          <p class="quote" data-i18n="t.1.q">A FORMA percebeu o nosso problema. Em duas semanas tínhamos um site novo disponível, em três línguas diferentes e <em>leads do estrangeiro a chegar quase todos os dias</em> ao nosso telefone.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">AL</div>
-              <div class="who-text"><b data-i18n="t.1.n">Afonso Lucas</b><span data-i18n="t.1.r">CEO · Satus Imobiliária</span></div>
+              <div class="who-text"><b data-i18n="t.1.n">Afonso Cunha</b><span data-i18n="t.1.r">CEO · Satus Imobiliária</span></div>
             </div>
             <div class="right"><span class="logo">SATUS<b>.</b></span></div>
           </div>
         </div>
         <div class="testimonial-slide" aria-hidden="true">
-          <p class="quote" data-i18n="t.2.q">Queríamos começar a ter uma presença maior online mas não sabiamos como. <em>Foi a Forma quem nos ajudou</em> Começámos logo a ter resultados positivos e não podiamos pedir melhor.</p>
+          <p class="quote" data-i18n="t.2.q">Queríamos aumentar a nossa presença online, mas não sabíamos por onde começar. <em>A FORMA tratou de tudo.</em> Os resultados apareceram quase de imediato, não podíamos ter pedido melhor.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">CC</div>
@@ -1667,7 +1662,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           </div>
         </div>
         <div class="testimonial-slide" aria-hidden="true">
-          <p class="quote" data-i18n="t.3.q">Precisava de um site construido <em>à minha medida</em> e a FORMA conseguiu fazê-lo em tempo recorde, sempre bastante presente e profissional em todas as reuniões.</p>
+          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">MP</div>
@@ -1715,10 +1710,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <nav class="footer-nav">
           <a href="#hero" data-i18n="menu.home">Início</a>
           <a href="#services" data-i18n="menu.services">Serviços</a>
-          <a href="#case" data-i18n="menu.clients">Clientes</a>
-          <a href="#testimonials" data-i18n="menu.test">Testemunhos</a>
           <a href="#faq" data-i18n="menu.faq">FAQ</a>
           <a href="contacto.html" data-i18n="menu.contact">Contacto</a>
+          <a href="ai-chat.html" data-i18n="menu.ai">Fale connosco</a>
         </nav>
       </div>
 
@@ -1808,10 +1802,10 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 const dict = /*EDITMODE-BEGIN*/{
   "pt": {
     "nav.cta": "Fale connosco",
-    "menu.eye":"Menu","menu.home":"Início","menu.services":"Serviços","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testemunhos","menu.contact":"Contacto","menu.lang":"Idioma","menu.cta":"Marcar reunião",
+    "menu.eye":"Menu","menu.home":"Início","menu.services":"Serviços","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testemunhos","menu.contact":"Contacto","menu.ai":"Fale connosco","menu.lang":"Idioma","menu.cta":"Marcar reunião",
     "hero.t1": "Damos", "hero.t2": "forma", "hero.t3": "a imobiliárias que<br>querem crescer.",
     "hero.words": "forma|clientes|valor|resultados",
-    "hero.sub": "Sites, SEO e marketing para agências imobiliárias que perdem leads todos os dias e não sabem porquê.",
+    "hero.sub": "Enquanto os seus concorrentes têm sites bonitos, os nossos clientes têm sites que vendem.",
     "hero.meta1": "Real Estate · 2026", "hero.scroll": "Scroll",
     "about.eye": "Sobre nós", "about.h": "Uma empresa focada em <span class=\"serif\">imobiliário</span>.",
     "about.big": "A FORMA. nasce para resolver um problema simples: a maioria dos sites de imobiliárias <em>não vende</em>. São lentos, parecem iguais, não falam com clientes estrangeiros e perdem leads todos os dias.",
@@ -1820,10 +1814,10 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p3h": "Tráfego internacional", "about.p3p": "Multi-idioma de raiz e SEO geo-segmentado. Captas compradores do Reino Unido, França e Brasil que pesquisam em casa.",
     "serv.eye": "Serviços", "serv.h": "Tudo o que precisas para <span class=\"serif\">vender mais</span>.",
     "serv.lead": "Seis serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da tua agência.",
-    "serv.1.tag":"Websites","serv.1.h":"Websites que <em>convertem</em>.","serv.1.d":"Sites <em>rápidos</em>, com base de dados própria de imóveis, multi-idioma e construídos a pensar em SEO desde a primeira linha de código.",
-    "serv.1.f1":"Base de dados de imóveis integrada","serv.1.f2":"Pesquisa e filtros avançados","serv.1.f3":"PT · EN · ES nativo","serv.1.f4":"PageSpeed > 90 em mobile",
+    "serv.1.tag":"Websites","serv.1.h":"Websites que <em>convertem</em>.","serv.1.d":"Sites <em>rápidos</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.",
+    "serv.1.f1":"Design exclusivo para a sua agência","serv.1.f2":"Formulários e captação de leads","serv.1.f3":"Otimizado para mobile","serv.1.f4":"Carregamento ultra-rápido",
     "serv.2.tag":"SEO","serv.2.h":"SEO que te coloca <em>em primeiro</em>.","serv.2.d":"Aparecer no Google quando alguém procura \"comprar casa em Lisboa\" deixou de ser <em>opcional</em>. Otimizamos cada palavra, cada imagem, cada milissegundo.",
-    "serv.2.f1":"Pesquisa de palavras-chave por idioma","serv.2.f2":"SEO técnico e Core Web Vitals","serv.2.f3":"Conteúdo otimizado em 3 línguas","serv.2.f4":"Relatórios mensais transparentes",
+    "serv.2.f1":"Pesquisa de palavras-chave do setor","serv.2.f2":"SEO técnico e Core Web Vitals","serv.2.f3":"Otimização on-page e off-page","serv.2.f4":"Relatórios mensais transparentes",
     "serv.3.tag":"Branding","serv.3.h":"Identidade visual com <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografia e sistema visual. Uma marca que se distingue das outras imobiliárias da tua zona e que comunica <em>confiança</em> em qualquer língua.",
     "serv.3.f1":"Logo e marca completa","serv.3.f2":"Brand book e guidelines","serv.3.f3":"Cartões, sinalética, templates","serv.3.f4":"Direção criativa contínua",
     "serv.4.tag":"Paid Ads","serv.4.h":"Anúncios que <em>geram clientes</em>.","serv.4.d":"Campanhas Google e Meta segmentadas por país, idioma e perfil de comprador. Não pagamos por cliques, pagamos por <em>contactos</em>.",
@@ -1844,8 +1838,8 @@ const dict = /*EDITMODE-BEGIN*/{
     "who.n.3":"Quem procura o mais barato: qualidade tem um custo, e o resultado também.",
     "who.n.4":"Quem não quer evoluir, testar coisas novas, nem ouvir feedback dos clientes.",
     "case.eye":"Projeto de sucesso","case.h":"Um caso real, <span class=\"serif\">números reais</span>.",
-    "case.desc":"Construímos um site para a Satus com uma <em>base de dados própria</em> de imóveis (sem dependência de portais terceiros), três idiomas, SEO forte e ligação automática a um Google Sheets e WhatsApp. Hoje recebem novas leads todos os dias.",
-    "case.s1":"tráfego em 6 meses","case.s2":"leads do estrangeiro","case.s3":"idiomas nativos no site","case.s4":"delay entre lead e Sheets",
+    "case.desc":"Construímos um site para a Satus com uma <em>base de dados própria</em> de imóveis, sem depender de portais terceiros. Cada imóvel é gerido diretamente pelo cliente, com formulários estratégicos e ligação automática ao WhatsApp. Hoje recebem novas leads todos os dias.",
+    "case.s1":"tráfego em 6 meses","case.s2":"leads do estrangeiro","case.s3":"do zero ao site online","case.s4":"delay entre lead e Sheets",
     "faq.eye":"Perguntas frequentes","faq.h":"FAQ — As perguntas que mais recebemos.",
     "faq.q1":"Quanto tempo demora a construir um site?","faq.a1":"Entre 2 a 3 semanas, dependendo da complexidade da ideia e se queres beneficiar dos outros serviços que referimos antes. Gostamos da rapidez a entregar, mas não te preocupes, a qualidade vem sempre primeiro.",
     "faq.q2":"Posso ter o meu site em vários idiomas?","faq.a2":"Sim, é exatamente um dos nossos focos. Construímos cada site para PT, EN e ES de raiz (e podemos adicionar FR, DE, IT ou outros). Cada idioma tem URLs próprias.",
@@ -1855,9 +1849,9 @@ const dict = /*EDITMODE-BEGIN*/{
     "faq.q6":"Quanto custa?","faq.a6":"Depende do que quiseres fazer. O investimento varia consoante o tipo de melhorias que pretendes, os serviços que queres implementar no site, o número de idiomas e as integrações necessárias. Marca uma reunião curta e gratuita connosco. A partir daí preparamos uma proposta feita à tua medida.",
     "faq.q7":"Porquê a FORMA e não outra agência?","faq.a7":"Porque somos especializados exclusivamente em imobiliário. Cada projeto que fazemos resolve os mesmos problemas: leads que não chegam, sites que não convertem, compradores estrangeiros que não encontram a agência. Conhecemos este setor por dentro e isso reflete-se no resultado. Além disso, falas sempre diretamente com quem faz o trabalho, sem intermediários, sem account managers, sem surpresas.",
     "t.eye":"O que dizem","t.h":"Palavras de quem já <span class=\"serif\">trabalhou connosco</span>.",
-    "t.1.q":"A FORMA percebeu o nosso problema melhor do que nós. Em 2 semanas tínhamos um site novo, em três línguas, e <em>leads do estrangeiro a cair todos os dias</em> no nosso telefone.","t.1.n":"Afonso Lucas","t.1.r":"CEO · Satus Imobiliária",
-    "t.2.q":"Queríamos começar a ter uma presença maior online mas não sabiamos como. <em>Foi a Forma quem nos ajudou.</em> Começámos logo a ter resultados positivos e não podiamos pedir melhor.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Imobiliária",
-    "t.3.q":"Precisava de um site construido <em>à minha medida</em> e a FORMA conseguiu fazê-lo em tempo recorde, sempre bastante presente e profissional em todas as reuniões.","t.3.n":"Martim Pereira","t.3.r":"CEO · Projeto \"ACUTA\"",
+    "t.1.q":"A FORMA percebeu o nosso problema. Em duas semanas tínhamos um site novo disponível, em três línguas diferentes e <em>leads do estrangeiro a chegar quase todos os dias</em> ao nosso telefone.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Imobiliária",
+    "t.2.q":"Queríamos aumentar a nossa presença online, mas não sabíamos por onde começar. <em>A FORMA tratou de tudo.</em> Os resultados apareceram quase de imediato, não podíamos ter pedido melhor.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Imobiliária",
+    "t.3.q":"Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.","t.3.n":"Martim Pereira","t.3.r":"CEO · Projeto \"ACUTA\"",
     "cta.eye":"Vamos conversar","cta.h1":"Damos","cta.h2":"forma","cta.h3":"à tua próxima fase.",
     "cta.sub":"Uma reunião curta. Sem compromisso. Saímos com um plano claro para a tua agência ou, pelo menos, com uma ou duas ideias úteis.",
     "cta.b1":"Marcar reunião",
@@ -1867,10 +1861,10 @@ const dict = /*EDITMODE-BEGIN*/{
   },
   "en": {
     "nav.cta": "Get in touch",
-    "menu.eye":"Menu","menu.home":"Home","menu.services":"Services","menu.clients":"Clients","menu.faq":"FAQ","menu.test":"Testimonials","menu.contact":"Contact","menu.lang":"Language","menu.cta":"Book a call",
+    "menu.eye":"Menu","menu.home":"Home","menu.services":"Services","menu.clients":"Clients","menu.faq":"FAQ","menu.test":"Testimonials","menu.contact":"Contact","menu.ai":"Talk to us","menu.lang":"Language","menu.cta":"Book a call",
     "hero.t1":"We bring", "hero.t2":"shape", "hero.t3":"to agencies that<br>want to grow.",
     "hero.words":"shape|clients|value|results|scale",
-    "hero.sub":"Websites, SEO and marketing for real estate agencies losing leads every day — and don't know why.",
+    "hero.sub":"While your competitors have pretty websites, our clients have websites that sell.",
     "hero.meta1":"Real Estate · 2026", "hero.scroll":"Scroll",
     "about.eye":"About us","about.h":"A studio focused on <span class=\"serif\">real estate</span>.",
     "about.big":"FORMA. exists to solve one simple problem: most real estate websites <em>don't sell</em>. They're slow, look the same, don't speak to foreign clients and lose leads every day.",
@@ -1879,10 +1873,10 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p3h":"+60% international traffic","about.p3p":"Multi-language from day one and geo-targeted SEO. You capture UK, French and Brazilian buyers searching from home.",
     "serv.eye":"Services","serv.h":"Everything you need to <span class=\"serif\">sell more</span>.",
     "serv.lead":"Six services that compound. We work in packages or individual modules — tailored to your agency's stage.",
-    "serv.1.tag":"Websites","serv.1.h":"Websites that <em>convert</em>.","serv.1.d":"<em>Fast</em> sites with a proprietary property database, multi-language and built with SEO in mind from the first line of code.",
-    "serv.1.f1":"Integrated property database","serv.1.f2":"Advanced search & filters","serv.1.f3":"PT · EN · ES native","serv.1.f4":"PageSpeed > 90 on mobile",
+    "serv.1.tag":"Websites","serv.1.h":"Websites that <em>convert</em>.","serv.1.d":"<em>Fast</em> sites with a unique design for your brand, built to turn visitors into leads from the very first second.",
+    "serv.1.f1":"Exclusive design for your agency","serv.1.f2":"Lead capture forms","serv.1.f3":"Mobile optimized","serv.1.f4":"Ultra-fast loading",
     "serv.2.tag":"SEO","serv.2.h":"SEO that puts you <em>first</em>.","serv.2.d":"Showing up on Google when someone searches \"buy house in Lisbon\" is no longer <em>optional</em>. We optimize every word, every image, every millisecond.",
-    "serv.2.f1":"Keyword research per language","serv.2.f2":"Technical SEO & Core Web Vitals","serv.2.f3":"Optimized content in 3 languages","serv.2.f4":"Transparent monthly reports",
+    "serv.2.f1":"Industry keyword research","serv.2.f2":"Technical SEO & Core Web Vitals","serv.2.f3":"On-page & off-page optimization","serv.2.f4":"Transparent monthly reports",
     "serv.3.tag":"Branding","serv.3.h":"Visual identity with <em>character</em>.","serv.3.d":"Logo, palette, typography and visual system. A brand that stands out from other agencies in your area — and communicates trust in any language.",
     "serv.3.f1":"Logo and complete brand","serv.3.f2":"Brand book and guidelines","serv.3.f3":"Cards, signage, templates","serv.3.f4":"Ongoing creative direction",
     "serv.4.tag":"Paid Ads","serv.4.h":"Ads that <em>generate leads</em>.","serv.4.d":"Google and Meta campaigns segmented by country, language and buyer profile. We don't pay for clicks — we pay for <em>contacts</em>.",
@@ -1903,8 +1897,8 @@ const dict = /*EDITMODE-BEGIN*/{
     "who.n.3":"Those looking for the cheapest option — quality has a cost, and so does the result.",
     "who.n.4":"Those who don't want to evolve, test new things, or listen to client feedback.",
     "case.eye":"Success project","case.h":"A real case, <span class=\"serif\">real numbers</span>.",
-    "case.desc":"We built a website for Satus with a <em>proprietary property database</em> (no third-party portal dependency), three languages, strong SEO and automatic Google Sheets and WhatsApp integration. Today they receive new leads every day.",
-    "case.s1":"traffic in 6 months","case.s2":"foreign leads","case.s3":"native site languages","case.s4":"delay from lead to Sheets",
+    "case.desc":"We built a website for Satus with a <em>proprietary property database</em>, no third-party portal dependency. Each property is managed directly by the client, with strategic forms and automatic WhatsApp integration. Today they receive new leads every day.",
+    "case.s1":"traffic in 6 months","case.s2":"foreign leads","case.s3":"from zero to live site","case.s4":"delay from lead to Sheets",
     "faq.eye":"Frequently asked","faq.h":"The answers we <span class=\"serif\">get the most</span>.",
     "faq.q1":"How long does a website take?","faq.a1":"Between 2 and 3 weeks, depending on the complexity of the idea and whether you'd like to take advantage of the other services we mentioned earlier. We love delivering fast, but don't worry, quality always comes first.",
     "faq.q2":"Can my site be in multiple languages?","faq.a2":"Yes — and it's one of our main focuses. We build every site for PT, EN and ES from the ground up (and can add FR, DE, IT or others). Each language has its own URLs.",
@@ -1914,9 +1908,9 @@ const dict = /*EDITMODE-BEGIN*/{
     "faq.q6":"How much does it cost?","faq.a6":"It depends on what you want to do. The investment varies depending on the type of improvements, the services you want to implement on the site, the number of languages and the integrations needed. Book a short, free call with us — from there we'll put together a proposal tailored to you.",
     "faq.q7":"Why FORMA and not another agency?","faq.a7":"Because we specialise exclusively in real estate. Every project we do solves the same problems: leads that don't arrive, websites that don't convert, foreign buyers who can't find the agency. We know this sector inside out and that shows in the result. You also always speak directly with the people doing the work — no intermediaries, no account managers, no surprises.",
     "t.eye":"Testimonials","t.h":"Words from those who <span class=\"serif\">worked with us</span>.",
-    "t.1.q":"FORMA understood our problem better than we did. In 2 weeks we had a new site, in three languages, and <em>international leads coming in every day</em> on our phone.","t.1.n":"Afonso Lucas","t.1.r":"CEO · Satus Real Estate",
-    "t.2.q":"We wanted to start having a bigger online presence but didn't know how. <em>FORMA was who helped us.</em> We started seeing positive results straight away and couldn't ask for more.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Real Estate",
-    "t.3.q":"I needed a website built <em>to my exact needs</em> and FORMA managed to do it in record time, always very present and professional in every meeting.","t.3.n":"Martim Pereira","t.3.r":"CEO · Project \"ACUTA\"",
+    "t.1.q":"FORMA understood our problem. In two weeks we had a new site available, in three different languages, and <em>foreign leads arriving almost every day</em> on our phone.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Real Estate",
+    "t.2.q":"We wanted to grow our online presence but didn't know where to start. <em>FORMA took care of everything.</em> Results appeared almost immediately, we couldn't have asked for better.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Real Estate",
+    "t.3.q":"I needed a website built <em>to my exact needs</em> and FORMA managed to do it in record time, they were always available to change whatever was needed, whenever it was needed.","t.3.n":"Martim Pereira","t.3.r":"CEO · Project \"ACUTA\"",
     "cta.eye":"Let's talk","cta.h1":"We shape","cta.h2":"what's","cta.h3":"next for you.",
     "cta.sub":"A short call. No commitment. You'll leave with a clear plan for your agency — or at least one or two useful ideas.",
     "cta.b1":"Book a call",
@@ -1926,10 +1920,10 @@ const dict = /*EDITMODE-BEGIN*/{
   },
   "es": {
     "nav.cta": "Hablemos",
-    "menu.eye":"Menú","menu.home":"Inicio","menu.services":"Servicios","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testimonios","menu.contact":"Contacto","menu.lang":"Idioma","menu.cta":"Reservar reunión",
+    "menu.eye":"Menú","menu.home":"Inicio","menu.services":"Servicios","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testimonios","menu.contact":"Contacto","menu.ai":"Habla con nosotros","menu.lang":"Idioma","menu.cta":"Reservar reunión",
     "hero.t1":"Damos", "hero.t2":"forma", "hero.t3":"a inmobiliarias que<br>quieren crecer.",
     "hero.words":"forma|clientes|valor|resultados|escala",
-    "hero.sub":"Webs, SEO y marketing para inmobiliarias que pierden leads cada día — y no saben por qué.",
+    "hero.sub":"Mientras sus competidores tienen sitios bonitos, nuestros clientes tienen sitios que venden.",
     "hero.meta1":"Real Estate · 2026", "hero.scroll":"Scroll",
     "about.eye":"Sobre nosotros","about.h":"Un estudio centrado en <span class=\"serif\">inmobiliario</span>.",
     "about.big":"FORMA. nace para resolver un problema simple: la mayoría de webs inmobiliarias <em>no venden</em>. Son lentas, parecen iguales, no hablan con clientes extranjeros y pierden leads cada día.",
@@ -1938,10 +1932,10 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p3h":"+60% tráfico internacional","about.p3p":"Multi-idioma desde el inicio y SEO geo-segmentado. Captas compradores de Reino Unido, Francia y Brasil que buscan desde casa.",
     "serv.eye":"Servicios","serv.h":"Todo lo que necesitas para <span class=\"serif\">vender más</span>.",
     "serv.lead":"Seis servicios que se complementan. Trabajamos en paquetes o módulos individuales — adaptados a la fase de tu agencia.",
-    "serv.1.tag":"Webs","serv.1.h":"Webs que <em>convierten</em>.","serv.1.d":"Webs <em>rápidas</em>, con base de datos propia de inmuebles, multi-idioma y construidas pensando en SEO desde la primera línea de código.",
-    "serv.1.f1":"Base de datos integrada","serv.1.f2":"Búsqueda y filtros avanzados","serv.1.f3":"PT · EN · ES nativo","serv.1.f4":"PageSpeed > 90 en móvil",
+    "serv.1.tag":"Webs","serv.1.h":"Webs que <em>convierten</em>.","serv.1.d":"Webs <em>rápidas</em>, con diseño único para tu marca, pensadas para convertir visitantes en leads desde el primer segundo.",
+    "serv.1.f1":"Diseño exclusivo para tu agencia","serv.1.f2":"Formularios y captación de leads","serv.1.f3":"Optimizado para móvil","serv.1.f4":"Carga ultrarrápida",
     "serv.2.tag":"SEO","serv.2.h":"SEO que te pone <em>el primero</em>.","serv.2.d":"Aparecer en Google cuando alguien busca \"comprar casa en Lisboa\" ya no es <em>opcional</em>. Optimizamos cada palabra, cada imagen, cada milisegundo.",
-    "serv.2.f1":"Investigación de keywords por idioma","serv.2.f2":"SEO técnico y Core Web Vitals","serv.2.f3":"Contenido optimizado en 3 idiomas","serv.2.f4":"Informes mensuales transparentes",
+    "serv.2.f1":"Investigación de keywords del sector","serv.2.f2":"SEO técnico y Core Web Vitals","serv.2.f3":"Optimización on-page y off-page","serv.2.f4":"Informes mensuales transparentes",
     "serv.3.tag":"Branding","serv.3.h":"Identidad visual con <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografía y sistema visual. Una marca que destaca de otras inmobiliarias — y comunica confianza en cualquier idioma.",
     "serv.3.f1":"Logo y marca completa","serv.3.f2":"Brand book y guidelines","serv.3.f3":"Tarjetas, señalética, plantillas","serv.3.f4":"Dirección creativa continua",
     "serv.4.tag":"Anuncios","serv.4.h":"Anuncios que <em>generan leads</em>.","serv.4.d":"Campañas Google y Meta segmentadas por país, idioma y perfil de comprador. No pagamos por clics — pagamos por <em>contactos</em>.",
@@ -1962,8 +1956,8 @@ const dict = /*EDITMODE-BEGIN*/{
     "who.n.3":"Quien busca lo más barato — la calidad tiene un coste, y el resultado también.",
     "who.n.4":"Quien no quiere evolucionar, probar cosas nuevas, ni escuchar feedback.",
     "case.eye":"Proyecto de éxito","case.h":"Un caso real, <span class=\"serif\">números reales</span>.",
-    "case.desc":"Construimos un sitio web para Satus con una <em>base de datos propia</em> de inmuebles (sin depender de portales terceros), tres idiomas, SEO fuerte y conexión automática a Google Sheets y WhatsApp. Hoy reciben nuevas leads cada día.",
-    "case.s1":"tráfico en 6 meses","case.s2":"leads del extranjero","case.s3":"idiomas nativos","case.s4":"delay entre lead y Sheets",
+    "case.desc":"Construimos un sitio web para Satus con una <em>base de datos propia</em> de inmuebles, sin depender de portales terceros. Cada inmueble es gestionado directamente por el cliente, con formularios estratégicos y conexión automática a WhatsApp. Hoy reciben nuevas leads cada día.",
+    "case.s1":"tráfico en 6 meses","case.s2":"leads del extranjero","case.s3":"de cero al sitio online","case.s4":"delay entre lead y Sheets",
     "faq.eye":"Preguntas frecuentes","faq.h":"Las respuestas que <span class=\"serif\">más recibimos</span>.",
     "faq.q1":"¿Cuánto tarda construir una web?","faq.a1":"Entre 2 y 3 semanas, dependiendo de la complejidad de la idea y si quieres aprovechar los demás servicios que mencionamos antes. Nos gusta entregar rápido, pero tranquilo, la calidad siempre va por delante.",
     "faq.q2":"¿Puedo tener mi web en varios idiomas?","faq.a2":"Sí — y es uno de nuestros focos principales. Construimos cada web para PT, EN y ES desde cero (y podemos añadir FR, DE, IT u otros). Cada idioma con URLs propias.",
@@ -1973,9 +1967,9 @@ const dict = /*EDITMODE-BEGIN*/{
     "faq.q6":"¿Cuánto cuesta?","faq.a6":"Depende de lo que quieras hacer. La inversión varía según el tipo de mejoras que buscas, los servicios que quieras implementar en la web, el número de idiomas y las integraciones necesarias. Reserva una llamada corta y gratuita con nosotros — a partir de ahí preparamos una propuesta a tu medida.",
     "faq.q7":"¿Por qué FORMA y no otra agencia?","faq.a7":"Porque nos especializamos exclusivamente en inmobiliario. Cada proyecto que hacemos resuelve los mismos problemas: leads que no llegan, webs que no convierten, compradores extranjeros que no encuentran la agencia. Conocemos este sector por dentro y eso se refleja en el resultado. Además, hablas siempre directamente con quien hace el trabajo — sin intermediarios, sin account managers, sin sorpresas.",
     "t.eye":"Testimonios","t.h":"Palabras de quien ya <span class=\"serif\">trabajó con nosotros</span>.",
-    "t.1.q":"FORMA entendió nuestro problema mejor que nosotros. En 2 semanas teníamos web nueva, en tres idiomas, y <em>leads del extranjero llegando cada día</em> a nuestro teléfono.","t.1.n":"Afonso Lucas","t.1.r":"CEO · Satus Inmobiliaria",
-    "t.2.q":"Queríamos empezar a tener mayor presencia online pero no sabíamos cómo. <em>Fue FORMA quien nos ayudó.</em> Empezamos a ver resultados positivos de inmediato y no podíamos pedir más.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Inmobiliaria",
-    "t.3.q":"Necesitaba un sitio web construido <em>a mi medida</em> y FORMA consiguió hacerlo en tiempo récord, siempre muy presente y profesional en todas las reuniones.","t.3.n":"Martim Pereira","t.3.r":"CEO · Proyecto \"ACUTA\"",
+    "t.1.q":"FORMA entendió nuestro problema. En dos semanas teníamos un sitio nuevo disponible, en tres idiomas diferentes y <em>leads del extranjero llegando casi todos los días</em> a nuestro teléfono.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Inmobiliaria",
+    "t.2.q":"Queríamos aumentar nuestra presencia online, pero no sabíamos por dónde empezar. <em>FORMA se encargó de todo.</em> Los resultados aparecieron casi de inmediato, no podíamos haber pedido mejor.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Inmobiliaria",
+    "t.3.q":"Necesitaba un sitio web construido <em>a mi medida</em> y FORMA consiguió hacerlo en tiempo récord, siempre estuvieron disponibles para cambiar lo que fuera necesario, cuando fuera necesario.","t.3.n":"Martim Pereira","t.3.r":"CEO · Proyecto \"ACUTA\"",
     "cta.eye":"Hablemos","cta.h1":"Damos","cta.h2":"forma","cta.h3":"a tu próxima fase.",
     "cta.sub":"Una reunión corta. Sin compromiso. Saldrás con un plan claro para tu agencia — o al menos con una o dos ideas útiles.",
     "cta.b1":"Reservar reunión",
