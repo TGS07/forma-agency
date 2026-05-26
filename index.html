@@ -2422,14 +2422,15 @@ document.getElementById('bgSwatches').addEventListener('click', e=>{
   const loader = document.getElementById('page-loader');
   const fill   = document.getElementById('loaderFill');
   const num    = document.getElementById('loaderNum');
+  const video  = document.getElementById('heroVideo');
   let p = 0, done = false;
   const tick = setInterval(()=>{
     if(done) return;
-    const step = Math.random() * 10 + 2;
-    p = Math.min(p + step, 88);
+    const step = Math.random() * 8 + 1.5;
+    p = Math.min(p + step, 92);
     fill.style.width = p + '%';
     num.textContent  = Math.round(p) + '%';
-  }, 100);
+  }, 120);
   function finish(){
     if(done) return; done = true;
     clearInterval(tick);
@@ -2438,9 +2439,17 @@ document.getElementById('bgSwatches').addEventListener('click', e=>{
     num.textContent = '100%';
     setTimeout(()=>{ loader.classList.add('done'); }, 320);
   }
-  if(document.readyState === 'complete' || document.readyState === 'interactive'){ finish(); }
-  else { document.addEventListener('DOMContentLoaded', finish); }
-  setTimeout(finish, 3000);
+  /* Wait for the hero video to have enough data to play */
+  if(video){
+    if(video.readyState >= 3){ finish(); }
+    else { video.addEventListener('canplay', finish, {once:true}); }
+  } else {
+    /* No video (mobile?), fall back to DOMContentLoaded */
+    if(document.readyState === 'complete' || document.readyState === 'interactive'){ finish(); }
+    else { document.addEventListener('DOMContentLoaded', finish); }
+  }
+  /* Safety timeout — never block more than 12s */
+  setTimeout(finish, 12000);
 })();
 
 /* ========================================
