@@ -311,6 +311,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     font-size:clamp(44px, 7.5vw, 116px);
     font-weight:300;letter-spacing:-0.02em;line-height:.95;
     max-width:18ch;
+    text-indent:-0.06em; /* compensa o side-bearing do "T" p/ alinhar opticamente com o "i" da linha de baixo */
   }
   .hero h1 .serif{font-weight:300;font-style:normal}
 
@@ -468,6 +469,22 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .service-card .visual{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FAF7F1 0%, #F0EBE0 100%);overflow:hidden}
   .service-card .visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle, rgba(140,90,58,.18), transparent 70%);filter:blur(40px)}
   .service-card .visual svg{position:relative;z-index:1;max-width:78%;max-height:78%;width:auto;height:auto}
+  /* iPhone 16 app showcase — CRM card (ImoFlow) */
+  .visual--phone{padding:16px 0;overflow:visible}
+  .iphone{
+    position:relative;z-index:2;height:min(90%,760px);aspect-ratio:393/852;
+    background:#050506;border-radius:15% / 7%;padding:4px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),
+               0 44px 76px -30px rgba(14,14,12,.5),0 14px 26px -16px rgba(14,14,12,.3);
+  }
+  .iphone-screen{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;
+    border-radius:14% / 6.4%;background:#F4F1EB}
+  .iphone-island{position:absolute;top:2%;left:50%;transform:translateX(-50%);z-index:4;
+    width:22%;height:2.9%;min-height:14px;background:#000;border-radius:99px}
+  @media (max-width:980px){
+    .service-card .visual--phone{aspect-ratio:auto !important;min-height:0;height:auto;padding:28px 12px}
+    .visual--phone .iphone{height:min(72vh,560px);padding:3px}
+  }
   /* Cobe globe */
   .globe-wrap{position:relative;z-index:1;width:78%;max-width:480px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
   .cobe-canvas{
@@ -486,6 +503,17 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   }
 
   /* --- WHO --- */
+  /* --- AUTOMATION DEMO --- */
+  .auto-demo{background:var(--bg)}
+  .auto-demo .eyebrow{margin-bottom:18px}
+  .auto-video-frame{margin:56px auto 0;max-width:1180px;border-radius:24px;overflow:hidden;
+    border:1px solid var(--line);background:var(--ink);
+    box-shadow:0 50px 100px -50px rgba(14,14,12,.42), 0 20px 50px -30px rgba(14,14,12,.22)}
+  .auto-video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+  @media (max-width:780px){
+    .auto-video-frame{margin-top:36px;border-radius:16px}
+  }
+
   .who{background:var(--bg-2)}
   .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media (max-width:980px){.who-grid{grid-template-columns:1fr}}
@@ -798,17 +826,27 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 
   /* --- LOADING SCREEN --- */
   #page-loader{
-    position:fixed;inset:0;z-index:99999;
-    background:var(--bg);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
-    transition:opacity .6s ease, visibility .6s ease;
+    position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 95% at 50% 0%, #FAF7F1 0%, var(--bg) 58%, var(--bg-2) 100%);
+    transition:opacity .8s ease, visibility .8s ease;
   }
   #page-loader.done{opacity:0;visibility:hidden;pointer-events:none}
-  .loader-logo{font-weight:500;letter-spacing:0.15em;font-size:18px;color:var(--ink)}
-  .loader-logo b{color:var(--accent);font-weight:700;font-size:24px;letter-spacing:0;vertical-align:-2px}
-  .loader-track{width:180px;height:1px;background:var(--line);border-radius:999px;overflow:hidden}
-  .loader-fill{height:100%;width:0%;background:var(--accent);border-radius:999px;transition:width .08s linear}
-  .loader-num{font-size:11px;letter-spacing:.14em;color:var(--muted)}
+  #page-loader::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+    background-image:radial-gradient(rgba(14,14,12,.022) 1px, transparent 1px);background-size:5px 5px}
+  .ld-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:26px;
+    animation:ldIn .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes ldIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .ld-mark{position:relative;display:inline-block;line-height:1}
+  .ld-base,.ld-fill{font-weight:700;font-size:clamp(54px,9vw,92px);letter-spacing:-.022em;line-height:1;white-space:nowrap}
+  .ld-base{color:rgba(14,14,12,.13)}
+  .ld-base b{color:rgba(140,90,58,.26);font-weight:700}
+  .ld-fill{position:absolute;left:0;top:0;height:100%;width:0%;overflow:hidden;color:var(--ink)}
+  .ld-fill b{color:var(--accent);font-weight:700}
+  .ld-meta{display:flex;align-items:center;gap:16px}
+  .ld-tag{font-size:16px;color:var(--ink-2);letter-spacing:.005em}
+  .ld-tag .serif{color:var(--accent)}
+  .ld-dot{width:4px;height:4px;border-radius:50%;background:var(--line)}
+  .ld-num{font-size:14px;font-weight:600;letter-spacing:.14em;color:var(--accent);font-variant-numeric:tabular-nums;min-width:54px;text-align:right}
 
   /* =========================================================
      MOBILE OVERRIDES & ANIMATIONS — only apply on small screens
@@ -865,7 +903,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .about-mob-text .about-reveal-text{font-size:16px;line-height:1.6;max-width:36ch;margin:0 auto;color:rgba(244,241,235,.78)}
 
     /* About mobile entry animation — slide in from the sides */
-    .about-mob-phones{overflow:hidden;width:100%;justify-content:center}
+    .about-mob-phones{overflow:hidden;width:100%;justify-content:center;padding:42px 0}
     .about-mob .about-ph{opacity:0;transition:opacity .9s ease, transform 1.05s cubic-bezier(.2,.7,.2,1)}
     .about-mob .about-ph:nth-child(1){transform:translateX(-110vw) rotate(-15deg) scale(.85)}
     .about-mob .about-ph:nth-child(2){transform:translateX(110vw) rotate(15deg) scale(.85)}
@@ -1043,9 +1081,17 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 
 <!-- ============ LOADING SCREEN ============ -->
 <div id="page-loader">
-  <div class="loader-logo">FORMA<b>.</b></div>
-  <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
-  <div class="loader-num" id="loaderNum">0%</div>
+  <div class="ld-inner">
+    <div class="ld-mark">
+      <span class="ld-base">FORMA<b>.</b></span>
+      <span class="ld-fill" id="loaderFill">FORMA<b>.</b></span>
+    </div>
+    <div class="ld-meta">
+      <span class="ld-tag">Damos <span class="serif">forma</span> a imobiliárias.</span>
+      <span class="ld-dot"></span>
+      <span class="ld-num" id="loaderNum">0%</span>
+    </div>
+  </div>
 </div>
 
 <!-- ============ NAV ============ -->
@@ -1103,8 +1149,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
   <div class="hero-content">
     <div class="wrap">
-      <h1><span data-i18n="hero.t1">Damos</span> <span class="hero-rotator" id="heroRotator" aria-live="polite"><span class="rt-text">forma</span></span> <span data-i18n="hero.t3">a imobiliárias que <br>querem crescer.</span></h1>
-      <p class="sub" data-i18n="hero.sub">Enquanto os seus concorrentes têm sites bonitos, os nossos clientes têm sites que vendem.</p>
+      <h1><span data-i18n="hero.t1">Trazemos</span> <span class="hero-rotator" id="heroRotator" aria-live="polite"><span class="rt-text">forma</span></span> <span data-i18n="hero.t3">a imobiliárias que <br>querem crescer.</span></h1>
+      <p class="sub" data-i18n="hero.sub">Websites que convertem, leads internacionais e marca. Tudo criado exclusivamente para imobiliárias.</p>
     </div>
   </div>
 </section>
@@ -1161,7 +1207,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
             <div class="top">
               <span class="tag"><span class="num">01</span><span data-i18n="serv.1.tag">Websites</span></span>
               <h3 data-i18n="serv.1.h">Websites que <em>convertem</em>.</h3>
-              <p class="desc" data-i18n="serv.1.d">Sites <em>rápidos</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.</p>
+              <p class="desc" data-i18n="serv.1.d">Sites <em>eficazes</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.</p>
             </div>
             <ul class="features">
               <li data-i18n="serv.1.f1">Design exclusivo para a sua agência</li>
@@ -1308,63 +1354,25 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <article class="service-card" data-idx="3">
           <div class="text">
             <div class="top">
-              <span class="tag"><span class="num">04</span><span data-i18n="serv.4.tag">Paid Ads</span></span>
-              <h3 data-i18n="serv.4.h">Anúncios que <em>geram clientes</em>.</h3>
-              <p class="desc" data-i18n="serv.4.d">Campanhas Google e Meta segmentadas por país, idioma e perfil de comprador. Não pagamos por cliques, pagamos por <em>contactos</em>.</p>
+              <span class="tag"><span class="num">04</span><span data-i18n="serv.4.tag">CRM Imobiliário</span></span>
+              <h3 data-i18n="serv.4.h">Um CRM que <em>trabalha por si</em>.</h3>
+              <p class="desc" data-i18n="serv.4.d">Cada lead, contacto e imóvel numa só base de dados. O nosso CRM lê os alertas do Idealista, cruza-os com os interesses de cada cliente e sugere-lhe automaticamente a casa certa, <em>sem andar à procura</em>.</p>
             </div>
             <ul class="features">
-              <li data-i18n="serv.4.f1">Campanhas Google · Meta · TikTok</li>
-              <li data-i18n="serv.4.f2">Segmentação por mercado estrangeiro</li>
-              <li data-i18n="serv.4.f3">Criativos em vídeo e estáticos</li>
-              <li data-i18n="serv.4.f4">Otimização semanal</li>
+              <li data-i18n="serv.4.f1">Base de dados de leads, contactos e imóveis</li>
+              <li data-i18n="serv.4.f2">Pipeline visual do contacto à escritura</li>
+              <li data-i18n="serv.4.f3">Recomendações automáticas de imóveis por cliente</li>
+              <li data-i18n="serv.4.f4">Follow-ups por email e WhatsApp automatizados</li>
             </ul>
           </div>
-          <div class="visual">
+          <div class="visual visual--phone">
             <div class="glow"></div>
-            <svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Phone -->
-              <rect x="180" y="30" width="200" height="320" rx="28" fill="#0E0E0C"/>
-              <rect x="190" y="40" width="180" height="300" rx="22" fill="#F4F1EB"/>
-              <rect x="252" y="46" width="56" height="6" rx="3" fill="#0E0E0C"/>
-              <!-- Status -->
-              <text x="208" y="72" font-family="Geist,sans-serif" font-size="8" fill="#0E0E0C">9:41</text>
-              <!-- Ad card -->
-              <rect x="204" y="84" width="152" height="160" rx="10" fill="#fff" stroke="#0E0E0C" stroke-width="0.5"/>
-              <rect x="204" y="84" width="152" height="92" rx="10" fill="#C9A06B"/>
-              <rect x="204" y="166" width="152" height="10" fill="#C9A06B"/>
-              <rect x="212" y="92" width="34" height="12" rx="2" fill="#0E0E0C"/>
-              <text x="216" y="101" font-family="Geist,sans-serif" font-size="7" fill="#fff" font-weight="600">SPONSORED</text>
-              <text x="214" y="194" font-family="Geist,sans-serif" font-size="9" font-weight="600" fill="#0E0E0C">Villas in Algarve, PT</text>
-              <text x="214" y="207" font-family="Geist,sans-serif" font-size="7" fill="#6E6B62">From €450,000 · Sea view · Sun all year</text>
-              <text x="214" y="218" font-family="Geist,sans-serif" font-size="7" fill="#6E6B62">Direct from owner agency · No commission</text>
-              <rect x="214" y="226" width="64" height="14" rx="7" fill="#8C5A3A"/>
-              <text x="246" y="236" text-anchor="middle" font-family="Geist,sans-serif" font-size="7" font-weight="600" fill="#fff">SEE PROPERTIES →</text>
-              <!-- Engagement -->
-              <text x="214" y="266" font-family="Geist,sans-serif" font-size="7" fill="#6E6B62">♡ 2.4k · 184 · 92 shares</text>
-              <line x1="204" y1="276" x2="356" y2="276" stroke="#0E0E0C" stroke-opacity="0.1"/>
-
-              <!-- Side metrics -->
-              <g transform="translate(40 80)">
-                <rect width="120" height="60" rx="8" fill="#fff" stroke="#0E0E0C" stroke-width="1"/>
-                <text x="14" y="22" font-family="Geist,sans-serif" font-size="9" fill="#6E6B62">CPL</text>
-                <text x="14" y="46" font-family="Geist,sans-serif" font-size="22" font-weight="500" fill="#0E0E0C">€4<tspan font-family="Newsreader,serif" font-style="italic" fill="#8C5A3A">.20</tspan></text>
-              </g>
-              <g transform="translate(40 160)">
-                <rect width="120" height="60" rx="8" fill="#fff" stroke="#0E0E0C" stroke-width="1"/>
-                <text x="14" y="22" font-family="Geist,sans-serif" font-size="9" fill="#6E6B62">Leads / mês</text>
-                <text x="14" y="46" font-family="Geist,sans-serif" font-size="22" font-weight="500" fill="#0E0E0C">+312</text>
-              </g>
-              <g transform="translate(400 80)">
-                <rect width="120" height="60" rx="8" fill="#fff" stroke="#0E0E0C" stroke-width="1"/>
-                <text x="14" y="22" font-family="Geist,sans-serif" font-size="9" fill="#6E6B62">CTR</text>
-                <text x="14" y="46" font-family="Geist,sans-serif" font-size="22" font-weight="500" fill="#0E0E0C">3.8<tspan font-family="Newsreader,serif" font-style="italic" fill="#8C5A3A">%</tspan></text>
-              </g>
-              <g transform="translate(400 160)">
-                <rect width="120" height="60" rx="8" fill="#fff" stroke="#0E0E0C" stroke-width="1"/>
-                <text x="14" y="22" font-family="Geist,sans-serif" font-size="9" fill="#6E6B62">ROAS</text>
-                <text x="14" y="46" font-family="Geist,sans-serif" font-size="22" font-weight="500" fill="#0E0E0C">7.4<tspan font-family="Newsreader,serif" font-style="italic" fill="#8C5A3A">×</tspan></text>
-              </g>
-            </svg>
+            <div class="iphone" role="img" aria-label="App ImoFlow — o CRM imobiliário da FORMA, em demonstração">
+              <span class="iphone-island"></span>
+              <video class="iphone-screen" autoplay muted loop playsinline preload="metadata" poster="imoflow-poster.jpg">
+                <source src="imoflow-demo.mp4" type="video/mp4">
+              </video>
+            </div>
           </div>
         </article>
               <article class="service-card" data-idx="4">
@@ -1372,7 +1380,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
             <div class="top">
               <span class="tag"><span class="num">05</span><span data-i18n="serv.5.tag">Captação Internacional</span></span>
               <h3 data-i18n="serv.5.h">Leads de <em>qualquer parte</em>.</h3>
-              <p class="desc" data-i18n="serv.5.d">Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: UK, Espanha, França, Alemanha, Brasil, com campanhas, conteúdo e funis adaptados a <em>cada origem</em>.</p>
+              <p class="desc" data-i18n="serv.5.d">Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: Inglaterra, Espanha, França, Alemanha, Brasil, com campanhas e conteúdos adaptados a cada origem.</p>
             </div>
             <ul class="features">
               <li data-i18n="serv.5.f1">Targeting por país e perfil de comprador</li>
@@ -1405,15 +1413,15 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <article class="service-card" data-idx="5">
           <div class="text">
             <div class="top">
-              <span class="tag"><span class="num">06</span><span data-i18n="serv.6.tag">CRM, Automações &amp; Assistente 24/7</span></span>
-              <h3 data-i18n="serv.6.h">Cada lead <em>tratada em segundos</em>.</h3>
-              <p class="desc" data-i18n="serv.6.d">Notificações WhatsApp, Google Sheets, e um assistente virtual que responde em 3 línguas a qualquer hora.</p>
+              <span class="tag"><span class="num">06</span><span data-i18n="serv.6.tag">Assistente AI 24/7</span></span>
+              <h3 data-i18n="serv.6.h">Atendimento <em>a qualquer hora</em>.</h3>
+              <p class="desc" data-i18n="serv.6.d">Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.</p>
             </div>
             <ul class="features">
-              <li data-i18n="serv.6.f1">Integração Sheets / Notion / HubSpot</li>
-              <li data-i18n="serv.6.f2">Notificações WhatsApp e email automáticas</li>
-              <li data-i18n="serv.6.f3">Assistente virtual 24/7 em PT · EN · ES</li>
-              <li data-i18n="serv.6.f4">Sequências automáticas de follow-up</li>
+              <li data-i18n="serv.6.f1">Assistente virtual 24/7 no seu site</li>
+              <li data-i18n="serv.6.f2">Conversa em PT · EN · ES a qualquer hora</li>
+              <li data-i18n="serv.6.f3">Qualifica o interesse de cada visitante</li>
+              <li data-i18n="serv.6.f4">Encaminha a lead para a equipa por WhatsApp</li>
             </ul>
           </div>
           <div class="visual">
@@ -1459,13 +1467,31 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
 </section>
 
+<!-- ============ AUTOMATION DEMO ============ -->
+<section class="auto-demo section-pad" id="automacao">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center">
+      <div class="head-side" style="display:flex;flex-direction:column;align-items:center">
+        <span class="eyebrow" data-i18n="auto.eye">A nossa automação</span>
+        <h2 data-i18n="auto.h">A <span class="serif">automação</span> do nosso CRM.</h2>
+        <p class="lead" style="margin-top:16px;text-align:center" data-i18n="auto.lead">Do alerta do Idealista à mensagem certa, para o cliente certo — em segundos, sem andar à procura.</p>
+      </div>
+    </div>
+    <div class="auto-video-frame">
+      <video class="auto-video" autoplay muted loop playsinline preload="metadata" poster="forma-automacao-idealista-poster.jpg">
+        <source src="forma-automacao-idealista.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WHO ============ -->
 <section class="who section-pad" id="who">
   <div class="wrap">
     <div class="section-head" style="text-align:center;align-items:center">
       <div class="head-side" style="display:flex;flex-direction:column;align-items:center">
         <h2 data-i18n="who.h">Trabalhamos melhor com <span class="serif">parceiros certos</span>.</h2>
-        <p class="lead" style="margin-top:16px;text-align:center" data-i18n="who.lead">Ser honesto sobre o ajuste poupa tempo a todos. Vê se somos para ti.</p>
+        <p class="lead" style="margin-top:16px;text-align:center" data-i18n="who.lead">Cada parceria começa pelo encaixe certo.</p>
       </div>
     </div>
 
@@ -1482,9 +1508,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         </ul>
       </div>
       <div class="who-card no">
-        <div class="tagline"><span class="dot"></span><span class="eyebrow" data-i18n="who.n.t">Não trabalhamos com</span></div>
-        <h3 data-i18n="who.n.h">Quem ainda não está <em>pronto</em>.</h3>
-        <p class="sub" data-i18n="who.n.s">Há clientes que não estão prontos. Tudo bem, só preferimos dizê-lo à frente.</p>
+        <div class="tagline"><span class="dot"></span><span class="eyebrow" data-i18n="who.n.t">Pode não ser o encaixe certo se</span></div>
+        <h3 data-i18n="who.n.h">Há perfis que podem <em>não resultar tão bem</em>.</h3>
+        <p class="sub" data-i18n="who.n.s">Há contextos em que a nossa abordagem não produz o resultado desejado. Valorizamos a transparência desde o início.</p>
         <ul>
           <li><span class="ico">×</span><span data-i18n="who.n.1">Agências que querem apenas "um site mais bonito" sem pensar em conversão.</span></li>
           <li><span class="ico">×</span><span data-i18n="who.n.2">Quem não quer aproveitar leads novas ou demora dias a responder a contactos.</span></li>
@@ -1520,14 +1546,14 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           </div>
         </div>
         <div class="case-visual">
-          <img src="satus.png" alt="Satus — website de imobiliária" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+          <img src="satus.png" alt="Satus, website de imobiliária" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
         </div>
       </div>
       <div class="case-stats">
         <div class="stat"><div class="n" data-count="130" data-prefix="+">+130<span class="serif" style="color:var(--accent)">%</span></div><div class="l" data-i18n="case.s1">tráfego em 6 meses</div></div>
         <div class="stat"><div class="n" data-count="40">40<span class="serif" style="color:var(--accent)">%</span></div><div class="l" data-i18n="case.s2">leads do estrangeiro</div></div>
-        <div class="stat"><div class="n" data-count="2">2<span class="serif" style="color:var(--accent)"> sem</span></div><div class="l" data-i18n="case.s3">do zero ao site online</div></div>
-        <div class="stat"><div class="n" data-count="0" data-from="24">0<span class="serif" style="color:var(--accent)">s</span></div><div class="l" data-i18n="case.s4">delay entre lead e o seu Telefone</div></div>
+        <div class="stat"><div class="n" data-count="14">14<span class="serif" style="color:var(--accent)"> dias</span></div><div class="l" data-i18n="case.s3">do zero ao site online</div></div>
+        <div class="stat"><div class="n" data-count="0" data-from="24">0<span class="serif" style="color:var(--accent)"> segundos</span></div><div class="l" data-i18n="case.s4">delay entre lead e o seu Telefone</div></div>
       </div>
     </div>
   </div>
@@ -1537,14 +1563,14 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 <section class="faq section-pad" id="faq">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:64px">
-      <h2 style="font-size:clamp(34px,4.6vw,68px);font-weight:400;line-height:1.02;letter-spacing:-0.03em" data-i18n="faq.h">FAQ — As perguntas que mais recebemos.</h2>
+      <h2 style="font-size:clamp(34px,4.6vw,68px);font-weight:400;line-height:1.02;letter-spacing:-0.03em" data-i18n="faq.h">FAQ: As perguntas que mais recebemos.</h2>
     </div>
 
     <div class="faq-list" id="faqList">
       <div class="faq-group">
         <div class="faq-item open">
           <div class="faq-q"><span data-i18n="faq.q1">Quanto tempo demora a construir um site?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-          <div class="faq-a"><p data-i18n="faq.a1">Entre 2 a 3 semanas, dependendo da complexidade da ideia e se quer beneficiar dos outros serviços que referimos antes. Gostamos da rapidez a entregar, mas não se preocupe, a qualidade vem sempre primeiro.</p></div>
+          <div class="faq-a"><p data-i18n="faq.a1">Em regra, entre 2 a 3 semanas. O prazo final depende da dimensão do projeto e dos serviços incluídos, sendo que a qualidade tem sempre precedência sobre a velocidade de entrega.</p></div>
         </div>
         <hr class="faq-divider">
       </div>
@@ -1552,13 +1578,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <div class="faq-item">
           <div class="faq-q"><span data-i18n="faq.q2">Posso ter o meu site em vários idiomas?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
           <div class="faq-a"><p data-i18n="faq.a2">Sim, é exatamente um dos nossos focos. Construímos cada site para PT, EN e ES de raiz (e podemos adicionar FR, DE, IT ou outros). Cada idioma tem URLs próprias. É a forma mais rápida de chegar a clientes internacionais.</p></div>
-        </div>
-        <hr class="faq-divider">
-      </div>
-      <div class="faq-group">
-        <div class="faq-item">
-          <div class="faq-q"><span data-i18n="faq.q3">Trabalham com agências grandes ou pequenas?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-          <div class="faq-a"><p data-i18n="faq.a3">Trabalhamos com agências de qualquer tamanho. Mais importante do que o tamanho é a vontade de evoluir e a disponibilidade para investir tempo na relação com clientes.</p></div>
         </div>
         <hr class="faq-divider">
       </div>
@@ -1572,14 +1591,14 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <div class="faq-group">
         <div class="faq-item">
           <div class="faq-q"><span data-i18n="faq.q5">E depois do site estar online?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-          <div class="faq-a"><p data-i18n="faq.a5">Continuamos consigo. Oferecemos planos mensais de manutenção, SEO contínuo e gestão de campanhas pagas. Pode optar por fazer a manutenção em casa e entregamos o site totalmente seu, sem dependências.</p></div>
+          <div class="faq-a"><p data-i18n="faq.a5">Continuamos consigo. Oferecemos planos mensais de manutenção, SEO contínuo e gestão de campanhas pagas. Pode optar também por fazer a sua própria manutenção e, nesse caso, o site fica inteiramente ao seu controlo, sem qualquer dependência da nossa parte.</p></div>
         </div>
         <hr class="faq-divider">
       </div>
       <div class="faq-group">
         <div class="faq-item">
-          <div class="faq-q"><span data-i18n="faq.q6">Quanto custa?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-          <div class="faq-a"><p data-i18n="faq.a6">Depende do que quiser fazer. O investimento varia consoante o tipo de melhorias que pretende, os serviços que quer implementar no site, o número de idiomas e as integrações necessárias. Marque uma reunião curta e gratuita connosco. A partir daí preparamos uma proposta feita à sua medida.</p></div>
+          <div class="faq-q"><span data-i18n="faq.q6">Existe um orçamento à medida do meu negócio?</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><p data-i18n="faq.a6">O investimento varia consoante o tipo de melhorias que pretende, os serviços que quer implementar no site, o número de idiomas e as integrações necessárias. Marque uma reunião curta e gratuita connosco. A partir daí preparamos uma proposta feita à sua medida.</p></div>
         </div>
         <hr class="faq-divider">
       </div>
@@ -1631,7 +1650,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           </div>
         </div>
         <div class="testimonial-slide">
-          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.</p>
+          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse preciso.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">MP</div>
@@ -1662,7 +1681,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           </div>
         </div>
         <div class="testimonial-slide" aria-hidden="true">
-          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.</p>
+          <p class="quote" data-i18n="t.3.q">Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse preciso.</p>
           <div class="meta-row">
             <div class="left">
               <div class="avatar">MP</div>
@@ -1685,7 +1704,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <p class="lead" style="color:rgba(244,241,235,0.7);max-width:50ch" data-i18n="cta.sub">Uma reunião curta. Sem compromisso. Saímos com um plano claro para a sua agência ou, pelo menos, com uma ou duas ideias úteis.</p>
     <div class="actions">
       <a href="contacto.html" class="btn-primary"><span data-i18n="cta.b1">Marcar reunião</span><span class="arrow"></span></a>
-      <a href="ai-chat.html" class="btn-ghost"><span data-i18n="cta.b2">Fale connosco</span></a>
+      <a href="ai-chat.html" class="btn-ghost"><span data-i18n="cta.b2">Tem alguma dúvida?</span></a>
     </div>
   </div>
   </div>
@@ -1803,36 +1822,37 @@ const dict = /*EDITMODE-BEGIN*/{
   "pt": {
     "nav.cta": "Fale connosco",
     "menu.eye":"Menu","menu.home":"Início","menu.services":"Serviços","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testemunhos","menu.contact":"Contacto","menu.ai":"Fale connosco","menu.lang":"Idioma","menu.cta":"Marcar reunião",
-    "hero.t1": "Damos", "hero.t2": "forma", "hero.t3": "a imobiliárias que <br>querem crescer.",
+    "hero.t1": "Trazemos", "hero.t2": "forma", "hero.t3": "a imobiliárias que <br>querem crescer.",
     "hero.words": "forma|clientes|valor|resultados",
-    "hero.sub": "Enquanto os seus concorrentes têm sites bonitos, os nossos clientes têm sites que vendem.",
+    "hero.sub": "Websites que convertem, leads internacionais e marca. Tudo criado exclusivamente para imobiliárias.",
     "hero.meta1": "Real Estate · 2026", "hero.scroll": "Scroll",
     "about.eye": "Sobre nós", "about.h": "Uma empresa focada em <span class=\"serif\">imobiliário</span>.",
     "about.big": "A FORMA. nasce para resolver um problema simples: a maioria dos sites de imobiliárias <em>não vende</em>. São lentos, parecem iguais, não falam com clientes estrangeiros e perdem leads todos os dias.",
-    "about.p1h": "Site no ar em 2 semanas", "about.p1p": "Do briefing ao lançamento. Sem cronogramas de 3 meses, sem surpresas — entregamos rápido para começares a vender antes.",
+    "about.p1h": "Site no ar em 2 semanas", "about.p1p": "Do briefing ao lançamento. Sem cronogramas de 3 meses, sem surpresas, entregamos rápido para começares a vender antes.",
     "about.p2h": "Mais leads qualificadas", "about.p2p": "SEO técnico, copy orientada a conversão e formulários inteligentes. Os nossos clientes triplicam pedidos de contacto em média.",
     "about.p3h": "Tráfego internacional", "about.p3p": "Multi-idioma de raiz e SEO geo-segmentado. Captas compradores do Reino Unido, França e Brasil que pesquisam em casa.",
     "serv.eye": "Serviços", "serv.h": "Tudo o que precisa para <span class=\"serif\">vender mais</span>.",
     "serv.lead": "Seis serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da sua agência.",
-    "serv.1.tag":"Websites","serv.1.h":"Websites que <em>convertem</em>.","serv.1.d":"Sites <em>rápidos</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.",
+    "serv.1.tag":"Websites","serv.1.h":"Websites que <em>convertem</em>.","serv.1.d":"Sites <em>eficazes</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.",
     "serv.1.f1":"Design exclusivo para a sua agência","serv.1.f2":"Formulários e captação de leads","serv.1.f3":"Otimizado para mobile","serv.1.f4":"Carregamento ultra-rápido",
     "serv.2.tag":"SEO","serv.2.h":"SEO que o coloca <em>em primeiro</em>.","serv.2.d":"Aparecer no Google quando alguém procura \"comprar casa em Lisboa\" deixou de ser <em>opcional</em>. Otimizamos cada palavra, cada imagem, cada milissegundo.",
     "serv.2.f1":"Pesquisa de palavras-chave do setor","serv.2.f2":"SEO técnico e Core Web Vitals","serv.2.f3":"Otimização on-page e off-page","serv.2.f4":"Relatórios mensais transparentes",
     "serv.3.tag":"Branding","serv.3.h":"Identidade visual com <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografia e sistema visual. Uma marca que se distingue das outras imobiliárias da sua zona e que comunica <em>confiança</em> em qualquer língua.",
     "serv.3.f1":"Logo e marca completa","serv.3.f2":"Brand book e guidelines","serv.3.f3":"Cartões, sinalética, templates","serv.3.f4":"Direção criativa contínua",
-    "serv.4.tag":"Paid Ads","serv.4.h":"Anúncios que <em>geram clientes</em>.","serv.4.d":"Campanhas Google e Meta segmentadas por país, idioma e perfil de comprador. Não pagamos por cliques, pagamos por <em>contactos</em>.",
-    "serv.4.f1":"Campanhas Google · Meta · TikTok","serv.4.f2":"Segmentação por mercado estrangeiro","serv.4.f3":"Criativos em vídeo e estáticos","serv.4.f4":"Otimização semanal",
-    "serv.5.tag":"Captação Internacional","serv.5.h":"Leads de <em>qualquer parte</em>.","serv.5.d":"Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: UK, Espanha, França, Alemanha, Brasil, com campanhas, conteúdo e funis adaptados a <em>cada origem</em>.",
+    "serv.4.tag":"CRM Imobiliário","serv.4.h":"Um CRM que <em>trabalha por si</em>.","serv.4.d":"Cada lead, contacto e imóvel numa só base de dados. O nosso CRM lê os alertas do Idealista, cruza-os com os interesses de cada cliente e sugere-lhe automaticamente a casa certa, <em>sem andar à procura</em>.",
+    "serv.4.f1":"Base de dados de leads, contactos e imóveis","serv.4.f2":"Pipeline visual do contacto à escritura","serv.4.f3":"Recomendações automáticas de imóveis por cliente","serv.4.f4":"Follow-ups por email e WhatsApp automatizados",
+    "serv.5.tag":"Captação Internacional","serv.5.h":"Leads de <em>qualquer parte</em>.","serv.5.d":"Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: Inglaterra, Espanha, França, Alemanha, Brasil, com campanhas e conteúdos adaptados a cada origem.",
     "serv.5.f1":"Targeting por país e perfil de comprador","serv.5.f2":"Landing pages traduzidas e otimizadas","serv.5.f3":"Anúncios em vídeo na língua do comprador","serv.5.f4":"Relatórios por país de origem das leads",
-    "serv.6.tag":"CRM, Automações & Assistente 24/7","serv.6.h":"Cada lead <em>tratada em segundos</em>.","serv.6.d":"Notificações WhatsApp, Google Sheets, e um assistente virtual que responde em 3 línguas a qualquer hora.",
-    "serv.6.f1":"Integração Sheets / Notion / HubSpot","serv.6.f2":"Notificações WhatsApp e email automáticas","serv.6.f3":"Assistente virtual 24/7 em PT · EN · ES","serv.6.f4":"Sequências automáticas de follow-up",
-    "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Ser honesto sobre o ajuste poupa tempo a todos. Vê se somos para ti.",
+    "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
+    "serv.6.f1":"Assistente virtual 24/7 no seu site","serv.6.f2":"Conversa em PT · EN · ES a qualquer hora","serv.6.f3":"Qualifica o interesse de cada visitante","serv.6.f4":"Encaminha a lead para a equipa por WhatsApp",
+    "auto.eye":"A nossa automação","auto.h":"A <span class=\"serif\">automação</span> do nosso CRM.","auto.lead":"Do alerta do Idealista à mensagem certa, para o cliente certo — em segundos, sem andar à procura.",
+    "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.",
     "who.y.t":"Trabalhamos com","who.y.h":"Imobiliárias que querem <em>crescer</em>.","who.y.s":"Agências com vontade real de evoluir, dispostas a investir tempo e qualidade no marketing.",
     "who.y.1":"Agências que querem leads internacionais e estão dispostas a comunicar em várias línguas.",
     "who.y.2":"Equipas que entendem que um site é uma ferramenta de vendas, não um catálogo estático.",
     "who.y.3":"Clientes que respondem aos leads em 24h e estão dispostos a iterar com base em dados.",
     "who.y.4":"Imobiliárias em fase de crescimento, com 2 a 50 agentes e ambição de escalar.",
-    "who.n.t":"Não trabalhamos com","who.n.h":"Quem ainda não está <em>pronto</em>.","who.n.s":"Há clientes que não estão prontos. Tudo bem, só preferimos dizê-lo à frente.",
+    "who.n.t":"Pode não ser o encaixe certo se","who.n.h":"Há perfis que podem <em>não resultar tão bem</em>.","who.n.s":"Há contextos em que a nossa abordagem não produz o resultado desejado. Valorizamos a transparência desde o início.",
     "who.n.1":"Agências que querem apenas \"um site mais bonito\" sem pensar em conversão.",
     "who.n.2":"Quem não quer aproveitar leads novas ou demora dias a responder a contactos.",
     "who.n.3":"Quem procura o mais barato: qualidade tem um custo, e o resultado também.",
@@ -1840,21 +1860,22 @@ const dict = /*EDITMODE-BEGIN*/{
     "case.eye":"Projeto de sucesso","case.h":"Um caso real, <span class=\"serif\">números reais</span>.",
     "case.desc":"Construímos um site para a Satus com uma <em>base de dados própria</em> de imóveis, sem depender de portais terceiros. Cada imóvel é gerido diretamente pelo cliente, com formulários estratégicos e ligação automática ao WhatsApp. Hoje recebem novas leads todos os dias.",
     "case.s1":"tráfego em 6 meses","case.s2":"leads do estrangeiro","case.s3":"do zero ao site online","case.s4":"delay entre lead e Sheets",
-    "faq.eye":"Perguntas frequentes","faq.h":"FAQ — As perguntas que mais recebemos.",
-    "faq.q1":"Quanto tempo demora a construir um site?","faq.a1":"Entre 2 a 3 semanas, dependendo da complexidade da ideia e se quer beneficiar dos outros serviços que referimos antes. Gostamos da rapidez a entregar, mas não se preocupe, a qualidade vem sempre primeiro.",
+    "faq.eye":"Perguntas frequentes","faq.h":"FAQ: As perguntas que mais recebemos.",
+    "faq.q1":"Quanto tempo demora a construir um site?","faq.a1":"Em regra, entre 2 a 3 semanas. O prazo final depende da dimensão do projeto e dos serviços incluídos, sendo que a qualidade tem sempre precedência sobre a velocidade de entrega.",
     "faq.q2":"Posso ter o meu site em vários idiomas?","faq.a2":"Sim, é exatamente um dos nossos focos. Construímos cada site para PT, EN e ES de raiz (e podemos adicionar FR, DE, IT ou outros). Cada idioma tem URLs próprias.",
     "faq.q3":"Trabalham com agências grandes ou pequenas?","faq.a3":"Trabalhamos com agências de qualquer tamanho. Mais importante do que o tamanho é a vontade de evoluir e a disponibilidade para investir tempo na relação com clientes.",
     "faq.q4":"Como recebo as leads do site?","faq.a4":"Cada formulário do site envia automaticamente os dados para onde quiser: o nosso próprio CRM, Google Sheets, Notion, HubSpot, Pipedrive, e ao mesmo tempo notifica a sua equipa por WhatsApp ou email. Tudo em segundos, sem perder uma única lead.",
-    "faq.q5":"E depois do site estar online?","faq.a5":"Continuamos consigo. Oferecemos planos mensais de manutenção, SEO contínuo e gestão de campanhas pagas. Pode optar por fazer a manutenção em casa e entregamos o site totalmente seu, sem dependências.",
-    "faq.q6":"Quanto custa?","faq.a6":"Depende do que quiser fazer. O investimento varia consoante o tipo de melhorias que pretende, os serviços que quer implementar no site, o número de idiomas e as integrações necessárias. Marque uma reunião curta e gratuita connosco. A partir daí preparamos uma proposta feita à sua medida.",
+    "faq.q5":"E depois do site estar online?","faq.a5":"Continuamos consigo. Oferecemos planos mensais de manutenção, SEO contínuo e gestão de campanhas pagas. Pode optar também por fazer a sua própria manutenção e, nesse caso, o site fica inteiramente ao seu controlo, sem qualquer dependência da nossa parte.",
+    "faq.q6":"Existe um orçamento à medida do meu negócio?","faq.a6":"O investimento varia consoante o tipo de melhorias que pretende, os serviços que quer implementar no site, o número de idiomas e as integrações necessárias. Marque uma reunião curta e gratuita connosco. A partir daí preparamos uma proposta feita à sua medida.",
     "faq.q7":"Porquê a FORMA e não outra agência?","faq.a7":"Porque somos especializados exclusivamente em imobiliário. Cada projeto que fazemos resolve os mesmos problemas: leads que não chegam, sites que não convertem, compradores estrangeiros que não encontram a agência. Conhecemos este setor por dentro e isso reflete-se no resultado. Além disso, fala sempre diretamente com quem faz o trabalho, sem intermediários, sem account managers, sem surpresas.",
     "t.eye":"O que dizem","t.h":"Palavras de quem já <span class=\"serif\">trabalhou connosco</span>.",
     "t.1.q":"A FORMA percebeu o nosso problema. Em duas semanas tínhamos um site novo disponível, em três línguas diferentes e <em>leads do estrangeiro a chegar quase todos os dias</em> ao nosso telefone.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Imobiliária",
     "t.2.q":"Queríamos aumentar a nossa presença online, mas não sabíamos por onde começar. <em>A FORMA tratou de tudo.</em> Os resultados apareceram quase de imediato, não podíamos ter pedido melhor.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Imobiliária",
-    "t.3.q":"Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse necessário.","t.3.n":"Martim Pereira","t.3.r":"CEO · Projeto \"ACUTA\"",
+    "t.3.q":"Precisava de um site feito <em>à medida</em> e a FORMA entregou-o em tempo recorde. Estiveram sempre disponíveis para alterar o que fosse necessário, quando fosse preciso.","t.3.n":"Martim Pereira","t.3.r":"CEO · Projeto \"ACUTA\"",
     "cta.eye":"Vamos conversar","cta.h1":"Damos","cta.h2":"forma","cta.h3":"à sua próxima fase.",
     "cta.sub":"Uma reunião curta. Sem compromisso. Saímos com um plano claro para a sua agência ou, pelo menos, com uma ou duas ideias úteis.",
     "cta.b1":"Marcar reunião",
+    "cta.b2":"Tem alguma dúvida?",
     "footer.r":"Empresa de marketing para imobiliárias","footer.top":"Topo ↑",
     "footer.cta":"Veja como podemos fazer crescer a sua imobiliária. <br>Fala connosco hoje.",
     "footer.letstalk":"Vamos falar","footer.menu":"Menu","footer.connect":"Contacto","footer.based":"Lisboa, Portugal"
@@ -1868,52 +1889,54 @@ const dict = /*EDITMODE-BEGIN*/{
     "hero.meta1":"Real Estate · 2026", "hero.scroll":"Scroll",
     "about.eye":"About us","about.h":"A studio focused on <span class=\"serif\">real estate</span>.",
     "about.big":"FORMA. exists to solve one simple problem: most real estate websites <em>don't sell</em>. They're slow, look the same, don't speak to foreign clients and lose leads every day.",
-    "about.p1h":"Live in 2 weeks","about.p1p":"From briefing to launch. No three-month timelines, no surprises — we ship fast so you start selling sooner.",
+    "about.p1h":"Live in 2 weeks","about.p1p":"From briefing to launch. No three-month timelines, no surprises, we ship fast so you start selling sooner.",
     "about.p2h":"3× more qualified leads","about.p2p":"Technical SEO, conversion-led copy and smart forms. Our clients triple contact requests on average.",
     "about.p3h":"+60% international traffic","about.p3p":"Multi-language from day one and geo-targeted SEO. You capture UK, French and Brazilian buyers searching from home.",
     "serv.eye":"Services","serv.h":"Everything you need to <span class=\"serif\">sell more</span>.",
-    "serv.lead":"Six services that compound. We work in packages or individual modules — tailored to your agency's stage.",
+    "serv.lead":"Six services that compound. We work in packages or individual modules, tailored to your agency's stage.",
     "serv.1.tag":"Websites","serv.1.h":"Websites that <em>convert</em>.","serv.1.d":"<em>Fast</em> sites with a unique design for your brand, built to turn visitors into leads from the very first second.",
     "serv.1.f1":"Exclusive design for your agency","serv.1.f2":"Lead capture forms","serv.1.f3":"Mobile optimized","serv.1.f4":"Ultra-fast loading",
     "serv.2.tag":"SEO","serv.2.h":"SEO that puts you <em>first</em>.","serv.2.d":"Showing up on Google when someone searches \"buy house in Lisbon\" is no longer <em>optional</em>. We optimize every word, every image, every millisecond.",
     "serv.2.f1":"Industry keyword research","serv.2.f2":"Technical SEO & Core Web Vitals","serv.2.f3":"On-page & off-page optimization","serv.2.f4":"Transparent monthly reports",
-    "serv.3.tag":"Branding","serv.3.h":"Visual identity with <em>character</em>.","serv.3.d":"Logo, palette, typography and visual system. A brand that stands out from other agencies in your area — and communicates trust in any language.",
+    "serv.3.tag":"Branding","serv.3.h":"Visual identity with <em>character</em>.","serv.3.d":"Logo, palette, typography and visual system. A brand that stands out from other agencies in your area, and communicates trust in any language.",
     "serv.3.f1":"Logo and complete brand","serv.3.f2":"Brand book and guidelines","serv.3.f3":"Cards, signage, templates","serv.3.f4":"Ongoing creative direction",
-    "serv.4.tag":"Paid Ads","serv.4.h":"Ads that <em>generate leads</em>.","serv.4.d":"Google and Meta campaigns segmented by country, language and buyer profile. We don't pay for clicks — we pay for <em>contacts</em>.",
-    "serv.4.f1":"Google · Meta · TikTok campaigns","serv.4.f2":"Foreign market targeting","serv.4.f3":"Video & static creatives","serv.4.f4":"Weekly optimization",
-    "serv.5.tag":"International Reach","serv.5.h":"Leads from <em>anywhere</em>.","serv.5.d":"A multi-language site isn't enough. We build strategies targeted at specific markets — UK, Spain, France, Germany, Brazil — with campaigns, content and funnels adapted to <em>each origin</em>.",
+    "serv.4.tag":"Real Estate CRM","serv.4.h":"A CRM that <em>works for you</em>.","serv.4.d":"Every lead, contact and property in one database. Our CRM reads Idealista alerts, matches them to each client's interests and automatically suggests the right home, <em>no manual searching</em>.",
+    "serv.4.f1":"Database of leads, contacts and properties","serv.4.f2":"Visual pipeline from first contact to closing","serv.4.f3":"Automatic property recommendations per client","serv.4.f4":"Automated email & WhatsApp follow-ups",
+    "serv.5.tag":"International Reach","serv.5.h":"Leads from <em>anywhere</em>.","serv.5.d":"A multi-language site isn't enough. We build strategies targeted at specific markets: UK, Spain, France, Germany, Brazil, with campaigns, content and funnels adapted to <em>each origin</em>.",
     "serv.5.f1":"Targeting by country and buyer profile","serv.5.f2":"Translated, optimized landing pages","serv.5.f3":"Video ads in the buyer's language","serv.5.f4":"Reports by lead country of origin",
-    "serv.6.tag":"CRM, Automation & 24/7 Assistant","serv.6.h":"Every lead <em>handled in seconds</em>.","serv.6.d":"WhatsApp notifications, Google Sheets, and a virtual assistant that answers in 3 languages at any hour.",
-    "serv.6.f1":"Sheets / Notion / HubSpot integration","serv.6.f2":"Automatic WhatsApp & email notifications","serv.6.f3":"24/7 virtual assistant in PT · EN · ES","serv.6.f4":"Automatic follow-up sequences",
+    "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
+    "serv.6.f1":"24/7 virtual assistant on your site","serv.6.f2":"Chats in PT · EN · ES at any hour","serv.6.f3":"Qualifies each visitor's interest","serv.6.f4":"Routes the lead to your team via WhatsApp",
+    "auto.eye":"Our automation","auto.h":"The <span class=\"serif\">automation</span> behind our CRM.","auto.lead":"From an Idealista alert to the right message, for the right client — in seconds, with no manual searching.",
     "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.",
     "who.y.t":"We work with","who.y.h":"Agencies that want to <em>grow</em>.","who.y.s":"Agencies with real drive to evolve, willing to invest time and quality in marketing.",
     "who.y.1":"Agencies that want international leads and are willing to communicate in multiple languages.",
     "who.y.2":"Teams that understand a website is a sales tool, not a static catalog.",
     "who.y.3":"Clients who respond to leads within 24h and are willing to iterate based on data.",
-    "who.y.4":"Growing agencies — 2 to 50 agents, with ambition to scale.",
-    "who.n.t":"We don't work with","who.n.h":"Those who aren't <em>ready yet</em>.","who.n.s":"Some clients aren't ready. That's fine — we just prefer to say so upfront.",
+    "who.y.4":"Growing agencies, 2 to 50 agents, with ambition to scale.",
+    "who.n.t":"We don't work with","who.n.h":"Those who aren't <em>ready yet</em>.","who.n.s":"Some clients aren't ready. That's fine, we just prefer to say so upfront.",
     "who.n.1":"Agencies that just want \"a prettier site\" without thinking about conversion.",
     "who.n.2":"Those who don't want fresh leads or take days to respond to contacts.",
-    "who.n.3":"Those looking for the cheapest option — quality has a cost, and so does the result.",
+    "who.n.3":"Those looking for the cheapest option: quality has a cost, and so does the result.",
     "who.n.4":"Those who don't want to evolve, test new things, or listen to client feedback.",
     "case.eye":"Success project","case.h":"A real case, <span class=\"serif\">real numbers</span>.",
     "case.desc":"We built a website for Satus with a <em>proprietary property database</em>, no third-party portal dependency. Each property is managed directly by the client, with strategic forms and automatic WhatsApp integration. Today they receive new leads every day.",
     "case.s1":"traffic in 6 months","case.s2":"foreign leads","case.s3":"from zero to live site","case.s4":"delay from lead to Sheets",
     "faq.eye":"Frequently asked","faq.h":"The answers we <span class=\"serif\">get the most</span>.",
     "faq.q1":"How long does a website take?","faq.a1":"Between 2 and 3 weeks, depending on the complexity of the idea and whether you'd like to take advantage of the other services we mentioned earlier. We love delivering fast, but don't worry, quality always comes first.",
-    "faq.q2":"Can my site be in multiple languages?","faq.a2":"Yes — and it's one of our main focuses. We build every site for PT, EN and ES from the ground up (and can add FR, DE, IT or others). Each language has its own URLs.",
+    "faq.q2":"Can my site be in multiple languages?","faq.a2":"Yes, and it's one of our main focuses. We build every site for PT, EN and ES from the ground up (and can add FR, DE, IT or others). Each language has its own URLs.",
     "faq.q3":"Do you work with large or small agencies?","faq.a3":"We work with agencies of any size. More important than size is the will to evolve and the time you're willing to invest in client relationships.",
-    "faq.q4":"How do I receive site leads?","faq.a4":"Every site form automatically sends data wherever you want — our own CRM, Google Sheets, Notion, HubSpot, Pipedrive — and notifies your team via WhatsApp or email at the same time.",
-    "faq.q5":"What happens once the site is live?","faq.a5":"We stay with you. We offer monthly maintenance plans, ongoing SEO and paid campaign management. You can also take maintenance in-house — the site is fully yours, no lock-in.",
-    "faq.q6":"How much does it cost?","faq.a6":"It depends on what you want to do. The investment varies depending on the type of improvements, the services you want to implement on the site, the number of languages and the integrations needed. Book a short, free call with us — from there we'll put together a proposal tailored to you.",
-    "faq.q7":"Why FORMA and not another agency?","faq.a7":"Because we specialise exclusively in real estate. Every project we do solves the same problems: leads that don't arrive, websites that don't convert, foreign buyers who can't find the agency. We know this sector inside out and that shows in the result. You also always speak directly with the people doing the work — no intermediaries, no account managers, no surprises.",
+    "faq.q4":"How do I receive site leads?","faq.a4":"Every site form automatically sends data wherever you want: our own CRM, Google Sheets, Notion, HubSpot, Pipedrive, and notifies your team via WhatsApp or email at the same time.",
+    "faq.q5":"What happens once the site is live?","faq.a5":"We stay with you. We offer monthly maintenance plans, ongoing SEO and paid campaign management. You can also take maintenance in-house, the site is fully yours, no lock-in.",
+    "faq.q6":"How much does it cost?","faq.a6":"It depends on what you want to do. The investment varies depending on the type of improvements, the services you want to implement on the site, the number of languages and the integrations needed. Book a short, free call with us. From there we'll put together a proposal tailored to you.",
+    "faq.q7":"Why FORMA and not another agency?","faq.a7":"Because we specialise exclusively in real estate. Every project we do solves the same problems: leads that don't arrive, websites that don't convert, foreign buyers who can't find the agency. We know this sector inside out and that shows in the result. You also always speak directly with the people doing the work, no intermediaries, no account managers, no surprises.",
     "t.eye":"Testimonials","t.h":"Words from those who <span class=\"serif\">worked with us</span>.",
     "t.1.q":"FORMA understood our problem. In two weeks we had a new site available, in three different languages, and <em>foreign leads arriving almost every day</em> on our phone.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Real Estate",
     "t.2.q":"We wanted to grow our online presence but didn't know where to start. <em>FORMA took care of everything.</em> Results appeared almost immediately, we couldn't have asked for better.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Real Estate",
     "t.3.q":"I needed a website built <em>to my exact needs</em> and FORMA managed to do it in record time, they were always available to change whatever was needed, whenever it was needed.","t.3.n":"Martim Pereira","t.3.r":"CEO · Project \"ACUTA\"",
     "cta.eye":"Let's talk","cta.h1":"We shape","cta.h2":"what's","cta.h3":"next for you.",
-    "cta.sub":"A short call. No commitment. You'll leave with a clear plan for your agency — or at least one or two useful ideas.",
+    "cta.sub":"A short call. No commitment. You'll leave with a clear plan for your agency, or at least one or two useful ideas.",
     "cta.b1":"Book a call",
+    "cta.b2":"Any questions?",
     "footer.r":"Digital studio for real estate","footer.top":"Top ↑",
     "footer.cta":"See how we can help your real estate agency grow. <br>Get in touch today.",
     "footer.letstalk":"Let's talk","footer.menu":"Menu","footer.connect":"Connect","footer.based":"Lisbon, Portugal"
@@ -1927,52 +1950,54 @@ const dict = /*EDITMODE-BEGIN*/{
     "hero.meta1":"Real Estate · 2026", "hero.scroll":"Scroll",
     "about.eye":"Sobre nosotros","about.h":"Un estudio centrado en <span class=\"serif\">inmobiliario</span>.",
     "about.big":"FORMA. nace para resolver un problema simple: la mayoría de webs inmobiliarias <em>no venden</em>. Son lentas, parecen iguales, no hablan con clientes extranjeros y pierden leads cada día.",
-    "about.p1h":"Web online en 2 semanas","about.p1p":"Del briefing al lanzamiento. Sin cronogramas de 3 meses, sin sorpresas — entregamos rápido para que empieces a vender antes.",
+    "about.p1h":"Web online en 2 semanas","about.p1p":"Del briefing al lanzamiento. Sin cronogramas de 3 meses, sin sorpresas, entregamos rápido para que empieces a vender antes.",
     "about.p2h":"3× más leads cualificados","about.p2p":"SEO técnico, copy orientada a conversión y formularios inteligentes. Nuestros clientes triplican contactos de media.",
     "about.p3h":"+60% tráfico internacional","about.p3p":"Multi-idioma desde el inicio y SEO geo-segmentado. Captas compradores de Reino Unido, Francia y Brasil que buscan desde casa.",
     "serv.eye":"Servicios","serv.h":"Todo lo que necesitas para <span class=\"serif\">vender más</span>.",
-    "serv.lead":"Seis servicios que se complementan. Trabajamos en paquetes o módulos individuales — adaptados a la fase de tu agencia.",
+    "serv.lead":"Seis servicios que se complementan. Trabajamos en paquetes o módulos individuales, adaptados a la fase de tu agencia.",
     "serv.1.tag":"Webs","serv.1.h":"Webs que <em>convierten</em>.","serv.1.d":"Webs <em>rápidas</em>, con diseño único para tu marca, pensadas para convertir visitantes en leads desde el primer segundo.",
     "serv.1.f1":"Diseño exclusivo para tu agencia","serv.1.f2":"Formularios y captación de leads","serv.1.f3":"Optimizado para móvil","serv.1.f4":"Carga ultrarrápida",
     "serv.2.tag":"SEO","serv.2.h":"SEO que te pone <em>el primero</em>.","serv.2.d":"Aparecer en Google cuando alguien busca \"comprar casa en Lisboa\" ya no es <em>opcional</em>. Optimizamos cada palabra, cada imagen, cada milisegundo.",
     "serv.2.f1":"Investigación de keywords del sector","serv.2.f2":"SEO técnico y Core Web Vitals","serv.2.f3":"Optimización on-page y off-page","serv.2.f4":"Informes mensuales transparentes",
-    "serv.3.tag":"Branding","serv.3.h":"Identidad visual con <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografía y sistema visual. Una marca que destaca de otras inmobiliarias — y comunica confianza en cualquier idioma.",
+    "serv.3.tag":"Branding","serv.3.h":"Identidad visual con <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografía y sistema visual. Una marca que destaca de otras inmobiliarias, y comunica confianza en cualquier idioma.",
     "serv.3.f1":"Logo y marca completa","serv.3.f2":"Brand book y guidelines","serv.3.f3":"Tarjetas, señalética, plantillas","serv.3.f4":"Dirección creativa continua",
-    "serv.4.tag":"Anuncios","serv.4.h":"Anuncios que <em>generan leads</em>.","serv.4.d":"Campañas Google y Meta segmentadas por país, idioma y perfil de comprador. No pagamos por clics — pagamos por <em>contactos</em>.",
-    "serv.4.f1":"Campañas Google · Meta · TikTok","serv.4.f2":"Segmentación por mercado extranjero","serv.4.f3":"Creatividades vídeo y estáticas","serv.4.f4":"Optimización semanal",
-    "serv.5.tag":"Captación Internacional","serv.5.h":"Leads de <em>cualquier parte</em>.","serv.5.d":"Una web multi-idioma no basta. Construimos estrategias dirigidas a mercados específicos — UK, España, Francia, Alemania, Brasil — con campañas, contenido y funnels adaptados a <em>cada origen</em>.",
+    "serv.4.tag":"CRM Inmobiliario","serv.4.h":"Un CRM que <em>trabaja por ti</em>.","serv.4.d":"Cada lead, contacto e inmueble en una sola base de datos. Nuestro CRM lee las alertas de Idealista, las cruza con los intereses de cada cliente y le sugiere automáticamente la casa adecuada, <em>sin buscar a mano</em>.",
+    "serv.4.f1":"Base de datos de leads, contactos e inmuebles","serv.4.f2":"Pipeline visual del primer contacto a la escritura","serv.4.f3":"Recomendaciones automáticas de inmuebles por cliente","serv.4.f4":"Follow-ups por email y WhatsApp automatizados",
+    "serv.5.tag":"Captación Internacional","serv.5.h":"Leads de <em>cualquier parte</em>.","serv.5.d":"Una web multi-idioma no basta. Construimos estrategias dirigidas a mercados específicos: UK, España, Francia, Alemania, Brasil, con campañas, contenido y funnels adaptados a <em>cada origen</em>.",
     "serv.5.f1":"Targeting por país y perfil de comprador","serv.5.f2":"Landing pages traducidas y optimizadas","serv.5.f3":"Anuncios en vídeo en el idioma del comprador","serv.5.f4":"Informes por país de origen de las leads",
-    "serv.6.tag":"CRM, Automatización & Asistente 24/7","serv.6.h":"Cada lead <em>atendida en segundos</em>.","serv.6.d":"Notificaciones WhatsApp, Google Sheets, y un asistente virtual que responde en 3 idiomas a cualquier hora.",
-    "serv.6.f1":"Integración Sheets / Notion / HubSpot","serv.6.f2":"Notificaciones WhatsApp y email automáticas","serv.6.f3":"Asistente virtual 24/7 en PT · EN · ES","serv.6.f4":"Secuencias automáticas de follow-up",
+    "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
+    "serv.6.f1":"Asistente virtual 24/7 en tu web","serv.6.f2":"Conversa en PT · EN · ES a cualquier hora","serv.6.f3":"Cualifica el interés de cada visitante","serv.6.f4":"Envía la lead a tu equipo por WhatsApp",
+    "auto.eye":"Nuestra automatización","auto.h":"La <span class=\"serif\">automatización</span> de nuestro CRM.","auto.lead":"De la alerta de Idealista al mensaje correcto, para el cliente correcto — en segundos, sin buscar a mano.",
     "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.",
     "who.y.t":"Trabajamos con","who.y.h":"Inmobiliarias que quieren <em>crecer</em>.","who.y.s":"Agencias con ganas reales de evolucionar, dispuestas a invertir tiempo y calidad en marketing.",
     "who.y.1":"Agencias que quieren leads internacionales y comunicar en varios idiomas.",
     "who.y.2":"Equipos que entienden que una web es una herramienta de ventas, no un catálogo estático.",
     "who.y.3":"Clientes que responden a leads en 24h y están dispuestos a iterar con datos.",
-    "who.y.4":"Inmobiliarias en crecimiento — con 2 a 50 agentes y ambición de escalar.",
-    "who.n.t":"No trabajamos con","who.n.h":"Quien aún no está <em>listo</em>.","who.n.s":"Hay clientes que no están listos. Está bien — preferimos decirlo antes.",
+    "who.y.4":"Inmobiliarias en crecimiento, con 2 a 50 agentes y ambición de escalar.",
+    "who.n.t":"No trabajamos con","who.n.h":"Quien aún no está <em>listo</em>.","who.n.s":"Hay clientes que no están listos. Está bien, preferimos decirlo antes.",
     "who.n.1":"Agencias que solo quieren \"una web más bonita\" sin pensar en conversión.",
     "who.n.2":"Quien no quiere aprovechar leads nuevas o tarda días en responder.",
-    "who.n.3":"Quien busca lo más barato — la calidad tiene un coste, y el resultado también.",
+    "who.n.3":"Quien busca lo más barato: la calidad tiene un coste, y el resultado también.",
     "who.n.4":"Quien no quiere evolucionar, probar cosas nuevas, ni escuchar feedback.",
     "case.eye":"Proyecto de éxito","case.h":"Un caso real, <span class=\"serif\">números reales</span>.",
     "case.desc":"Construimos un sitio web para Satus con una <em>base de datos propia</em> de inmuebles, sin depender de portales terceros. Cada inmueble es gestionado directamente por el cliente, con formularios estratégicos y conexión automática a WhatsApp. Hoy reciben nuevas leads cada día.",
     "case.s1":"tráfico en 6 meses","case.s2":"leads del extranjero","case.s3":"de cero al sitio online","case.s4":"delay entre lead y Sheets",
     "faq.eye":"Preguntas frecuentes","faq.h":"Las respuestas que <span class=\"serif\">más recibimos</span>.",
     "faq.q1":"¿Cuánto tarda construir una web?","faq.a1":"Entre 2 y 3 semanas, dependiendo de la complejidad de la idea y si quieres aprovechar los demás servicios que mencionamos antes. Nos gusta entregar rápido, pero tranquilo, la calidad siempre va por delante.",
-    "faq.q2":"¿Puedo tener mi web en varios idiomas?","faq.a2":"Sí — y es uno de nuestros focos principales. Construimos cada web para PT, EN y ES desde cero (y podemos añadir FR, DE, IT u otros). Cada idioma con URLs propias.",
+    "faq.q2":"¿Puedo tener mi web en varios idiomas?","faq.a2":"Sí, y es uno de nuestros focos principales. Construimos cada web para PT, EN y ES desde cero (y podemos añadir FR, DE, IT u otros). Cada idioma con URLs propias.",
     "faq.q3":"¿Trabajan con agencias grandes o pequeñas?","faq.a3":"Trabajamos con agencias de cualquier tamaño. Más importante que el tamaño es las ganas de evolucionar y la disponibilidad para invertir tiempo en la relación con clientes.",
-    "faq.q4":"¿Cómo recibo los leads?","faq.a4":"Cada formulario envía los datos automáticamente a donde quieras — nuestro propio CRM, Google Sheets, Notion, HubSpot — y notifica al equipo vía WhatsApp o email al instante.",
+    "faq.q4":"¿Cómo recibo los leads?","faq.a4":"Cada formulario envía los datos automáticamente a donde quieras: nuestro propio CRM, Google Sheets, Notion, HubSpot, y notifica al equipo vía WhatsApp o email al instante.",
     "faq.q5":"¿Qué pasa cuando la web está online?","faq.a5":"Seguimos contigo. Ofrecemos planes mensuales de mantenimiento, SEO continuo y gestión de campañas pagadas. También puedes hacer el mantenimiento internamente.",
-    "faq.q6":"¿Cuánto cuesta?","faq.a6":"Depende de lo que quieras hacer. La inversión varía según el tipo de mejoras que buscas, los servicios que quieras implementar en la web, el número de idiomas y las integraciones necesarias. Reserva una llamada corta y gratuita con nosotros — a partir de ahí preparamos una propuesta a tu medida.",
-    "faq.q7":"¿Por qué FORMA y no otra agencia?","faq.a7":"Porque nos especializamos exclusivamente en inmobiliario. Cada proyecto que hacemos resuelve los mismos problemas: leads que no llegan, webs que no convierten, compradores extranjeros que no encuentran la agencia. Conocemos este sector por dentro y eso se refleja en el resultado. Además, hablas siempre directamente con quien hace el trabajo — sin intermediarios, sin account managers, sin sorpresas.",
+    "faq.q6":"¿Cuánto cuesta?","faq.a6":"Depende de lo que quieras hacer. La inversión varía según el tipo de mejoras que buscas, los servicios que quieras implementar en la web, el número de idiomas y las integraciones necesarias. Reserva una llamada corta y gratuita con nosotros. A partir de ahí preparamos una propuesta a tu medida.",
+    "faq.q7":"¿Por qué FORMA y no otra agencia?","faq.a7":"Porque nos especializamos exclusivamente en inmobiliario. Cada proyecto que hacemos resuelve los mismos problemas: leads que no llegan, webs que no convierten, compradores extranjeros que no encuentran la agencia. Conocemos este sector por dentro y eso se refleja en el resultado. Además, hablas siempre directamente con quien hace el trabajo, sin intermediarios, sin account managers, sin sorpresas.",
     "t.eye":"Testimonios","t.h":"Palabras de quien ya <span class=\"serif\">trabajó con nosotros</span>.",
     "t.1.q":"FORMA entendió nuestro problema. En dos semanas teníamos un sitio nuevo disponible, en tres idiomas diferentes y <em>leads del extranjero llegando casi todos los días</em> a nuestro teléfono.","t.1.n":"Afonso Cunha","t.1.r":"CEO · Satus Inmobiliaria",
     "t.2.q":"Queríamos aumentar nuestra presencia online, pero no sabíamos por dónde empezar. <em>FORMA se encargó de todo.</em> Los resultados aparecieron casi de inmediato, no podíamos haber pedido mejor.","t.2.n":"Carolina Cunha","t.2.r":"CEO · Satus Inmobiliaria",
     "t.3.q":"Necesitaba un sitio web construido <em>a mi medida</em> y FORMA consiguió hacerlo en tiempo récord, siempre estuvieron disponibles para cambiar lo que fuera necesario, cuando fuera necesario.","t.3.n":"Martim Pereira","t.3.r":"CEO · Proyecto \"ACUTA\"",
     "cta.eye":"Hablemos","cta.h1":"Damos","cta.h2":"forma","cta.h3":"a tu próxima fase.",
-    "cta.sub":"Una reunión corta. Sin compromiso. Saldrás con un plan claro para tu agencia — o al menos con una o dos ideas útiles.",
+    "cta.sub":"Una reunión corta. Sin compromiso. Saldrás con un plan claro para tu agencia, o al menos con una o dos ideas útiles.",
     "cta.b1":"Reservar reunión",
+    "cta.b2":"¿Alguna pregunta?",
     "footer.r":"Estudio digital para inmobiliarias","footer.top":"Arriba ↑",
     "footer.cta":"Mira cómo podemos hacer crecer tu inmobiliaria. <br>Hablemos hoy.",
     "footer.letstalk":"Hablemos","footer.menu":"Menú","footer.connect":"Contacto","footer.based":"Lisboa, Portugal"
@@ -2191,8 +2216,10 @@ if(saved && dict[saved]){ setLang(saved); } else { applyMenuTextRoll(); }
 ======================================== */
 const nav = document.getElementById('nav');
 const hero = document.getElementById('hero');
+const darkEnd = document.getElementById('services'); // 1ª secção clara depois do fundo preto (hero + about)
 function updateNav(){
-  nav.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 80);
+  const threshold = darkEnd ? darkEnd.offsetTop - 64 : hero.offsetHeight - 80;
+  nav.classList.toggle('scrolled', window.scrollY > threshold);
 }
 updateNav();
 window.addEventListener('scroll', updateNav, {passive:true});
@@ -2422,34 +2449,73 @@ document.getElementById('bgSwatches').addEventListener('click', e=>{
   const loader = document.getElementById('page-loader');
   const fill   = document.getElementById('loaderFill');
   const num    = document.getElementById('loaderNum');
-  const video  = document.getElementById('heroVideo');
-  let p = 0, done = false;
-  const tick = setInterval(()=>{
-    if(done) return;
-    const step = Math.random() * 8 + 1.5;
-    p = Math.min(p + step, 92);
-    fill.style.width = p + '%';
-    num.textContent  = Math.round(p) + '%';
-  }, 120);
+  if(!loader || !fill || !num) return;
+  let done = false;
+
+  /* Lock scroll while the loader is up */
+  const html = document.documentElement;
+  const prevOverflow = html.style.overflow;
+  html.style.overflow = 'hidden';
+
+  /* Collect EVERY image + video on the page and wait for them to be ready. */
+  const imgs = Array.from(document.images).filter(i => (i.currentSrc || i.getAttribute('src')));
+  const vids = Array.from(document.querySelectorAll('video'));
+  const tasks = [];
+
+  /* Images — wait until fully decoded (no lazy-loading on this page). */
+  imgs.forEach(img => tasks.push(new Promise(res => {
+    if (img.complete && img.naturalWidth > 0) return res();
+    img.addEventListener('load',  res, { once:true });
+    img.addEventListener('error', res, { once:true });
+  })));
+
+  /* Videos — wait until buffered enough to play smoothly. */
+  vids.forEach(v => tasks.push(new Promise(res => {
+    let settled = false; const ok = () => { if(!settled){ settled = true; res(); } };
+    try { v.preload = 'auto'; } catch(e){}
+    if (v.readyState >= 4) return ok();                         // HAVE_ENOUGH_DATA
+    v.addEventListener('canplaythrough', ok, { once:true });
+    v.addEventListener('error',          ok, { once:true });
+    /* Once it can start playing, accept after a short grace so big files don't stall the loader. */
+    const onCanPlay = () => setTimeout(ok, 4000);
+    if (v.readyState >= 3) onCanPlay();
+    else v.addEventListener('canplay', onCanPlay, { once:true });
+    /* Per-video cap (handles offscreen autoplay videos that some browsers defer). */
+    setTimeout(ok, 10000);
+  })));
+
+  /* Fonts — avoid a text flash after reveal. */
+  if (document.fonts && document.fonts.ready) tasks.push(document.fonts.ready.catch(()=>{}));
+
+  const total = tasks.length || 1;
+  let loaded = 0, target = 0, shown = 0;
+  tasks.forEach(t => Promise.resolve(t).then(() => { loaded++; target = (loaded / total) * 100; }));
+
+  /* Smoothly animate the displayed progress toward the real value. */
+  const raf = setInterval(() => {
+    shown += (target - shown) * 0.1;
+    if (target >= 100 && shown > 99.5) shown = 100;
+    const disp = Math.min(100, Math.floor(shown + 0.5));
+    fill.style.width = disp + '%';
+    num.textContent  = disp + '%';
+  }, 30);
+
   function finish(){
-    if(done) return; done = true;
-    clearInterval(tick);
-    fill.style.transition = 'width .25s ease';
-    fill.style.width = '100%';
-    num.textContent = '100%';
-    setTimeout(()=>{ loader.classList.add('done'); }, 320);
+    if (done) return; done = true;
+    target = 100;
+    setTimeout(() => {
+      clearInterval(raf);
+      fill.style.width = '100%';
+      num.textContent  = '100%';
+      html.style.overflow = prevOverflow;
+      loader.classList.add('done');
+      document.body.classList.add('site-ready');
+    }, 280);
   }
-  /* Wait for the hero video to have enough data to play */
-  if(video){
-    if(video.readyState >= 3){ finish(); }
-    else { video.addEventListener('canplay', finish, {once:true}); }
-  } else {
-    /* No video (mobile?), fall back to DOMContentLoaded */
-    if(document.readyState === 'complete' || document.readyState === 'interactive'){ finish(); }
-    else { document.addEventListener('DOMContentLoaded', finish); }
-  }
-  /* Safety timeout — never block more than 12s */
-  setTimeout(finish, 12000);
+
+  Promise.all(tasks.map(t => Promise.resolve(t))).then(() => setTimeout(finish, 260));
+  /* Hard safety net — never hang forever on a stalled asset. */
+  setTimeout(finish, 25000);
 })();
 
 /* ========================================
