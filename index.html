@@ -542,6 +542,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .who{background:var(--bg-2)}
   .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media (max-width:980px){.who-grid{grid-template-columns:1fr}}
+  .who-swipe{display:none}
   .who-card{background:var(--paper);border-radius:24px;border:1px solid var(--line);padding:48px 40px;min-height:520px;display:flex;flex-direction:column;position:relative;overflow:hidden}
   .who-card.no{background:#0E0E0C;color:#F4F1EB;border-color:transparent}
   .who-card .tagline{display:flex;align-items:center;gap:10px;margin-bottom:32px}
@@ -993,6 +994,25 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .who-card.in{opacity:1;transform:none}
     .who-grid .who-card:nth-child(2){transition-delay:.15s}
 
+    /* --- Mobile carousel: swipe between the two cards --- */
+    .who-grid{
+      display:flex;grid-template-columns:none;gap:16px;
+      overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      margin:0 -20px;padding:4px 20px;scrollbar-width:none;
+    }
+    .who-grid::-webkit-scrollbar{display:none}
+    .who-grid .who-card{
+      flex:0 0 85%;scroll-snap-align:center;min-height:0;
+      opacity:1 !important;transform:none !important;transition:none !important;
+    }
+    .who-swipe{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:26px}
+    .who-dots{display:flex;gap:8px}
+    .who-dot{width:7px;height:7px;border-radius:50%;background:rgba(14,14,12,.2);transition:background .25s ease, width .25s ease}
+    .who-dot.is-active{background:var(--accent);width:20px;border-radius:99px}
+    .who-swipe-hint{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);letter-spacing:.02em}
+    .who-swipe-arrow{width:18px;height:18px;flex:none;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:whoNudge 1.6s ease-in-out infinite}
+    @keyframes whoNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
     /* CASE */
     .case-frame{border-radius:20px}
     .case-info{padding:32px 24px}
@@ -1064,6 +1084,11 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     /* Universal mobile reveal animation hooks */
     .m-reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
     .m-reveal.in{opacity:1;transform:none}
+
+    /* CTA final — rotate-up "swing" reveal on mobile (mirrors the desktop flow animation) */
+    .flow-inner.cta-final .inner.m-reveal{opacity:0;transform:rotate(9deg) translateY(46px);transform-origin:bottom left;
+      transition:opacity .7s ease, transform 1.1s cubic-bezier(.2,.72,.25,1)}
+    .flow-inner.cta-final .inner.m-reveal.in{opacity:1;transform:none}
 
     /* Stat counter pop-in */
     .case-stats .stat{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
@@ -1562,8 +1587,30 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         </ul>
       </div>
     </div>
+    <div class="who-swipe" aria-hidden="true">
+      <div class="who-dots"><span class="who-dot is-active"></span><span class="who-dot"></span></div>
+      <span class="who-swipe-hint"><span data-i18n="who.swipe">Arraste para o lado</span><svg viewBox="0 0 24 24" class="who-swipe-arrow"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+    </div>
   </div>
 </section>
+<script>
+(function(){
+  var grid=document.querySelector('.who-grid');
+  var dots=document.querySelectorAll('.who-swipe .who-dot');
+  if(!grid||!dots.length) return;
+  function update(){
+    var cards=grid.querySelectorAll('.who-card');
+    if(!cards.length) return;
+    var gr=grid.getBoundingClientRect(); var center=gr.left+gr.width/2;
+    var best=0, bd=Infinity;
+    cards.forEach(function(c,i){ var r=c.getBoundingClientRect(); var d=Math.abs((r.left+r.width/2)-center); if(d<bd){bd=d;best=i;} });
+    dots.forEach(function(dt,i){ dt.classList.toggle('is-active', i===best); });
+  }
+  grid.addEventListener('scroll', function(){ requestAnimationFrame(update); }, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 
 <!-- ============ CASE STUDY ============ -->
 <section class="case section-pad" id="case">
@@ -1889,7 +1936,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
     "serv.6.f1":"Assistente virtual 24/7 no seu site","serv.6.f2":"Conversa em PT · EN · ES a qualquer hora","serv.6.f3":"Qualifica o interesse de cada visitante","serv.6.f4":"Encaminha a lead para a equipa por WhatsApp",
     "auto.eye":"Vídeo · Uma das nossas automações","auto.h":"Veja a <span class=\"serif\">automação</span> do nosso CRM.","auto.lead":"Este vídeo demonstra como uma das automações do nosso CRM funciona — do alerta do Idealista à mensagem certa, para o cliente certo, em segundos.","auto.badge":"Vídeo demonstrativo",
-    "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.",
+    "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.","who.swipe":"Arraste para o lado",
     "who.y.t":"Trabalhamos com","who.y.h":"Imobiliárias que querem <em>crescer</em>.","who.y.s":"Agências com vontade real de evoluir, dispostas a investir tempo e qualidade no marketing.",
     "who.y.1":"Agências que querem leads internacionais e estão dispostas a comunicar em várias línguas.",
     "who.y.2":"Equipas que entendem que um site é uma ferramenta de vendas, não um catálogo estático.",
@@ -1950,7 +1997,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
     "serv.6.f1":"24/7 virtual assistant on your site","serv.6.f2":"Chats in PT · EN · ES at any hour","serv.6.f3":"Qualifies each visitor's interest","serv.6.f4":"Routes the lead to your team via WhatsApp",
     "auto.eye":"Video · One of our automations","auto.h":"See our CRM <span class=\"serif\">automation</span> in action.","auto.lead":"This video shows how one of our CRM automations works — from an Idealista alert to the right message, for the right client, in seconds.","auto.badge":"Demo video",
-    "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.",
+    "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.","who.swipe":"Swipe to see more",
     "who.y.t":"We work with","who.y.h":"Agencies that want to <em>grow</em>.","who.y.s":"Agencies with real drive to evolve, willing to invest time and quality in marketing.",
     "who.y.1":"Agencies that want international leads and are willing to communicate in multiple languages.",
     "who.y.2":"Teams that understand a website is a sales tool, not a static catalog.",
@@ -2011,7 +2058,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
     "serv.6.f1":"Asistente virtual 24/7 en tu web","serv.6.f2":"Conversa en PT · EN · ES a cualquier hora","serv.6.f3":"Cualifica el interés de cada visitante","serv.6.f4":"Envía la lead a tu equipo por WhatsApp",
     "auto.eye":"Vídeo · Una de nuestras automatizaciones","auto.h":"Vea la <span class=\"serif\">automatización</span> de nuestro CRM en acción.","auto.lead":"Este vídeo muestra cómo funciona una de las automatizaciones de nuestro CRM — de la alerta de Idealista al mensaje correcto, para el cliente correcto, en segundos.","auto.badge":"Vídeo demostrativo",
-    "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.",
+    "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.","who.swipe":"Desliza para ver más",
     "who.y.t":"Trabajamos con","who.y.h":"Inmobiliarias que quieren <em>crecer</em>.","who.y.s":"Agencias con ganas reales de evolucionar, dispuestas a invertir tiempo y calidad en marketing.",
     "who.y.1":"Agencias que quieren leads internacionales y comunicar en varios idiomas.",
     "who.y.2":"Equipos que entienden que una web es una herramienta de ventas, no un catálogo estático.",
@@ -2674,9 +2721,8 @@ document.getElementById('bgSwatches').addEventListener('click', e=>{
   if(!matchMedia('(max-width:780px)').matches) return;
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
 
-  // Container-based reveal — about-mob, service-card, who-card, case-stats
-  var groupTargets = document.querySelectorAll('.about-mob, .service-card, .who-card, .case-stats, .case-frame, .faq-item, .testimonial-slider-wrap, .flow-inner.cta-final .inner, .section-head');
-  if(!groupTargets.length) return;
+  // Container-based reveal (one-shot) — service-card, who-card, case-stats, etc.
+  var groupTargets = document.querySelectorAll('.service-card, .who-card, .case-stats, .case-frame, .faq-item, .testimonial-slider-wrap, .flow-inner.cta-final .inner, .section-head');
 
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -2686,6 +2732,15 @@ document.getElementById('bgSwatches').addEventListener('click', e=>{
       }
     });
   }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+
+  // About photos — REVERSIBLE: they slide back out the way they came when scrolled away.
+  var aboutMob = document.querySelector('.about-mob');
+  if(aboutMob){
+    var aboutIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ e.target.classList.toggle('in', e.isIntersecting); });
+    }, {threshold:0.25});
+    aboutIo.observe(aboutMob);
+  }
 
   // Tag generic targets with m-reveal so they pick up the universal class
   document.querySelectorAll('.case-frame, .faq-item, .testimonial-slider-wrap, .flow-inner.cta-final .inner, .section-head').forEach(function(el){
