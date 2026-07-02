@@ -477,6 +477,10 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .service-card .features{display:flex;flex-direction:column;gap:10px;margin-top:28px}
   .service-card .features li{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-2);list-style:none}
   .service-card .features li::before{content:"";width:18px;height:1px;background:var(--accent);display:block}
+  .serv-more{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:13px 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;letter-spacing:.01em;align-self:flex-start;transition:transform .2s ease,background .2s ease}
+  .serv-more:hover{transform:translateY(-2px);background:#2a2a28}
+  .serv-more .serv-more-arr{transition:transform .25s ease}
+  .serv-more:hover .serv-more-arr{transform:translateX(4px)}
   .service-card .visual{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FAF7F1 0%, #F0EBE0 100%);overflow:hidden}
   .service-card .visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle, rgba(140,90,58,.18), transparent 70%);filter:blur(40px)}
   .service-card .visual svg{position:relative;z-index:1;max-width:78%;max-height:78%;width:auto;height:auto}
@@ -1164,6 +1168,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <nav class="menu-nav">
       <a href="#hero" class="menu-link"><span data-i18n="menu.home">Início</span></a>
       <a href="#services" class="menu-link"><span data-i18n="menu.services">Serviços</span></a>
+      <a href="imoflow.html" class="menu-link"><span data-i18n="menu.crm">ImoFlow · CRM</span></a>
       <a href="#faq" class="menu-link"><span data-i18n="menu.faq">FAQ</span></a>
       <a href="contacto.html" class="menu-link"><span data-i18n="menu.contact">Contacto</span></a>
       <a href="ai-chat.html" class="menu-link"><span data-i18n="menu.ai">Fale connosco</span></a>
@@ -1415,6 +1420,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <li data-i18n="serv.4.f3">Recomendações automáticas de imóveis por cliente</li>
               <li data-i18n="serv.4.f4">Follow-ups por email e WhatsApp automatizados</li>
             </ul>
+            <a href="imoflow.html" class="serv-more"><span data-i18n="serv.4.more">Saber mais sobre o ImoFlow</span><span class="serv-more-arr" aria-hidden="true">→</span></a>
           </div>
           <div class="visual visual--phone">
             <div class="glow"></div>
@@ -1819,6 +1825,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <nav class="footer-nav">
           <a href="#hero" data-i18n="menu.home">Início</a>
           <a href="#services" data-i18n="menu.services">Serviços</a>
+          <a href="imoflow.html" data-i18n="menu.crm">ImoFlow · CRM</a>
           <a href="#faq" data-i18n="menu.faq">FAQ</a>
           <a href="contacto.html" data-i18n="menu.contact">Contacto</a>
           <a href="ai-chat.html" data-i18n="menu.ai">Fale connosco</a>
@@ -1911,7 +1918,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 const dict = /*EDITMODE-BEGIN*/{
   "pt": {
     "nav.cta": "Fale connosco",
-    "menu.eye":"Menu","menu.home":"Início","menu.services":"Serviços","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testemunhos","menu.contact":"Contacto","menu.ai":"Fale connosco","menu.lang":"Idioma","menu.cta":"Marcar reunião",
+    "menu.eye":"Menu","menu.home":"Início","menu.services":"Serviços","menu.crm":"ImoFlow · CRM","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testemunhos","menu.contact":"Contacto","menu.ai":"Fale connosco","menu.lang":"Idioma","menu.cta":"Marcar reunião",
     "hero.t1": "Trazemos", "hero.t2": "forma", "hero.t3": "a imobiliárias que <br>querem crescer.",
     "hero.words": "forma|clientes|valor|resultados",
     "hero.sub": "Websites que convertem, leads internacionais e marca. Tudo criado exclusivamente para imobiliárias.",
@@ -1930,7 +1937,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.3.tag":"Branding","serv.3.h":"Identidade visual com <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografia e sistema visual. Uma marca que se distingue das outras imobiliárias da sua zona e que comunica <em>confiança</em> em qualquer língua.",
     "serv.3.f1":"Logo e marca completa","serv.3.f2":"Brand book e guidelines","serv.3.f3":"Cartões, sinalética, templates","serv.3.f4":"Direção criativa contínua",
     "serv.4.tag":"CRM Imobiliário","serv.4.h":"Um CRM que <em>trabalha por si</em>.","serv.4.d":"Cada lead, contacto e imóvel numa só base de dados. O nosso CRM lê os alertas do Idealista, cruza-os com os interesses de cada cliente e sugere-lhe automaticamente a casa certa, <em>sem andar à procura</em>.",
-    "serv.4.f1":"Base de dados de leads, contactos e imóveis","serv.4.f2":"Pipeline visual do contacto à escritura","serv.4.f3":"Recomendações automáticas de imóveis por cliente","serv.4.f4":"Follow-ups por email e WhatsApp automatizados",
+    "serv.4.more":"Saber mais sobre o ImoFlow","serv.4.f1":"Base de dados de leads, contactos e imóveis","serv.4.f2":"Pipeline visual do contacto à escritura","serv.4.f3":"Recomendações automáticas de imóveis por cliente","serv.4.f4":"Follow-ups por email e WhatsApp automatizados",
     "serv.5.tag":"Captação Internacional","serv.5.h":"Leads de <em>qualquer parte</em>.","serv.5.d":"Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: Inglaterra, Espanha, França, Alemanha, Brasil, com campanhas e conteúdos adaptados a cada origem.",
     "serv.5.f1":"Targeting por país e perfil de comprador","serv.5.f2":"Landing pages traduzidas e otimizadas","serv.5.f3":"Anúncios em vídeo na língua do comprador","serv.5.f4":"Relatórios por país de origem das leads",
     "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
@@ -1972,7 +1979,7 @@ const dict = /*EDITMODE-BEGIN*/{
   },
   "en": {
     "nav.cta": "Get in touch",
-    "menu.eye":"Menu","menu.home":"Home","menu.services":"Services","menu.clients":"Clients","menu.faq":"FAQ","menu.test":"Testimonials","menu.contact":"Contact","menu.ai":"Talk to us","menu.lang":"Language","menu.cta":"Book a call",
+    "menu.eye":"Menu","menu.home":"Home","menu.services":"Services","menu.crm":"ImoFlow · CRM","menu.clients":"Clients","menu.faq":"FAQ","menu.test":"Testimonials","menu.contact":"Contact","menu.ai":"Talk to us","menu.lang":"Language","menu.cta":"Book a call",
     "hero.t1":"We bring", "hero.t2":"shape", "hero.t3":"to agencies that <br>want to grow.",
     "hero.words":"shape|clients|value|results|scale",
     "hero.sub":"While your competitors have pretty websites, our clients have websites that sell.",
@@ -1991,7 +1998,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.3.tag":"Branding","serv.3.h":"Visual identity with <em>character</em>.","serv.3.d":"Logo, palette, typography and visual system. A brand that stands out from other agencies in your area, and communicates trust in any language.",
     "serv.3.f1":"Logo and complete brand","serv.3.f2":"Brand book and guidelines","serv.3.f3":"Cards, signage, templates","serv.3.f4":"Ongoing creative direction",
     "serv.4.tag":"Real Estate CRM","serv.4.h":"A CRM that <em>works for you</em>.","serv.4.d":"Every lead, contact and property in one database. Our CRM reads Idealista alerts, matches them to each client's interests and automatically suggests the right home, <em>no manual searching</em>.",
-    "serv.4.f1":"Database of leads, contacts and properties","serv.4.f2":"Visual pipeline from first contact to closing","serv.4.f3":"Automatic property recommendations per client","serv.4.f4":"Automated email & WhatsApp follow-ups",
+    "serv.4.more":"Learn more about ImoFlow","serv.4.f1":"Database of leads, contacts and properties","serv.4.f2":"Visual pipeline from first contact to closing","serv.4.f3":"Automatic property recommendations per client","serv.4.f4":"Automated email & WhatsApp follow-ups",
     "serv.5.tag":"International Reach","serv.5.h":"Leads from <em>anywhere</em>.","serv.5.d":"A multi-language site isn't enough. We build strategies targeted at specific markets: UK, Spain, France, Germany, Brazil, with campaigns, content and funnels adapted to <em>each origin</em>.",
     "serv.5.f1":"Targeting by country and buyer profile","serv.5.f2":"Translated, optimized landing pages","serv.5.f3":"Video ads in the buyer's language","serv.5.f4":"Reports by lead country of origin",
     "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
@@ -2033,7 +2040,7 @@ const dict = /*EDITMODE-BEGIN*/{
   },
   "es": {
     "nav.cta": "Hablemos",
-    "menu.eye":"Menú","menu.home":"Inicio","menu.services":"Servicios","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testimonios","menu.contact":"Contacto","menu.ai":"Habla con nosotros","menu.lang":"Idioma","menu.cta":"Reservar reunión",
+    "menu.eye":"Menú","menu.home":"Inicio","menu.services":"Servicios","menu.crm":"ImoFlow · CRM","menu.clients":"Clientes","menu.faq":"FAQ","menu.test":"Testimonios","menu.contact":"Contacto","menu.ai":"Habla con nosotros","menu.lang":"Idioma","menu.cta":"Reservar reunión",
     "hero.t1":"Damos", "hero.t2":"forma", "hero.t3":"a inmobiliarias que <br>quieren crecer.",
     "hero.words":"forma|clientes|valor|resultados|escala",
     "hero.sub":"Mientras sus competidores tienen sitios bonitos, nuestros clientes tienen sitios que venden.",
@@ -2052,7 +2059,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.3.tag":"Branding","serv.3.h":"Identidad visual con <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografía y sistema visual. Una marca que destaca de otras inmobiliarias, y comunica confianza en cualquier idioma.",
     "serv.3.f1":"Logo y marca completa","serv.3.f2":"Brand book y guidelines","serv.3.f3":"Tarjetas, señalética, plantillas","serv.3.f4":"Dirección creativa continua",
     "serv.4.tag":"CRM Inmobiliario","serv.4.h":"Un CRM que <em>trabaja por ti</em>.","serv.4.d":"Cada lead, contacto e inmueble en una sola base de datos. Nuestro CRM lee las alertas de Idealista, las cruza con los intereses de cada cliente y le sugiere automáticamente la casa adecuada, <em>sin buscar a mano</em>.",
-    "serv.4.f1":"Base de datos de leads, contactos e inmuebles","serv.4.f2":"Pipeline visual del primer contacto a la escritura","serv.4.f3":"Recomendaciones automáticas de inmuebles por cliente","serv.4.f4":"Follow-ups por email y WhatsApp automatizados",
+    "serv.4.more":"Saber más sobre ImoFlow","serv.4.f1":"Base de datos de leads, contactos e inmuebles","serv.4.f2":"Pipeline visual del primer contacto a la escritura","serv.4.f3":"Recomendaciones automáticas de inmuebles por cliente","serv.4.f4":"Follow-ups por email y WhatsApp automatizados",
     "serv.5.tag":"Captación Internacional","serv.5.h":"Leads de <em>cualquier parte</em>.","serv.5.d":"Una web multi-idioma no basta. Construimos estrategias dirigidas a mercados específicos: UK, España, Francia, Alemania, Brasil, con campañas, contenido y funnels adaptados a <em>cada origen</em>.",
     "serv.5.f1":"Targeting por país y perfil de comprador","serv.5.f2":"Landing pages traducidas y optimizadas","serv.5.f3":"Anuncios en vídeo en el idioma del comprador","serv.5.f4":"Informes por país de origen de las leads",
     "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
