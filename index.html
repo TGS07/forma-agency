@@ -481,6 +481,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .serv-more:hover{transform:translateY(-2px);background:#2a2a28}
   .serv-more .serv-more-arr{transition:transform .25s ease}
   .serv-more:hover .serv-more-arr{transform:translateX(4px)}
+  .auto-cta{display:flex;justify-content:center;margin-top:32px}
+  .auto-cta .serv-more{margin-top:0}
   .service-card .visual{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FAF7F1 0%, #F0EBE0 100%);overflow:hidden}
   .service-card .visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle, rgba(140,90,58,.18), transparent 70%);filter:blur(40px)}
   .service-card .visual svg{position:relative;z-index:1;max-width:78%;max-height:78%;width:auto;height:auto}
@@ -1141,8 +1143,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <span class="ld-fill" id="loaderFill">FORMA<b>.</b></span>
     </div>
     <div class="ld-meta">
-      <span class="ld-tag">Damos <span class="serif">forma</span> a imobiliárias.</span>
-      <span class="ld-dot"></span>
       <span class="ld-num" id="loaderNum">0%</span>
     </div>
   </div>
@@ -1420,7 +1420,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <li data-i18n="serv.4.f3">Recomendações automáticas de imóveis por cliente</li>
               <li data-i18n="serv.4.f4">Follow-ups por email e WhatsApp automatizados</li>
             </ul>
-            <a href="imoflow.html" class="serv-more"><span data-i18n="serv.4.more">Saber mais sobre o ImoFlow</span><span class="serv-more-arr" aria-hidden="true">→</span></a>
           </div>
           <div class="visual visual--phone">
             <div class="glow"></div>
@@ -1544,6 +1543,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
         </button>
       </div>
+    </div>
+    <div class="auto-cta">
+      <a href="imoflow.html" class="serv-more"><span data-i18n="auto.more">Saber mais sobre o ImoFlow</span><span class="serv-more-arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -1942,7 +1944,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting por país e perfil de comprador","serv.5.f2":"Landing pages traduzidas e otimizadas","serv.5.f3":"Anúncios em vídeo na língua do comprador","serv.5.f4":"Relatórios por país de origem das leads",
     "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
     "serv.6.f1":"Assistente virtual 24/7 no seu site","serv.6.f2":"Conversa em PT · EN · ES a qualquer hora","serv.6.f3":"Qualifica o interesse de cada visitante","serv.6.f4":"Encaminha a lead para a equipa por WhatsApp",
-    "auto.eye":"Vídeo · Uma das nossas automações","auto.h":"Veja a <span class=\"serif\">automação</span> do nosso CRM.","auto.lead":"Este vídeo demonstra como uma das automações do nosso CRM funciona — do alerta do Idealista à mensagem certa, para o cliente certo, em segundos.","auto.badge":"Vídeo demonstrativo",
+    "auto.eye":"Vídeo · Uma das nossas automações","auto.h":"Veja a <span class=\"serif\">automação</span> do nosso CRM.","auto.lead":"Este vídeo demonstra como uma das automações do nosso CRM funciona — do alerta do Idealista à mensagem certa, para o cliente certo, em segundos.","auto.badge":"Vídeo demonstrativo","auto.more":"Saber mais sobre o ImoFlow",
     "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.","who.swipe":"Arraste para o lado",
     "who.y.t":"Trabalhamos com","who.y.h":"Imobiliárias que querem <em>crescer</em>.","who.y.s":"Agências com vontade real de evoluir, dispostas a investir tempo e qualidade no marketing.",
     "who.y.1":"Agências que querem leads internacionais e estão dispostas a comunicar em várias línguas.",
@@ -2003,7 +2005,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting by country and buyer profile","serv.5.f2":"Translated, optimized landing pages","serv.5.f3":"Video ads in the buyer's language","serv.5.f4":"Reports by lead country of origin",
     "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
     "serv.6.f1":"24/7 virtual assistant on your site","serv.6.f2":"Chats in PT · EN · ES at any hour","serv.6.f3":"Qualifies each visitor's interest","serv.6.f4":"Routes the lead to your team via WhatsApp",
-    "auto.eye":"Video · One of our automations","auto.h":"See our CRM <span class=\"serif\">automation</span> in action.","auto.lead":"This video shows how one of our CRM automations works — from an Idealista alert to the right message, for the right client, in seconds.","auto.badge":"Demo video",
+    "auto.eye":"Video · One of our automations","auto.h":"See our CRM <span class=\"serif\">automation</span> in action.","auto.lead":"This video shows how one of our CRM automations works — from an Idealista alert to the right message, for the right client, in seconds.","auto.badge":"Demo video","auto.more":"Learn more about ImoFlow",
     "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.","who.swipe":"Swipe to see more",
     "who.y.t":"We work with","who.y.h":"Agencies that want to <em>grow</em>.","who.y.s":"Agencies with real drive to evolve, willing to invest time and quality in marketing.",
     "who.y.1":"Agencies that want international leads and are willing to communicate in multiple languages.",
@@ -2064,7 +2066,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting por país y perfil de comprador","serv.5.f2":"Landing pages traducidas y optimizadas","serv.5.f3":"Anuncios en vídeo en el idioma del comprador","serv.5.f4":"Informes por país de origen de las leads",
     "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
     "serv.6.f1":"Asistente virtual 24/7 en tu web","serv.6.f2":"Conversa en PT · EN · ES a cualquier hora","serv.6.f3":"Cualifica el interés de cada visitante","serv.6.f4":"Envía la lead a tu equipo por WhatsApp",
-    "auto.eye":"Vídeo · Una de nuestras automatizaciones","auto.h":"Vea la <span class=\"serif\">automatización</span> de nuestro CRM en acción.","auto.lead":"Este vídeo muestra cómo funciona una de las automatizaciones de nuestro CRM — de la alerta de Idealista al mensaje correcto, para el cliente correcto, en segundos.","auto.badge":"Vídeo demostrativo",
+    "auto.eye":"Vídeo · Una de nuestras automatizaciones","auto.h":"Vea la <span class=\"serif\">automatización</span> de nuestro CRM en acción.","auto.lead":"Este vídeo muestra cómo funciona una de las automatizaciones de nuestro CRM — de la alerta de Idealista al mensaje correcto, para el cliente correcto, en segundos.","auto.badge":"Vídeo demostrativo","auto.more":"Saber más sobre ImoFlow",
     "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.","who.swipe":"Desliza para ver más",
     "who.y.t":"Trabajamos con","who.y.h":"Inmobiliarias que quieren <em>crecer</em>.","who.y.s":"Agencias con ganas reales de evolucionar, dispuestas a invertir tiempo y calidad en marketing.",
     "who.y.1":"Agencias que quieren leads internacionales y comunicar en varios idiomas.",
@@ -2405,19 +2407,26 @@ document.querySelectorAll('#faqList .faq-item').forEach(item=>{
   .to(phR1, { x:'32vw',  opacity:1, duration:0.85, ease:'power3.out' }, 0)
   .to(tb1,  { opacity:1, y:0, duration:0.6, ease:'power2.out' }, 0.2);
 
-  /* ---- Phase 2 scroll-scrubbed transition ---- */
+  /* ---- Phase 2 scroll-scrubbed transition ----
+     tb2 is driven directly from scroll progress (not via a scrubbed fromTo),
+     so a fast/reversed scroll can never leave it stuck invisible. */
+  const setTb2 = (p) => {
+    const t = gsap.utils.clamp(0, 1, (p - 0.6) / 0.35);
+    gsap.set(tb2, { autoAlpha: t, y: 12 * (1 - t) });
+  };
   gsap.timeline({
     scrollTrigger:{
       trigger: section,
       start: 'top top',
       end: 'bottom bottom',
       scrub: true,
+      onUpdate: (self) => setTb2(self.progress),
+      onRefresh: (self) => setTb2(self.progress),
     }
   })
   .to(tb1, { autoAlpha:0, y:-12, duration:0.35 }, 0)
   .to(phL2, { x:'-32vw', opacity:1, duration:0.5, ease:'power3.out' }, 0.1)
-  .to(phR2, { x:'32vw',  opacity:1, duration:0.5, ease:'power3.out' }, 0.1)
-  .fromTo(tb2, { autoAlpha:0, y:12 }, { autoAlpha:1, y:0, duration:0.3 }, 0.45);
+  .to(phR2, { x:'32vw',  opacity:1, duration:0.5, ease:'power3.out' }, 0.1);
 
   window.addEventListener('load', ()=>ScrollTrigger.refresh());
 })();
