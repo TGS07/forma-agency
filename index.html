@@ -481,8 +481,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .serv-more:hover{transform:translateY(-2px);background:#2a2a28}
   .serv-more .serv-more-arr{transition:transform .25s ease}
   .serv-more:hover .serv-more-arr{transform:translateX(4px)}
-  .auto-cta{display:flex;justify-content:center;margin-top:32px}
-  .auto-cta .serv-more{margin-top:0}
   .service-card .visual{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FAF7F1 0%, #F0EBE0 100%);overflow:hidden}
   .service-card .visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle, rgba(140,90,58,.18), transparent 70%);filter:blur(40px)}
   .service-card .visual svg{position:relative;z-index:1;max-width:78%;max-height:78%;width:auto;height:auto}
@@ -520,10 +518,23 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   }
 
   /* --- WHO --- */
-  /* --- AUTOMATION DEMO --- */
+  /* --- IMOFLOW (secção + vídeo de automação) --- */
   .auto-demo{background:var(--bg)}
-  .auto-demo .eyebrow{margin-bottom:18px}
-  .auto-video-frame{margin:56px auto 0;max-width:1180px;border-radius:24px;overflow:hidden;position:relative;
+  .auto-demo .eyebrow{margin-bottom:18px;display:inline-block}
+  .iflow-grid{display:grid;grid-template-columns:.94fr 1.06fr;gap:64px;align-items:center}
+  .iflow-text h2{font-size:clamp(32px,3.8vw,54px);font-weight:300;line-height:1.05;letter-spacing:-0.01em}
+  .iflow-text .lead{margin-top:16px}
+  .iflow-points{list-style:none;margin:28px 0 0;padding:0}
+  .iflow-points li{display:grid;grid-template-columns:18px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
+  .iflow-points li:last-child{border-bottom:1px solid var(--line)}
+  .iflow-points li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:7px}
+  .iflow-text .serv-more{margin-top:32px}
+  .iflow-cap{margin-top:14px;font-size:13px;color:var(--muted);text-align:center;font-style:italic}
+  @media (max-width:980px){
+    .iflow-grid{grid-template-columns:1fr;gap:40px}
+    .iflow-text h2{font-size:clamp(28px,8vw,42px);line-height:1.1}
+  }
+  .auto-video-frame{margin:0;border-radius:24px;overflow:hidden;position:relative;
     border:1px solid var(--line);background:var(--ink);
     box-shadow:0 50px 100px -50px rgba(14,14,12,.42), 0 20px 50px -30px rgba(14,14,12,.22)}
   .auto-video{display:block;width:100%;height:auto;aspect-ratio:16/9}
@@ -542,7 +553,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .auto-fs svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   @media (hover:none){.auto-video-frame .auto-hud{opacity:1;pointer-events:auto}}
   @media (max-width:780px){
-    .auto-video-frame{margin-top:36px;border-radius:16px}
+    .auto-video-frame{border-radius:16px}
   }
 
   .who{background:var(--bg-2)}
@@ -1523,29 +1534,35 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
 </section>
 
-<!-- ============ AUTOMATION DEMO ============ -->
+<!-- ============ IMOFLOW ============ -->
 <section class="auto-demo section-pad" id="automacao">
   <div class="wrap">
-    <div class="section-head" style="text-align:center;align-items:center">
-      <div class="head-side" style="display:flex;flex-direction:column;align-items:center">
-        <span class="eyebrow" data-i18n="auto.eye">Vídeo · Uma das nossas automações</span>
-        <h2 data-i18n="auto.h">Veja a <span class="serif">automação</span> do nosso CRM.</h2>
-        <p class="lead" style="margin-top:16px;text-align:center" data-i18n="auto.lead">Este vídeo demonstra como uma das automações do nosso CRM funciona — do alerta do Idealista à mensagem certa, para o cliente certo, em segundos.</p>
+    <div class="iflow-grid">
+      <div class="iflow-text">
+        <span class="eyebrow" data-i18n="auto.eye">ImoFlow · O CRM imobiliário da FORMA</span>
+        <h2 data-i18n="auto.h">Apresentamos o <span class="serif">ImoFlow</span>.</h2>
+        <p class="lead" data-i18n="auto.lead">O nosso CRM imobiliário junta leads, contactos e imóveis numa só base de dados — e usa inteligência artificial para qualificar cada lead, sugerir a próxima ação e escrever emails e WhatsApp por si.</p>
+        <ul class="iflow-points">
+          <li data-i18n="auto.p1">Leads, imóveis e pipeline num só sítio — do primeiro contacto à escritura</li>
+          <li data-i18n="auto.p2">AI que qualifica leads, sugere a próxima ação e redige as mensagens</li>
+          <li data-i18n="auto.p3">Automações 24/7 — como a que lê os alertas do Idealista e sugere a casa certa a cada cliente</li>
+        </ul>
+        <a href="imoflow.html" class="serv-more"><span data-i18n="auto.more">Descobrir o ImoFlow</span><span class="serv-more-arr" aria-hidden="true">→</span></a>
       </div>
-    </div>
-    <div class="auto-video-frame">
-      <video class="auto-video" autoplay muted loop playsinline preload="metadata" poster="forma-automacao-idealista-poster.jpg">
-        <source src="forma-automacao-idealista.mp4" type="video/mp4">
-      </video>
-      <div class="auto-hud">
-        <span class="auto-hud-label"><span class="auto-hud-dot"></span><span data-i18n="auto.badge">Vídeo demonstrativo</span></span>
-        <button class="auto-fs" type="button" aria-label="Ver em ecrã inteiro" title="Ecrã inteiro" onclick="autoFullscreen(this)">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-        </button>
+      <div class="iflow-media">
+        <div class="auto-video-frame">
+          <video class="auto-video" autoplay muted loop playsinline preload="metadata" poster="forma-automacao-idealista-poster.jpg">
+            <source src="forma-automacao-idealista.mp4" type="video/mp4">
+          </video>
+          <div class="auto-hud">
+            <span class="auto-hud-label"><span class="auto-hud-dot"></span><span data-i18n="auto.badge">Vídeo demonstrativo</span></span>
+            <button class="auto-fs" type="button" aria-label="Ver em ecrã inteiro" title="Ecrã inteiro" onclick="autoFullscreen(this)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+            </button>
+          </div>
+        </div>
+        <p class="iflow-cap" data-i18n="auto.cap">No vídeo: a automação que liga os alertas do Idealista às leads certas, em segundos.</p>
       </div>
-    </div>
-    <div class="auto-cta">
-      <a href="imoflow.html" class="serv-more"><span data-i18n="auto.more">Saber mais sobre o ImoFlow</span><span class="serv-more-arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -1944,7 +1961,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting por país e perfil de comprador","serv.5.f2":"Landing pages traduzidas e otimizadas","serv.5.f3":"Anúncios em vídeo na língua do comprador","serv.5.f4":"Relatórios por país de origem das leads",
     "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
     "serv.6.f1":"Assistente virtual 24/7 no seu site","serv.6.f2":"Conversa em PT · EN · ES a qualquer hora","serv.6.f3":"Qualifica o interesse de cada visitante","serv.6.f4":"Encaminha a lead para a equipa por WhatsApp",
-    "auto.eye":"Vídeo · Uma das nossas automações","auto.h":"Veja a <span class=\"serif\">automação</span> do nosso CRM.","auto.lead":"Este vídeo demonstra como uma das automações do nosso CRM funciona — do alerta do Idealista à mensagem certa, para o cliente certo, em segundos.","auto.badge":"Vídeo demonstrativo","auto.more":"Saber mais sobre o ImoFlow",
+    "auto.eye":"ImoFlow · O CRM imobiliário da FORMA","auto.h":"Apresentamos o <span class=\"serif\">ImoFlow</span>.","auto.lead":"O nosso CRM imobiliário junta leads, contactos e imóveis numa só base de dados — e usa inteligência artificial para qualificar cada lead, sugerir a próxima ação e escrever emails e WhatsApp por si.","auto.p1":"Leads, imóveis e pipeline num só sítio — do primeiro contacto à escritura","auto.p2":"AI que qualifica leads, sugere a próxima ação e redige as mensagens","auto.p3":"Automações 24/7 — como a que lê os alertas do Idealista e sugere a casa certa a cada cliente","auto.cap":"No vídeo: a automação que liga os alertas do Idealista às leads certas, em segundos.","auto.badge":"Vídeo demonstrativo","auto.more":"Descobrir o ImoFlow",
     "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.","who.swipe":"Arraste para o lado",
     "who.y.t":"Trabalhamos com","who.y.h":"Imobiliárias que querem <em>crescer</em>.","who.y.s":"Agências com vontade real de evoluir, dispostas a investir tempo e qualidade no marketing.",
     "who.y.1":"Agências que querem leads internacionais e estão dispostas a comunicar em várias línguas.",
@@ -2005,7 +2022,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting by country and buyer profile","serv.5.f2":"Translated, optimized landing pages","serv.5.f3":"Video ads in the buyer's language","serv.5.f4":"Reports by lead country of origin",
     "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
     "serv.6.f1":"24/7 virtual assistant on your site","serv.6.f2":"Chats in PT · EN · ES at any hour","serv.6.f3":"Qualifies each visitor's interest","serv.6.f4":"Routes the lead to your team via WhatsApp",
-    "auto.eye":"Video · One of our automations","auto.h":"See our CRM <span class=\"serif\">automation</span> in action.","auto.lead":"This video shows how one of our CRM automations works — from an Idealista alert to the right message, for the right client, in seconds.","auto.badge":"Demo video","auto.more":"Learn more about ImoFlow",
+    "auto.eye":"ImoFlow · FORMA's real-estate CRM","auto.h":"Meet <span class=\"serif\">ImoFlow</span>.","auto.lead":"Our real-estate CRM brings leads, contacts and properties into one database — and uses AI to qualify every lead, suggest the next step and write emails and WhatsApp messages for you.","auto.p1":"Leads, properties and pipeline in one place — from first contact to closing","auto.p2":"AI that qualifies leads, suggests the next action and drafts your messages","auto.p3":"Automations running 24/7 — like the one that reads Idealista alerts and matches the right home to each client","auto.cap":"In the video: the automation that connects Idealista alerts to the right leads, in seconds.","auto.badge":"Demo video","auto.more":"Discover ImoFlow",
     "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.","who.swipe":"Swipe to see more",
     "who.y.t":"We work with","who.y.h":"Agencies that want to <em>grow</em>.","who.y.s":"Agencies with real drive to evolve, willing to invest time and quality in marketing.",
     "who.y.1":"Agencies that want international leads and are willing to communicate in multiple languages.",
@@ -2066,7 +2083,7 @@ const dict = /*EDITMODE-BEGIN*/{
     "serv.5.f1":"Targeting por país y perfil de comprador","serv.5.f2":"Landing pages traducidas y optimizadas","serv.5.f3":"Anuncios en vídeo en el idioma del comprador","serv.5.f4":"Informes por país de origen de las leads",
     "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
     "serv.6.f1":"Asistente virtual 24/7 en tu web","serv.6.f2":"Conversa en PT · EN · ES a cualquier hora","serv.6.f3":"Cualifica el interés de cada visitante","serv.6.f4":"Envía la lead a tu equipo por WhatsApp",
-    "auto.eye":"Vídeo · Una de nuestras automatizaciones","auto.h":"Vea la <span class=\"serif\">automatización</span> de nuestro CRM en acción.","auto.lead":"Este vídeo muestra cómo funciona una de las automatizaciones de nuestro CRM — de la alerta de Idealista al mensaje correcto, para el cliente correcto, en segundos.","auto.badge":"Vídeo demostrativo","auto.more":"Saber más sobre ImoFlow",
+    "auto.eye":"ImoFlow · El CRM inmobiliario de FORMA","auto.h":"Le presentamos <span class=\"serif\">ImoFlow</span>.","auto.lead":"Nuestro CRM inmobiliario reúne leads, contactos e inmuebles en una sola base de datos — y usa inteligencia artificial para calificar cada lead, sugerir el siguiente paso y escribir emails y WhatsApp por usted.","auto.p1":"Leads, inmuebles y pipeline en un solo lugar — del primer contacto a la escritura","auto.p2":"AI que califica leads, sugiere la siguiente acción y redacta sus mensajes","auto.p3":"Automatizaciones 24/7 — como la que lee las alertas de Idealista y sugiere la casa adecuada a cada cliente","auto.cap":"En el vídeo: la automatización que conecta las alertas de Idealista con los leads adecuados, en segundos.","auto.badge":"Vídeo demostrativo","auto.more":"Descubrir ImoFlow",
     "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.","who.swipe":"Desliza para ver más",
     "who.y.t":"Trabajamos con","who.y.h":"Inmobiliarias que quieren <em>crecer</em>.","who.y.s":"Agencias con ganas reales de evolucionar, dispuestas a invertir tiempo y calidad en marketing.",
     "who.y.1":"Agencias que quieren leads internacionales y comunicar en varios idiomas.",
