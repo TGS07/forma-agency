@@ -27,6 +27,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   html{scroll-behavior:smooth}
   body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
   .serif{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
   em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:1.05em}
   .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
@@ -60,53 +61,49 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 
   .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
+  /* Janela da app — moldura usada por todas as capturas de ecrã */
+  .app-frame{
+    border-radius:16px;overflow:hidden;background:#EFEBE3;
+    border:1px solid var(--line);
+    box-shadow:0 50px 100px -45px rgba(14,14,12,.42), 0 12px 32px -20px rgba(14,14,12,.2);
+  }
+  .app-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#E4DED2;border-bottom:1px solid rgba(14,14,12,.08)}
+  .app-bar i{width:10px;height:10px;border-radius:50%;background:rgba(14,14,12,.16);display:block}
+  .app-bar .url{
+    margin-left:10px;flex:1;height:20px;border-radius:6px;background:rgba(255,255,255,.6);
+    font-size:10.5px;color:var(--muted);display:flex;align-items:center;padding:0 10px;letter-spacing:.02em;
+  }
+  .app-frame img{width:100%;height:auto}
+  @media(max-width:640px){.app-bar .url{display:none}}
+
   /* HERO */
-  .hero{padding:150px 0 90px}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero{padding:120px 0 70px}}
+  .hero{padding:150px 0 30px}
+  @media(max-width:900px){.hero{padding:120px 0 20px}}
   .hero .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:26px}
   .hero .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(140,90,58,.15)}
-  .hero h1{font-size:clamp(40px,6vw,74px);font-weight:300;letter-spacing:-0.035em;line-height:.98;margin-bottom:24px}
-  .hero p.lead{font-size:clamp(16px,2vw,19px);color:var(--ink-2);line-height:1.6;max-width:46ch;margin-bottom:34px}
-  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
-  .hero .meta{margin-top:34px;display:flex;gap:26px;flex-wrap:wrap}
-  .hero .meta .m{display:flex;flex-direction:column;gap:2px}
-  .hero .meta .m b{font-size:26px;font-weight:400;letter-spacing:-0.02em;font-family:var(--serif);font-style:italic;color:var(--accent)}
-  .hero .meta .m span{font-size:12px;color:var(--muted);letter-spacing:.02em}
-
-  /* Phone mock */
-  .phone-wrap{display:flex;justify-content:center;position:relative}
-  .phone-wrap::before{content:"";position:absolute;inset:-10% -10% -10% -10%;background:radial-gradient(ellipse at 60% 40%,rgba(140,90,58,.22),transparent 60%);pointer-events:none}
-  .iphone{position:relative;width:300px;max-width:78vw;aspect-ratio:9/19.2;background:#0E0E0C;border-radius:44px;padding:11px;box-shadow:0 40px 90px -30px rgba(14,14,12,.5),0 0 0 1px rgba(14,14,12,.1);z-index:1}
-  .iphone .island{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:88px;height:26px;background:#0E0E0C;border-radius:14px;z-index:3}
-  .iphone video{width:100%;height:100%;object-fit:cover;border-radius:34px;display:block;background:#ECE7DD}
+  .hero h1{font-size:clamp(40px,6.2vw,76px);font-weight:300;letter-spacing:-0.035em;line-height:.98;margin-bottom:24px;max-width:16ch}
+  .hero p.lead{font-size:clamp(16px,2vw,19px);color:var(--ink-2);line-height:1.6;max-width:52ch;margin-bottom:34px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-proof{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:13px;color:var(--muted)}
+  .hero-proof .hp-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .hero-proof b{color:var(--ink-2);font-weight:500}
+  .hero-shot{margin-top:56px}
+  .hero-cap{margin-top:16px;font-size:12.5px;color:var(--muted);text-align:center}
 
   /* SECTION shell */
   section{position:relative}
-  .sec{padding:80px 0}
-  @media(max-width:780px){.sec{padding:60px 0}}
-  .sec-head{max-width:660px;margin-bottom:48px}
+  .sec{padding:86px 0}
+  @media(max-width:780px){.sec{padding:62px 0}}
+  .sec-head{max-width:680px;margin-bottom:52px}
   .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
   .sec-head h2{font-size:clamp(28px,4vw,46px);font-weight:300;letter-spacing:-0.03em;line-height:1.04;margin:14px 0 0}
-  .sec-head p{font-size:16px;color:var(--ink-2);line-height:1.6;margin-top:16px}
+  .sec-head p{font-size:16px;color:var(--ink-2);line-height:1.6;margin-top:18px}
 
-  /* PROBLEM */
-  .problem{background:#0E0E0C;color:#F4F1EB}
-  .problem .eyebrow{color:rgba(244,241,235,.45)}
-  .problem h2{color:#F4F1EB}
-  .problem .sec-head p{color:rgba(244,241,235,.6)}
-  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
-  @media(max-width:820px){.prob-grid{grid-template-columns:1fr}}
-  .prob-card{border:1px solid rgba(244,241,235,.12);border-radius:16px;padding:30px 26px;background:rgba(244,241,235,.02)}
-  .prob-card .n{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--accent);line-height:1;margin-bottom:16px}
-  .prob-card h3{font-size:17px;font-weight:500;margin-bottom:8px}
-  .prob-card p{font-size:14px;color:rgba(244,241,235,.6);line-height:1.55}
-
-  /* HOW / steps */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:10px;border-top:1px solid var(--line)}
+  /* COMO FUNCIONA — 4 passos */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
   @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.steps{grid-template-columns:1fr}}
-  .step{padding:34px 28px 34px 0;border-right:1px solid var(--line);position:relative}
+  .step{padding:34px 28px 34px 0;border-right:1px solid var(--line)}
   .step:last-child{border-right:none}
   @media(max-width:900px){.step{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 24px}.step:nth-child(2n){border-right:none}}
   @media(max-width:560px){.step{border-right:none}}
@@ -114,27 +111,26 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .step h3{font-size:18px;font-weight:500;letter-spacing:-0.01em;margin-bottom:8px}
   .step p{font-size:14px;color:var(--ink-2);line-height:1.55}
 
-  /* MODULES grid */
-  .mods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  @media(max-width:900px){.mods{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.mods{grid-template-columns:1fr}}
-  .mod{background:var(--bg);padding:30px 28px;transition:background .25s}
-  .mod:hover{background:var(--paper)}
-  .mod .ic{width:38px;height:38px;border-radius:10px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--accent)}
-  .mod .ic svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .mod h3{font-size:16px;font-weight:500;margin-bottom:7px;letter-spacing:-0.01em}
-  .mod p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  /* A APP POR DENTRO — blocos alternados */
+  .inside{background:var(--bg-2)}
+  .feat{display:grid;grid-template-columns:.86fr 1.14fr;gap:64px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
+  .feat:first-of-type{border-top:none;padding-top:8px}
+  .feat.flip .feat-text{order:2}
+  .feat.flip .feat-media{order:1}
+  @media(max-width:900px){
+    .feat{grid-template-columns:1fr;gap:32px;padding:44px 0}
+    .feat.flip .feat-text{order:1}
+    .feat.flip .feat-media{order:2}
+  }
+  .feat-text .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
+  .feat-text h3{font-size:clamp(23px,2.7vw,32px);font-weight:300;letter-spacing:-0.025em;line-height:1.1;margin-bottom:14px}
+  .feat-text p{font-size:15px;color:var(--ink-2);line-height:1.62}
+  .feat-list{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .feat-list li{display:grid;grid-template-columns:16px 1fr;gap:12px;font-size:14px;color:var(--ink-2);line-height:1.5}
+  .feat-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
 
-  /* AI section */
-  .ai-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
-  @media(max-width:900px){.ai-grid{grid-template-columns:1fr;gap:40px}}
-  .ai-list{display:flex;flex-direction:column;gap:14px;margin-top:6px}
-  .ai-item{display:flex;gap:16px;padding:22px 24px;background:var(--paper);border:1px solid var(--line);border-radius:14px}
-  .ai-item .tag{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--accent);line-height:1;flex-shrink:0}
-  .ai-item h3{font-size:16px;font-weight:500;margin-bottom:5px}
-  .ai-item p{font-size:14px;color:var(--ink-2);line-height:1.55}
-  /* chat card */
-  .ai-chat{background:#0E0E0C;border-radius:22px;padding:26px 22px;box-shadow:0 30px 70px -30px rgba(14,14,12,.45)}
+  /* Cartão de IA (ilustração, não captura de ecrã) */
+  .ai-chat{background:#0E0E0C;border-radius:16px;padding:26px 22px;box-shadow:0 40px 80px -40px rgba(14,14,12,.5)}
   .ai-chat .ch-head{display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px solid rgba(244,241,235,.1);margin-bottom:20px}
   .ai-chat .av{width:38px;height:38px;border-radius:11px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
   .ai-chat .ch-head b{color:#F4F1EB;font-size:14px;font-weight:500;display:block}
@@ -143,32 +139,45 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .ai-chat .score b{font-family:var(--serif);font-style:italic;font-size:30px;color:#8fce8f;line-height:1}
   .ai-chat .score small{color:rgba(244,241,235,.45);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block}
   .ai-chat .bubble{background:rgba(244,241,235,.06);border:1px solid rgba(244,241,235,.08);border-radius:14px;padding:14px 16px;font-size:13.5px;color:rgba(244,241,235,.82);line-height:1.55;margin-bottom:12px}
+  .ai-chat .bubble:last-child{margin-bottom:0}
   .ai-chat .bubble .lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:7px;font-weight:600}
   .ai-chat .bubble.wa{background:rgba(37,211,102,.09);border-color:rgba(37,211,102,.18)}
   .ai-chat .bubble.wa .lbl{color:#4ade80}
+  .illus-note{margin-top:12px;font-size:11.5px;color:var(--muted);text-align:center;font-style:italic}
 
-  /* AUTOMATION showcase */
-  .auto{background:var(--bg-2)}
-  .auto-video-frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px -40px rgba(14,14,12,.35);background:#0E0E0C;margin-bottom:44px}
+  /* AUTOMAÇÃO IDEALISTA — secção escura */
+  .auto{background:#0E0E0C;color:#F4F1EB}
+  .auto .eyebrow{color:rgba(244,241,235,.45)}
+  .auto h2{color:#F4F1EB}
+  .auto .sec-head p{color:rgba(244,241,235,.62)}
+  .auto-video-frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(244,241,235,.12);box-shadow:0 50px 100px -45px rgba(0,0,0,.7);background:#000;margin-bottom:44px}
   .auto-video-frame video{width:100%;display:block}
-  .auto-hud{position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(14,14,12,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#F4F1EB;font-size:11px;letter-spacing:.06em}
+  .auto-hud{position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(14,14,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#F4F1EB;font-size:11px;letter-spacing:.06em}
   .auto-hud .dot{width:7px;height:7px;border-radius:50%;background:#ff5f57;animation:pulse 1.8s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch}
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
   @media(max-width:900px){.flow{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.flow{grid-template-columns:1fr}}
-  .flow-step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 18px;position:relative}
+  .flow-step{background:rgba(244,241,235,.04);border:1px solid rgba(244,241,235,.12);border-radius:14px;padding:22px 18px}
   .flow-step .fi{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
   .flow-step .fi .k{width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px}
-  .flow-step h3{font-size:14px;font-weight:500;margin-bottom:6px}
-  .flow-step p{font-size:12.5px;color:var(--ink-2);line-height:1.5}
-  .flow-note{margin-top:22px;font-size:13px;color:var(--muted);text-align:center;font-style:italic}
+  .flow-step h3{font-size:14px;font-weight:500;margin-bottom:6px;color:#F4F1EB}
+  .flow-step p{font-size:12.5px;color:rgba(244,241,235,.6);line-height:1.5}
+  .flow-note{margin-top:24px;font-size:13px;color:rgba(244,241,235,.42);text-align:center;font-style:italic}
 
-  /* TECH */
-  .tech{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
-  .tech .pill{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-2);background:var(--paper)}
+  /* PORQUE É DIFERENTE */
+  .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.diff-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.diff-grid{grid-template-columns:1fr}}
+  .diff-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+  .diff-card .tag{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--accent);line-height:1;margin-bottom:16px;display:block}
+  .diff-card h3{font-size:15.5px;font-weight:500;margin-bottom:8px;letter-spacing:-0.01em}
+  .diff-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;padding-top:28px;border-top:1px solid var(--line);align-items:center}
+  .tech .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .tech .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--ink-2);background:var(--paper)}
   .tech .pill b{color:var(--ink);font-weight:500}
-  .tech .pill .d{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .tech .pill .d{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
   /* CTA */
   .cta{background:#0E0E0C;color:#F4F1EB;border-radius:26px;padding:70px 48px;text-align:center;position:relative;overflow:hidden}
@@ -195,6 +204,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   /* reveal */
   .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -207,56 +217,35 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="rv in">
-        <span class="badge"><span class="dot"></span> Projeto FORMA · CRM Imobiliário</span>
-        <h1>ImoFlow — o CRM que <span class="serif">trabalha por si</span>.</h1>
-        <p class="lead">Leads, contactos e imóveis numa só base de dados. O ImoFlow lê os alertas do Idealista, cruza-os com o que cada cliente procura e sugere-lhe automaticamente a casa certa — enquanto escreve, por si, a mensagem para o comprador.</p>
-        <div class="actions">
-          <a href="contacto.html" class="btn btn-primary"><span>Marcar demonstração</span><span class="arr"></span></a>
-          <a href="#automacao" class="btn btn-ghost"><span>Ver a automação</span></a>
-        </div>
-        <div class="meta">
-          <div class="m"><b>1</b><span>base de dados única</span></div>
-          <div class="m"><b>9</b><span>módulos integrados</span></div>
-          <div class="m"><b>24/7</b><span>automações a correr</span></div>
-        </div>
+    <div class="rv in">
+      <span class="badge"><span class="dot"></span> Projeto FORMA · CRM Imobiliário</span>
+      <h1>O CRM que <span class="serif">trabalha por si</span>.</h1>
+      <p class="lead">O ImoFlow junta leads, contactos e imóveis numa só base de dados, e usa inteligência artificial para qualificar cada contacto, sugerir o passo seguinte e escrever as mensagens. Construído de raiz para o mercado imobiliário português.</p>
+      <div class="actions">
+        <a href="contacto.html" class="btn btn-primary"><span>Marcar demonstração</span><span class="arr"></span></a>
+        <a href="#por-dentro" class="btn btn-ghost"><span>Ver a app por dentro</span></a>
       </div>
-      <div class="phone-wrap rv in">
-        <div class="iphone" role="img" aria-label="App ImoFlow em demonstração">
-          <span class="island"></span>
-          <video autoplay muted loop playsinline preload="metadata" poster="imoflow-poster.jpg">
-            <source src="imoflow-demo.mp4" type="video/mp4">
-          </video>
-        </div>
+      <p class="hero-proof"><span class="hp-dot"></span><span>Já em uso por agências reais, incluindo a <b>Satus Imobiliária</b>.</span></p>
+    </div>
+
+    <div class="hero-shot rv in">
+      <div class="app-frame">
+        <div class="app-bar"><i></i><i></i><i></i><span class="url">app.imoflow.pt / pipeline</span></div>
+        <img src="imoflow-app-pipeline.png" width="1800" height="1012"
+             alt="Pipeline do ImoFlow: leads distribuídas pelas etapas Contacto, Qualificação, Visitas, Proposta e Negociação, com zona, tipologia e valor em cada cartão.">
       </div>
+      <p class="hero-cap">O pipeline do ImoFlow. Cada cartão mostra zona, tipologia, valor e há quantos dias a lead está parada naquela etapa.</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== PROBLEM ===================== -->
-<section class="problem sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Porque existe</span>
-      <h2>O trabalho de uma imobiliária <span class="serif">perde-se nos detalhes</span>.</h2>
-      <p>A maioria das agências gere leads em folhas de Excel, WhatsApp e caixas de email dispersas. As oportunidades escapam não por falta de imóveis — mas por falta de tempo para ligar a casa certa à pessoa certa, no momento certo.</p>
-    </div>
-    <div class="prob-grid">
-      <div class="prob-card rv"><div class="n">01</div><h3>Leads dispersas</h3><p>Contactos espalhados por portais, redes sociais e conversas. Sem histórico, sem seguimento, sem responsável claro.</p></div>
-      <div class="prob-card rv"><div class="n">02</div><h3>Matching manual</h3><p>Cada novo imóvel obriga o agente a lembrar-se, de cabeça, de quem andava à procura daquilo. A maioria fica por contactar.</p></div>
-      <div class="prob-card rv"><div class="n">03</div><h3>Follow-up esquecido</h3><p>Sem lembretes nem automações, o seguimento depende da memória. E a memória, com dezenas de leads, falha.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== HOW IT WORKS ===================== -->
+<!-- ===================== COMO FUNCIONA ===================== -->
 <section class="sec">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">Como funciona</span>
       <h2>Da primeira lead à <span class="serif">escritura</span>, num só sítio.</h2>
-      <p>O ImoFlow acompanha todo o ciclo comercial. Cada passo alimenta o seguinte — e a inteligência artificial trata do trabalho repetitivo.</p>
+      <p>A maioria das agências gere leads entre folhas de Excel, WhatsApp e caixas de email dispersas — e as oportunidades escapam não por falta de imóveis, mas por falta de tempo para ligar a casa certa à pessoa certa. O ImoFlow fecha esse ciclo em quatro passos.</p>
     </div>
     <div class="steps">
       <div class="step rv"><span class="idx">01 · CAPTAR</span><h3>Entra a lead</h3><p>Formulários do site, assistente AI ou entrada manual. Cada contacto é qualificado automaticamente pela AI.</p></div>
@@ -267,64 +256,114 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
 </section>
 
-<!-- ===================== MODULES ===================== -->
-<section class="sec" style="padding-top:0">
+<!-- ===================== A APP POR DENTRO ===================== -->
+<section class="inside sec" id="por-dentro">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">Dentro do CRM</span>
-      <h2>Nove módulos, <span class="serif">uma só ferramenta</span>.</h2>
+      <span class="eyebrow">A app por dentro</span>
+      <h2>Isto é o ImoFlow <span class="serif">a funcionar</span>.</h2>
+      <p>Não são maquetes: são ecrãs da aplicação tal como está hoje, com dados de demonstração.</p>
     </div>
-    <div class="mods">
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div><h3>Dashboard</h3><p>Visão geral do dia: leads novas, tarefas pendentes e o estado do pipeline num relance.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Leads</h3><p>Cada contacto com origem, histórico e qualificação automática por AI de 0 a 100.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="12" y2="18"/></svg></div><h3>Pipeline</h3><p>Etapas visuais do contacto à escritura. Arraste as leads e veja onde está cada negócio.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Imóveis</h3><p>Carteira completa com fotos, características e ligação directa às preferências de cada cliente.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div><h3>Pessoas &amp; Organizações</h3><p>Compradores, vendedores e parceiros com relações entre si e todo o contexto associado.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Atividades</h3><p>Tarefas, chamadas e lembretes ligados a cada lead. Nada de seguimentos esquecidos.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><polyline points="19 9 13 15 9 11 5 15"/></svg></div><h3>Relatórios</h3><p>Conversão por etapa, origem das leads e desempenho da equipa em gráficos claros.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>WhatsApp &amp; Email</h3><p>Mensagens e templates enviados a partir do CRM, com registo automático no histórico.</p></div>
-      <div class="mod rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h3>Automações</h3><p>Regras que disparam sozinhas: qualificar, notificar, agendar e responder sem intervenção.</p></div>
+
+    <!-- Contactos -->
+    <div class="feat rv">
+      <div class="feat-text">
+        <span class="k">Contactos</span>
+        <h3>Toda a gente, com contexto.</h3>
+        <p>Compradores, vendedores, investidores e consultores na mesma lista, cada um com o que procura, a zona, o orçamento e a data do último contacto.</p>
+        <ul class="feat-list">
+          <li>Perfil de cada contacto num relance: o que procura, onde e por quanto</li>
+          <li>Alerta automático quando alguém fica sem contacto há demasiado tempo</li>
+          <li>Chamada e WhatsApp diretamente da lista, com registo no histórico</li>
+        </ul>
+      </div>
+      <div class="feat-media">
+        <div class="app-frame">
+          <div class="app-bar"><i></i><i></i><i></i><span class="url">app.imoflow.pt / contactos</span></div>
+          <img src="imoflow-app-contactos.png" width="1440" height="1220" loading="lazy"
+               alt="Lista de contactos do ImoFlow com etiquetas de comprador, vendedor e investidor, o imóvel procurado, a zona, o valor e alertas de falta de contacto.">
+        </div>
+      </div>
+    </div>
+
+    <!-- Imóveis -->
+    <div class="feat flip rv">
+      <div class="feat-text">
+        <span class="k">Imóveis</span>
+        <h3>A carteira, cruzada com quem procura.</h3>
+        <p>Cada imóvel com referência, tipologia, área, zona, preço e estado. E, sobretudo, ligado às preferências de cada cliente — para saber a quem interessa sem andar à procura.</p>
+        <ul class="feat-list">
+          <li>Carteira completa com fotos, características e consultor responsável</li>
+          <li>Compradores sugeridos automaticamente para cada imóvel novo</li>
+          <li>Visitas, propostas e negociações registadas no imóvel</li>
+        </ul>
+      </div>
+      <div class="feat-media">
+        <div class="app-frame">
+          <div class="app-bar"><i></i><i></i><i></i><span class="url">app.imoflow.pt / imoveis</span></div>
+          <img src="imoflow-app-imoveis.png" width="1920" height="1180" loading="lazy"
+               alt="Carteira de imóveis do ImoFlow em tabela, com referência, tipologia, área, preço, zona e estado de cada imóvel.">
+        </div>
+      </div>
+    </div>
+
+    <!-- Automações -->
+    <div class="feat rv">
+      <div class="feat-text">
+        <span class="k">Automações</span>
+        <h3>Regras que correm sozinhas.</h3>
+        <p>Cada regra é uma frase simples: <em>quando</em> acontece isto, <em>então</em> faz aquilo. Sem programação e sem depender da memória de ninguém.</p>
+        <ul class="feat-list">
+          <li>Criar tarefas quando entra uma lead ou muda de etapa</li>
+          <li>Notificar o consultor quando uma lead fica inativa</li>
+          <li>Mover automaticamente para arrefecimento ao fim de X dias</li>
+        </ul>
+      </div>
+      <div class="feat-media">
+        <div class="app-frame">
+          <div class="app-bar"><i></i><i></i><i></i><span class="url">app.imoflow.pt / automacoes</span></div>
+          <img src="imoflow-app-automacoes.png" width="1440" height="1220" loading="lazy"
+               alt="Regras de automação do ImoFlow, cada uma com o gatilho e a ação, por exemplo quando uma lead é criada então criar atividade.">
+        </div>
+      </div>
+    </div>
+
+    <!-- IA -->
+    <div class="feat flip rv">
+      <div class="feat-text">
+        <span class="k">Inteligência artificial</span>
+        <h3>A AI faz o trabalho pesado.</h3>
+        <p>Modelos da Claude e da Groq analisam cada lead, atribuem uma pontuação de intenção e propõem o passo seguinte. O agente decide — a AI trata da escrita.</p>
+        <ul class="feat-list">
+          <li>Pontuação de intenção e resumo do perfil em segundos</li>
+          <li>Próxima melhor ação sugerida com base no histórico e na etapa</li>
+          <li>Emails e mensagens de WhatsApp redigidos, prontos a rever</li>
+        </ul>
+      </div>
+      <div class="feat-media">
+        <div class="ai-chat">
+          <div class="ch-head">
+            <div class="av">AI</div>
+            <div><b>Lead · Ana Ribeiro</b><small>T3 · Lisboa · 400–600k€</small></div>
+            <div class="score"><b>87</b><small>intenção</small></div>
+          </div>
+          <div class="bubble"><span class="lbl">Resumo da AI</span>Compradora com orçamento definido e urgência média. Já visitou 2 imóveis. Bom encaixe com a referência #A-214.</div>
+          <div class="bubble"><span class="lbl">Próxima ação sugerida</span>Enviar a referência #A-214 e propor visita para esta semana.</div>
+          <div class="bubble wa"><span class="lbl">Mensagem WhatsApp redigida</span>Olá Ana! Apareceu um T3 em Lisboa dentro do seu orçamento que encaixa no que procura. Quer que agende uma visita ainda esta semana? 🏡</div>
+        </div>
+        <p class="illus-note">Ilustração do resultado da AI, com dados fictícios.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== AI ===================== -->
-<section class="sec">
-  <div class="wrap">
-    <div class="ai-grid">
-      <div>
-        <div class="sec-head rv" style="margin-bottom:26px">
-          <span class="eyebrow">Inteligência artificial integrada</span>
-          <h2>A AI faz o <span class="serif">trabalho pesado</span>.</h2>
-          <p>Modelos da Claude e da Groq analisam cada lead e propõem o passo seguinte. O agente decide — a AI trata do resto.</p>
-        </div>
-        <div class="ai-list">
-          <div class="ai-item rv"><span class="tag">a</span><div><h3>Qualificação de leads</h3><p>Cada nova lead recebe uma pontuação de intenção e um resumo do perfil em segundos.</p></div></div>
-          <div class="ai-item rv"><span class="tag">b</span><div><h3>Próxima melhor ação</h3><p>A AI sugere o que fazer a seguir com cada contacto, com base no histórico e na etapa.</p></div></div>
-          <div class="ai-item rv"><span class="tag">c</span><div><h3>Mensagens redigidas</h3><p>Emails e mensagens de WhatsApp escritos automaticamente, prontos a rever e enviar.</p></div></div>
-        </div>
-      </div>
-      <div class="ai-chat rv">
-        <div class="ch-head">
-          <div class="av">AI</div>
-          <div><b>Lead · Ana Ribeiro</b><small>T3 · Lisboa · 400–600k€</small></div>
-          <div class="score"><b>87</b><small>intenção</small></div>
-        </div>
-        <div class="bubble"><span class="lbl">Resumo da AI</span>Compradora com orçamento definido e urgência média. Já visitou 2 imóveis. Bom encaixe com a referência #A-214.</div>
-        <div class="bubble"><span class="lbl">Próxima ação sugerida</span>Enviar a referência #A-214 e propor visita para esta semana.</div>
-        <div class="bubble wa"><span class="lbl">Mensagem WhatsApp redigida</span>Olá Ana! Apareceu um T3 em Lisboa dentro do seu orçamento que encaixa no que procura. Quer que agende uma visita ainda esta semana? 🏡</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== AUTOMATION SHOWCASE ===================== -->
+<!-- ===================== AUTOMAÇÃO IDEALISTA ===================== -->
 <section class="auto sec" id="automacao">
   <div class="wrap">
     <div class="sec-head center rv">
       <span class="eyebrow">Automação em destaque · Idealista Bot</span>
       <h2>Do alerta do Idealista à <span class="serif">mensagem certa</span>, em segundos.</h2>
-      <p>Construímos uma automação dedicada ao ImoFlow que lê os emails de alerta do Idealista, extrai os imóveis com AI e cruza-os com as leads da sua base de dados — sem qualquer scraping. Só trabalha com os alertas que já recebe.</p>
+      <p>Construímos uma automação dedicada ao ImoFlow que lê os emails de alerta do Idealista, extrai os imóveis com AI e cruza-os com as leads da sua base de dados.</p>
     </div>
 
     <div class="auto-video-frame rv">
@@ -345,21 +384,28 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
 </section>
 
-<!-- ===================== TECH ===================== -->
+<!-- ===================== PORQUE É DIFERENTE ===================== -->
 <section class="sec">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">Construído à medida</span>
-      <h2>Tecnologia <span class="serif">de produto</span>, não um template.</h2>
-      <p>O ImoFlow é software próprio, desenhado de raiz para o mercado imobiliário português — e não uma adaptação de um CRM genérico.</p>
+      <span class="eyebrow">Porque é diferente</span>
+      <h2>Não é um CRM genérico <span class="serif">com outro nome</span>.</h2>
+      <p>Há dezenas de CRMs no mercado. O ImoFlow nasceu de um problema real de agências portuguesas e foi construído, módulo a módulo, à volta dele.</p>
     </div>
-    <div class="tech">
-      <span class="pill rv"><span class="d"></span><b>Next.js</b> · aplicação web</span>
-      <span class="pill rv"><span class="d"></span><b>Supabase</b> · base de dados</span>
-      <span class="pill rv"><span class="d"></span><b>Claude &amp; Groq</b> · inteligência artificial</span>
-      <span class="pill rv"><span class="d"></span><b>Telegram</b> · aprovação de mensagens</span>
-      <span class="pill rv"><span class="d"></span><b>Gmail</b> · envio em nome do agente</span>
-      <span class="pill rv"><span class="d"></span><b>WhatsApp</b> · comunicação com o cliente</span>
+    <div class="diff-grid">
+      <div class="diff-card rv"><span class="tag">01</span><h3>Feito para Portugal</h3><p>Pensado de raiz para como as agências portuguesas trabalham — termos, fluxos e integrações locais, não a tradução de um CRM americano.</p></div>
+      <div class="diff-card rv"><span class="tag">02</span><h3>IA no centro, não um extra</h3><p>A inteligência artificial qualifica, sugere e escreve desde o primeiro dia. Não é um plugin acrescentado depois.</p></div>
+      <div class="diff-card rv"><span class="tag">03</span><h3>Automação do Idealista</h3><p>Construímos de propósito a automação que liga os alertas do Idealista às leads certas em segundos, sem qualquer scraping.</p></div>
+      <div class="diff-card rv"><span class="tag">04</span><h3>Multi-agência, uma só base</h3><p>Várias agências e equipas na mesma base, cada uma com o seu nome nas comunicações, sem perder o contexto partilhado.</p></div>
+    </div>
+    <div class="tech rv">
+      <span class="lbl">Construído com</span>
+      <span class="pill"><span class="d"></span><b>Next.js</b></span>
+      <span class="pill"><span class="d"></span><b>Supabase</b></span>
+      <span class="pill"><span class="d"></span><b>Claude &amp; Groq</b></span>
+      <span class="pill"><span class="d"></span><b>Telegram</b></span>
+      <span class="pill"><span class="d"></span><b>Gmail</b></span>
+      <span class="pill"><span class="d"></span><b>WhatsApp</b></span>
     </div>
   </div>
 </section>
