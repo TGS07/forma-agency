@@ -520,6 +520,23 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .iflow-grid{grid-template-columns:1fr;gap:40px}
     .iflow-text h2{font-size:clamp(28px,8vw,42px);line-height:1.1}
   }
+  /* --- Tela horizontal (desktop) com o anúncio em 16:9 --- */
+  .iflow-screen{display:none;position:relative;width:100%;border-radius:20px;overflow:hidden;
+    border:1px solid var(--line);background:var(--ink);
+    box-shadow:0 50px 100px -50px rgba(14,14,12,.42), 0 20px 50px -30px rgba(14,14,12,.22)}
+  .iflow-screen .auto-video{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .auto-fs{position:absolute;right:14px;bottom:14px;z-index:3;
+    width:42px;height:42px;border-radius:12px;border:0;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:rgba(247,245,240,.16);color:#F7F5F0;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:inset 0 0 0 1px rgba(247,245,240,.24);
+    opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease,background .2s ease}
+  .iflow-screen:hover .auto-fs,.iflow-screen:focus-within .auto-fs{opacity:1;transform:none}
+  .auto-fs:hover{background:rgba(247,245,240,.28)}
+  .auto-fs svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  @media (hover:none){.auto-fs{opacity:1;transform:none}}
+
   /* --- iPhone 16 com o vídeo de apresentação do ImoFlow --- */
   .iflow-phone-wrap{position:relative;display:flex;justify-content:center;align-items:center;padding:10px 0}
   .iflow-phone-glow{position:absolute;width:78%;height:62%;border-radius:50%;
@@ -584,6 +601,13 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   }
   @media (max-width:780px){
     .iphone16{height:min(60vh,480px)}
+  }
+  /* Acima do ponto em que a secção passa a duas colunas mostramos a tela
+     horizontal; abaixo dele, o telemóvel. Nunca os dois ao mesmo tempo.
+     Tem de vir depois das regras acima para as poder anular. */
+  @media (min-width:981px){
+    .iflow-screen{display:block}
+    .iflow-phone-wrap{display:none}
   }
 
   .who{background:var(--bg-2)}
@@ -1558,6 +1582,19 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <p class="iflow-proof" data-i18n="auto.proof">Já em uso pela Satus Imobiliária.</p>
       </div>
       <div class="iflow-media">
+        <!-- Desktop: tela horizontal, com a versão do anúncio em 16:9 -->
+        <div class="iflow-screen">
+          <video class="auto-video" autoplay muted loop playsinline preload="metadata"
+                 poster="imoflow-anuncio-desktop-poster.jpg" onclick="imoflowFullscreen(this)"
+                 aria-label="Vídeo de apresentação do ImoFlow, o CRM imobiliário da FORMA">
+            <source src="imoflow-anuncio-desktop.mp4" type="video/mp4">
+          </video>
+          <button class="auto-fs" type="button" onclick="imoflowFullscreen(this)"
+                  aria-label="Ver o vídeo em ecrã inteiro" title="Ecrã inteiro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          </button>
+        </div>
+        <!-- Telemóvel: a versão vertical, dentro do iPhone -->
         <div class="iflow-phone-wrap">
           <div class="iflow-phone-glow" aria-hidden="true"></div>
           <div class="iphone16">
@@ -1587,7 +1624,12 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
      o próprio vídeo, o botão sobre o ecrã e o botão por baixo do telemóvel. */
   function imoflowFullscreen(el){
     var media = el.closest('.iflow-media');
-    var v = media ? media.querySelector('video') : null;
+    if(!media) return;
+    /* Há dois vídeos — o horizontal e o do telemóvel — e só um está visível
+       de cada vez. offsetParent é nulo quando o elemento está em display:none. */
+    var v = null, vids = media.querySelectorAll('video');
+    for(var i=0;i<vids.length;i++){ if(vids[i].offsetParent !== null){ v = vids[i]; break; } }
+    if(!v) v = vids[0];
     if(!v) return;
     if(v.requestFullscreen){ v.requestFullscreen(); }
     else if(v.webkitEnterFullscreen){ v.webkitEnterFullscreen(); }   /* iOS Safari */
