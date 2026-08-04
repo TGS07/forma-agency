@@ -484,22 +484,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .service-card .visual{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FAF7F1 0%, #F0EBE0 100%);overflow:hidden}
   .service-card .visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle, rgba(140,90,58,.18), transparent 70%);filter:blur(40px)}
   .service-card .visual svg{position:relative;z-index:1;max-width:78%;max-height:78%;width:auto;height:auto}
-  /* iPhone 16 app showcase — CRM card (ImoFlow) */
-  .visual--phone{padding:16px 0;overflow:visible}
-  .iphone{
-    position:relative;z-index:2;height:min(90%,760px);aspect-ratio:393/852;
-    background:#050506;border-radius:15% / 7%;padding:4px;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),
-               0 44px 76px -30px rgba(14,14,12,.5),0 14px 26px -16px rgba(14,14,12,.3);
-  }
-  .iphone-screen{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;
-    border-radius:14% / 6.4%;background:#F4F1EB}
-  .iphone-island{position:absolute;top:2%;left:50%;transform:translateX(-50%);z-index:4;
-    width:22%;height:2.9%;min-height:14px;background:#000;border-radius:99px}
-  @media (max-width:980px){
-    .service-card .visual--phone{aspect-ratio:auto !important;min-height:0;height:auto;padding:28px 12px}
-    .visual--phone .iphone{height:min(72vh,560px);padding:3px}
-  }
   /* Cobe globe */
   .globe-wrap{position:relative;z-index:1;width:78%;max-width:480px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
   .cobe-canvas{
@@ -536,26 +520,42 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .iflow-grid{grid-template-columns:1fr;gap:40px}
     .iflow-text h2{font-size:clamp(28px,8vw,42px);line-height:1.1}
   }
-  .auto-video-frame{margin:0;border-radius:24px;overflow:hidden;position:relative;
-    border:1px solid var(--line);background:var(--ink);
-    box-shadow:0 50px 100px -50px rgba(14,14,12,.42), 0 20px 50px -30px rgba(14,14,12,.22)}
-  .auto-video{display:block;width:100%;height:auto;aspect-ratio:16/9}
-  /* HUD do vídeo de automação */
-  .auto-hud{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:16px 18px;background:linear-gradient(0deg, rgba(14,14,12,.5), rgba(14,14,12,0));
-    opacity:0;transition:opacity .3s ease;pointer-events:none}
-  .auto-video-frame:hover .auto-hud,.auto-video-frame:focus-within .auto-hud{opacity:1;pointer-events:auto}
-  .auto-hud-label{display:inline-flex;align-items:center;gap:9px;color:#fff;font-size:13px;font-weight:600;letter-spacing:.02em;
-    background:rgba(0,0,0,.4);padding:8px 14px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-  .auto-hud-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:autoHudPulse 2s ease-out infinite}
-  @keyframes autoHudPulse{0%{box-shadow:0 0 0 0 rgba(140,90,58,.55)}70%{box-shadow:0 0 0 8px rgba(140,90,58,0)}100%{box-shadow:0 0 0 0 rgba(140,90,58,0)}}
-  .auto-fs{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;cursor:pointer;
-    background:rgba(255,255,255,.92);border:none;color:#0E0E0C;transition:background .2s ease,transform .2s ease}
-  .auto-fs:hover{background:#fff;transform:translateY(-1px)}
-  .auto-fs svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  @media (hover:none){.auto-video-frame .auto-hud{opacity:1;pointer-events:auto}}
+  /* --- iPhone 16 com o vídeo de apresentação do ImoFlow --- */
+  .iflow-phone-wrap{position:relative;display:flex;justify-content:center;align-items:center;padding:10px 0}
+  .iflow-phone-glow{position:absolute;width:78%;height:62%;border-radius:50%;
+    background:radial-gradient(circle, rgba(140,90,58,.26), transparent 68%);filter:blur(56px);pointer-events:none}
+  .iphone16{
+    position:relative;z-index:1;
+    height:min(74vh,660px);aspect-ratio:396/856;
+    background:linear-gradient(150deg,#4a4a4d 0%,#232326 26%,#111113 52%,#2c2c30 78%,#57575b 100%);
+    border-radius:15.4% / 7.1%;
+    padding:0.85%;
+    box-shadow:
+      0 60px 110px -45px rgba(14,14,12,.55),
+      0 22px 46px -28px rgba(14,14,12,.35),
+      inset 0 0 0 1px rgba(255,255,255,.16);
+  }
+  /* linha de brilho a contornar o aro, como no titânio polido */
+  .iphone16::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,.34) 0%,transparent 22%,transparent 78%,rgba(255,255,255,.22) 100%);
+    mix-blend-mode:screen;opacity:.5}
+  .iphone16-screen{
+    width:100%;height:100%;display:block;object-fit:cover;
+    border-radius:14.6% / 6.7%;background:#17130E;
+  }
+  .iphone16-island{
+    position:absolute;top:1.5%;left:50%;transform:translateX(-50%);z-index:3;
+    width:30%;height:3.5%;min-height:16px;background:#000;border-radius:99px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  /* botões laterais */
+  .iphone16::before{content:"";position:absolute;right:-2px;top:26%;width:2px;height:11%;
+    background:linear-gradient(180deg,#6a6a6e,#3a3a3d);border-radius:0 2px 2px 0}
+  @media (max-width:980px){
+    .iphone16{height:min(66vh,560px)}
+  }
   @media (max-width:780px){
-    .auto-video-frame{border-radius:16px}
+    .iphone16{height:min(60vh,480px)}
   }
 
   .who{background:var(--bg-2)}
@@ -1265,7 +1265,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <div class="section-head" style="text-align:center;align-items:center">
       <div class="head-side" style="display:flex;flex-direction:column;align-items:center">
         <h2 data-i18n="serv.h">Tudo o que precisa para <span class="serif">vender mais</span>.</h2>
-        <p style="margin-top:16px;text-align:center" class="lead" data-i18n="serv.lead">Seis serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da sua agência.</p>
+        <p style="margin-top:16px;text-align:center" class="lead" data-i18n="serv.lead">Cinco serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da sua agência.</p>
       </div>
     </div>
 
@@ -1420,34 +1420,10 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
             </svg>
           </div>
         </article>
-              <article class="service-card" data-idx="3">
-          <div class="text">
-            <div class="top">
-              <span class="tag"><span class="num">04</span><span data-i18n="serv.4.tag">CRM Imobiliário</span></span>
-              <h3 data-i18n="serv.4.h">Um CRM que <em>trabalha por si</em>.</h3>
-              <p class="desc" data-i18n="serv.4.d">Cada lead, contacto e imóvel numa só base de dados. O nosso CRM lê os alertas do Idealista, cruza-os com os interesses de cada cliente e sugere-lhe automaticamente a casa certa, <em>sem andar à procura</em>.</p>
-            </div>
-            <ul class="features">
-              <li data-i18n="serv.4.f1">Base de dados de leads, contactos e imóveis</li>
-              <li data-i18n="serv.4.f2">Pipeline visual do contacto à escritura</li>
-              <li data-i18n="serv.4.f3">Recomendações automáticas de imóveis por cliente</li>
-              <li data-i18n="serv.4.f4">Follow-ups por email e WhatsApp automatizados</li>
-            </ul>
-          </div>
-          <div class="visual visual--phone">
-            <div class="glow"></div>
-            <div class="iphone" role="img" aria-label="App ImoFlow — o CRM imobiliário da FORMA, em demonstração">
-              <span class="iphone-island"></span>
-              <video class="iphone-screen" autoplay muted loop playsinline preload="metadata" poster="imoflow-poster.jpg">
-                <source src="imoflow-demo.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </article>
               <article class="service-card" data-idx="4">
           <div class="text">
             <div class="top">
-              <span class="tag"><span class="num">05</span><span data-i18n="serv.5.tag">Captação Internacional</span></span>
+              <span class="tag"><span class="num">04</span><span data-i18n="serv.5.tag">Captação Internacional</span></span>
               <h3 data-i18n="serv.5.h">Leads de <em>qualquer parte</em>.</h3>
               <p class="desc" data-i18n="serv.5.d">Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: Inglaterra, Espanha, França, Alemanha, Brasil, com campanhas e conteúdos adaptados a cada origem.</p>
             </div>
@@ -1482,7 +1458,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
               <article class="service-card" data-idx="5">
           <div class="text">
             <div class="top">
-              <span class="tag"><span class="num">06</span><span data-i18n="serv.6.tag">Assistente AI 24/7</span></span>
+              <span class="tag"><span class="num">05</span><span data-i18n="serv.6.tag">Assistente AI 24/7</span></span>
               <h3 data-i18n="serv.6.h">Atendimento <em>a qualquer hora</em>.</h3>
               <p class="desc" data-i18n="serv.6.d">Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.</p>
             </div>
@@ -1554,33 +1530,22 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <p class="iflow-proof" data-i18n="auto.proof">Já em uso pela Satus Imobiliária.</p>
       </div>
       <div class="iflow-media">
-        <div class="auto-video-frame">
-          <video class="auto-video" autoplay muted loop playsinline preload="metadata" poster="forma-automacao-idealista-poster.jpg">
-            <source src="forma-automacao-idealista.mp4" type="video/mp4">
-          </video>
-          <div class="auto-hud">
-            <span class="auto-hud-label"><span class="auto-hud-dot"></span><span data-i18n="auto.badge">Vídeo demonstrativo</span></span>
-            <button class="auto-fs" type="button" aria-label="Ver em ecrã inteiro" title="Ecrã inteiro" onclick="autoFullscreen(this)">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-            </button>
+        <div class="iflow-phone-wrap">
+          <div class="iflow-phone-glow" aria-hidden="true"></div>
+          <div class="iphone16">
+            <span class="iphone16-island" aria-hidden="true"></span>
+            <video class="iphone16-screen" autoplay muted loop playsinline preload="metadata"
+                   poster="imoflow-anuncio-poster.jpg"
+                   aria-label="Vídeo de apresentação do ImoFlow, o CRM imobiliário da FORMA">
+              <source src="imoflow-anuncio.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
-        <p class="iflow-cap" data-i18n="auto.cap">No vídeo: a automação que liga os alertas do Idealista às leads certas, em segundos.</p>
+        <p class="iflow-cap" data-i18n="auto.cap">No vídeo: o ImoFlow por dentro, dos contactos ao pipeline e às automações.</p>
       </div>
     </div>
   </div>
 </section>
-<script>
-  function autoFullscreen(btn){
-    var frame = btn.closest('.auto-video-frame');
-    var v = frame ? frame.querySelector('video') : null;
-    if(!v) return;
-    if(v.requestFullscreen){ v.requestFullscreen(); }
-    else if(v.webkitEnterFullscreen){ v.webkitEnterFullscreen(); }      /* iOS Safari */
-    else if(v.webkitRequestFullscreen){ v.webkitRequestFullscreen(); }
-    else if(frame.requestFullscreen){ frame.requestFullscreen(); }
-  }
-</script>
 
 <!-- ============ WHO ============ -->
 <section class="who section-pad" id="who">
@@ -1952,20 +1917,18 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p2h": "Mais leads qualificadas", "about.p2p": "SEO técnico, copy orientada a conversão e formulários inteligentes. Os nossos clientes triplicam pedidos de contacto em média.",
     "about.p3h": "Tráfego internacional", "about.p3p": "Multi-idioma de raiz e SEO geo-segmentado. Captas compradores do Reino Unido, França e Brasil que pesquisam em casa.",
     "serv.eye": "Serviços", "serv.h": "Tudo o que precisa para <span class=\"serif\">vender mais</span>.",
-    "serv.lead": "Seis serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da sua agência.",
+    "serv.lead": "Cinco serviços que se completam. Trabalhamos em pacotes ou módulos individuais, adaptados à fase da sua agência.",
     "serv.1.tag":"Websites","serv.1.h":"Websites que <em>convertem</em>.","serv.1.d":"Sites <em>eficazes</em>, com design único para a sua marca, pensados para converter visitantes em leads desde o primeiro segundo.",
     "serv.1.f1":"Design exclusivo para a sua agência","serv.1.f2":"Formulários e captação de leads","serv.1.f3":"Otimizado para mobile","serv.1.f4":"Carregamento ultra-rápido",
     "serv.2.tag":"SEO","serv.2.h":"SEO que o coloca <em>em primeiro</em>.","serv.2.d":"Aparecer no Google quando alguém procura \"comprar casa em Lisboa\" deixou de ser <em>opcional</em>. Otimizamos cada palavra, cada imagem, cada milissegundo.",
     "serv.2.f1":"Pesquisa de palavras-chave do setor","serv.2.f2":"SEO técnico e Core Web Vitals","serv.2.f3":"Otimização on-page e off-page","serv.2.f4":"Relatórios mensais transparentes",
     "serv.3.tag":"Branding","serv.3.h":"Identidade visual com <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografia e sistema visual. Uma marca que se distingue das outras imobiliárias da sua zona e que comunica <em>confiança</em> em qualquer língua.",
     "serv.3.f1":"Logo e marca completa","serv.3.f2":"Brand book e guidelines","serv.3.f3":"Cartões, sinalética, templates","serv.3.f4":"Direção criativa contínua",
-    "serv.4.tag":"CRM Imobiliário","serv.4.h":"Um CRM que <em>trabalha por si</em>.","serv.4.d":"Cada lead, contacto e imóvel numa só base de dados. O nosso CRM lê os alertas do Idealista, cruza-os com os interesses de cada cliente e sugere-lhe automaticamente a casa certa, <em>sem andar à procura</em>.",
-    "serv.4.more":"Saber mais sobre o ImoFlow","serv.4.f1":"Base de dados de leads, contactos e imóveis","serv.4.f2":"Pipeline visual do contacto à escritura","serv.4.f3":"Recomendações automáticas de imóveis por cliente","serv.4.f4":"Follow-ups por email e WhatsApp automatizados",
     "serv.5.tag":"Captação Internacional","serv.5.h":"Leads de <em>qualquer parte</em>.","serv.5.d":"Não basta ter um site multi-idioma. Construímos estratégias dirigidas a mercados específicos: Inglaterra, Espanha, França, Alemanha, Brasil, com campanhas e conteúdos adaptados a cada origem.",
     "serv.5.f1":"Targeting por país e perfil de comprador","serv.5.f2":"Landing pages traduzidas e otimizadas","serv.5.f3":"Anúncios em vídeo na língua do comprador","serv.5.f4":"Relatórios por país de origem das leads",
     "serv.6.tag":"Assistente AI 24/7","serv.6.h":"Atendimento <em>a qualquer hora</em>.","serv.6.d":"Um assistente virtual no seu site que conversa com cada visitante, responde em 3 línguas a qualquer hora e encaminha a lead para a sua equipa em segundos.",
     "serv.6.f1":"Assistente virtual 24/7 no seu site","serv.6.f2":"Conversa em PT · EN · ES a qualquer hora","serv.6.f3":"Qualifica o interesse de cada visitante","serv.6.f4":"Encaminha a lead para a equipa por WhatsApp",
-    "auto.eye":"ImoFlow · O CRM imobiliário da FORMA","auto.h":"Apresentamos o <span class=\"serif\">ImoFlow</span>.","auto.lead":"O ImoFlow é o CRM imobiliário que construímos de raiz para o mercado português — não um CRM genérico adaptado. Junta leads, contactos e imóveis numa só base de dados e usa inteligência artificial para qualificar cada lead, sugerir a próxima ação e escrever emails e WhatsApp por si.","auto.p1":"Leads, imóveis e pipeline num só sítio, do primeiro contacto à escritura","auto.p2":"AI que qualifica leads, sugere a próxima ação e redige as mensagens","auto.p3":"Automações 24/7, como a que lê os alertas do Idealista e sugere a casa certa a cada cliente","auto.p4":"Feito à medida do imobiliário português, com WhatsApp, Telegram e Idealista já ligados","auto.proof":"Já em uso pela Satus Imobiliária.","auto.cap":"No vídeo: a automação que liga os alertas do Idealista às leads certas, em segundos.","auto.badge":"Vídeo demonstrativo","auto.more":"Descobrir o ImoFlow",
+    "auto.eye":"ImoFlow · O CRM imobiliário da FORMA","auto.h":"Apresentamos o <span class=\"serif\">ImoFlow</span>.","auto.lead":"O ImoFlow é o CRM imobiliário que construímos de raiz para o mercado português — não um CRM genérico adaptado. Junta leads, contactos e imóveis numa só base de dados e usa inteligência artificial para qualificar cada lead, sugerir a próxima ação e escrever emails e WhatsApp por si.","auto.p1":"Leads, imóveis e pipeline num só sítio, do primeiro contacto à escritura","auto.p2":"AI que qualifica leads, sugere a próxima ação e redige as mensagens","auto.p3":"Automações 24/7, como a que lê os alertas do Idealista e sugere a casa certa a cada cliente","auto.p4":"Feito à medida do imobiliário português, com WhatsApp, Telegram e Idealista já ligados","auto.proof":"Já em uso pela Satus Imobiliária.","auto.cap":"No vídeo: o ImoFlow por dentro, dos contactos ao pipeline e às automações.","auto.badge":"Vídeo demonstrativo","auto.more":"Descobrir o ImoFlow",
     "who.eye":"Para quem trabalhamos","who.h":"Trabalhamos melhor com <span class=\"serif\">parceiros certos</span>.","who.lead":"Cada parceria começa pelo encaixe certo.","who.swipe":"Arraste para o lado",
     "who.y.t":"Trabalhamos com","who.y.h":"Imobiliárias que querem <em>crescer</em>.","who.y.s":"Agências com vontade real de evoluir, dispostas a investir tempo e qualidade no marketing.",
     "who.y.1":"Agências que querem leads internacionais e estão dispostas a comunicar em várias línguas.",
@@ -2013,20 +1976,18 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p2h":"3× more qualified leads","about.p2p":"Technical SEO, conversion-led copy and smart forms. Our clients triple contact requests on average.",
     "about.p3h":"+60% international traffic","about.p3p":"Multi-language from day one and geo-targeted SEO. You capture UK, French and Brazilian buyers searching from home.",
     "serv.eye":"Services","serv.h":"Everything you need to <span class=\"serif\">sell more</span>.",
-    "serv.lead":"Six services that compound. We work in packages or individual modules, tailored to your agency's stage.",
+    "serv.lead":"Five services that compound. We work in packages or individual modules, tailored to your agency's stage.",
     "serv.1.tag":"Websites","serv.1.h":"Websites that <em>convert</em>.","serv.1.d":"<em>Fast</em> sites with a unique design for your brand, built to turn visitors into leads from the very first second.",
     "serv.1.f1":"Exclusive design for your agency","serv.1.f2":"Lead capture forms","serv.1.f3":"Mobile optimized","serv.1.f4":"Ultra-fast loading",
     "serv.2.tag":"SEO","serv.2.h":"SEO that puts you <em>first</em>.","serv.2.d":"Showing up on Google when someone searches \"buy house in Lisbon\" is no longer <em>optional</em>. We optimize every word, every image, every millisecond.",
     "serv.2.f1":"Industry keyword research","serv.2.f2":"Technical SEO & Core Web Vitals","serv.2.f3":"On-page & off-page optimization","serv.2.f4":"Transparent monthly reports",
     "serv.3.tag":"Branding","serv.3.h":"Visual identity with <em>character</em>.","serv.3.d":"Logo, palette, typography and visual system. A brand that stands out from other agencies in your area, and communicates trust in any language.",
     "serv.3.f1":"Logo and complete brand","serv.3.f2":"Brand book and guidelines","serv.3.f3":"Cards, signage, templates","serv.3.f4":"Ongoing creative direction",
-    "serv.4.tag":"Real Estate CRM","serv.4.h":"A CRM that <em>works for you</em>.","serv.4.d":"Every lead, contact and property in one database. Our CRM reads Idealista alerts, matches them to each client's interests and automatically suggests the right home, <em>no manual searching</em>.",
-    "serv.4.more":"Learn more about ImoFlow","serv.4.f1":"Database of leads, contacts and properties","serv.4.f2":"Visual pipeline from first contact to closing","serv.4.f3":"Automatic property recommendations per client","serv.4.f4":"Automated email & WhatsApp follow-ups",
     "serv.5.tag":"International Reach","serv.5.h":"Leads from <em>anywhere</em>.","serv.5.d":"A multi-language site isn't enough. We build strategies targeted at specific markets: UK, Spain, France, Germany, Brazil, with campaigns, content and funnels adapted to <em>each origin</em>.",
     "serv.5.f1":"Targeting by country and buyer profile","serv.5.f2":"Translated, optimized landing pages","serv.5.f3":"Video ads in the buyer's language","serv.5.f4":"Reports by lead country of origin",
     "serv.6.tag":"24/7 AI Assistant","serv.6.h":"Support <em>around the clock</em>.","serv.6.d":"A virtual assistant on your site that chats with every visitor, answers in 3 languages at any hour and routes the lead to your team in seconds.",
     "serv.6.f1":"24/7 virtual assistant on your site","serv.6.f2":"Chats in PT · EN · ES at any hour","serv.6.f3":"Qualifies each visitor's interest","serv.6.f4":"Routes the lead to your team via WhatsApp",
-    "auto.eye":"ImoFlow · FORMA's real-estate CRM","auto.h":"Meet <span class=\"serif\">ImoFlow</span>.","auto.lead":"ImoFlow is the real-estate CRM we built from scratch for the Portuguese market — not a generic CRM bolted on. It brings leads, contacts and properties into one database and uses AI to qualify every lead, suggest the next step and write emails and WhatsApp messages for you.","auto.p1":"Leads, properties and pipeline in one place, from first contact to closing","auto.p2":"AI that qualifies leads, suggests the next action and drafts your messages","auto.p3":"Automations running 24/7, like the one that reads Idealista alerts and matches the right home to each client","auto.p4":"Built specifically for Portuguese real estate, with WhatsApp, Telegram and Idealista already connected","auto.proof":"Already in use by Satus Imobiliária.","auto.cap":"In the video: the automation that connects Idealista alerts to the right leads, in seconds.","auto.badge":"Demo video","auto.more":"Discover ImoFlow",
+    "auto.eye":"ImoFlow · FORMA's real-estate CRM","auto.h":"Meet <span class=\"serif\">ImoFlow</span>.","auto.lead":"ImoFlow is the real-estate CRM we built from scratch for the Portuguese market — not a generic CRM bolted on. It brings leads, contacts and properties into one database and uses AI to qualify every lead, suggest the next step and write emails and WhatsApp messages for you.","auto.p1":"Leads, properties and pipeline in one place, from first contact to closing","auto.p2":"AI that qualifies leads, suggests the next action and drafts your messages","auto.p3":"Automations running 24/7, like the one that reads Idealista alerts and matches the right home to each client","auto.p4":"Built specifically for Portuguese real estate, with WhatsApp, Telegram and Idealista already connected","auto.proof":"Already in use by Satus Imobiliária.","auto.cap":"In the video: inside ImoFlow, from contacts to pipeline and automations.","auto.badge":"Demo video","auto.more":"Discover ImoFlow",
     "who.eye":"Who we work with","who.h":"We work best with <span class=\"serif\">the right partners</span>.","who.lead":"Being honest about fit saves everyone time. See if we're for you.","who.swipe":"Swipe to see more",
     "who.y.t":"We work with","who.y.h":"Agencies that want to <em>grow</em>.","who.y.s":"Agencies with real drive to evolve, willing to invest time and quality in marketing.",
     "who.y.1":"Agencies that want international leads and are willing to communicate in multiple languages.",
@@ -2074,20 +2035,18 @@ const dict = /*EDITMODE-BEGIN*/{
     "about.p2h":"3× más leads cualificados","about.p2p":"SEO técnico, copy orientada a conversión y formularios inteligentes. Nuestros clientes triplican contactos de media.",
     "about.p3h":"+60% tráfico internacional","about.p3p":"Multi-idioma desde el inicio y SEO geo-segmentado. Captas compradores de Reino Unido, Francia y Brasil que buscan desde casa.",
     "serv.eye":"Servicios","serv.h":"Todo lo que necesitas para <span class=\"serif\">vender más</span>.",
-    "serv.lead":"Seis servicios que se complementan. Trabajamos en paquetes o módulos individuales, adaptados a la fase de tu agencia.",
+    "serv.lead":"Cinco servicios que se complementan. Trabajamos en paquetes o módulos individuales, adaptados a la fase de tu agencia.",
     "serv.1.tag":"Webs","serv.1.h":"Webs que <em>convierten</em>.","serv.1.d":"Webs <em>rápidas</em>, con diseño único para tu marca, pensadas para convertir visitantes en leads desde el primer segundo.",
     "serv.1.f1":"Diseño exclusivo para tu agencia","serv.1.f2":"Formularios y captación de leads","serv.1.f3":"Optimizado para móvil","serv.1.f4":"Carga ultrarrápida",
     "serv.2.tag":"SEO","serv.2.h":"SEO que te pone <em>el primero</em>.","serv.2.d":"Aparecer en Google cuando alguien busca \"comprar casa en Lisboa\" ya no es <em>opcional</em>. Optimizamos cada palabra, cada imagen, cada milisegundo.",
     "serv.2.f1":"Investigación de keywords del sector","serv.2.f2":"SEO técnico y Core Web Vitals","serv.2.f3":"Optimización on-page y off-page","serv.2.f4":"Informes mensuales transparentes",
     "serv.3.tag":"Branding","serv.3.h":"Identidad visual con <em>carácter</em>.","serv.3.d":"Logo, paleta, tipografía y sistema visual. Una marca que destaca de otras inmobiliarias, y comunica confianza en cualquier idioma.",
     "serv.3.f1":"Logo y marca completa","serv.3.f2":"Brand book y guidelines","serv.3.f3":"Tarjetas, señalética, plantillas","serv.3.f4":"Dirección creativa continua",
-    "serv.4.tag":"CRM Inmobiliario","serv.4.h":"Un CRM que <em>trabaja por ti</em>.","serv.4.d":"Cada lead, contacto e inmueble en una sola base de datos. Nuestro CRM lee las alertas de Idealista, las cruza con los intereses de cada cliente y le sugiere automáticamente la casa adecuada, <em>sin buscar a mano</em>.",
-    "serv.4.more":"Saber más sobre ImoFlow","serv.4.f1":"Base de datos de leads, contactos e inmuebles","serv.4.f2":"Pipeline visual del primer contacto a la escritura","serv.4.f3":"Recomendaciones automáticas de inmuebles por cliente","serv.4.f4":"Follow-ups por email y WhatsApp automatizados",
     "serv.5.tag":"Captación Internacional","serv.5.h":"Leads de <em>cualquier parte</em>.","serv.5.d":"Una web multi-idioma no basta. Construimos estrategias dirigidas a mercados específicos: UK, España, Francia, Alemania, Brasil, con campañas, contenido y funnels adaptados a <em>cada origen</em>.",
     "serv.5.f1":"Targeting por país y perfil de comprador","serv.5.f2":"Landing pages traducidas y optimizadas","serv.5.f3":"Anuncios en vídeo en el idioma del comprador","serv.5.f4":"Informes por país de origen de las leads",
     "serv.6.tag":"Asistente AI 24/7","serv.6.h":"Atención <em>a cualquier hora</em>.","serv.6.d":"Un asistente virtual en tu web que conversa con cada visitante, responde en 3 idiomas a cualquier hora y envía la lead a tu equipo en segundos.",
     "serv.6.f1":"Asistente virtual 24/7 en tu web","serv.6.f2":"Conversa en PT · EN · ES a cualquier hora","serv.6.f3":"Cualifica el interés de cada visitante","serv.6.f4":"Envía la lead a tu equipo por WhatsApp",
-    "auto.eye":"ImoFlow · El CRM inmobiliario de FORMA","auto.h":"Le presentamos <span class=\"serif\">ImoFlow</span>.","auto.lead":"ImoFlow es el CRM inmobiliario que construimos desde cero para el mercado portugués — no un CRM genérico adaptado. Reúne leads, contactos e inmuebles en una sola base de datos y usa inteligencia artificial para calificar cada lead, sugerir el siguiente paso y escribir emails y WhatsApp por usted.","auto.p1":"Leads, inmuebles y pipeline en un solo lugar, del primer contacto a la escritura","auto.p2":"AI que califica leads, sugiere la siguiente acción y redacta sus mensajes","auto.p3":"Automatizaciones 24/7, como la que lee las alertas de Idealista y sugiere la casa adecuada a cada cliente","auto.p4":"Hecho a medida para el sector inmobiliario portugués, con WhatsApp, Telegram e Idealista ya conectados","auto.proof":"Ya en uso por Satus Imobiliária.","auto.cap":"En el vídeo: la automatización que conecta las alertas de Idealista con los leads adecuados, en segundos.","auto.badge":"Vídeo demostrativo","auto.more":"Descubrir ImoFlow",
+    "auto.eye":"ImoFlow · El CRM inmobiliario de FORMA","auto.h":"Le presentamos <span class=\"serif\">ImoFlow</span>.","auto.lead":"ImoFlow es el CRM inmobiliario que construimos desde cero para el mercado portugués — no un CRM genérico adaptado. Reúne leads, contactos e inmuebles en una sola base de datos y usa inteligencia artificial para calificar cada lead, sugerir el siguiente paso y escribir emails y WhatsApp por usted.","auto.p1":"Leads, inmuebles y pipeline en un solo lugar, del primer contacto a la escritura","auto.p2":"AI que califica leads, sugiere la siguiente acción y redacta sus mensajes","auto.p3":"Automatizaciones 24/7, como la que lee las alertas de Idealista y sugiere la casa adecuada a cada cliente","auto.p4":"Hecho a medida para el sector inmobiliario portugués, con WhatsApp, Telegram e Idealista ya conectados","auto.proof":"Ya en uso por Satus Imobiliária.","auto.cap":"En el vídeo: ImoFlow por dentro, de los contactos al pipeline y las automatizaciones.","auto.badge":"Vídeo demostrativo","auto.more":"Descubrir ImoFlow",
     "who.eye":"Con quién trabajamos","who.h":"Trabajamos mejor con <span class=\"serif\">socios adecuados</span>.","who.lead":"Ser honestos sobre el encaje ahorra tiempo a todos. Mira si somos para ti.","who.swipe":"Desliza para ver más",
     "who.y.t":"Trabajamos con","who.y.h":"Inmobiliarias que quieren <em>crecer</em>.","who.y.s":"Agencias con ganas reales de evolucionar, dispuestas a invertir tiempo y calidad en marketing.",
     "who.y.1":"Agencias que quieren leads internacionales y comunicar en varios idiomas.",
