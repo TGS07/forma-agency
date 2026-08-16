@@ -28,8 +28,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .serif{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
-  em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:1.05em}
+  .serif{font-family:inherit;font-style:normal;font-weight:inherit;color:var(--accent)}
+  em{font-family:inherit;font-style:normal;font-weight:inherit;color:var(--accent);font-size:inherit}
   .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
   @media(max-width:780px){.wrap{padding:0 22px}}
 
@@ -363,7 +363,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   <div class="wrap">
     <div class="sec-head center rv">
       <span class="eyebrow">Automação em destaque · Idealista Bot</span>
-      <h2>Do alerta do Idealista à <span class="serif">mensagem certa</span>, em segundos.</h2>
+      <h2>Do alerta do Idealista à <span class="serif">mensagem certa</span>.</h2>
       <p>Construímos uma automação dedicada ao ImoFlow que lê os emails de alerta do Idealista, extrai os imóveis com AI e cruza-os com as leads da sua base de dados.</p>
     </div>
 
@@ -398,15 +398,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <div class="diff-card rv"><span class="tag">02</span><h3>IA no centro, não um extra</h3><p>A inteligência artificial qualifica, sugere e escreve desde o primeiro dia. Não é um plugin acrescentado depois.</p></div>
       <div class="diff-card rv"><span class="tag">03</span><h3>Automação do Idealista</h3><p>Construímos de propósito a automação que liga os alertas do Idealista às leads certas em segundos, sem qualquer scraping.</p></div>
       <div class="diff-card rv"><span class="tag">04</span><h3>Multi-agência, uma só base</h3><p>Várias agências e equipas na mesma base, cada uma com o seu nome nas comunicações, sem perder o contexto partilhado.</p></div>
-    </div>
-    <div class="tech rv">
-      <span class="lbl">Construído com</span>
-      <span class="pill"><span class="d"></span><b>Next.js</b></span>
-      <span class="pill"><span class="d"></span><b>Supabase</b></span>
-      <span class="pill"><span class="d"></span><b>Claude &amp; Groq</b></span>
-      <span class="pill"><span class="d"></span><b>Telegram</b></span>
-      <span class="pill"><span class="d"></span><b>Gmail</b></span>
-      <span class="pill"><span class="d"></span><b>WhatsApp</b></span>
     </div>
   </div>
 </section>
