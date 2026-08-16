@@ -216,21 +216,23 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .tech .pill .d{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
   /* ===== CTA ===== */
-  .cta{background:#0E0E0C;color:#F4F1EB;border-radius:28px;padding:80px 56px;text-align:center;position:relative;overflow:hidden}
-  .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(140,90,58,.32),transparent 65%);pointer-events:none}
-  .cta::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(140,90,58,.3),transparent)}
-  .cta .in{position:relative;z-index:1}
-  .cta h2{font-size:clamp(32px,4.8vw,54px);font-weight:300;letter-spacing:-0.035em;line-height:1.02;margin-bottom:20px}
-  .cta p{font-size:17px;color:rgba(244,241,235,.58);max-width:50ch;margin:0 auto 36px;line-height:1.65}
-  .cta .btn-primary{background:#fff;color:#0E0E0C}
-  .cta .btn-primary:hover{background:#F4F1EB;box-shadow:0 8px 30px rgba(255,255,255,.15)}
-  .cta .btn-ghost{color:#F4F1EB;border-color:rgba(244,241,235,.22)}
-  .cta .btn-ghost:hover{border-color:#F4F1EB;background:rgba(244,241,235,.06)}
-  .cta .actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  @media(max-width:560px){.cta{padding:56px 28px}}
+  .cta-section{background:#0E0E0C;color:#F4F1EB;padding:100px 48px 80px;text-align:center;position:relative;overflow:hidden}
+  .cta-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(140,90,58,.25),transparent 65%);pointer-events:none}
+  .cta-section .in{position:relative;z-index:1;max-width:700px;margin:0 auto}
+  .cta-section h2{font-size:clamp(32px,4.8vw,54px);font-weight:300;letter-spacing:-0.035em;line-height:1.02;margin-bottom:20px}
+  .cta-section p{font-size:17px;color:rgba(244,241,235,.58);max-width:50ch;margin:0 auto 36px;line-height:1.65}
+  .cta-section .btn-primary{background:#fff;color:#0E0E0C}
+  .cta-section .btn-primary:hover{background:#F4F1EB;box-shadow:0 8px 30px rgba(255,255,255,.15)}
+  .cta-section .btn-ghost{color:#F4F1EB;border-color:rgba(244,241,235,.22)}
+  .cta-section .btn-ghost:hover{border-color:#F4F1EB;background:rgba(244,241,235,.06)}
+  .cta-section .actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  @media(max-width:560px){.cta-section{padding:72px 24px 60px}
+    .cta-section .actions{flex-direction:column;gap:10px}
+    .cta-section .actions .btn{width:100%;justify-content:center}
+  }
 
   /* ===== FOOTER ===== */
-  footer{background:#0E0E0C;color:rgba(244,241,235,.6);padding:72px 0 36px;border-top:1px solid rgba(244,241,235,.08);margin-top:0}
+  footer{background:#0E0E0C;color:rgba(244,241,235,.6);padding:72px 0 36px;border-top:1px solid rgba(244,241,235,.08);margin-top:0;border-top:none}
   footer a{transition:color .2s}
   footer a:hover{color:#F4F1EB}
   .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;align-items:start;padding-bottom:64px}
@@ -482,17 +484,13 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 
 
 <!-- ===================== CTA ===================== -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="cta rv">
-      <div class="in">
-        <h2>Quer ver o ImoFlow <span class="serif">na sua agência</span>?</h2>
-        <p>Marque uma demonstração e mostramos-lhe, em direto, como o CRM e as automações trabalham para si, com os seus próprios imóveis e leads.</p>
-        <div class="actions">
-          <a href="contacto.html" class="btn btn-primary"><span>Marcar demonstração</span><span class="arr"></span></a>
-          <a href="ai-chat.html" class="btn btn-ghost"><span>Tem alguma dúvida?</span></a>
-        </div>
-      </div>
+<section class="cta-section rv">
+  <div class="in">
+    <h2>Quer ver o ImoFlow <span class="serif">na sua agência</span>?</h2>
+    <p>Marque uma demonstração e mostramos-lhe, em direto, como o CRM e as automações trabalham para si, com os seus próprios imóveis e leads.</p>
+    <div class="actions">
+      <a href="contacto.html" class="btn btn-primary"><span>Marcar demonstração</span><span class="arr"></span></a>
+      <a href="ai-chat.html" class="btn btn-ghost"><span>Tem alguma dúvida?</span></a>
     </div>
   </div>
 </section>
