@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://formaagency.pt/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/en/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/crm.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/crm.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/crm.html"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/en/crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/crm.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/crm.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/crm.html"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/solucoes.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/solucoes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/solucoes.html"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/en/solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/solucoes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/solucoes.html"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://formaagency.pt/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://formaagency.pt/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://formaagency.pt/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://formaagency.pt/contacto.html"/>
+  </url>
+</urlset>
