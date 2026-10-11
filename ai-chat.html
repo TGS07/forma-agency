@@ -3,18 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>/* the FORMA intro only plays on the first page of the session */try{sessionStorage.setItem('forma-intro','1')}catch(e){}</script>
 <!-- Google Analytics — only loads after cookie consent -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 function loadGA(){if(document.getElementById('ga-script'))return;var s=document.createElement('script');s.id='ga-script';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-WZ9JW5F533';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-WZ9JW5F533');}
 if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </script>
-<title>Assistente AI — FORMA.</title>
-<meta name="description" content="Tire dúvidas instantâneas sobre os serviços da FORMA. com o nosso assistente AI disponível 24/7.">
+<title>Assistente — FORMA.</title>
+<meta name="description" content="Esclareça dúvidas sobre os serviços da FORMA com o nosso assistente, disponível 24/7.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Raleway,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%238C5A3A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="fonts/raleway-latin.woff2" crossorigin>
+<style>
+/* self-hosted fonts (variable WOFF2, weights 300–700) */
+@font-face{font-family:'Raleway';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/raleway-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/raleway-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root{
     --bg:#F4F1EB;--bg-2:#ECE7DD;--paper:#FFFFFF;--ink:#0E0E0C;
@@ -275,18 +279,33 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .suggestions,.chat-input,.chat-header{padding-left:16px;padding-right:16px}
   }
 </style>
+<link rel="canonical" href="https://formaagency.pt/ai-chat.html">
+<link rel="alternate" hreflang="pt" href="https://formaagency.pt/ai-chat.html">
+<link rel="alternate" hreflang="en" href="https://formaagency.pt/en/ai-chat.html">
+<link rel="alternate" hreflang="x-default" href="https://formaagency.pt/ai-chat.html">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:url" content="https://formaagency.pt/ai-chat.html">
+<meta property="og:title" content="Assistente — FORMA.">
+<meta property="og:description" content="Esclareça dúvidas sobre os serviços da FORMA com o nosso assistente, disponível 24/7.">
+<style>
+  .lang-sw{display:inline-flex;align-items:center;gap:2px;font-family:var(--geist,'Geist',system-ui,sans-serif);font-size:12px;font-weight:500;letter-spacing:.08em;line-height:1;color:inherit}
+  .lang-sw a{display:inline-flex;align-items:center;min-height:44px;padding:0 5px;color:inherit;text-decoration:none;opacity:.5;transition:opacity .2s ease}
+  .lang-sw a:hover,.lang-sw a[aria-current]{opacity:1}
+  .lang-sw a:focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:4px}
+  .lang-sw span{opacity:.35}
+  .lang-sw--menu{color:#F4F1EB;font-size:13px;margin:0 0 18px -5px}
+  @media (max-width:767px){.nav-right .lang-sw--nav{display:none}}
+</style>
+<script>(function(){var K='forma-lang',L='pt';try{var s=localStorage.getItem(K),r=document.referrer,same=r&&r.indexOf(location.origin)===0;if(s&&s!==L&&!same){location.replace('en/ai-chat.html'+location.hash);return;}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-set-lang]');if(a){try{localStorage.setItem(K,a.getAttribute('data-set-lang'));}catch(_){}}});})();</script>
 </head>
 <body>
 
 <nav class="top">
   <a href="index.html" class="logo">FORMA<b>.</b></a>
   <div style="display:flex;align-items:center;gap:14px">
-    <div class="lang" id="langSwitch">
-      <button data-lang="pt" class="active">PT</button>
-      <button data-lang="en">EN</button>
-      <button data-lang="es">ES</button>
-    </div>
-    <a href="index.html" class="back"><span class="arr">←</span> <span data-i18n="back">Voltar ao site</span></a>
+    <div class="lang-sw lang-sw--nav" role="group" aria-label="Idioma"><a href="ai-chat.html" hreflang="pt" lang="pt" data-set-lang="pt" aria-current="true">PT</a><span aria-hidden="true">/</span><a href="en/ai-chat.html" hreflang="en" lang="en" data-set-lang="en">EN</a></div>
+    <a href="index.html" class="back"><span class="arr">←</span> <span>Voltar ao site</span></a>
   </div>
 </nav>
 
@@ -295,22 +314,22 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   <!-- LEFT -->
   <div class="panel-left">
     <div class="content">
-      <p class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">Online · 24/7</span></p>
-      <h1 data-i18n="h1">Pergunta-nos <span class="serif">qualquer coisa</span>, a qualquer hora.</h1>
-      <p class="lead" data-i18n="lead">O nosso assistente responde de imediato sobre serviços, preços, prazos e como podemos ajudar a sua imobiliária a crescer. Sem espera, sem formulários.</p>
+      <p class="eyebrow"><span class="live-dot"></span><span>Online · 24/7</span></p>
+      <h1>Pergunte-nos <span class="serif">qualquer coisa</span>, a qualquer hora.</h1>
+      <p class="lead">O nosso assistente responde de imediato a dúvidas sobre os nossos serviços, prazos e forma de trabalhar. Sem espera, sem formulários.</p>
 
       <div class="promises">
         <div class="promise-item">
           <span class="ico">✓</span>
-          <span><strong data-i18n="p1s">Resposta instantânea</strong> <span data-i18n="p1t">— sem espera, a qualquer hora do dia ou da noite.</span></span>
+          <span><strong>Resposta instantânea</strong> <span>— sem espera, a qualquer hora do dia ou da noite.</span></span>
         </div>
         <div class="promise-item">
           <span class="ico">✓</span>
-          <span><strong data-i18n="p2s">Sabe tudo sobre nós</strong> <span data-i18n="p2t">— serviços, prazos, processo e casos de estudo.</span></span>
+          <span><strong>Sabe tudo sobre nós</strong> <span>— serviços, prazos, processo e casos reais.</span></span>
         </div>
         <div class="promise-item">
           <span class="ico">✓</span>
-          <span><strong data-i18n="p3s">Encaminha quando preciso</strong> <span data-i18n="p3t">— se precisar de falar com a equipa, nós ligamos.</span></span>
+          <span><strong>Encaminha quando é preciso</strong> <span>— para orçamentos e casos concretos, indica-lhe o contacto da equipa.</span></span>
         </div>
       </div>
     </div>
@@ -318,11 +337,11 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <div class="bottom">
       <div class="human-fallback">
         <div class="txt">
-          <strong data-i18n="hfs">Prefere falar com uma pessoa?</strong>
-          <span data-i18n="hft">A nossa equipa responde em menos de 24h úteis.</span>
+          <strong>Prefere falar com uma pessoa?</strong>
+          <span>A nossa equipa responde em menos de 24h úteis.</span>
         </div>
         <a href="contacto.html">
-          <span data-i18n="hfb">Marcar reunião</span>
+          <span>Marcar reunião</span>
           <span class="arr">→</span>
         </a>
       </div>
@@ -336,9 +355,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <div class="chat-avatar">F<b>.</b></div>
         <div class="chat-meta">
           <div class="name">FORMA<b>.</b> AI</div>
-          <div class="status"><span class="dot"></span><span data-i18n="status">A responder em segundos</span></div>
+          <div class="status"><span class="dot"></span><span>A responder em segundos</span></div>
         </div>
-        <button class="chat-clear" id="chatClear" data-i18n="clear">Limpar</button>
+        <button class="chat-clear" id="chatClear">Limpar</button>
       </div>
 
       <div class="chat-body" id="chatBody" role="log" aria-live="polite"></div>
@@ -346,7 +365,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <div class="suggestions" id="suggestions"></div>
 
       <div class="chat-input">
-        <textarea id="chatInput" rows="1" data-i18n-ph="placeholder" placeholder="Escreva a sua dúvida..." aria-label="Mensagem"></textarea>
+        <textarea id="chatInput" rows="1" placeholder="Escreva a sua dúvida..." aria-label="Mensagem"></textarea>
         <button class="send-btn" id="sendBtn" aria-label="Enviar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -356,7 +375,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     </div>
 
     <p class="chat-footer-note">
-      <span data-i18n="note">Respostas geradas automaticamente. Para propostas, agenda uma reunião em</span>
+      <span>Respostas automáticas. Para propostas e orçamentos, use o formulário de</span>
       <a href="contacto.html">contacto</a>.
     </p>
   </div>
@@ -364,233 +383,26 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </div>
 
 <script>
-/* ---------- i18n (only trusted, hard-coded strings) ---------- */
-const I18N = {
-  pt: {
-    back: "Voltar ao site",
-    eyebrow: "Online · 24/7",
-    h1: 'Pergunta-nos <span class="serif">qualquer coisa</span>, a qualquer hora.',
-    lead: "O nosso assistente responde de imediato sobre serviços, preços, prazos e como podemos ajudar a sua imobiliária a crescer. Sem espera, sem formulários.",
-    p1s: "Resposta instantânea", p1t: "— sem espera, a qualquer hora do dia ou da noite.",
-    p2s: "Sabe tudo sobre nós",  p2t: "— serviços, prazos, processo e casos de estudo.",
-    p3s: "Encaminha quando preciso", p3t: "— se precisar de falar com a equipa, nós ligamos.",
-    hfs: "Prefere falar com uma pessoa?", hft: "A nossa equipa responde em menos de 24h úteis.",
-    hfb: "Marcar reunião",
-    status: "A responder em segundos",
-    clear: "Limpar",
-    placeholder: "Escreva a sua dúvida...",
-    note: "Respostas geradas automaticamente. Para propostas, agenda uma reunião em",
-    greeting: 'Olá! 👋 Sou o assistente da <strong>FORMA<em>.</em></strong> Posso esclarecer dúvidas sobre os nossos serviços, processos, prazos e preços. Em que te posso ajudar?',
-    chips: ["Que serviços oferecem?", "Quanto custa um site?", "Em quanto tempo entregam?", "Trabalham com imobiliárias pequenas?", "Como funciona o processo?"],
-    fallback: 'Boa pergunta. Não tenho a resposta exata para isso, mas a nossa equipa explica num instante — pode <a href="contacto.html">marcar uma reunião gratuita</a> ou enviar email para forma.work@gmail.com.'
-  },
-  en: {
-    back: "Back to site",
-    eyebrow: "Online · 24/7",
-    h1: 'Ask us <span class="serif">anything</span>, anytime.',
-    lead: "Our assistant answers instantly about services, pricing, timelines and how we can help your agency grow. No waiting, no forms.",
-    p1s: "Instant answers", p1t: "— no waiting, any time of day or night.",
-    p2s: "Knows everything about us",  p2t: "— services, timelines, process and case studies.",
-    p3s: "Hands off when needed", p3t: "— if you need to talk to the team, we will call you.",
-    hfs: "Prefer to talk to a person?", hft: "Our team replies in under 24 working hours.",
-    hfb: "Book a call",
-    status: "Replies in seconds",
-    clear: "Clear",
-    placeholder: "Type your question...",
-    note: "Replies generated automatically. For proposals, book a call at",
-    greeting: 'Hi! 👋 I am the <strong>FORMA<em>.</em></strong> assistant. I can answer questions about our services, process, timelines and pricing. How can I help?',
-    chips: ["What services do you offer?", "How much is a website?", "How long does delivery take?", "Do you work with small agencies?", "How does the process work?"],
-    fallback: 'Good question. I do not have the exact answer for that, but the team can explain in a minute — <a href="contacto.html">book a free call</a> or email forma.work@gmail.com.'
-  },
-  es: {
-    back: "Volver al sitio",
-    eyebrow: "En línea · 24/7",
-    h1: 'Pregúntanos <span class="serif">cualquier cosa</span>, a cualquier hora.',
-    lead: "Nuestro asistente responde al instante sobre servicios, precios, plazos y cómo podemos ayudar a tu inmobiliaria a crecer. Sin esperas, sin formularios.",
-    p1s: "Respuesta inmediata", p1t: "— sin esperas, a cualquier hora del día o de la noche.",
-    p2s: "Lo sabe todo sobre nosotros",  p2t: "— servicios, plazos, proceso y casos de estudio.",
-    p3s: "Te deriva cuando es necesario", p3t: "— si necesitas hablar con el equipo, te llamamos.",
-    hfs: "¿Prefieres hablar con una persona?", hft: "Nuestro equipo responde en menos de 24h laborables.",
-    hfb: "Reservar reunión",
-    status: "Respuestas en segundos",
-    clear: "Limpiar",
-    placeholder: "Escribe tu duda...",
-    note: "Respuestas generadas automáticamente. Para propuestas, agenda una reunión en",
-    greeting: '¡Hola! 👋 Soy el asistente de <strong>FORMA<em>.</em></strong> Puedo resolver dudas sobre nuestros servicios, procesos, plazos y precios. ¿En qué te puedo ayudar?',
-    chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta una web?", "¿En cuánto tiempo entregan?", "¿Trabajan con inmobiliarias pequeñas?", "¿Cómo funciona el proceso?"],
-    fallback: 'Buena pregunta. No tengo la respuesta exacta, pero el equipo te lo explica en un momento — puedes <a href="contacto.html">reservar una reunión gratuita</a> o escribir a forma.work@gmail.com.'
-  }
-};
-
-/* ---------- Knowledge base (trusted, hard-coded responses) ---------- */
-const KB = [
-  {
-    match: ["servic","serviço","serviços","service","ofrec","oferta","ofereçam","oferecem","que faz","what do you do","qué hac"],
-    answer: {
-      pt: 'Trabalhamos com imobiliárias em 6 áreas: <strong>Websites</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Anúncios pagos</strong> (Google/Meta), <strong>Conteúdo e redes sociais</strong> e <strong>CRM &amp; automações</strong> (incluindo chatbots como este). Quer saber mais sobre algum deles?',
-      en: 'We work with real estate agencies in 6 areas: <strong>Websites</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Paid ads</strong> (Google/Meta), <strong>Content &amp; social</strong> and <strong>CRM &amp; automations</strong> (including chatbots like this one). Want to dive into any of them?',
-      es: 'Trabajamos con inmobiliarias en 6 áreas: <strong>Webs</strong>, <strong>SEO</strong>, <strong>Branding</strong>, <strong>Anuncios pagados</strong> (Google/Meta), <strong>Contenido y redes</strong> y <strong>CRM y automatizaciones</strong> (incluidos chatbots como este). ¿Quieres saber más sobre alguno?'
-    }
-  },
-  {
-    match: ["preço","preco","quanto custa","custo","valor","budget","orçamento","how much","cost","price","cuánto cuesta","precio","cuanto"],
-    answer: {
-      pt: 'O preço depende muito do que precisa — âmbito, complexidade e serviços envolvidos. Cada projeto tem proposta à medida, por isso para lhe dar um valor concreto o melhor é <a href="contacto.html">marcar uma reunião</a>. É rápida, gratuita e sem compromisso.',
-      en: 'Pricing really depends on what you need — scope, complexity and the services involved. Every project gets a tailored proposal, so for a real number the best is to <a href="contacto.html">book a call</a>. Quick, free and no commitment.',
-      es: 'El precio depende mucho de lo que necesites — alcance, complejidad y servicios. Cada proyecto lleva propuesta a medida, así que para darte una cifra concreta lo mejor es <a href="contacto.html">reservar una reunión</a>. Rápida, gratuita y sin compromiso.'
-    }
-  },
-  {
-    match: ["site","website","web","página","pagina","landing"],
-    answer: {
-      pt: 'Construímos sites para imobiliárias do zero: <strong>multilíngue</strong> (PT/EN/ES/FR), rápido, otimizado para SEO, com integração de CRM e ficha de imóvel inteligente. Tipicamente entregamos em <em>4 a 8 semanas</em>. Quanto à orientação visual: minimalista, com foco em conversão.',
-      en: 'We build real estate websites from scratch: <strong>multilingual</strong> (PT/EN/ES/FR), fast, SEO-ready, with CRM integration and smart property pages. Typical delivery <em>4–8 weeks</em>. Visual direction: minimalist, conversion-focused.',
-      es: 'Creamos webs inmobiliarias desde cero: <strong>multilingües</strong> (PT/EN/ES/FR), rápidas, optimizadas para SEO, con integración CRM y fichas de inmueble inteligentes. Entrega típica <em>4–8 semanas</em>. Dirección visual: minimalista y enfocada a conversión.'
-    }
-  },
-  {
-    match: ["seo","google","aparecer","ranking","search","posicionamiento","posicionamento"],
-    answer: {
-      pt: 'SEO técnico + conteúdo + autoridade local. Trabalhamos páginas de imóveis individuais, páginas de bairro/zona em várias línguas e link building com fontes de imobiliário. Resultados visíveis tipicamente em <em>3 a 6 meses</em>.',
-      en: 'Technical SEO + content + local authority. We build out individual property pages, neighbourhood pages in multiple languages, and link building from real estate sources. Visible results typically in <em>3–6 months</em>.',
-      es: 'SEO técnico + contenido + autoridad local. Trabajamos fichas individuales, páginas de barrio/zona en varios idiomas y link building desde fuentes inmobiliarias. Resultados visibles típicamente en <em>3 a 6 meses</em>.'
-    }
-  },
-  {
-    match: ["ads","anúncio","anuncio","ad","google ads","meta","facebook","instagram","paid","pago"],
-    answer: {
-      pt: 'Campanhas Google e Meta segmentadas por <strong>país, idioma e perfil de comprador</strong>. Optimizamos por <em>contactos qualificados</em>, não por cliques. Trabalhamos com orçamentos a partir de 500€/mês de ad spend (excluindo gestão).',
-      en: 'Google and Meta campaigns segmented by <strong>country, language and buyer profile</strong>. We optimise for <em>qualified leads</em>, not clicks. Minimum recommended ad spend: €500/month (management fee separate).',
-      es: 'Campañas en Google y Meta segmentadas por <strong>país, idioma y perfil de comprador</strong>. Optimizamos por <em>leads cualificados</em>, no por clics. Inversión recomendada desde 500€/mes (gestión aparte).'
-    }
-  },
-  {
-    match: ["crm","automa","chatbot","bot","whatsapp","integra"],
-    answer: {
-      pt: 'Integramos o seu CRM (HubSpot, Pipedrive, Zoho, ou desenvolvido à medida) com o site, formulários e WhatsApp. Os chatbots qualificam leads <em>antes</em> de chegarem à equipa — funcionam 24/7, em várias línguas. Este chat é um exemplo simples.',
-      en: 'We connect your CRM (HubSpot, Pipedrive, Zoho or custom) to your site, forms and WhatsApp. Chatbots qualify leads <em>before</em> they reach the team — 24/7, multilingual. This chat is a simple example.',
-      es: 'Integramos tu CRM (HubSpot, Pipedrive, Zoho o a medida) con web, formularios y WhatsApp. Los chatbots cualifican leads <em>antes</em> de llegar al equipo — 24/7, multilingües. Este chat es un ejemplo simple.'
-    }
-  },
-  {
-    match: ["brand","branding","logo","identidade","identidad","identity"],
-    answer: {
-      pt: 'Trabalhamos identidade visual completa: <strong>logo, paleta, tipografia, sistema de fotografia, templates de redes sociais e brand guidelines</strong>. Tipicamente 3 a 5 semanas, com 2 rondas de revisão incluídas.',
-      en: 'Full visual identity: <strong>logo, palette, typography, photography system, social templates and brand guidelines</strong>. Typically 3–5 weeks, 2 revision rounds included.',
-      es: 'Identidad visual completa: <strong>logo, paleta, tipografía, sistema de fotografía, plantillas de redes y guidelines de marca</strong>. Típicamente 3–5 semanas, 2 rondas de revisión incluidas.'
-    }
-  },
-  {
-    match: ["tempo","prazo","quando","entrega","duraç","cuanto tiempo","cuánto tarda","timeline","how long","delivery"],
-    answer: {
-      pt: 'Tipicamente entre <strong>2 a 3 semanas</strong>, dependendo do que precisa — quanto mais complexo o projeto, mais tempo leva. Para um prazo concreto adaptado ao seu caso, <a href="contacto.html">marque uma reunião</a> e damos-lhe uma estimativa real.',
-      en: 'Typically between <strong>2 and 3 weeks</strong>, depending on what you need — the more complex the project, the longer it takes. For a real timeline tailored to your case, <a href="contacto.html">book a call</a> and we will give you a concrete estimate.',
-      es: 'Normalmente entre <strong>2 y 3 semanas</strong>, dependiendo de lo que necesites — cuanto más complejo el proyecto, más tiempo lleva. Para un plazo concreto adaptado a tu caso, <a href="contacto.html">reserva una reunión</a> y te damos una estimación real.'
-    }
-  },
-  {
-    match: ["process","como funciona","como trabalham","fluxo","etapa","fase","steps","cómo funciona"],
-    answer: {
-      pt: 'Quatro etapas: <strong>1. Descoberta</strong> (entendemos o seu negócio), <strong>2. Estratégia</strong> (plano + proposta), <strong>3. Execução</strong> (design + dev + launch), <strong>4. Evolução</strong> (medimos e iteramos). Sem surpresas.',
-      en: 'Four phases: <strong>1. Discovery</strong> (we get your business), <strong>2. Strategy</strong> (plan + proposal), <strong>3. Execution</strong> (design + dev + launch), <strong>4. Evolution</strong> (measure + iterate). No surprises.',
-      es: 'Cuatro fases: <strong>1. Descubrimiento</strong> (entendemos tu negocio), <strong>2. Estrategia</strong> (plan + propuesta), <strong>3. Ejecución</strong> (diseño + dev + launch), <strong>4. Evolución</strong> (medimos e iteramos). Sin sorpresas.'
-    }
-  },
-  {
-    match: ["pequena","pequenas","small","pequeñ","independent","solo","freelance","começar","start","starting"],
-    answer: {
-      pt: 'Sim — trabalhamos com imobiliárias de qualquer dimensão, incluindo agentes independentes e equipas a começar. Para projetos mais pequenos temos um <em>pacote essencial</em> com site + SEO base + CRM por preços mais acessíveis.',
-      en: 'Yes — we work with agencies of any size, including independent agents and teams just starting. For smaller projects we have an <em>essentials package</em> (site + base SEO + CRM) at more accessible pricing.',
-      es: 'Sí — trabajamos con inmobiliarias de cualquier tamaño, incluidos agentes independientes y equipos que empiezan. Para proyectos más pequeños tenemos un <em>pack esencial</em> (web + SEO base + CRM) a precios más accesibles.'
-    }
-  },
-  {
-    match: ["lingua","idioma","language","multi","traduç","translation","traducción","ingles","inglês","espanol","english","frances"],
-    answer: {
-      pt: 'Construímos sites multilíngues por default: <strong>PT, EN, ES, FR</strong> são as línguas mais pedidas, mas podemos adicionar outras (DE, IT, NL). Cada versão é tratada como SEO próprio, não tradução automática.',
-      en: 'Multilingual by default: <strong>PT, EN, ES, FR</strong> are the most requested, but we can add others (DE, IT, NL). Each language is treated as its own SEO target, not auto-translated.',
-      es: 'Multilingües por defecto: <strong>PT, EN, ES, FR</strong> son las más solicitadas, pero podemos añadir otras (DE, IT, NL). Cada idioma tiene su propio SEO, no traducción automática.'
-    }
-  },
-  {
-    match: ["contact","contacto","email","telef","phone","ligar","call","reunion","reunião","meeting","agendar","marcar","book"],
-    answer: {
-      pt: 'Pode marcar uma reunião gratuita em <a href="contacto.html">contacto</a> ou enviar email para forma.work@gmail.com. Respondemos sempre em menos de 24h úteis.',
-      en: 'Book a free call at <a href="contacto.html">contact</a> or email forma.work@gmail.com. We always reply in under 24 working hours.',
-      es: 'Reserva una reunión gratuita en <a href="contacto.html">contacto</a> o escribe a forma.work@gmail.com. Siempre respondemos en menos de 24h laborables.'
-    }
-  },
-  {
-    match: ["local","onde","sede","based","localizaç","ubicaci","portugal","lisboa","lisbon"],
-    answer: {
-      pt: 'Estamos sediados em <strong>Lisboa</strong>, mas trabalhamos com imobiliárias em Portugal, Espanha e resto da Europa. Reuniões presenciais em Lisboa, remotas para os outros.',
-      en: 'We are based in <strong>Lisbon</strong>, but work with agencies across Portugal, Spain and the rest of Europe. In-person meetings in Lisbon, remote for everyone else.',
-      es: 'Estamos en <strong>Lisboa</strong>, pero trabajamos con inmobiliarias en Portugal, España y el resto de Europa. Reuniones presenciales en Lisboa, remotas para el resto.'
-    }
-  },
-  {
-    match: ["case","cases","caso","clientes","clients","portfolio","portfólio","exemplos","examples","ejemplos"],
-    answer: {
-      pt: 'Temos casos no site principal — <em>ACUTA</em> é um dos exemplos mais recentes. Se quiser ver projetos específicos para o seu nicho (luxury, arrendamento, internacional…), <a href="contacto.html">marque uma reunião</a> e enviamos cases relevantes.',
-      en: 'You can see cases on the main site — <em>ACUTA</em> is one of the latest. If you want examples relevant to your niche (luxury, rentals, international…), <a href="contacto.html">book a call</a> and we will send curated cases.',
-      es: 'Puedes ver casos en la web principal — <em>ACUTA</em> es uno de los últimos. Si quieres ejemplos para tu nicho (lujo, alquiler, internacional…), <a href="contacto.html">reserva una reunión</a> y te enviamos casos relevantes.'
-    }
-  },
-  {
-    match: ["garantia","guarantee","reembolso","refund","devoluc","money back"],
-    answer: {
-      pt: 'Não vendemos "garantias mágicas", mas trabalhamos com <em>contratos curtos</em> e KPIs claros: se ao fim do primeiro trimestre não vir resultados mensuráveis, pode sair sem penalização.',
-      en: 'We do not sell "magic guarantees", but we use <em>short contracts</em> with clear KPIs: if you do not see measurable results by end of the first quarter, you can leave without penalty.',
-      es: 'No vendemos "garantías mágicas", pero usamos <em>contratos cortos</em> con KPIs claros: si al final del primer trimestre no ves resultados medibles, puedes salir sin penalización.'
-    }
-  },
-  {
-    match: ["ola","olá","hello","hi","hey","oi","buenas","hola","bom dia","boa tarde","boa noite","good morning","good afternoon","good evening"],
-    answer: {
-      pt: 'Olá! Como posso ajudar? Posso falar-lhe sobre <em>serviços</em>, <em>preços</em>, <em>prazos</em>, ou o nosso processo.',
-      en: 'Hi! How can I help? I can tell you about <em>services</em>, <em>pricing</em>, <em>timelines</em> or our process.',
-      es: '¡Hola! ¿En qué te ayudo? Puedo hablarte de <em>servicios</em>, <em>precios</em>, <em>plazos</em> o de nuestro proceso.'
-    }
-  },
-  {
-    match: ["obrigad","gracias","thanks","thank you","valeu","cheers"],
-    answer: {
-      pt: 'De nada! Se quiser avançar com algo concreto, <a href="contacto.html">marque uma reunião</a> — é rápido e sem compromisso.',
-      en: 'You are welcome! When you want to move forward, <a href="contacto.html">book a call</a> — quick and no strings attached.',
-      es: '¡De nada! Cuando quieras avanzar, <a href="contacto.html">reserva una reunión</a> — rápido y sin compromiso.'
-    }
-  }
-];
+/* ---------- copy and knowledge base: i18n/pt.json + i18n/en.json (trusted, written by FORMA) ---------- */
+const PAGE_LANG = document.documentElement.lang === 'en' ? 'en' : 'pt';
+const UI = {"greeting":"Olá! Sou o assistente da <strong>FORMA<em>.<\/em><\/strong> Posso esclarecer dúvidas sobre os nossos serviços, prazos e forma de trabalhar. Em que posso ajudar?","chips":["Que serviços oferecem?","Fazem CRMs à medida?","Trabalham fora do imobiliário?","Quanto tempo demora um site?","Como funciona o processo?"]};
+const KB = { pt: [{"id":"greet","match":["ola","bom dia","boa tarde","boa noite","hello","hi","hey","good morning","good afternoon","good evening"],"answer":"Olá! Em que posso ajudar? Posso falar-lhe sobre os nossos <em>serviços<\/em>, os <em>CRMs à medida<\/em>, os <em>prazos<\/em> ou a forma como trabalhamos."},{"id":"services","match":["servico","servicos","oferecem","o que fazem","que fazem","service","services","what do you do","offer"],"answer":"Fazemos quatro coisas: <strong>websites<\/strong>, <strong>software e CRMs à medida<\/strong>, <strong>automações<\/strong> e <strong>assistentes de IA<\/strong> que respondem 24/7. Começámos no imobiliário e hoje trabalhamos também com outros setores. Quer saber mais sobre algum?"},{"id":"website","match":["site","sites","website","websites","pagina","landing"],"answer":"Fazemos sites de raiz, rápidos e em vários idiomas, pensados para transformar visitas em contactos. Cada formulário envia os contactos para onde quiser e avisa a sua equipa. Em regra, um site fica pronto em <strong>2 a 3 semanas<\/strong>; o prazo final depende do projeto."},{"id":"integrations","match":["integra","integrar","integracao","integracoes","ligar ao","ligar a","faturacao","ferramentas que ja uso","integrate","integration","integrations","connect to","invoicing","tools i already use"],"answer":"Sempre que essas ferramentas o permitam, sim: ligamos o que construímos ao que já usa. Para confirmarmos no seu caso, diga-nos que ferramentas usa através do <a href='contacto.html'>formulário de contacto<\/a>."},{"id":"crm","match":["crm","crms","software","a medida","forma crm","century","imoflow","custom","bespoke","pipeline","pipelines"],"answer":"Construímos CRMs de raiz, à medida de cada equipa: contactos organizados por tipo, pipelines, integração com o Idealista, automações, dashboards e permissões por equipa. Um exemplo é o <strong>FORMA CRM<\/strong>, que fizemos para uma equipa da Century 21 Lux. Veja mais na <a href='crm.html'>página do FORMA CRM<\/a>."},{"id":"automations","match":["automa","automacao","automacoes","automation","automations","lembrete","lembretes","reminder","reativ","reactivat","follow up"],"answer":"As automações fazem sozinhas o que hoje se faz à mão: responder a novos contactos em segundos, enviar lembretes de marcações, reativar clientes antigos, cruzar imóveis com clientes e criar anúncios e publicações a partir das fotografias."},{"id":"assistant","match":["assistente","chatbot","chatbots","bot","ia","inteligencia artificial","ai","assistant","whatsapp","24 7"],"answer":"O assistente de IA responde aos seus clientes a qualquer hora, no site ou no WhatsApp, e passa-lhe os contactos já organizados. Este chat é um exemplo simples do que pode ter no seu site."},{"id":"sectors","match":["clinica","clinicas","restaurante","restaurantes","advogad","loja","lojas","ginasio","ginasios","contabil","hotel","setor","setores","outros negocios","fora do imobiliario","so imobiliarias","so com imobiliarias","clinic","restaurant","lawyer","law firm","shop","store","gym","other sectors","only real estate","other businesses","sector","industry"],"answer":"Sim. Começámos no imobiliário, mas fazemos o mesmo para clínicas, restaurantes, advogados, lojas, ginásios, contabilidade, hotelaria e outros negócios. Veja exemplos para o seu setor na <a href='solucoes.html'>página de soluções<\/a>."},{"id":"cases","match":["satus","caso","casos","exemplo","exemplos","portfolio","trabalhos","projetos","case","cases","case study","example","examples","projects","clients"],"answer":"O caso mais recente é a <strong>Satus<\/strong>: fizemos o website, um CRM à medida e as automações que reativam clientes, cruzam cada imóvel novo com as preferências dos clientes e criam anúncios, publicações e vídeos a partir das fotografias. Também construímos o <a href='crm.html'>FORMA CRM<\/a> para uma equipa da Century 21 Lux."},{"id":"price","match":["preco","precos","quanto custa","custa","custo","custos","valor","orcamento","orcamentos","plano","planos","budget","price","prices","pricing","cost","how much","quote","plan","plans"],"answer":"O preço depende do que precisa: cada projeto tem uma proposta à medida, com prazo e preço definidos antes de começarmos. Para receber um orçamento, use o <a href='contacto.html'>formulário de contacto<\/a>. A primeira conversa é gratuita."},{"id":"timeline","match":["prazo","prazos","quanto tempo","demora","demoram","entrega","semanas","how long","timeline","timeframe","deadline","delivery","weeks"],"answer":"Um site fica pronto, em regra, em <strong>2 a 3 semanas<\/strong>. Para CRMs, software e automações, o prazo depende das funcionalidades e fica fechado na proposta. Para saber o prazo no seu caso, fale connosco pelo <a href='contacto.html'>formulário de contacto<\/a>."},{"id":"process","match":["processo","como funciona","como trabalham","etapas","fases","passos","process","how does it work","how do you work","steps"],"answer":"Trabalhamos em quatro passos: <strong>1. Conversa<\/strong>, para percebermos o seu negócio; <strong>2. Proposta<\/strong>, com um plano claro, prazos e orçamento; <strong>3. Construção<\/strong>, em que mostramos o progresso todas as semanas; <strong>4. Lançamento e suporte<\/strong>, em que pomos tudo online e continuamos a acompanhar."},{"id":"languages","match":["idioma","idiomas","lingua","linguas","multilingue","ingles","traducao","language","languages","multilingual","english","translation"],"answer":"Sim, fazemos sites em vários idiomas de raiz, cada um com URLs próprias para aparecer no Google de cada país. Este assistente responde em português e em inglês."},{"id":"support","match":["manutencao","suporte","depois do lancamento","apoio","maintenance","support","after launch"],"answer":"Continuamos consigo depois do lançamento, com ajustes e suporte sempre que precisar. Se preferir, a manutenção pode ficar do seu lado, sem dependência nossa."},{"id":"data","match":["rgpd","gdpr","protecao de dados","privacidade","seguranca","privacy","security","data protection"],"answer":"Os dados são sempre do cliente e os CRMs que fazemos cumprem o RGPD, com acessos individuais e permissões por equipa. Para detalhes sobre o seu projeto, fale connosco pelo <a href='contacto.html'>formulário de contacto<\/a>."},{"id":"size","match":["pequena","pequenas","pequeno","pequenos","dimensao","tamanho","small","size","independent"],"answer":"Sim, trabalhamos com negócios de qualquer dimensão. Cada proposta é feita à medida do que precisa."},{"id":"contact","match":["contacto","contactar","email","telefone","telemovel","ligar","reuniao","marcar","falar com","contact","phone","call","meeting","book","talk to"],"answer":"Pode escrever-nos pelo <a href='contacto.html'>formulário de contacto<\/a> ou para forma.work@gmail.com. Respondemos em menos de 24 horas úteis."},{"id":"location","match":["onde estao","localiza","lisboa","sede","where are you","based","located","lisbon"],"answer":"Estamos em Lisboa, Portugal. Para saber como podemos trabalhar consigo, fale connosco pelo <a href='contacto.html'>formulário de contacto<\/a>."},{"id":"thanks","match":["obrigad","thanks","thank you","cheers"],"answer":"De nada! Quando quiser avançar, use o <a href='contacto.html'>formulário de contacto<\/a>. A primeira conversa é gratuita."}], en: [{"id":"greet","match":["ola","bom dia","boa tarde","boa noite","hello","hi","hey","good morning","good afternoon","good evening"],"answer":"Hello! How can I help? I can tell you about our <em>services<\/em>, <em>custom CRMs<\/em>, <em>timelines<\/em> or how we work."},{"id":"services","match":["servico","servicos","oferecem","o que fazem","que fazem","service","services","what do you do","offer"],"answer":"We do four things: <strong>websites<\/strong>, <strong>custom software and CRMs<\/strong>, <strong>automations<\/strong> and <strong>AI assistants<\/strong> that answer 24/7. We started in real estate and now work with other sectors too. Would you like to know more about any of them?"},{"id":"website","match":["site","sites","website","websites","pagina","landing"],"answer":"We build websites from scratch: fast, multilingual and designed to turn visits into enquiries. Every form sends leads wherever you want and alerts your team. A website is usually ready in <strong>2 to 3 weeks<\/strong>; the final timeline depends on the project."},{"id":"integrations","match":["integra","integrar","integracao","integracoes","ligar ao","ligar a","faturacao","ferramentas que ja uso","integrate","integration","integrations","connect to","invoicing","tools i already use"],"answer":"Whenever those tools allow it, yes: we connect what we build to what you already use. To confirm it for your case, tell us which tools you use through the <a href='contacto.html'>contact form<\/a>."},{"id":"crm","match":["crm","crms","software","a medida","forma crm","century","imoflow","custom","bespoke","pipeline","pipelines"],"answer":"We build CRMs from scratch, tailored to each team: contacts organised by type, pipelines, Idealista integration, automations, dashboards and team permissions. One example is <strong>FORMA CRM<\/strong>, which we built for a team at Century 21 Lux. See more on the <a href='crm.html'>FORMA CRM page<\/a>."},{"id":"automations","match":["automa","automacao","automacoes","automation","automations","lembrete","lembretes","reminder","reativ","reactivat","follow up"],"answer":"Automations take care of what is done by hand today: replying to new enquiries in seconds, sending booking reminders, reactivating past clients, matching properties to clients and creating listings and posts from photos."},{"id":"assistant","match":["assistente","chatbot","chatbots","bot","ia","inteligencia artificial","ai","assistant","whatsapp","24 7"],"answer":"The AI assistant answers your clients at any hour, on your website or on WhatsApp, and passes the leads on to you already organised. This chat is a simple example of what you could have on your own site."},{"id":"sectors","match":["clinica","clinicas","restaurante","restaurantes","advogad","loja","lojas","ginasio","ginasios","contabil","hotel","setor","setores","outros negocios","fora do imobiliario","so imobiliarias","so com imobiliarias","clinic","restaurant","lawyer","law firm","shop","store","gym","other sectors","only real estate","other businesses","sector","industry"],"answer":"Yes. We started in real estate, but we do the same for clinics, restaurants, law firms, shops, gyms, accountants, hotels and other businesses. See examples for your sector on the <a href='solucoes.html'>solutions page<\/a>."},{"id":"cases","match":["satus","caso","casos","exemplo","exemplos","portfolio","trabalhos","projetos","case","cases","case study","example","examples","projects","clients"],"answer":"Our most recent case is <strong>Satus<\/strong>: we built the website, a custom CRM and the automations that reactivate clients, match every new property with client preferences and create listings, posts and videos from photos. We also built <a href='crm.html'>FORMA CRM<\/a> for a team at Century 21 Lux."},{"id":"price","match":["preco","precos","quanto custa","custa","custo","custos","valor","orcamento","orcamentos","plano","planos","budget","price","prices","pricing","cost","how much","quote","plan","plans"],"answer":"Pricing depends on what you need: every project gets a tailored proposal, with the timeline and price agreed before we start. To get a quote, use the <a href='contacto.html'>contact form<\/a>. The first conversation is free."},{"id":"timeline","match":["prazo","prazos","quanto tempo","demora","demoram","entrega","semanas","how long","timeline","timeframe","deadline","delivery","weeks"],"answer":"A website is usually ready in <strong>2 to 3 weeks<\/strong>. For CRMs, software and automations, the timeline depends on the features and is fixed in the proposal. For the timeline in your case, get in touch through the <a href='contacto.html'>contact form<\/a>."},{"id":"process","match":["processo","como funciona","como trabalham","etapas","fases","passos","process","how does it work","how do you work","steps"],"answer":"We work in four steps: <strong>1. Conversation<\/strong>, to understand your business; <strong>2. Proposal<\/strong>, a clear plan with timeline and budget; <strong>3. Build<\/strong>, with progress shown every week; <strong>4. Launch and support<\/strong>, where we put everything live and keep supporting you."},{"id":"languages","match":["idioma","idiomas","lingua","linguas","multilingue","ingles","traducao","language","languages","multilingual","english","translation"],"answer":"Yes, we build multilingual websites from the ground up, each language with its own URLs so it shows up on Google in each country. This assistant answers in Portuguese and English."},{"id":"support","match":["manutencao","suporte","depois do lancamento","apoio","maintenance","support","after launch"],"answer":"We stay with you after launch, with tweaks and support whenever you need them. If you prefer, you can take care of maintenance yourself, with no dependency on us."},{"id":"data","match":["rgpd","gdpr","protecao de dados","privacidade","seguranca","privacy","security","data protection"],"answer":"Your data always belongs to you, and the CRMs we build comply with the GDPR, with individual logins and team permissions. For details on your project, get in touch through the <a href='contacto.html'>contact form<\/a>."},{"id":"size","match":["pequena","pequenas","pequeno","pequenos","dimensao","tamanho","small","size","independent"],"answer":"Yes, we work with businesses of any size. Every proposal is tailored to what you need."},{"id":"contact","match":["contacto","contactar","email","telefone","telemovel","ligar","reuniao","marcar","falar com","contact","phone","call","meeting","book","talk to"],"answer":"You can reach us through the <a href='contacto.html'>contact form<\/a> or at forma.work@gmail.com. We reply within 24 working hours."},{"id":"location","match":["onde estao","localiza","lisboa","sede","where are you","based","located","lisbon"],"answer":"We are based in Lisbon, Portugal. To find out how we could work together, get in touch through the <a href='contacto.html'>contact form<\/a>."},{"id":"thanks","match":["obrigad","thanks","thank you","cheers"],"answer":"You are welcome! When you are ready to move forward, use the <a href='contacto.html'>contact form<\/a>. The first conversation is free."}] };
+const FALLBACK = { pt: "Não tenho a resposta certa para isso e prefiro não adivinhar. A nossa equipa responde-lhe em menos de 24 horas úteis: use o <a href='contacto.html'>formulário de contacto<\/a>.", en: "I don't have the right answer for that and would rather not guess. Our team will get back to you within 24 working hours: just use the <a href='contacto.html'>contact form<\/a>." };
 
 /* ---------- State ---------- */
-let currentLang = 'pt';
+let currentLang = PAGE_LANG;
 
 /* ---------- DOM ---------- */
 const chatBody = document.getElementById('chatBody');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
 const suggestionsEl = document.getElementById('suggestions');
-const langSwitch = document.getElementById('langSwitch');
 const chatClear = document.getElementById('chatClear');
-
-/* ---------- i18n apply (only writes hard-coded strings into the DOM) ---------- */
-function applyI18n(){
-  const t = I18N[currentLang];
-  document.documentElement.lang = currentLang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k = el.getAttribute('data-i18n');
-    if(t[k]) el.innerHTML = t[k]; // trusted hard-coded copy
-  });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
-    const k = el.getAttribute('data-i18n-ph');
-    if(t[k]) el.placeholder = t[k];
-  });
-}
 
 /* ---------- Render helpers ---------- */
 function fmtTime(){
   const d = new Date();
-  const loc = currentLang==='pt'?'pt-PT':currentLang==='es'?'es-ES':'en-GB';
+  const loc = currentLang === 'en' ? 'en-GB' : 'pt-PT';
   return d.toLocaleTimeString(loc, {hour:'2-digit', minute:'2-digit'});
 }
 
@@ -651,7 +463,7 @@ function hideTyping(){
 
 function renderSuggestions(){
   suggestionsEl.replaceChildren();
-  I18N[currentLang].chips.forEach(text=>{
+  UI.chips.forEach(text=>{
     const b = document.createElement('button');
     b.className = 'chip';
     b.type = 'button';
@@ -670,18 +482,27 @@ function normalize(s){
     .normalize('NFD').replace(/[̀-ͯ]/g,'')
     .replace(/[^a-z0-9 ]/g,' ');
 }
-function findAnswer(q){
-  const n = normalize(q);
-  let best = null, bestScore = 0;
-  for(const entry of KB){
+/* the visitor's language decides the answer's language (PT or EN); the page language breaks ties */
+const EN_HINTS = ['the','what','how','do','does','you','your','is','are','can','i','my','we','much','long','work','with','about','for','hello','hi','thanks','please','price','website','outside'];
+const PT_HINTS = ['o','a','os','as','que','como','quanto','quanta','voces','fazem','tem','sao','e','de','do','da','um','uma','para','com','ola','obrigado','obrigada','preco','site','meu','minha','fora','posso'];
+function detectLang(q){
+  const words = normalize(q).split(' ').filter(Boolean);
+  let en = 0, pt = 0;
+  words.forEach(w => { if(EN_HINTS.includes(w)) en++; if(PT_HINTS.includes(w)) pt++; });
+  if(/[ãõçáéíóúâêô]/i.test(q)) pt += 2;
+  return en > pt ? 'en' : pt > en ? 'pt' : PAGE_LANG;
+}
+function findAnswer(q, lang){
+  const n = ' ' + normalize(q) + ' ';
+  let best = -1, bestScore = 0;
+  KB.pt.forEach((entry, i) => {
     let score = 0;
-    for(const kw of entry.match){
-      if(n.includes(normalize(kw))) score += kw.length;
+    for(const kw of entry.match.concat(KB.en[i].match)){
+      if(n.includes(' ' + normalize(kw).trim())) score += kw.length;
     }
-    if(score > bestScore){ bestScore = score; best = entry; }
-  }
-  if(!best) return null;
-  return best.answer[currentLang] || best.answer.pt;
+    if(score > bestScore){ bestScore = score; best = i; }
+  });
+  return best < 0 ? null : KB[lang][best].answer;
 }
 
 /* ---------- Send flow ---------- */
@@ -697,7 +518,9 @@ function send(){
   const delay = 600 + Math.min(text.length*18, 1400);
   setTimeout(()=>{
     hideTyping();
-    const ans = findAnswer(text) || I18N[currentLang].fallback;
+    const lang = detectLang(text);
+    currentLang = lang;
+    const ans = findAnswer(text, lang) || FALLBACK[lang];
     renderBotMsg(ans);
     sendBtn.disabled = false;
     chatInput.focus();
@@ -723,27 +546,16 @@ chatClear.addEventListener('click', ()=>{
   greet();
 });
 
-langSwitch.addEventListener('click', e=>{
-  const btn = e.target.closest('button[data-lang]');
-  if(!btn) return;
-  langSwitch.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b===btn));
-  currentLang = btn.getAttribute('data-lang');
-  applyI18n();
-  chatBody.replaceChildren();
-  greet();
-  renderSuggestions();
-});
-
 function greet(){
   showTyping();
   setTimeout(()=>{
     hideTyping();
-    renderBotMsg(I18N[currentLang].greeting);
+    currentLang = PAGE_LANG;
+    renderBotMsg(UI.greeting);
   }, 700);
 }
 
 /* boot */
-applyI18n();
 renderSuggestions();
 greet();
 chatInput.focus();
