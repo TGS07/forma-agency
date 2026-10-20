@@ -84,7 +84,7 @@
  "index.services.62": "EN",
  "index.services.63": "FR",
  "index.services.64": "Post",
- "index.services.65": "Copy · EN",
+ "index.services.65": "Copy · FR",
  "index.services.66": "Production time",
  "index.services.67": "3 h",
  "index.services.68": "2 min",
@@ -219,95 +219,27 @@
  "index.footer-nav.09": "Decline",
  "index.footer-nav.10": "Accept",
  "index.meta.title": "FORMA. — Websites, CRMs and automations for real estate",
- "crm.meta.description": "CRMs built from scratch around each team: contacts, pipelines, Idealista integration and automations. Meet FORMA CRM, built for a team at Century 21 Lux.",
+ "crm.meta.description": "A CRM built around your team: no lead forgotten, every property matched to the right clients and the repetitive work running on its own. First conversation free.",
  "crm.meta.og_site_name": "FORMA.",
- "crm.meta.og_title": "FORMA CRM — a CRM built around your team",
- "crm.meta.og_description": "CRMs built from scratch, with exactly the features and automations each business needs.",
+ "crm.meta.og_title": "FORMA CRM — close more deals with the team you already have",
+ "crm.meta.og_description": "A CRM built from scratch around the way your team sells. First conversation free.",
  "crm.meta.og_image_alt": "FORMA CRM, a CRM built to measure: dashboard with contacts, viewings and automations",
  "crm.head.02": "Skip to content",
  "crm.nav.01": "Main",
- "crm.nav.02": "Case study",
  "crm.nav.03": "Automations",
- "crm.menu-nav.01": "Talk to us about my CRM",
+ "crm.menu-nav.01": "I want a CRM like this",
  "crm.top.01": "FORMA CRM · Custom CRMs",
- "crm.top.02": "A CRM built",
- "crm.top.03": "around",
- "crm.top.04": "your team.",
- "crm.top.05": "We build CRMs from scratch, with the features, automations and integrations your business needs. FORMA CRM, built for a team at Century 21 Lux, is one example of what we do.",
- "crm.top.06": "Watch the demo",
- "crm.top.07": "FORMA CRM dashboard with new leads, viewings, active deals, conversion rate, leads per month, upcoming viewings and recent automations.",
- "crm.top.08": "New match found",
- "crm.top.09": "3-bed Campo de Ourique · 94%",
- "crm.top.10": "Client reactivated",
- "crm.top.11": "A past client replied on WhatsApp",
- "crm.top.12": "Listing created automatically",
- "crm.top.13": "Description, post and video tour",
- "crm.if-int.01": "Integrations",
- "crm.if-int.02": "Connects with",
- "crm.if-int.03": "Idealista",
- "crm.if-int.04": "WhatsApp",
- "crm.if-int.05": "Gmail",
- "crm.if-int.06": "Outlook",
- "crm.if-int.07": "Google Calendar",
- "crm.caso.01": "— Case study · Century 21 Lux",
- "crm.caso.02": "A CRM built",
- "crm.caso.03": "<em>with</em> the people who use it.",
- "crm.caso.04": "The team needed to bring contacts, properties and deals into one place and stop doing the same tasks by hand every day. We built FORMA CRM from scratch, side by side with the agents. [TO CONFIRM: team size, what they used before, project length]",
- "crm.caso.05": "Built from scratch with the agents",
- "crm.caso.06": "Connected to Idealista, WhatsApp and email",
- "crm.caso.07": "Reactivation, matching and content automations",
- "crm.funcionalidades.01": "— What a custom CRM can include",
- "crm.funcionalidades.02": "all in <em>one place</em>.",
- "crm.funcionalidades.03": "01 — Organised contacts",
- "crm.funcionalidades.04": "Every contact",
- "crm.funcionalidades.05": "in the <em class=\"a\">right place</em>.",
- "crm.funcionalidades.06": "Buyers, sellers, investors and services, sorted automatically the moment a contact comes in.",
- "crm.funcionalidades.07": "Automatic sorting by type",
- "crm.funcionalidades.08": "Full history for every client",
- "crm.funcionalidades.09": "Instant search and filters",
- "crm.funcionalidades.10": "FORMA CRM contact list sorted by type: buyer, seller, investor and services, with interest and last contact.",
- "crm.funcionalidades.11": "02 — Pipelines",
- "crm.funcionalidades.12": "Every deal,",
- "crm.funcionalidades.13": "<em class=\"a\">at a glance</em>.",
- "crm.funcionalidades.14": "Every stage of every deal, from first contact to completion, with the value in progress always in view.",
- "crm.funcionalidades.15": "Stages tailored to your agency",
- "crm.funcionalidades.16": "Drag and drop between stages",
- "crm.funcionalidades.17": "Total value at each stage",
- "crm.funcionalidades.18": "FORMA CRM sales pipeline with deals at the first contact, viewing, offer, preliminary contract and completion stages.",
- "crm.funcionalidades.19": "03 — Idealista integration",
- "crm.funcionalidades.20": "Idealista,",
- "crm.funcionalidades.21": "<em class=\"a\">inside your CRM</em>.",
- "crm.funcionalidades.22": "Idealista properties and alerts right in the CRM, without copying anything by hand.",
- "crm.funcionalidades.23": "Automatic sync",
- "crm.funcionalidades.24": "Alerts for new listings and price drops",
- "crm.funcionalidades.25": "Everything linked to the right contacts",
- "crm.funcionalidades.26": "Idealista properties synced into FORMA CRM, with alerts for price drops and new listings.",
- "crm.funcionalidades.27": "04 — Dashboard",
- "crm.funcionalidades.28": "Your business,",
- "crm.funcionalidades.29": "<em class=\"a\">in real time</em>.",
- "crm.funcionalidades.30": "Leads, viewings and deals on one screen, updated by the minute.",
- "crm.funcionalidades.31": "Leads and where each one came from",
- "crm.funcionalidades.32": "Today’s viewings",
- "crm.funcionalidades.33": "Deals and conversion by agent",
- "crm.funcionalidades.34": "Dashboard",
- "crm.funcionalidades.35": "FORMA CRM dashboard with leads, viewings, active deals and conversion.",
- "crm.funcionalidades.36": "— And also",
- "crm.funcionalidades.37": "Every new property matched with each client’s preferences.",
- "crm.funcionalidades.38": "Past client reactivation",
- "crm.funcionalidades.39": "Automatic messages to people you haven’t spoken to in months.",
- "crm.funcionalidades.40": "Automatic listings and content",
- "crm.funcionalidades.41": "Descriptions, posts and videos from your photos.",
- "crm.funcionalidades.42": "Team permissions",
- "crm.funcionalidades.43": "Everyone sees what they should.",
- "crm.funcionalidades.44": "WhatsApp and email",
- "crm.funcionalidades.45": "Conversations and alerts linked to each contact.",
- "crm.automacoes.01": "— The main automations",
- "crm.automacoes.02": "And some things",
- "crm.automacoes.03": "run <em>on their own</em>.",
+ "crm.top.02": "Close more deals",
+ "crm.top.03": "with the team",
+ "crm.top.04": "you already have.",
+ "crm.top.05": "We build a CRM from scratch around your business: every lead logged and followed up, every property matched to the right clients, and the repetitive work running on its own. The Century 21 Lux team already works this way.",
+ "crm.top.06": "See the CRM in action",
+ "crm.top.07": "FORMA CRM dashboard with new leads, viewings, active deals, conversion rate, leads per month, pipeline, today’s viewings and recent automations.",
+ "crm.automacoes.01": "— What runs on its own",
+ "crm.automacoes.02": "The repetitive work",
+ "crm.automacoes.03": "now <em>does itself</em>.",
  "crm.automacoes.04": "Client reactivation",
- "crm.automacoes.05": "Finds forgotten past clients and gets back in touch with them automatically.",
- "crm.automacoes.06": "Reactivation",
- "crm.automacoes.07": "on autopilot",
+ "crm.automacoes.05": "There are stalled deals sitting in your database. The CRM finds the people nobody has contacted in months and sends them a personalised message, without anyone having to remember.",
  "crm.automacoes.08": "Active",
  "crm.automacoes.09": "Clients with no contact for over 6 months",
  "crm.automacoes.10": "Client A",
@@ -322,53 +254,24 @@
  "crm.automacoes.19": "Last contact 18 months ago",
  "crm.automacoes.20": "WhatsApp · Personalised message",
  "crm.automacoes.21": "Hi Marta, are you still looking for a 3-bed in Lisbon? A property has just come in that might interest you.",
- "crm.automacoes.22": "Every new property is matched with each client’s preferences, and the matches go to the right agent.",
- "crm.automacoes.23": "New property →",
- "crm.automacoes.24": "matches",
- "crm.automacoes.25": "in seconds",
+ "crm.automacoes.22": "Every new property is checked against every client’s preferences. Matches reach the right agent in seconds, before the client sees the property anywhere else.",
  "crm.automacoes.26": "New property",
  "crm.automacoes.27": "3-bed · Campo de Ourique",
  "crm.automacoes.28": "€449,000 · 110 m² · garage",
  "crm.automacoes.29": "Sent to Agent 1",
  "crm.automacoes.30": "Sent to Agent 2",
- "crm.automacoes.31": "Property descriptions, social media posts and video tours from your photos, in minutes instead of hours.",
- "crm.automacoes.32": "In",
- "crm.automacoes.33": "minutes",
- "crm.automacoes.34": ", not hours",
+ "crm.automacoes.31": "From the photos come the description, the social media post and the video tour. Hours of work become minutes of review.",
  "crm.automacoes.35": "4 photos",
  "crm.automacoes.36": "Listing description",
  "crm.automacoes.37": "Social media post",
  "crm.automacoes.38": "Instagram · Facebook",
  "crm.automacoes.39": "Video tour",
  "crm.automacoes.40": "0:42 · portrait and landscape",
- "crm.faq.01": "— FAQ",
- "crm.faq.02": "Frequently asked",
- "crm.faq.03": "<em>questions</em>.",
- "crm.faq.04": "Can’t find the answer? <a href=\"contacto.html\">Talk to us</a>.",
- "crm.faq.05": "How long does it take to build a custom CRM?",
- "crm.faq.06": "It depends on the features and integrations. After our first conversation, the proposal includes a fixed timeline. [TO CONFIRM: typical timeline]",
- "crm.faq.07": "Can I import the data I already have?",
- "crm.faq.08": "Yes. We import contacts, properties and history from Excel or from the CRM you use today. [TO CONFIRM: supported formats and CRMs]",
- "crm.faq.09": "Does it connect with the tools I already use?",
- "crm.faq.10": "Whenever those tools allow it. FORMA CRM, for example, is connected to Idealista, WhatsApp, Gmail, Outlook and Google Calendar.",
- "crm.faq.11": "What about data protection?",
- "crm.faq.12": "Your data is yours. The CRM complies with the GDPR, with individual logins and team permissions. [TO CONFIRM: hosting and backups]",
- "crm.faq.13": "Is there support and maintenance after launch?",
- "crm.faq.14": "Yes. We keep supporting you, with tweaks and help whenever you need it. [TO CONFIRM: model, e.g. monthly fee]",
- "crm.faq.15": "How does pricing work?",
- "crm.faq.16": "We start with a free conversation to understand how you work. Then we send a proposal with the features, timeline and price agreed before we start.",
- "crm.if-sec.01": "Security and support",
- "crm.if-sec.02": "Data hosted in the EU · GDPR",
- "crm.if-sec.03": "Servers in the European Union and data processing in line with the GDPR.",
- "crm.if-sec.04": "Support in Portuguese",
- "crm.if-sec.05": "Talk to people who know the sector, in your language.",
- "crm.if-sec.06": "Onboarding included",
- "crm.if-sec.07": "We help you set up the CRM and import your data.",
- "crm.if-cta.01": "Shall we build",
- "crm.if-cta.02": "<em>your</em> CRM?",
- "crm.if-cta.03": "Tell us how your team works today. We reply within 24 working hours.",
+ "crm.if-cta.01": "What does each",
+ "crm.if-cta.02": "<em>forgotten</em> lead cost you?",
+ "crm.if-cta.03": "In a first conversation, free and with no commitment, we show you where your team is losing deals and what your CRM would look like. We reply within 24 working hours.",
  "crm.if-cta.04": "Talk to us",
- "crm.footer.01": "Need a CRM built around you? <br>Talk to us today.",
+ "crm.footer.01": "Every week without a CRM is a week of lost leads. <br>Talk to us today.",
  "crm.footer-nav.01": "Solutions",
  "crm.footer-nav.02": "FORMA CRM demo video",
  "crm.meta.title": "FORMA CRM — custom-built CRMs · FORMA.",
@@ -1081,5 +984,765 @@
  "solucoes.processo.proposta": "Proposal",
  "contacto.meta.description": "Talk to FORMA about your website, CRM, automations or AI assistant. We reply within 24 working hours.",
  "crm.meta.og_image": "media/og-crm-en.jpg",
- "common.language": "Language"
+ "common.language": "Language",
+ "crm.nav.visita": "Guided tour",
+ "crm.v.url": "crm.yourcompany.com",
+ "crm.v.label": "— Guided tour",
+ "crm.v.h2a": "See where your team",
+ "crm.v.h2b": "stops <em>wasting time</em>.",
+ "crm.v.p": "Six screens, one minute. Scroll, or click around and try it as if the CRM were already yours.",
+ "crm.v.pm": "Six screens. Tap and try it as if the CRM were already yours.",
+ "crm.h.n1": "Dashboard",
+ "crm.h.n2": "Contacts",
+ "crm.h.n3": "Pipelines",
+ "crm.h.n4": "Properties",
+ "crm.h.n5": "Automations",
+ "crm.h.greet": "Good morning, Carla",
+ "crm.h.sub": "Saturday, 18 October",
+ "crm.h.k1": "New leads",
+ "crm.h.k1d": "vs September",
+ "crm.h.k2": "Viewings this week",
+ "crm.h.k2d": "6 today",
+ "crm.h.k3": "Active deals",
+ "crm.h.k3d": "8 at offer stage",
+ "crm.h.k4": "Conversion rate",
+ "crm.h.k4d": "last 90 days",
+ "crm.h.chart": "Leads per month",
+ "crm.au.b2l": "In seconds",
+ "crm.au.b2p": "Sent to the right agent, with the property details and the list of matching clients.",
+ "crm.au.b3l": "In minutes, not hours",
+ "crm.au.b3p": "From the photos, the description, the post and the video are ready for you to review.",
+ "crm.v.data": {
+  "lang": "en",
+  "user": "Carla Silva",
+  "search": "Search",
+  "notif": "Notifications",
+  "nav": [
+   "Dashboard",
+   "Contacts",
+   "Pipelines",
+   "Properties",
+   "Automations",
+   "Calendar"
+  ],
+  "screens": {
+   "contacts": [
+    "Contacts",
+    "1,284 contacts · sorted automatically"
+   ],
+   "pipeline": [
+    "Sales pipeline",
+    "7 active deals · €4,179,000 in progress"
+   ],
+   "props": [
+    "Properties",
+    "New property · checked against 1,284 contacts"
+   ],
+   "dash": [
+    "Good morning, Carla",
+    "Today's summary"
+   ],
+   "custom": [
+    "Your CRM",
+    "The modules your business needs"
+   ]
+  },
+  "chips": [
+   [
+    "all",
+    "All",
+    "1,284"
+   ],
+   [
+    "buyer",
+    "Buyer",
+    "612"
+   ],
+   [
+    "seller",
+    "Seller",
+    "318"
+   ],
+   [
+    "investor",
+    "Investor",
+    "204"
+   ],
+   [
+    "services",
+    "Services",
+    "150"
+   ]
+  ],
+  "th": [
+   "Name",
+   "Type",
+   "Interest",
+   "Last contact"
+  ],
+  "panel": {
+   "prefs": "Preferences",
+   "hist": "History",
+   "tasks": "Upcoming tasks",
+   "close": "Close profile"
+  },
+  "clients": [
+   {
+    "id": "MR",
+    "n": "Marta Ribeiro",
+    "t": "buyer",
+    "int": "3-bed · Campo de Ourique · up to €450,000",
+    "last": "2 days ago",
+    "pref": [
+     [
+      "Looking for",
+      "3-bed · Campo de Ourique or Estrela"
+     ],
+     [
+      "Budget",
+      "up to €450,000"
+     ],
+     [
+      "Must have",
+      "garage · balcony"
+     ]
+    ],
+    "hist": [
+     "Viewing of the 3-bed on Rua Ferreira Borges · yesterday",
+     "WhatsApp: asked for more photos · 2 days ago",
+     "Qualification call · 1 week ago"
+    ],
+    "tasks": [
+     "Send offer · today, 5 pm",
+     "Confirm second viewing · Thursday"
+    ]
+   },
+   {
+    "id": "JF",
+    "n": "João Ferreira",
+    "t": "seller",
+    "int": "4-bed house · Cascais",
+    "last": "today",
+    "pref": [
+     [
+      "Selling",
+      "4-bed house · Cascais"
+     ],
+     [
+      "Asking price",
+      "€1,150,000"
+     ],
+     [
+      "Timeline",
+      "by the end of the year"
+     ]
+    ],
+    "hist": [
+     "Property valuation · today",
+     "Listing meeting · 4 days ago",
+     "First contact via the website · 2 weeks ago"
+    ],
+    "tasks": [
+     "Book the photo shoot · tomorrow",
+     "Send the agency agreement · Friday"
+    ]
+   },
+   {
+    "id": "IC",
+    "n": "Inês Carvalho",
+    "t": "investor",
+    "int": "Building to refurbish · Arroios",
+    "last": "1 week ago",
+    "pref": [
+     [
+      "Looking for",
+      "Building to refurbish"
+     ],
+     [
+      "Areas",
+      "Arroios · Penha de França"
+     ],
+     [
+      "Budget",
+      "up to €1,500,000"
+     ]
+    ],
+    "hist": [
+     "Sent details of 2 buildings · 1 week ago",
+     "Meeting at the office · 3 weeks ago"
+    ],
+    "tasks": [
+     "Call with updates · Monday"
+    ]
+   },
+   {
+    "id": "RM",
+    "n": "Rui Mendes",
+    "t": "buyer",
+    "int": "2-bed · Oeiras · up to €380,000",
+    "last": "yesterday",
+    "pref": [
+     [
+      "Looking for",
+      "2-bed · Oeiras or Alvalade"
+     ],
+     [
+      "Budget",
+      "up to €380,000"
+     ],
+     [
+      "Must have",
+      "close to public transport"
+     ]
+    ],
+    "hist": [
+     "Viewing of the 2-bed in Oeiras · yesterday",
+     "Enquiry on Idealista · 5 days ago"
+    ],
+    "tasks": [
+     "Send similar properties · today"
+    ]
+   },
+   {
+    "id": "SA",
+    "n": "Sofia Almeida",
+    "t": "services",
+    "int": "Property photography and video",
+    "last": "3 days ago",
+    "pref": [
+     [
+      "Service",
+      "Photography and video"
+     ],
+     [
+      "Areas",
+      "Lisbon and Cascais"
+     ],
+     [
+      "Availability",
+      "weekdays"
+     ]
+    ],
+    "hist": [
+     "Shoot at the Campo de Ourique 3-bed · 3 days ago"
+    ],
+    "tasks": [
+     "Book the Cascais house shoot · tomorrow"
+    ]
+   },
+   {
+    "id": "PS",
+    "n": "Pedro Santos",
+    "t": "buyer",
+    "int": "4-bed house · Cascais line",
+    "last": "5 days ago",
+    "pref": [
+     [
+      "Looking for",
+      "4-bed house · Cascais line"
+     ],
+     [
+      "Budget",
+      "up to €1,200,000"
+     ],
+     [
+      "Must have",
+      "garden · pool"
+     ]
+    ],
+    "hist": [
+     "Offer sent · 5 days ago",
+     "Second viewing · 1 week ago"
+    ],
+    "tasks": [
+     "Follow up on the offer · tomorrow"
+    ]
+   },
+   {
+    "id": "CL",
+    "n": "Catarina Lopes",
+    "t": "seller",
+    "int": "2-bed · Alvalade",
+    "last": "2 weeks ago",
+    "pref": [
+     [
+      "Selling",
+      "2-bed · Alvalade"
+     ],
+     [
+      "Asking price",
+      "€365,000"
+     ],
+     [
+      "Timeline",
+      "3 months"
+     ]
+    ],
+    "hist": [
+     "Listed on Idealista · 2 weeks ago"
+    ],
+    "tasks": [
+     "Send the viewings report · Friday"
+    ]
+   }
+  ],
+  "cols": [
+   "First contact",
+   "Viewing",
+   "Offer",
+   "Pre-contract",
+   "Completion"
+  ],
+  "deals": [
+   [
+    1,
+    0,
+    "Rui Mendes",
+    "2-bed · Oeiras",
+    318000
+   ],
+   [
+    2,
+    0,
+    "Beatriz Sousa",
+    "2-bed · Alvalade",
+    365000
+   ],
+   [
+    3,
+    1,
+    "Marta Ribeiro",
+    "3-bed · Campo de Ourique",
+    449000
+   ],
+   [
+    4,
+    1,
+    "Tiago Nunes",
+    "3-bed · Estrela",
+    512000
+   ],
+   [
+    5,
+    2,
+    "Pedro Santos",
+    "4-bed house · Estoril",
+    1120000
+   ],
+   [
+    6,
+    3,
+    "Helena Duarte",
+    "House · Cascais",
+    1150000
+   ],
+   [
+    7,
+    4,
+    "Miguel Rocha",
+    "1-bed · Arroios",
+    265000
+   ]
+  ],
+  "moved": "Deal moved to {col}",
+  "recent": "Recent properties",
+  "new": "NEW",
+  "compat": "{n} matching clients",
+  "propToast": "{n} matching clients for {p}",
+  "props": [
+   {
+    "id": "P1",
+    "t": "3-bed · Campo de Ourique",
+    "v": 449000,
+    "d": "110 m² · garage",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/sala-campo-ourique.webp)",
+    "m": [
+     [
+      "MR",
+      "Marta Ribeiro",
+      "3-bed · up to €450,000",
+      94
+     ],
+     [
+      "TN",
+      "Tiago Nunes",
+      "3-bed · Estrela · up to €520,000",
+      88
+     ],
+     [
+      "AC",
+      "Ana Costa",
+      "2/3-bed · Lisbon · up to €470,000",
+      81
+     ]
+    ]
+   },
+   {
+    "id": "P2",
+    "t": "4-bed house · Cascais",
+    "v": 1150000,
+    "d": "260 m² · pool",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/moradia-cascais.webp)",
+    "m": [
+     [
+      "PS",
+      "Pedro Santos",
+      "4-bed house · up to €1,200,000",
+      91
+     ],
+     [
+      "HD",
+      "Helena Duarte",
+      "House · Cascais",
+      84
+     ],
+     [
+      "MR",
+      "Miguel Rocha",
+      "House · Cascais line",
+      77
+     ]
+    ]
+   },
+   {
+    "id": "P3",
+    "t": "2-bed · Alvalade",
+    "v": 365000,
+    "d": "78 m² · balcony",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/t2-alvalade.webp)",
+    "m": [
+     [
+      "RM",
+      "Rui Mendes",
+      "2-bed · up to €380,000",
+      89
+     ],
+     [
+      "BS",
+      "Beatriz Sousa",
+      "2-bed · Alvalade",
+      86
+     ],
+     [
+      "AC",
+      "Ana Costa",
+      "2/3-bed · Lisbon",
+      72
+     ]
+    ]
+   }
+  ],
+  "kpis": [
+   [
+    "New leads",
+    128,
+    "",
+    "+18% vs September"
+   ],
+   [
+    "Viewings this week",
+    23,
+    "",
+    "6 today"
+   ],
+   [
+    "Active deals",
+    41,
+    "",
+    "12 at offer stage"
+   ],
+   [
+    "Conversion rate",
+    18,
+    "%",
+    "+2 points"
+   ]
+  ],
+  "chart": "Leads per month",
+  "chartSub": "last 6 months",
+  "months": [
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct"
+  ],
+  "visits": "Upcoming viewings",
+  "visitList": [
+   [
+    "10:30",
+    "Marta Ribeiro",
+    "3-bed · Campo de Ourique"
+   ],
+   [
+    "14:00",
+    "Tiago Nunes",
+    "3-bed · Estrela"
+   ],
+   [
+    "16:30",
+    "Rui Mendes",
+    "2-bed · Oeiras"
+   ],
+   [
+    "18:00",
+    "Beatriz Sousa",
+    "2-bed · Alvalade"
+   ]
+  ],
+  "mods": [
+   [
+    "people",
+    "Contacts",
+    "Sorted by type"
+   ],
+   [
+    "cols",
+    "Pipeline",
+    "Your agency's stages"
+   ],
+   [
+    "home",
+    "Properties",
+    "Linked to Idealista"
+   ],
+   [
+    "cal",
+    "Calendar",
+    "Viewings and tasks"
+   ],
+   [
+    "bolt",
+    "Automations",
+    "Reactivation, matching, content"
+   ],
+   [
+    "chart",
+    "Reports",
+    "By agent and by team"
+   ],
+   [
+    "plug",
+    "Integrations",
+    "WhatsApp · email · calendar"
+   ],
+   [
+    "lock",
+    "Permissions",
+    "Everyone sees what they should"
+   ],
+   [
+    "plus",
+    "Whatever you're missing",
+    "Designed with you"
+   ]
+  ],
+  "steps": [
+   {
+    "name": "Organised contacts",
+    "title": "Never hunt for a contact again",
+    "text": "Buyers, sellers, investors and service providers sorted the moment they come in. Anyone you need is one click away.",
+    "try": "Try it: click a filter",
+    "tryT": "Try it: tap a filter"
+   },
+   {
+    "name": "Client profile",
+    "title": "Know everything before you call",
+    "text": "Preferences, history and upcoming tasks on one screen. You call the client already knowing what to say.",
+    "try": "Try it: click another client",
+    "tryT": ""
+   },
+   {
+    "name": "Pipeline",
+    "title": "See where the money is",
+    "text": "Every deal, stage by stage, with the value at stake always in view. You know exactly where to start today.",
+    "try": "Try it: drag a deal to another stage",
+    "tryT": "Try it: tap the deal to move it"
+   },
+   {
+    "name": "Property matching",
+    "title": "The right property, to the right client",
+    "text": "A property comes in and the CRM tells you straight away which clients it fits, and how well. You call first, before the competition.",
+    "try": "Try it: pick another property",
+    "tryT": "Try it: pick another property"
+   },
+   {
+    "name": "Dashboard",
+    "title": "Your whole business at a glance",
+    "text": "Leads, viewings, deals and conversion, updated by the minute. Decide with numbers, not hunches.",
+    "try": "",
+    "tryT": ""
+   },
+   {
+    "name": "Built around you",
+    "title": "Built around the way you sell",
+    "text": "You don’t bend your team to fit a piece of software. We design the modules, stages and automations around how you already work.",
+    "try": "",
+    "tryT": ""
+   }
+  ],
+  "prev": "Previous step",
+  "next": "Next step",
+  "goto": "Step {n}: {name}",
+  "stepsLabel": "Tour steps",
+  "scroll": "Scroll to continue",
+  "tapMove": "Tap to move"
+ },
+ "crm.h.main": "Main",
+ "crm.h.autog": "Automation",
+ "crm.h.n6": "Calendar",
+ "crm.h.n7": "Reports",
+ "crm.h.badge": "12 new",
+ "crm.h.role": "Agent",
+ "crm.h.visits": "6 viewings today",
+ "crm.h.search": "Search contacts, properties…",
+ "crm.h.new": "New contact",
+ "crm.h.d1": "+18%",
+ "crm.h.d2": "+4",
+ "crm.h.d3": "+6",
+ "crm.h.d4": "+2 pts",
+ "crm.h.chartsub": "New leads, all sources",
+ "crm.h.r6": "6 months",
+ "crm.h.r12": "12 months",
+ "crm.h.leads": "leads",
+ "crm.h.pipe": "Pipeline",
+ "crm.h.pipesum": "<b>€4.2M</b> in progress · 41 deals",
+ "crm.h.s1": "1st contact",
+ "crm.h.s2": "Viewing",
+ "crm.h.s3": "Offer",
+ "crm.h.s4": "Pre-contract",
+ "crm.h.s5": "Completion",
+ "crm.h.today": "Today",
+ "crm.h.todaychip": "6 viewings",
+ "crm.h.v1p": "3-bed · Campo de Ourique",
+ "crm.h.v2p": "3-bed · Estrela",
+ "crm.h.v3p": "2-bed · Oeiras",
+ "crm.h.ok": "Confirmed",
+ "crm.h.pend": "To confirm",
+ "crm.h.autot": "Automations",
+ "crm.h.active": "3 active",
+ "crm.h.a1t": "Match found",
+ "crm.h.a1s": "3-bed Campo de Ourique · 94%",
+ "crm.h.a1w": "2 min ago",
+ "crm.h.a2t": "Client reactivated",
+ "crm.h.a2s": "João Ferreira replied on WhatsApp",
+ "crm.h.a2w": "18 min ago",
+ "crm.h.a3t": "Listing created",
+ "crm.h.a3s": "2-bed Alvalade · description and post",
+ "crm.h.a3w": "1 h ago",
+ "crm.h.m0": "May",
+ "crm.h.m1": "Jun",
+ "crm.h.m2": "Jul",
+ "crm.h.m3": "Aug",
+ "crm.h.m4": "Sep",
+ "crm.h.m5": "Oct",
+ "crm.h.k1s": "New leads",
+ "crm.h.k2s": "Viewings",
+ "crm.h.k3s": "Deals",
+ "crm.h.k4s": "Conversion",
+ "crm.au.t1": "Forgotten clients start replying again",
+ "crm.au.t2": "Your agent calls first",
+ "crm.au.t3": "Listings ready in minutes",
+ "crm.cta.btn": "Book the free conversation",
+ "crm.au.t4": "Say it, don’t type it",
+ "crm.au.p4": "Just left a viewing? Record a voice note. The CRM transcribes it and fills in the client’s profile or logs the conversation, without typing a word.",
+ "crm.au.v.head": "Voice note",
+ "crm.au.v.done": "Profile created",
+ "crm.au.v.k1": "Name",
+ "crm.au.v.k2": "Looking for",
+ "crm.au.v.k3": "Budget",
+ "crm.au.v.k4": "Next step",
+ "crm.au.v.v2": "2-bed · Arroios",
+ "crm.au.v.v3": "up to €350,000",
+ "crm.au.v.v4": "Send options by Friday",
+ "crm.au.b4l": "From voice to profile",
+ "crm.au.b4p": "“Just spoke to Joana, she’s after a 2-bed in Arroios up to 350k and wants to see options by Friday.”",
+ "crm.au.more.label": "— And it doesn’t stop there",
+ "crm.au.more.h1": "And many small automations",
+ "crm.au.more.h2": "that <em>give you your day back</em>.",
+ "crm.au.m1t": "No lead left behind",
+ "crm.au.m1p": "An alert when a lead has gone quiet for too many days, or has sat too long in the same stage.",
+ "crm.au.m2t": "Leads from everywhere, in one place",
+ "crm.au.m2p": "Instagram forms, websites and partners flow in on their own. WhatsApp messages land on the right lead.",
+ "crm.au.m3t": "Never forget to call again",
+ "crm.au.m3p": "A reminder when a client goes too long without contact, plus birthdays, Christmas and Easter.",
+ "crm.au.m4t": "AI tells you the next step",
+ "crm.au.m4p": "It qualifies every lead, suggests the next action and writes the closing email for everyone involved.",
+ "crm.au.m5t": "Clients choose without calling you",
+ "crm.au.m5p": "A private portal where each client sees the recommended properties and says what they like.",
+ "crm.au.m6t": "Publish once, appear everywhere",
+ "crm.au.m6p": "Properties go to the property portals on their own, through an automatic feed.",
+ "crm.au.m7t": "Rules that work for you",
+ "crm.au.m7p": "A deal changes stage and the CRM creates the task, alerts the right person or sends the email or WhatsApp.",
+ "crm.au.m8t": "Owners always looked after",
+ "crm.au.m8p": "An alert when an owner with an active listing goes 10 days without hearing from you.",
+ "crm.au.m9t": "Your day starts organised",
+ "crm.au.m9p": "At 8 am the day’s tasks arrive. Your calendar and contacts stay in sync with your phone.",
+ "index.svxd.ph.t": "Penthouse · Lapa",
+ "index.svxd.ph.p": "€1,480,000",
+ "index.svxd.url": "youragency.com",
+ "index.svxd.n1": "Buy",
+ "index.svxd.n2": "Sell",
+ "index.svxd.n3": "About",
+ "index.svxd.cta": "Contact",
+ "index.svxd.h1": "Find the right home",
+ "index.svxd.h2": "in Lisbon.",
+ "index.svxd.c1t": "3-bed · Campo de Ourique",
+ "index.svxd.c1p": "€449,000",
+ "index.svxd.c2t": "House · Cascais",
+ "index.svxd.c2p": "€1,150,000",
+ "index.svxd.c3t": "2-bed · Alvalade",
+ "index.svxd.c3p": "€365,000",
+ "index.svxd.s03": "3-bed Lisbon",
+ "index.svxd.s04": "call Mon?",
+ "index.svxd.s13": "selling Cascais",
+ "index.svxd.s14": "no reply",
+ "index.svxd.s23": "building",
+ "index.svxd.s24": "send details",
+ "index.svxd.s33": "2-bed Oeiras",
+ "index.svxd.s34": "viewing??",
+ "index.svxd.s43": "photography",
+ "index.svxd.s44": "ok",
+ "index.svxd.s53": "4-bed Estoril",
+ "index.svxd.s54": "offer?",
+ "index.svxd.s63": "selling 2-bed",
+ "index.svxd.s64": "call",
+ "index.svxd.s73": "3-bed Estrela",
+ "index.svxd.s74": "—",
+ "index.svxd.s83": "2/3-bed",
+ "index.svxd.s84": "follow up?",
+ "index.svxd.nav0": "Dashboard",
+ "index.svxd.nav1": "Contacts",
+ "index.svxd.nav2": "Pipeline",
+ "index.svxd.nav3": "Properties",
+ "index.svxd.nav4": "Calendar",
+ "index.svxd.nav5": "Reports",
+ "index.svxd.pc1": "2-bed · Oeiras",
+ "index.svxd.pc2": "4-bed · Estoril",
+ "index.svxd.pc3": "House · Cascais",
+ "index.svxd.pc4": "3-bed · Lisbon",
+ "index.svxd.r4": "Looking for a 1-bed downtown",
+ "index.svxd.r3": "Looking for a 2-bed in Oeiras",
+ "index.svxd.r2": "Investor · buildings",
+ "index.svxd.r1": "Selling a house in Cascais",
+ "index.svxd.r0": "Looking for a 3-bed in Lisbon",
+ "index.svxd.ad.t": "Renovated 3-bed in Campo de Ourique",
+ "index.svxd.ad.p": "€449,000",
+ "index.svxd.d0": "Bright 3-bed with high ceilings, herringbone",
+ "index.svxd.d1": "parquet and two south-facing French windows.",
+ "index.svxd.d2": "A fitted kitchen, a balcony over the rooftops",
+ "index.svxd.d3": "of Lisbon and a garage, five minutes",
+ "index.svxd.d4": "from Estrela Garden.",
+ "index.svxd.post": "Just listed",
+ "index.svxd.tr0": "T3 lumineux avec hauts plafonds,",
+ "index.svxd.tr1": "parquet en chevrons et deux",
+ "index.svxd.tr2": "portes-fenêtres plein sud.",
+ "index.svxd.tr3": "Cuisine équipée, balcon sur les",
+ "index.svxd.tr4": "toits et garage, à cinq minutes",
+ "index.svxd.tr5": "du jardin d’Estrela.",
+ "solucoes.ill.h": "No more waiting.",
+ "solucoes.ill.p": "Book online, any time.",
+ "solucoes.ill.s": "General · Dental · Physio",
+ "solucoes.ill.b": "Book a visit"
 }

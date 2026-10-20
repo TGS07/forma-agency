@@ -307,32 +307,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .footer-social a:hover{border-color:#F4F1EB;background:rgba(244,241,235,.06)}
   .footer-social svg{width:15px;height:15px}
 
-  /* Big FORMA word with video showing through letters */
-  .footer-bigword{
-    position:relative;
-    width:100%;
-    line-height:0;
-    background:#0E0E0C;
-  }
-  .footer-bigword-video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:saturate(.9) brightness(.85);
-  }
-  .footer-bigword-svg{
-    position:relative;
-    width:100%;
-    height:auto;
-    display:block;
-  }
-  .footer-bigword-svg text{
-    font-family:var(--sans);
-    font-weight:300;
-    letter-spacing:-0.04em;
-  }
 
   .footer-bottom{
     display:flex;justify-content:space-between;align-items:center;
@@ -451,6 +425,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-pl h3{font-size:clamp(40px,4vw,60px);line-height:1.02;font-weight:300;letter-spacing:-.03em}
   .sl-pl p{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:34ch}
   .sl-pl .sl-link{margin-top:auto}
+  .sl-img{width:100%;max-width:440px;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#ECE6DC;box-shadow:0 24px 50px -34px rgba(14,14,12,.45)}
+  .sl-img img{width:100%;height:100%;object-fit:cover;display:block}
   .sl-pr{display:flex;flex-direction:column}
   .sl-ex{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
   .sl-ex:last-child{border-bottom:1px solid var(--line)}
@@ -796,7 +772,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <span class="sl-ind" aria-hidden="true"></span>
     </div>
     <div class="sl-panel" id="sl-panel" role="tabpanel" aria-live="polite" aria-labelledby="tab-clinicas" data-fade>
-      <div class="sl-pl"><span class="kick">Saúde e bem-estar</span><h3>Clínicas</h3><p>Menos chamadas, mais consultas marcadas e pacientes que não faltam.</p><a class="sl-link" href="#contacto" data-setor="clinicas"><span class="u">Falar sobre a minha clínica</span><span class="arr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"></path></svg></span></a></div><div class="sl-pr"><div class="sl-ex"><span class="n">01</span><div><b>Marcação de consultas online</b><span>Os pacientes escolhem o horário no site, a qualquer hora, sem telefonar.</span></div></div><div class="sl-ex"><span class="n">02</span><div><b>Lembretes automáticos</b><span>SMS ou WhatsApp antes de cada consulta, para reduzir as faltas.</span></div></div><div class="sl-ex"><span class="n">03</span><div><b>Assistente que responde 24/7</b><span>Esclarece dúvidas sobre horários, preços e especialidades, mesmo fora de horas.</span></div></div></div>
+      <div class="sl-pl"><span class="kick">Saúde e bem-estar</span><h3>Clínicas</h3><p>Menos chamadas, mais consultas marcadas e pacientes que não faltam.</p><div class="sl-img"><img src="media/setores/clinicas.webp" alt="" width="900" height="600" decoding="async"></div><a class="sl-link" href="#contacto" data-setor="clinicas"><span class="u">Falar sobre a minha clínica</span><span class="arr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"></path></svg></span></a></div><div class="sl-pr"><div class="sl-ex"><span class="n">01</span><div><b>Marcação de consultas online</b><span>Os pacientes escolhem o horário no site, a qualquer hora, sem telefonar.</span></div></div><div class="sl-ex"><span class="n">02</span><div><b>Lembretes automáticos</b><span>SMS ou WhatsApp antes de cada consulta, para reduzir as faltas.</span></div></div><div class="sl-ex"><span class="n">03</span><div><b>Assistente que responde 24/7</b><span>Esclarece dúvidas sobre horários, preços e especialidades, mesmo fora de horas.</span></div></div></div>
     </div>
   </div>
 </section>
@@ -816,11 +792,11 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           <div class="sl-srv-txt"><p>Sites rápidos, bonitos e pensados para transformar visitas em contactos, reservas ou vendas.</p><ul><li>Design à medida da sua marca</li><li>Otimizados para o Google e para telemóvel</li><li>Reservas, marcações ou loja online integradas</li></ul></div>
           <div class="sl-ill" data-ill="web" aria-hidden="true"><div class="il-stage"><div class="il-card" style="left:58px;top:34px;width:264px;height:176px">
   <div class="il-bar"><i></i><i></i><i></i></div>
-  <span class="il-ln il-ink" style="left:18px;top:42px;width:128px;height:10px"></span>
-  <span class="il-ln" style="left:18px;top:62px;width:150px"></span>
-  <span class="il-ln" style="left:18px;top:76px;width:112px"></span>
-  <span class="il-btn" style="position:absolute;left:18px;top:98px;width:84px;height:26px;border-radius:99px;background:var(--accent)"></span>
-  <span class="il-img" style="position:absolute;right:16px;top:40px;width:78px;height:90px;border-radius:10px;background:linear-gradient(160deg,#D9C3A8,#B58A63)"></span>
+  <span class="il-ln" style="left:18px;top:37px;width:136px;height:18px;background:none;border-radius:0;font-family:var(--sans);font-size:12px;line-height:18px;font-weight:400;letter-spacing:-.01em;color:#0E0E0C;white-space:nowrap">Consultas sem esperar.</span>
+  <span class="il-ln" style="left:18px;top:58px;width:140px;height:12px;background:none;border-radius:0;font-family:var(--geist);font-size:8.5px;line-height:12px;color:rgba(14,14,12,.6);white-space:nowrap;overflow:hidden">Marque online, a qualquer hora.</span>
+  <span class="il-ln" style="left:18px;top:72px;width:140px;height:12px;background:none;border-radius:0;font-family:var(--geist);font-size:7.5px;line-height:12px;color:var(--accent);white-space:nowrap;overflow:hidden">Medicina geral · Dentária · Fisio</span>
+  <span class="il-btn" style="position:absolute;left:18px;top:98px;width:92px;height:26px;border-radius:99px;background:var(--accent);color:#F4F1EB;font-family:var(--geist);font-size:8.5px;font-weight:500;display:flex;align-items:center;justify-content:center">Marcar consulta</span>
+  <span class="il-img" style="position:absolute;right:16px;top:36px;width:86px;height:98px;border-radius:10px;overflow:hidden;background:#E6DDCF"><img src="media/setores/clinicas.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></span>
   <span class="il-ln" style="left:18px;top:144px;width:228px;height:1px;border-radius:0;background:rgba(14,14,12,.08)"></span>
  </div>
  <svg class="il-cur" style="position:absolute;left:108px;top:146px" width="18" height="22" viewBox="0 0 18 22"><path d="M2 2l13 9-6 1.4L12 20l-3 1-3-7.6L2 17z" fill="#0E0E0C" stroke="#FBF9F5" stroke-width="1.2" stroke-linejoin="round"></path></svg>
@@ -1052,20 +1028,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer-bigword">
-    <video class="footer-bigword-video" muted loop playsinline preload="none" data-lazy-src="media/hero-720.mp4"></video>
-    <svg class="footer-bigword-svg" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <mask id="formaWordMask">
-          <rect width="1000" height="300" fill="white"/>
-          <text x="500" y="240" text-anchor="middle" textLength="940" lengthAdjust="spacingAndGlyphs"
-                font-size="320" font-family="Raleway, sans-serif" font-weight="300" fill="black">FORMA.</text>
-        </mask>
-      </defs>
-      <rect width="1000" height="300" fill="#0E0E0C" mask="url(#formaWordMask)"/>
-    </svg>
   </div>
 
   <div class="wrap">
@@ -1354,6 +1316,9 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
       const d = SECTORS[key];
       const left = el('div', 'sl-pl');
       left.append(el('span', 'kick', d.kick), el('h3', null, d.name), el('p', null, d.intro));
+      const fig = el('div', 'sl-img'), im = new Image(900, 600);
+      im.alt = ''; im.decoding = 'async'; im.src = 'media/setores/' + key + '.webp';
+      fig.appendChild(im); left.appendChild(fig);
       const link = el('a', 'sl-link'); link.href = '#contacto'; link.dataset.setor = key;
       link.append(el('span', 'u', d.cta), arrow());
       left.appendChild(link);
@@ -1376,6 +1341,7 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
       }
       return [left, right];
     }
+    Object.keys(SECTORS).forEach(k => { const i = new Image(); i.src = 'media/setores/' + k + '.webp'; });
     function parts(){ return panel.querySelectorAll('.sl-pl > *, .sl-ex, .sl-other > *'); }
     function moveInd(instant){
       const t = tabs[current]; if(!t) return;
@@ -1765,19 +1731,6 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
     window.addEventListener('load', () => ScrollTrigger.refresh());
   }
-})();
-</script>
-<script>
-/* Footer video: attach the file only when it gets close to the screen */
-(function(){
-  var vs = document.querySelectorAll('video[data-lazy-src]');
-  var play = function(v){ var p = v.play(); if(p) p.catch(function(){}); };
-  var load = function(v){ if(v.dataset.on) return; v.dataset.on = '1'; v.src = v.dataset.lazySrc; };
-  if(!('IntersectionObserver' in window)){ vs.forEach(function(v){ load(v); play(v); }); return; }
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ load(e.target); io.unobserve(e.target); } }); }, {rootMargin:'800px 0px'});
-  // decode only while on screen
-  var vis = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ load(e.target); play(e.target); } else e.target.pause(); }); });
-  vs.forEach(function(v){ io.observe(v); vis.observe(v); });
 })();
 </script>
 </body>
