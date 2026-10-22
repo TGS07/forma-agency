@@ -24,6 +24,10 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// inline <style> and <script> are minified when esbuild is installed (npm i); without it the pages ship as written
+let esbuild = null;
+try { if (!process.env.NO_MINIFY) esbuild = await import('esbuild'); } catch { console.warn('esbuild not found: pages are not minified'); }
+
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_URL = 'https://formaagency.pt';   // [A CONFIRMAR] production domain, used by hreflang, canonical and og:url
 
@@ -44,7 +48,7 @@ const COPY = {
 };
 const LOCALE = { pt: 'pt_PT', en: 'en_GB' };
 const SWITCH_LABEL = { pt: 'Idioma', en: 'Language' };
-const ASSET = /(["'(,\s])((?:media|fonts|imoflow)\/[^"'()\s,]+|imoflow-[\w-]+\.(?:webp|webm|mp4|jpg|png))/g;
+const ASSET = /(["'(,\s])((?:media|fonts|imoflow|js)\/[^"'()\s,]+|imoflow-[\w-]+\.(?:webp|webm|mp4|jpg|png))/g;
 
 const escAttr = s => String(s).replace(/&(?![a-z#0-9]+;)/gi, '&amp;').replace(/"/g, '&quot;');
 const LS = new RegExp(String.fromCharCode(0x2028), 'g'), PS = new RegExp(String.fromCharCode(0x2029), 'g');
@@ -82,12 +86,30 @@ function seo(lang, page, tpl) {
   if (desc && !/name="description"/.test(tpl)) out.push(`<meta name="description" content="${escAttr(desc)}">`);
   if (!/property="og:title"/.test(tpl)) out.push(`<meta property="og:title" content="${escAttr(get(lang, `${page.src}.meta.title`, page.src))}">`);
   if (desc && !/property="og:description"/.test(tpl)) out.push(`<meta property="og:description" content="${escAttr(desc)}">`);
+  if (!/property="og:image"/.test(tpl)) {
+    const img = `${SITE_URL}/media/og-${page.src}${lang === 'en' ? '-en' : ''}.jpg`;
+    out.push(`<meta property="og:type" content="website">`, `<meta property="og:site_name" content="FORMA.">`,
+      `<meta property="og:image" content="${img}">`, `<meta property="og:image:width" content="1200">`, `<meta property="og:image:height" content="630">`,
+      `<meta name="twitter:card" content="summary_large_image">`, `<meta name="twitter:image" content="${img}">`);
+  }
+  // icons, theme colour and app manifest (same on every page)
+  const up = lang === 'pt' ? '' : '../';
+  out.push(`<link rel="icon" href="${up}favicon.svg" type="image/svg+xml">`, `<link rel="icon" href="${up}favicon-32.png" sizes="32x32" type="image/png">`,
+    `<link rel="apple-touch-icon" href="${up}apple-touch-icon.png">`, `<link rel="manifest" href="${up}site.webmanifest">`);
+  if (!/name="theme-color"/.test(tpl)) out.push(`<meta name="theme-color" content="#F4F1EB">`);
+  // structured data: who FORMA is, on the home page only
+  if (page.src === 'index') out.push(`<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': `${SITE_URL}/#org`,
+    name: 'FORMA.', url: `${SITE_URL}/`, logo: `${SITE_URL}/icon-512.png`, image: `${SITE_URL}/media/og-index.jpg`,
+    description: COPY[lang]['index.meta.description'], inLanguage: lang === 'pt' ? 'pt-PT' : 'en-GB',
+    areaServed: 'PT', address: { '@type': 'PostalAddress', addressLocality: 'Lisboa', addressCountry: 'PT' },
+  })}</script>`);
   out.push(`<style>
   .lang-sw{display:inline-flex;align-items:center;gap:2px;font-family:var(--geist,'Geist',system-ui,sans-serif);font-size:12px;font-weight:500;letter-spacing:.08em;line-height:1;color:inherit}
-  .lang-sw a{display:inline-flex;align-items:center;min-height:44px;padding:0 5px;color:inherit;text-decoration:none;opacity:.5;transition:opacity .2s ease}
+  .lang-sw a{display:inline-flex;align-items:center;min-height:44px;padding:0 5px;color:inherit;text-decoration:none;opacity:.72;transition:opacity .2s ease}
   .lang-sw a:hover,.lang-sw a[aria-current]{opacity:1}
   .lang-sw a:focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:4px}
-  .lang-sw span{opacity:.35}
+  .lang-sw span{opacity:.45}
   .lang-sw--menu{color:#F4F1EB;font-size:13px;margin:0 0 18px -5px}
   @media (max-width:767px){.nav-right .lang-sw--nav{display:none}}
 </style>`);
@@ -117,12 +139,21 @@ function render(lang, page) {
   return html;
 }
 
+function minify(html) {
+  if (!esbuild) return html;
+  const t = (code, loader) => { try { return esbuild.transformSync(code, { loader, minify: loader === 'css', minifyWhitespace: true, minifySyntax: true, legalComments: 'none' }).code.trim(); } catch (e) { console.warn('minify skipped:', e.message.split('\n')[0]); return code; } };
+  return html
+    .replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/g, (_, a, c, b) => a + t(c, 'css') + b)
+    .replace(/(<script(?![^>]*\bsrc=)(?![^>]*type="application\/(?:ld\+)?json")[^>]*>)([\s\S]*?)(<\/script>)/g, (_, a, c, b) => c.trim() ? a + t(c, 'js') + b : a + c + b)
+    .replace(/<!--(?!\[if)[\s\S]*?-->/g, '');
+}
+
 let n = 0;
 for (const lang of ['pt', 'en']) {
   for (const page of PAGES) {
     const file = join(ROOT, lang === 'pt' ? '' : 'en', lang === 'pt' ? page.pt : page.en);
     mkdirSync(dirname(file), { recursive: true });
-    writeFileSync(file, render(lang, page));
+    writeFileSync(file, minify(render(lang, page)));
     n++;
   }
 }

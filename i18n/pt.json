@@ -86,8 +86,8 @@
  "index.services.64": "Post",
  "index.services.65": "Texto · EN",
  "index.services.66": "Tempo de produção",
- "index.services.67": "3 h",
- "index.services.68": "2 min",
+ "index.services.67": "Horas",
+ "index.services.68": "Minutos",
  "index.services.69": "Assistente IA 24/7",
  "index.services.70": "Um assistente que",
  "index.services.71": "nunca dorme",
@@ -127,11 +127,6 @@
  "index.automacao.20": "Ver em ecrã inteiro",
  "index.automacao.21": "Fechar vídeo",
  "index.clientes.01": "— Empresas que confiam em nós",
- "index.clientes.02": "Faculdade de Ciências da Universidade de Lisboa",
- "index.clientes.03": "Ciências",
- "index.clientes.04": "ULisboa",
- "index.clientes.05": "Nova Expressão",
- "index.clientes.06": "NOVA EXPRESSÃO",
  "index.clientes.07": "Century 21 Lux",
  "index.clientes.08": "CENTURY 21",
  "index.clientes.09": "Lux",
@@ -171,14 +166,8 @@
  "index.faq.03": "Criamos websites, CRMs e software à medida, automações e assistentes de IA. Começámos no imobiliário e hoje trabalhamos também com outros setores.",
  "index.faq.04": "Trabalham só com imobiliárias?",
  "index.faq.05": "Não. O imobiliário é onde começámos, mas fazemos o mesmo para clínicas, restaurantes, advogados, lojas, ginásios e outros negócios. Veja as <a href=\"solucoes.html\">soluções para o seu setor</a>.",
- "index.faq.06": "Quanto tempo demora a construir um site?",
- "index.faq.07": "Em regra, entre 2 e 3 semanas. O prazo final depende da dimensão do projeto e dos serviços incluídos, e a qualidade vem sempre antes da rapidez.",
- "index.faq.08": "E um CRM ou software à medida?",
- "index.faq.09": "Depende das funcionalidades e das integrações de que precisa. A proposta inclui sempre um prazo fechado, definido antes de começarmos. [A CONFIRMAR: prazo típico]",
  "index.faq.10": "O que fazem as automações e o assistente de IA?",
  "index.faq.11": "As automações fazem sozinhas o que hoje se faz à mão: responder a novos contactos, enviar lembretes, reativar clientes antigos e criar anúncios. O assistente de IA responde aos seus clientes a qualquer hora, no site ou no WhatsApp, e passa-lhe os contactos já organizados.",
- "index.faq.12": "O meu site pode estar em vários idiomas?",
- "index.faq.13": "Sim. Construímos cada site em vários idiomas de raiz, e cada idioma tem URLs próprias para aparecer no Google de cada país.",
  "index.faq.14": "Como recebo os contactos do site?",
  "index.faq.15": "Cada formulário envia os dados para onde quiser (o nosso CRM, Google Sheets, Notion, HubSpot ou Pipedrive) e, ao mesmo tempo, avisa a sua equipa por WhatsApp ou email. Tudo em segundos, sem perder um único contacto.",
  "index.faq.16": "E depois do lançamento?",
@@ -215,7 +204,7 @@
  "index.footer-nav.05": "© 2026 FORMA",
  "index.footer-nav.06": "Websites, CRMs e automações",
  "index.footer-nav.07": "Topo ↑",
- "index.footer-nav.08": "Este site utiliza cookies para análise de tráfego (Google Analytics). Ao aceitar, consente a recolha de dados anónimos de navegação. <a href=\"#\" style=\"color:#8C5A3A;text-decoration:underline;font-weight:500\">Política de privacidade</a>",
+ "index.footer-nav.08": "Este site utiliza cookies para análise de tráfego (Google Analytics). Ao aceitar, consente a recolha de dados anónimos de navegação. <a href=\"#\" style=\"color:#D9A77F;text-decoration:underline;font-weight:500\">Política de privacidade</a>",
  "index.footer-nav.09": "Rejeitar",
  "index.footer-nav.10": "Aceitar",
  "index.meta.title": "FORMA. — Websites, CRMs e automações para imobiliárias",
@@ -1000,7 +989,7 @@
  "crm.h.greet": "Bom dia, Carla",
  "crm.h.sub": "Sábado, 18 de outubro",
  "crm.h.k1": "Leads novas",
- "crm.h.k1d": "face a setembro",
+ "crm.h.k1d": "face ao mês anterior",
  "crm.h.k2": "Visitas esta semana",
  "crm.h.k2d": "6 hoje",
  "crm.h.k3": "Negócios ativos",
@@ -1355,7 +1344,7 @@
     "t": "T3 · Campo de Ourique",
     "v": 449000,
     "d": "110 m² · garagem",
-    "g": "#E6DDCF center / cover no-repeat url(media/crm/sala-campo-ourique.webp)",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/sala-campo-ourique-480.webp)",
     "m": [
      [
       "MR",
@@ -1382,7 +1371,7 @@
     "t": "Moradia T4 · Cascais",
     "v": 1150000,
     "d": "260 m² · piscina",
-    "g": "#E6DDCF center / cover no-repeat url(media/crm/moradia-cascais.webp)",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/moradia-cascais-480.webp)",
     "m": [
      [
       "PS",
@@ -1437,7 +1426,7 @@
     "Leads novas",
     128,
     "",
-    "+18% face a setembro"
+    "+18% face ao mês anterior"
    ],
    [
     "Visitas esta semana",
@@ -1744,5 +1733,33 @@
  "solucoes.ill.h": "Consultas sem esperar.",
  "solucoes.ill.p": "Marque online, a qualquer hora.",
  "solucoes.ill.s": "Medicina geral · Dentária · Fisio",
- "solucoes.ill.b": "Marcar consulta"
+ "solucoes.ill.b": "Marcar consulta",
+ "common.nav.sectors": "Setores",
+ "common.nav.diagnostic": "Diagnóstico",
+ "common.section.testimonials": "Testemunhos",
+ "common.section.cta": "Próximo passo",
+ "common.nav.footer": "Rodapé",
+ "crm.h.clock": {
+  "locale": "pt-PT",
+  "greets": [
+   "Bom dia",
+   "Boa tarde",
+   "Boa noite"
+  ],
+  "months": [
+   "Jan",
+   "Fev",
+   "Mar",
+   "Abr",
+   "Mai",
+   "Jun",
+   "Jul",
+   "Ago",
+   "Set",
+   "Out",
+   "Nov",
+   "Dez"
+  ]
+ },
+ "index.clientes.gj": "Global Jersey"
 }
