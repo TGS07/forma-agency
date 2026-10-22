@@ -11,7 +11,6 @@ function loadGA(){if(document.getElementById('ga-script'))return;var s=document.
 if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </script>
 <title>{{t:contacto.meta.title}}</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Geist,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%23D94A1F'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/geist-latin.woff2" crossorigin>
 <style>
 /* self-hosted fonts (variable WOFF2, weights 300–700) */
@@ -21,7 +20,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 <style>
   :root{
     --bg:#F4F1EB;--bg-2:#ECE7DD;--paper:#FFFFFF;--ink:#0E0E0C;
-    --ink-2:rgba(14,14,12,.68);--muted:rgba(14,14,12,.45);
+    --ink-2:rgba(14,14,12,.68);--muted:rgba(14,14,12,.6);
     --line:rgba(14,14,12,.12);--accent:#8C5A3A;
     --sans:'Geist',system-ui,-apple-system,sans-serif;
   }
@@ -67,7 +66,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     pointer-events:none;
   }
   .panel-left .content{position:relative;z-index:1}
-  .panel-left .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,235,.45);margin-bottom:24px}
+  .panel-left .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(244,241,235,.6);margin-bottom:24px}
   .panel-left h1{
     font-size:clamp(40px,5vw,72px);font-weight:300;letter-spacing:-0.035em;line-height:.95;
     max-width:13ch;margin-bottom:28px;
@@ -101,7 +100,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   @media(max-width:780px){.panel-right{padding:40px 24px 64px}}
 
   .form-head{margin-bottom:48px}
-  .form-head .step{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .form-head .step{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(14,14,12,.62);margin-bottom:12px}
   .form-head h2{font-size:clamp(28px,3vw,42px);font-weight:400;letter-spacing:-0.025em;line-height:1.05}
 
   form{display:flex;flex-direction:column;gap:20px}
@@ -167,12 +166,12 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </head>
 <body>
 
-<nav>
+<nav aria-label="{{t:crm.nav.01}}">
   <a href="index.html" class="logo">{{t:index.head.02}}<b>.</b></a>
   <div class="nav-r">{{langswitch:nav}}<a href="index.html" class="back"><span class="arr">←</span> {{t:contacto.nav.01}}</a></div>
 </nav>
 
-<div class="page">
+<main class="page">
 
   <!-- LEFT -->
   <div class="panel-left">
@@ -260,7 +259,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     </div>
   </div>
 
-</div>
+</main>
 
 <script>
 // REPLACE this URL with your Google Apps Script Web App URL
@@ -314,7 +313,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
 });
 </script>
 <!-- Cookie Consent Banner -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;border-top:1px solid rgba(244,241,235,.1)">
+<div id="cookieBanner" role="region" aria-label="Cookies" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;border-top:1px solid rgba(244,241,235,.1)">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
     <p style="color:rgba(244,241,235,.8);font-size:13px;line-height:1.5;margin:0;max-width:680px">{{t:contacto.contactform.17}}</p>
     <div style="display:flex;gap:10px;flex-shrink:0">

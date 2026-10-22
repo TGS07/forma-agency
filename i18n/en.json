@@ -86,8 +86,8 @@
  "index.services.64": "Post",
  "index.services.65": "Copy · FR",
  "index.services.66": "Production time",
- "index.services.67": "3 h",
- "index.services.68": "2 min",
+ "index.services.67": "Hours",
+ "index.services.68": "Minutes",
  "index.services.69": "AI assistant 24/7",
  "index.services.70": "An assistant that",
  "index.services.71": "never sleeps",
@@ -127,11 +127,6 @@
  "index.automacao.20": "Watch in full screen",
  "index.automacao.21": "Close video",
  "index.clientes.01": "— Companies that trust us",
- "index.clientes.02": "Faculty of Sciences, University of Lisbon",
- "index.clientes.03": "Ciências",
- "index.clientes.04": "ULisboa",
- "index.clientes.05": "Nova Expressão",
- "index.clientes.06": "NOVA EXPRESSÃO",
  "index.clientes.07": "Century 21 Lux",
  "index.clientes.08": "CENTURY 21",
  "index.clientes.09": "Lux",
@@ -171,14 +166,8 @@
  "index.faq.03": "We build websites, CRMs and custom software, automations and AI assistants. We started in real estate and now work with other sectors too.",
  "index.faq.04": "Do you only work with real estate agencies?",
  "index.faq.05": "No. Real estate is where we started, but we do the same for clinics, restaurants, law firms, shops, gyms and other businesses. Take a look at the <a href=\"solucoes.html\">solutions for your sector</a>.",
- "index.faq.06": "How long does it take to build a website?",
- "index.faq.07": "Usually 2 to 3 weeks. The final timeline depends on the size of the project and the services included, and quality always comes before speed.",
- "index.faq.08": "And a custom CRM or piece of software?",
- "index.faq.09": "It depends on the features and integrations you need. The proposal always includes a fixed timeline, agreed before we start. [TO CONFIRM: typical timeline]",
  "index.faq.10": "What do the automations and the AI assistant do?",
  "index.faq.11": "Automations take care of what is done by hand today: replying to new enquiries, sending reminders, reactivating past clients and creating listings. The AI assistant answers your clients at any hour, on your website or on WhatsApp, and passes the leads on to you already organised.",
- "index.faq.12": "Can my website be in several languages?",
- "index.faq.13": "Yes. We build every website in several languages from the ground up, and each language has its own URLs so it shows up on Google in each country.",
  "index.faq.14": "How do I receive the enquiries from my website?",
  "index.faq.15": "Every form sends the details wherever you want (our CRM, Google Sheets, Notion, HubSpot or Pipedrive) and alerts your team by WhatsApp or email at the same time. All within seconds, without losing a single lead.",
  "index.faq.16": "What happens after launch?",
@@ -215,7 +204,7 @@
  "index.footer-nav.05": "© 2026 FORMA",
  "index.footer-nav.06": "Websites, CRMs and automations",
  "index.footer-nav.07": "Back to top ↑",
- "index.footer-nav.08": "This website uses cookies to analyse traffic (Google Analytics). By accepting, you agree to the collection of anonymous browsing data. <a href=\"#\" style=\"color:#8C5A3A;text-decoration:underline;font-weight:500\">Privacy policy</a>",
+ "index.footer-nav.08": "This website uses cookies to analyse traffic (Google Analytics). By accepting, you agree to the collection of anonymous browsing data. <a href=\"#\" style=\"color:#D9A77F;text-decoration:underline;font-weight:500\">Privacy policy</a>",
  "index.footer-nav.09": "Decline",
  "index.footer-nav.10": "Accept",
  "index.meta.title": "FORMA. — Websites, CRMs and automations for real estate",
@@ -1000,7 +989,7 @@
  "crm.h.greet": "Good morning, Carla",
  "crm.h.sub": "Saturday, 18 October",
  "crm.h.k1": "New leads",
- "crm.h.k1d": "vs September",
+ "crm.h.k1d": "vs last month",
  "crm.h.k2": "Viewings this week",
  "crm.h.k2d": "6 today",
  "crm.h.k3": "Active deals",
@@ -1355,7 +1344,7 @@
     "t": "3-bed · Campo de Ourique",
     "v": 449000,
     "d": "110 m² · garage",
-    "g": "#E6DDCF center / cover no-repeat url(media/crm/sala-campo-ourique.webp)",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/sala-campo-ourique-480.webp)",
     "m": [
      [
       "MR",
@@ -1382,7 +1371,7 @@
     "t": "4-bed house · Cascais",
     "v": 1150000,
     "d": "260 m² · pool",
-    "g": "#E6DDCF center / cover no-repeat url(media/crm/moradia-cascais.webp)",
+    "g": "#E6DDCF center / cover no-repeat url(media/crm/moradia-cascais-480.webp)",
     "m": [
      [
       "PS",
@@ -1437,7 +1426,7 @@
     "New leads",
     128,
     "",
-    "+18% vs September"
+    "+18% vs last month"
    ],
    [
     "Viewings this week",
@@ -1744,5 +1733,33 @@
  "solucoes.ill.h": "No more waiting.",
  "solucoes.ill.p": "Book online, any time.",
  "solucoes.ill.s": "General · Dental · Physio",
- "solucoes.ill.b": "Book a visit"
+ "solucoes.ill.b": "Book a visit",
+ "common.nav.sectors": "Sectors",
+ "common.nav.diagnostic": "Quick check",
+ "common.section.testimonials": "Testimonials",
+ "common.section.cta": "Next step",
+ "common.nav.footer": "Footer",
+ "crm.h.clock": {
+  "locale": "en-GB",
+  "greets": [
+   "Good morning",
+   "Good afternoon",
+   "Good evening"
+  ],
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ]
+ },
+ "index.clientes.gj": "Global Jersey"
 }

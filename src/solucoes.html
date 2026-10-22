@@ -12,7 +12,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </script>
 <title>{{t:solucoes.meta.title}}</title>
 <meta name="description" content="{{t:solucoes.meta.description}}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Geist,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%23D94A1F'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/raleway-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/geist-latin.woff2" crossorigin>
 <style>
@@ -22,8 +21,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 @font-face{font-family:'Raleway';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/raleway-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
 @font-face{font-family:'Raleway';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/raleway-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 </style>
-<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <style>
   :root{
     --bg:#F4F1EB;
@@ -31,7 +28,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     --paper:#FFFFFF;
     --ink:#0E0E0C;
     --ink-2:rgba(14,14,12,.68);
-    --muted:rgba(14,14,12,.45);
+    --muted:rgba(14,14,12,.6);
     --line:rgba(14,14,12,.12);
     --line-2:rgba(14,14,12,.06);
     --accent:#8C5A3A;
@@ -77,6 +74,17 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     .nav-right .cta-btn span.lbl{display:none}
     .cta-btn{padding:9px 12px}
   }
+
+
+  /* section links + CTA in the header, as on the FORMA CRM page */
+  .if-links{display:flex;align-items:center;gap:32px;font-size:14px}
+  .if-links a{position:relative;padding:6px 0}
+  .if-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .if-links a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+  nav.top .cta-btn{height:42px;padding:0 18px;font-size:13.5px}
+  @media (max-width:1023px){.if-links{display:none}}
+  @media (max-width:767px){nav.top .cta-btn{display:none}}
+  nav.top:not(.scrolled) .cta-btn{background:var(--ink);color:var(--bg)}
 
   /* --- HAMBURGER BUTTON --- */
   .menu-toggle{
@@ -221,7 +229,9 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     border-bottom-color:transparent !important;
     color:#F4F1EB !important;
   }
-  body.menu-open nav.top .cta-btn{background:#F4F1EB;color:#0E0E0C}
+  /* with the side menu open, only the logo and the close button stay in the header: the panel has its own links, CTA and language */
+  nav.top .if-links,nav.top .cta-btn,nav.top .lang-sw--nav{transition:opacity .3s ease,visibility 0s .3s}
+  body.menu-open nav.top .if-links,body.menu-open nav.top .cta-btn,body.menu-open nav.top .lang-sw--nav{opacity:0;visibility:hidden;pointer-events:none}
 
   /* Mobile: menu becomes fullscreen */
   @media (max-width:780px){
@@ -333,9 +343,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .lg-bar.is-fine .lg-item:hover .lg-img{filter:none}
   /* typographic placeholders until the logo files arrive */
   .lg-wm{white-space:nowrap;line-height:1;display:flex;align-items:center;gap:10px}
-  .lg-wm.fcul{font-family:var(--sans);font-size:calc(23px * var(--k,1));font-weight:600;letter-spacing:-.01em}
-  .lg-wm.fcul small{font-size:calc(23px * var(--k,1));font-weight:300}
-  .lg-wm.nova{font-family:var(--geist);font-size:calc(17px * var(--k,1));font-weight:600;letter-spacing:.32em}
+  .lg-wm.gj{font-family:var(--geist);font-size:calc(21px * var(--k,1));font-weight:700;letter-spacing:.14em}
+  .lg-wm.gj small{font-family:var(--sans);font-size:calc(23px * var(--k,1));font-weight:300;letter-spacing:0}
   .lg-wm.c21{font-family:var(--geist);font-size:calc(21px * var(--k,1));font-weight:700;letter-spacing:.06em}
   .lg-wm.c21 small{font-family:var(--sans);font-size:calc(21px * var(--k,1));font-weight:300;letter-spacing:.02em}
   .lg-wm.aas{font-family:var(--geist);font-size:calc(25px * var(--k,1));font-weight:700;letter-spacing:-.02em}
@@ -421,11 +430,11 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-ind{position:absolute;left:0;top:0;width:100px;height:2px;border-radius:2px;background:var(--accent);transform-origin:0 50%;will-change:transform;pointer-events:none}
   .sl-panel{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,88px);min-height:470px;padding:clamp(40px,4vw,64px);border-radius:28px;background:#FBF9F5;border:1px solid rgba(14,14,12,.08);box-shadow:0 40px 80px -60px rgba(14,14,12,.35)}
   .sl-pl{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
-  .sl-pl .kick{font-family:var(--geist);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--accent)}
+  .sl-pl .kick{font-family:var(--geist);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--accent)}
   .sl-pl h3{font-size:clamp(40px,4vw,60px);line-height:1.02;font-weight:300;letter-spacing:-.03em}
   .sl-pl p{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:34ch}
   .sl-pl .sl-link{margin-top:auto}
-  .sl-img{width:100%;max-width:440px;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#ECE6DC;box-shadow:0 24px 50px -34px rgba(14,14,12,.45)}
+  .sl-img{width:100%;max-width:440px;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#ECE7DD;box-shadow:0 24px 50px -34px rgba(14,14,12,.45)}
   .sl-img img{width:100%;height:100%;object-fit:cover;display:block}
   .sl-pr{display:flex;flex-direction:column}
   .sl-ex{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
@@ -456,15 +465,13 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-srv-txt ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-family:var(--geist);font-size:14.5px}
   .sl-srv-txt li{display:flex;align-items:center;gap:14px}
   .sl-srv-txt li:before{content:"";width:18px;height:1px;background:var(--accent);flex-shrink:0}
-  .sl-ill{grid-column:3;justify-self:end;position:relative;width:380px;height:240px;border-radius:20px;overflow:hidden;background-color:#EFEAE0;background-image:radial-gradient(rgba(14,14,12,.085) 1px,transparent 1.2px);background-size:14px 14px}
+  .sl-ill{grid-column:3;justify-self:end;position:relative;width:380px;height:240px;border-radius:20px;overflow:hidden;background-color:#ECE7DD;background-image:radial-gradient(rgba(14,14,12,.085) 1px,transparent 1.2px);background-size:14px 14px}
   .sl-ill *{box-sizing:border-box}
   .il-stage{position:absolute;left:50%;top:50%;width:380px;height:240px;margin:-120px 0 0 -190px;transform:scale(var(--ils,1))}
   .il-card{position:absolute;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);border-radius:12px;box-shadow:0 14px 30px -20px rgba(14,14,12,.35)}
   .il-bar{height:22px;border-bottom:1px solid rgba(14,14,12,.08);display:flex;align-items:center;gap:5px;padding:0 10px}
   .il-bar i{width:6px;height:6px;border-radius:50%;background:rgba(14,14,12,.14);display:block}
   .il-ln{position:absolute;height:7px;border-radius:4px;background:rgba(14,14,12,.12)}
-  .il-acc{background:var(--accent)}
-  .il-ink{background:var(--ink)}
   .il-bub{position:absolute;padding:9px 12px;border-radius:14px;font-family:var(--geist);font-size:11.5px;line-height:1.35;white-space:nowrap}
   .il-dot{position:absolute;border-radius:50%}
   .il-tag{position:absolute;height:24px;padding:0 10px;border-radius:99px;font-family:var(--geist);font-size:11px;font-weight:500;display:flex;align-items:center;gap:6px;white-space:nowrap}
@@ -487,23 +494,23 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-dg-chip[aria-pressed="true"] .sl-dg-box::before{transform:scale(1);transition:transform .38s var(--ease-spring)}
   .sl-dg-chip[aria-pressed="true"] .sl-dg-box svg{stroke-dashoffset:0;transition:stroke-dashoffset .3s .1s ease-out}
   .sl-dg-chip:focus-visible,.sl-dg-clear:focus-visible,.sl-dg-bar:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .sl-dg-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;min-height:28px;font-family:var(--geist);font-size:13px;color:rgba(14,14,12,.5)}
+  .sl-dg-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;min-height:28px;font-family:var(--geist);font-size:13px;color:rgba(14,14,12,.6)}
   .sl-dg-clear{border:0;background:none;padding:4px 0;font:inherit;color:rgba(14,14,12,.6);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
   .sl-dg-card{border-radius:28px;background:#FBF9F5;border:1px solid rgba(14,14,12,.08);padding:clamp(32px,3.4vw,48px);box-shadow:0 40px 80px -60px rgba(14,14,12,.35);display:flex;flex-direction:column;min-height:640px}
   .sl-dg-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line)}
-  .sl-dg-k{font-family:var(--geist);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(14,14,12,.55);margin-bottom:10px}
+  .sl-dg-k{font-family:var(--geist);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(14,14,12,.6);margin-bottom:10px}
   .sl-dg-n{display:flex;align-items:baseline;gap:14px}
-  .sl-dg-n .num{display:inline-block;font-size:64px;line-height:1;font-weight:300;letter-spacing:-.04em;color:rgba(14,14,12,.25);transition:color .3s ease}
+  .sl-dg-n .num{display:inline-block;font-size:64px;line-height:1;font-weight:300;letter-spacing:-.04em;color:rgba(14,14,12,.45);transition:color .3s ease}
   .sl-dg-n .num.on{color:var(--accent)}
   .sl-dg-n .num.bump{animation:dgBump .4s var(--ease-spring)}
   @keyframes dgBump{40%{transform:translateY(-6px)}}
   .sl-dg-n .lbl{font-size:19px;line-height:1.3;color:rgba(14,14,12,.75)}
   .sl-dg-imp{width:196px;flex:none;display:flex;flex-direction:column;gap:10px;font-family:var(--geist)}
-  .sl-dg-imp-h{display:flex;justify-content:space-between;font-size:12px;color:rgba(14,14,12,.55)}
+  .sl-dg-imp-h{display:flex;justify-content:space-between;font-size:12px;color:rgba(14,14,12,.6)}
   .sl-dg-imp-h b{color:var(--ink);font-weight:500}
   .sl-dg-meter{position:relative;height:6px;border-radius:6px;background:rgba(14,14,12,.08);overflow:hidden}
   .sl-dg-meter i{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:6px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);transition:transform .6s var(--ease)}
-  .sl-dg-lv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));font-size:11px;color:rgba(14,14,12,.35)}
+  .sl-dg-lv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));font-size:11px;color:rgba(14,14,12,.6)}
   .sl-dg-lv span{transition:color .3s ease}
   .sl-dg-lv span:nth-child(2){text-align:center}
   .sl-dg-lv span:nth-child(3){text-align:right}
@@ -524,7 +531,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-dg-act{display:flex;flex-direction:column;gap:12px;padding-top:30px}
   .sl-dg-act[hidden],.sl-dg-empty[hidden],.sl-dg-clear[hidden]{display:none}
   .sl-dg-act .cta-pill{width:100%;gap:12px}
-  .sl-dg-act p{text-align:center;font-family:var(--geist);font-size:12.5px;line-height:1.5;color:rgba(14,14,12,.5)}
+  .sl-dg-act p{text-align:center;font-family:var(--geist);font-size:12.5px;line-height:1.5;color:rgba(14,14,12,.6)}
   .sl-dg-fade{animation:dgFade .45s var(--ease) both}
   @keyframes dgFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .sl-dg-bar{display:none}
@@ -557,6 +564,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .sl-box{position:relative;border-radius:32px;background:var(--dark);color:#F4F1EB;padding:clamp(40px,5.5vw,88px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,100px);overflow:hidden}
   .sl-box .sl-label{color:rgba(244,241,235,.6)}
   .sl-box h2{color:#F4F1EB}
+  .sl-box em{color:#D9A77F}
   .sl-box-l{display:flex;flex-direction:column;gap:24px}
   .sl-box-l p{font-size:17px;line-height:1.6;color:rgba(244,241,235,.66);max-width:40ch}
   .sl-promise{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:10px;font-family:var(--geist);font-size:14.5px;color:rgba(244,241,235,.78)}
@@ -678,12 +686,16 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   }
 </style>
 {{seo}}
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-<nav class="top" id="nav">
+<nav class="top" id="nav" aria-label="{{t:crm.nav.01}}">
   <a href="index.html" class="logo">{{t:index.head.02}}<b>.</b></a>
   <div class="nav-right">
+    <div class="if-links"><a href="#setores" data-scroll>{{t:common.nav.sectors}}</a><a href="#servicos" data-scroll>{{t:index.menu-nav.02}}</a><a href="#diagnostico" data-scroll>{{t:common.nav.diagnostic}}</a></div>
+    <a href="contacto.html" class="cta-btn">{{t:crm.if-cta.04}}</a>
     {{langswitch:nav}}
     <button class="menu-toggle" id="menuToggle" aria-label="{{t:index.nav.01}}" aria-controls="menuPanel" aria-expanded="false">
       <span class="bar"></span>
@@ -698,7 +710,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 <aside class="menu-panel" id="menuPanel" aria-hidden="true">
   <div class="menu-inner">
     <span class="menu-eyebrow">{{t:index.menupanel.01}}</span>
-    <nav class="menu-nav">
+    <nav class="menu-nav" aria-label="{{t:index.menupanel.01}}">
       <a href="index.html" class="menu-link"><span data-i18n="m">{{t:index.menu-nav.01}}</span></a>
       <a href="#setores" class="menu-link"><span data-i18n="m">{{t:solucoes.menu-nav.01}}</span></a>
       <a href="#servicos" class="menu-link"><span data-i18n="m">{{t:index.menu-nav.02}}</span></a>
@@ -754,7 +766,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
       <span class="sl-ind" aria-hidden="true"></span>
     </div>
     <div class="sl-panel" id="sl-panel" role="tabpanel" aria-live="polite" aria-labelledby="tab-clinicas" data-fade>
-      <div class="sl-pl"><span class="kick">{{t:solucoes.setores.13}}</span><h3>{{t:solucoes.setores.05}}</h3><p>{{t:solucoes.setores.14}}</p><div class="sl-img"><img src="media/setores/clinicas.webp" alt="" width="900" height="600" decoding="async"></div><a class="sl-link" href="#contacto" data-setor="clinicas"><span class="u">{{t:solucoes.setores.15}}</span><span class="arr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"></path></svg></span></a></div><div class="sl-pr"><div class="sl-ex"><span class="n">01</span><div><b>{{t:solucoes.setores.16}}</b><span>{{t:solucoes.setores.17}}</span></div></div><div class="sl-ex"><span class="n">02</span><div><b>{{t:solucoes.setores.18}}</b><span>{{t:solucoes.setores.19}}</span></div></div><div class="sl-ex"><span class="n">03</span><div><b>{{t:solucoes.setores.20}}</b><span>{{t:solucoes.setores.21}}</span></div></div></div>
+      <div class="sl-pl"><span class="kick">{{t:solucoes.setores.13}}</span><h3>{{t:solucoes.setores.05}}</h3><p>{{t:solucoes.setores.14}}</p><div class="sl-img"><img src="media/setores/clinicas.webp" srcset="media/setores/clinicas-480.webp 480w, media/setores/clinicas.webp 900w" sizes="(max-width:780px) 90vw, 440px" alt="" width="900" height="600" decoding="async"></div><a class="sl-link" href="#contacto" data-setor="clinicas"><span class="u">{{t:solucoes.setores.15}}</span><span class="arr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"></path></svg></span></a></div><div class="sl-pr"><div class="sl-ex"><span class="n">01</span><div><b>{{t:solucoes.setores.16}}</b><span>{{t:solucoes.setores.17}}</span></div></div><div class="sl-ex"><span class="n">02</span><div><b>{{t:solucoes.setores.18}}</b><span>{{t:solucoes.setores.19}}</span></div></div><div class="sl-ex"><span class="n">03</span><div><b>{{t:solucoes.setores.20}}</b><span>{{t:solucoes.setores.21}}</span></div></div></div>
     </div>
   </div>
 </section>
@@ -778,11 +790,11 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   <span class="il-ln" style="left:18px;top:58px;width:140px;height:12px;background:none;border-radius:0;font-family:var(--geist);font-size:8.5px;line-height:12px;color:rgba(14,14,12,.6);white-space:nowrap;overflow:hidden">{{t:solucoes.ill.p}}</span>
   <span class="il-ln" style="left:18px;top:72px;width:140px;height:12px;background:none;border-radius:0;font-family:var(--geist);font-size:7.5px;line-height:12px;color:var(--accent);white-space:nowrap;overflow:hidden">{{t:solucoes.ill.s}}</span>
   <span class="il-btn" style="position:absolute;left:18px;top:98px;width:92px;height:26px;border-radius:99px;background:var(--accent);color:#F4F1EB;font-family:var(--geist);font-size:8.5px;font-weight:500;display:flex;align-items:center;justify-content:center">{{t:solucoes.ill.b}}</span>
-  <span class="il-img" style="position:absolute;right:16px;top:36px;width:86px;height:98px;border-radius:10px;overflow:hidden;background:#E6DDCF"><img src="media/setores/clinicas.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></span>
+  <span class="il-img" style="position:absolute;right:16px;top:36px;width:86px;height:98px;border-radius:10px;overflow:hidden;background:#E6DDCF"><img src="media/setores/clinicas-480.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></span>
   <span class="il-ln" style="left:18px;top:144px;width:228px;height:1px;border-radius:0;background:rgba(14,14,12,.08)"></span>
  </div>
  <svg class="il-cur" style="position:absolute;left:108px;top:146px" width="18" height="22" viewBox="0 0 18 22"><path d="M2 2l13 9-6 1.4L12 20l-3 1-3-7.6L2 17z" fill="#0E0E0C" stroke="#FBF9F5" stroke-width="1.2" stroke-linejoin="round"></path></svg>
- <span class="il-tag" style="right:26px;top:18px;background:#0E0E0C;color:#F4F1EB"><span style="width:6px;height:6px;border-radius:50%;background:#5E9E6E;display:block"></span>{{t:solucoes.servicos.08}}</span></div></div>
+ <span class="il-tag" style="right:26px;top:18px;background:#0E0E0C;color:#F4F1EB"><span style="width:6px;height:6px;border-radius:50%;background:#4E9A64;display:block"></span>{{t:solucoes.servicos.08}}</span></div></div>
         </div></div></div>
       </div>
       <div class="sl-srv-row">
@@ -794,8 +806,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   <div class="il-side" style="position:absolute;left:0;top:0;bottom:0;width:48px;border-right:1px solid rgba(14,14,12,.08);display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:16px">
    <i style="width:18px;height:18px;border-radius:6px;background:var(--accent);display:block"></i><i style="width:18px;height:6px;border-radius:3px;background:rgba(14,14,12,.14);display:block"></i><i style="width:18px;height:6px;border-radius:3px;background:rgba(14,14,12,.14);display:block"></i><i style="width:18px;height:6px;border-radius:3px;background:rgba(14,14,12,.14);display:block"></i>
   </div>
-  <div class="il-kpi" style="position:absolute;left:64px;top:16px;font-family:var(--geist);font-size:10px;color:rgba(14,14,12,.5)">{{t:solucoes.servicos.12}}<div style="font-size:20px;color:#0E0E0C;letter-spacing:-.02em;font-variant-numeric:tabular-nums">1 284</div></div>
-  <div class="il-kpi" style="position:absolute;left:164px;top:16px;font-family:var(--geist);font-size:10px;color:rgba(14,14,12,.5)">{{t:solucoes.servicos.13}}<div style="font-size:20px;color:#0E0E0C;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{t:solucoes.servicos.14}}</div></div>
+  <div class="il-kpi" style="position:absolute;left:64px;top:16px;font-family:var(--geist);font-size:10px;color:rgba(14,14,12,.6)">{{t:solucoes.servicos.12}}<div style="font-size:20px;color:#0E0E0C;letter-spacing:-.02em;font-variant-numeric:tabular-nums">1 284</div></div>
+  <div class="il-kpi" style="position:absolute;left:164px;top:16px;font-family:var(--geist);font-size:10px;color:rgba(14,14,12,.6)">{{t:solucoes.servicos.13}}<div style="font-size:20px;color:#0E0E0C;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{t:solucoes.servicos.14}}</div></div>
   <div style="position:absolute;left:64px;right:18px;bottom:16px;height:86px;display:flex;align-items:flex-end;gap:10px;border-bottom:1px solid rgba(14,14,12,.1)">
    <span class="il-col" style="flex:1;height:38%;border-radius:5px 5px 0 0;background:rgba(14,14,12,.12)"></span><span class="il-col" style="flex:1;height:52%;border-radius:5px 5px 0 0;background:rgba(14,14,12,.12)"></span><span class="il-col" style="flex:1;height:46%;border-radius:5px 5px 0 0;background:rgba(14,14,12,.12)"></span><span class="il-col" style="flex:1;height:70%;border-radius:5px 5px 0 0;background:rgba(14,14,12,.12)"></span><span class="il-col" style="flex:1;height:92%;border-radius:5px 5px 0 0;background:var(--accent)"></span>
   </div>
@@ -808,7 +820,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
         <h3 style="margin:0;font:inherit"><button class="sl-srv-btn" aria-expanded="false" aria-controls="srv-auto" id="srvb-auto"><span class="n">03</span><span class="t">{{t:crm.nav.03}}</span><span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></button></h3>
         <div class="sl-srv-body" id="srv-auto" role="region" aria-labelledby="srvb-auto"><div class="sl-srv-clip"><div class="sl-srv-in">
           <div class="sl-srv-txt"><p>{{t:solucoes.servicos.16}}</p><ul><li>{{t:solucoes.servicos.17}}</li><li>{{t:solucoes.servicos.18}}</li><li>{{t:solucoes.servicos.19}}</li></ul></div>
-          <div class="sl-ill" data-ill="auto" aria-hidden="true"><div class="il-stage"><div class="il-node il-card" style="left:34px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg></div><div class="il-node il-card" style="left:158px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8C5A3A" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"></path></svg></div><div class="il-node il-card" style="left:282px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 7 8.5-7"></path></svg></div><span class="il-wire" style="position:absolute;left:98px;top:120px;width:60px;height:1px;background:rgba(14,14,12,.3)"></span><span class="il-wire" style="position:absolute;left:222px;top:120px;width:60px;height:1px;background:rgba(14,14,12,.3)"></span><span class="il-pulse il-dot" style="left:62px;top:115px;width:10px;height:10px;background:var(--accent);box-shadow:0 0 0 4px rgba(140,90,58,.18)"></span><span class="il-ok il-dot" style="left:332px;top:78px;width:22px;height:22px;background:#0E0E0C;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#F4F1EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.6 9.6 3.6"></path></svg></span><span style="position:absolute;left:34px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.55)">{{t:solucoes.servicos.20}}</span><span style="position:absolute;left:158px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.55)">{{t:solucoes.servicos.21}}</span><span style="position:absolute;left:282px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.55)">{{t:solucoes.servicos.22}}</span><span class="il-tag" style="left:50%;top:28px;margin-left:-72px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);color:#0E0E0C">{{t:solucoes.servicos.23}}</span></div></div>
+          <div class="sl-ill" data-ill="auto" aria-hidden="true"><div class="il-stage"><div class="il-node il-card" style="left:34px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg></div><div class="il-node il-card" style="left:158px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8C5A3A" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"></path></svg></div><div class="il-node il-card" style="left:282px;top:88px;width:64px;height:64px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 7 8.5-7"></path></svg></div><span class="il-wire" style="position:absolute;left:98px;top:120px;width:60px;height:1px;background:rgba(14,14,12,.3)"></span><span class="il-wire" style="position:absolute;left:222px;top:120px;width:60px;height:1px;background:rgba(14,14,12,.3)"></span><span class="il-pulse il-dot" style="left:62px;top:115px;width:10px;height:10px;background:var(--accent);box-shadow:0 0 0 4px rgba(140,90,58,.18)"></span><span class="il-ok il-dot" style="left:332px;top:78px;width:22px;height:22px;background:#0E0E0C;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#F4F1EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 5 8.6 9.6 3.6"></path></svg></span><span style="position:absolute;left:34px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.6)">{{t:solucoes.servicos.20}}</span><span style="position:absolute;left:158px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.6)">{{t:solucoes.servicos.21}}</span><span style="position:absolute;left:282px;top:164px;width:64px;text-align:center;font-family:var(--geist);font-size:10.5px;color:rgba(14,14,12,.6)">{{t:solucoes.servicos.22}}</span><span class="il-tag" style="left:50%;top:28px;margin-left:-72px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);color:#0E0E0C">{{t:solucoes.servicos.23}}</span></div></div>
         </div></div></div>
       </div>
       <div class="sl-srv-row">
@@ -819,7 +831,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
           <div class="sl-ill" data-ill="ai" aria-hidden="true"><div class="il-stage"><div class="il-bub il-u" style="right:34px;top:34px;background:#0E0E0C;color:#F4F1EB;border-bottom-right-radius:4px">{{t:solucoes.servicos.28}}</div>
  <div class="il-bub il-typing" style="left:34px;top:88px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);display:flex;gap:4px;padding:12px 14px"><i style="width:6px;height:6px;border-radius:50%;background:rgba(14,14,12,.4);display:block"></i><i style="width:6px;height:6px;border-radius:50%;background:rgba(14,14,12,.4);display:block"></i><i style="width:6px;height:6px;border-radius:50%;background:rgba(14,14,12,.4);display:block"></i></div>
  <div class="il-bub il-a" style="left:34px;top:88px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);color:#0E0E0C;border-bottom-left-radius:4px;white-space:normal;width:230px">{{t:solucoes.servicos.29}}</div>
- <span class="il-tag" style="left:34px;bottom:26px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);color:#0E0E0C"><span style="width:6px;height:6px;border-radius:50%;background:#5E9E6E;display:block"></span>{{t:solucoes.servicos.30}}</span></div></div>
+ <span class="il-tag" style="left:34px;bottom:26px;background:#FBF9F5;border:1px solid rgba(14,14,12,.1);color:#0E0E0C"><span style="width:6px;height:6px;border-radius:50%;background:#4E9A64;display:block"></span>{{t:solucoes.servicos.30}}</span></div></div>
         </div></div></div>
       </div>
     </div>
@@ -907,8 +919,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     <p class="lg-label" id="lg-title" data-i18n="lg.label">{{t:index.clientes.01}}</p>
     <div class="lg-bar">
       <div class="lg-track">
-        <ul class="lg-list"><li class="lg-item"><span class="lg-wm fcul" role="img" aria-label="{{t:index.clientes.02}}">{{t:index.clientes.03}} <small>{{t:index.clientes.04}}</small></span></li><li class="lg-item"><span class="lg-wm nova" role="img" aria-label="{{t:index.clientes.05}}">{{t:index.clientes.06}}</span></li><li class="lg-item"><span class="lg-wm c21" role="img" aria-label="{{t:index.clientes.07}}">{{t:index.clientes.08}} <small>{{t:index.clientes.09}}</small></span></li><li class="lg-item"><span class="lg-wm aas" role="img" aria-label="{{t:index.clientes.10}}">{{t:index.clientes.11}} <small>{{t:index.clientes.12}}</small></span></li><li class="lg-item"><span class="lg-wm pl" role="img" aria-label="{{t:index.clientes.13}}"><b>{{t:index.clientes.14}}</b> {{t:index.clientes.15}}</span></li></ul>
-        <ul class="lg-list" aria-hidden="true"><li class="lg-item"><span class="lg-wm fcul" role="img" aria-label="{{t:index.clientes.02}}">{{t:index.clientes.03}} <small>{{t:index.clientes.04}}</small></span></li><li class="lg-item"><span class="lg-wm nova" role="img" aria-label="{{t:index.clientes.05}}">{{t:index.clientes.06}}</span></li><li class="lg-item"><span class="lg-wm c21" role="img" aria-label="{{t:index.clientes.07}}">{{t:index.clientes.08}} <small>{{t:index.clientes.09}}</small></span></li><li class="lg-item"><span class="lg-wm aas" role="img" aria-label="{{t:index.clientes.10}}">{{t:index.clientes.11}} <small>{{t:index.clientes.12}}</small></span></li><li class="lg-item"><span class="lg-wm pl" role="img" aria-label="{{t:index.clientes.13}}"><b>{{t:index.clientes.14}}</b> {{t:index.clientes.15}}</span></li></ul>
+        <ul class="lg-list"><li class="lg-item"><span class="lg-wm gj" role="img" aria-label="{{t:index.clientes.gj}}">GLOBAL <small>Jersey</small></span></li><li class="lg-item"><span class="lg-wm c21" role="img" aria-label="{{t:index.clientes.07}}">{{t:index.clientes.08}} <small>{{t:index.clientes.09}}</small></span></li><li class="lg-item"><span class="lg-wm aas" role="img" aria-label="{{t:index.clientes.10}}">{{t:index.clientes.11}} <small>{{t:index.clientes.12}}</small></span></li><li class="lg-item"><span class="lg-wm pl" role="img" aria-label="{{t:index.clientes.13}}"><b>{{t:index.clientes.14}}</b> {{t:index.clientes.15}}</span></li></ul>
+        <ul class="lg-list" aria-hidden="true"><li class="lg-item"><span class="lg-wm gj" role="img" aria-label="{{t:index.clientes.gj}}">GLOBAL <small>Jersey</small></span></li><li class="lg-item"><span class="lg-wm c21" role="img" aria-label="{{t:index.clientes.07}}">{{t:index.clientes.08}} <small>{{t:index.clientes.09}}</small></span></li><li class="lg-item"><span class="lg-wm aas" role="img" aria-label="{{t:index.clientes.10}}">{{t:index.clientes.11}} <small>{{t:index.clientes.12}}</small></span></li><li class="lg-item"><span class="lg-wm pl" role="img" aria-label="{{t:index.clientes.13}}"><b>{{t:index.clientes.14}}</b> {{t:index.clientes.15}}</span></li></ul>
       </div>
     </div>
   </div>
@@ -980,7 +992,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 
       <div class="footer-col">
         <h4>{{t:index.menupanel.01}}</h4>
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="{{t:common.nav.footer}}">
           <a href="index.html">{{t:index.menu-nav.01}}</a>
           <a href="#setores">{{t:solucoes.menu-nav.01}}</a>
           <a href="#servicos">{{t:index.menu-nav.02}}</a>
@@ -1023,7 +1035,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </footer>
 
 <!-- Cookie Consent Banner -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;font-family:var(--sans,'Raleway',sans-serif);border-top:1px solid rgba(244,241,235,.1)">
+<div id="cookieBanner" role="region" aria-label="Cookies" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;font-family:var(--sans,'Raleway',sans-serif);border-top:1px solid rgba(244,241,235,.1)">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
     <p style="color:rgba(244,241,235,.8);font-size:13px;line-height:1.5;margin:0;max-width:680px">{{t:index.footer-nav.08}}</p>
     <div style="display:flex;gap:10px;flex-shrink:0">
@@ -1053,7 +1065,7 @@ function _buildTextRollRow(rowClass, chars){
     const s = document.createElement('span');
     s.className = 'ch';
     s.style.transitionDelay = (0.025 * i).toFixed(3) + 's';
-    s.textContent = ch === ' ' ? ' ' : ch;
+    s.textContent = ch === ' ' ? '\u00A0' : ch;
     row.appendChild(s);
   });
   return row;
@@ -1299,7 +1311,7 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
       const left = el('div', 'sl-pl');
       left.append(el('span', 'kick', d.kick), el('h3', null, d.name), el('p', null, d.intro));
       const fig = el('div', 'sl-img'), im = new Image(900, 600);
-      im.alt = ''; im.decoding = 'async'; im.src = 'media/setores/' + key + '.webp';
+      im.alt = ''; im.decoding = 'async'; im.sizes = '(max-width:780px) 90vw, 440px'; im.srcset = 'media/setores/' + key + '-480.webp 480w, media/setores/' + key + '.webp 900w'; im.src = 'media/setores/' + key + '.webp';
       fig.appendChild(im); left.appendChild(fig);
       const link = el('a', 'sl-link'); link.href = '#contacto'; link.dataset.setor = key;
       link.append(el('span', 'u', d.cta), arrow());
@@ -1323,7 +1335,7 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
       }
       return [left, right];
     }
-    Object.keys(SECTORS).forEach(k => { const i = new Image(); i.src = 'media/setores/' + k + '.webp'; });
+    Object.keys(SECTORS).forEach(k => { const i = new Image(); i.sizes = '(max-width:780px) 90vw, 440px'; i.srcset = 'media/setores/' + k + '-480.webp 480w, media/setores/' + k + '.webp 900w'; });
     function parts(){ return panel.querySelectorAll('.sl-pl > *, .sl-ex, .sl-other > *'); }
     function moveInd(instant){
       const t = tabs[current]; if(!t) return;
@@ -1422,7 +1434,23 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
     }
     rows.forEach(r => { const tl = illTimeline(r); if(tl){ ills.set(r, tl); tl.progress(1); } });
 
+    // rows above may close while this one opens: hold its button where it is on screen, so the page does not jump (or slide another row under the mouse)
+    let holdRaf = 0;
+    function hold(btn){
+      cancelAnimationFrame(holdRaf);
+      // follow the button's position in the page (not on screen), so only the layout shift is compensated and the visitor can still scroll
+      let y = btn.getBoundingClientRect().top + scrollY;
+      const t0 = performance.now();
+      const step = () => {
+        const now = btn.getBoundingClientRect().top + scrollY, d = now - y;
+        if(Math.abs(d) > .5){ window.scrollTo({ top: scrollY + d, behavior: 'instant' }); y = now; }
+        if(performance.now() - t0 < 900) holdRaf = requestAnimationFrame(step);
+        else if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      };
+      holdRaf = requestAnimationFrame(step);
+    }
     function open(row){
+      hold(row.querySelector('.sl-srv-btn'));
       rows.forEach(r => {
         const on = r === row;
         if(on === r.classList.contains('open')) return;
@@ -1577,7 +1605,7 @@ document.querySelectorAll('[data-mail]').forEach(a=>{
     mm.add({ desk:'(min-width: 768px) and (prefers-reduced-motion: no-preference)', mob:'(max-width: 767px) and (prefers-reduced-motion: no-preference)' }, ctx => {
       if(ctx.conditions.desk){
         const dist = () => Math.max(0, row.scrollWidth - window.innerWidth);
-        gsap.set(steps, { autoAlpha:.4 });
+        gsap.set(steps, { autoAlpha:.85 });
         gsap.set(steps[0], { autoAlpha:1 });
         const tl = gsap.timeline({
           scrollTrigger:{ trigger:pin, start:'top top', end:() => '+=' + Math.round(dist() * 1.6), pin:true, scrub:.8, invalidateOnRefresh:true, anticipatePin:1,

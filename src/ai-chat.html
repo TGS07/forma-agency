@@ -12,7 +12,6 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </script>
 <title>{{t:ai-chat.meta.title}}</title>
 <meta name="description" content="{{t:ai-chat.meta.description}}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F1EB'/%3E%3Ctext x='50%25' y='62%25' font-family='Raleway,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%230E0E0C'%3EF%3Ctspan fill='%238C5A3A'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/raleway-latin.woff2" crossorigin>
 <style>
 /* self-hosted fonts (variable WOFF2, weights 300–700) */
@@ -22,7 +21,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 <style>
   :root{
     --bg:#F4F1EB;--bg-2:#ECE7DD;--paper:#FFFFFF;--ink:#0E0E0C;
-    --ink-2:rgba(14,14,12,.68);--muted:rgba(14,14,12,.45);
+    --ink-2:rgba(14,14,12,.68);--muted:rgba(14,14,12,.6);
     --line:rgba(14,14,12,.12);--line-2:rgba(14,14,12,.06);
     --accent:#8C5A3A;
     --sans:'Raleway',system-ui,-apple-system,sans-serif;
@@ -68,8 +67,8 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     pointer-events:none;
   }
   .panel-left .content{position:relative;z-index:1}
-  .panel-left .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,241,235,.45);margin-bottom:24px;display:inline-flex;align-items:center;gap:10px}
-  .live-dot{width:8px;height:8px;border-radius:50%;background:#5EBB7C;box-shadow:0 0 0 0 rgba(94,187,124,.6);animation:livePulse 2s ease-in-out infinite}
+  .panel-left .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(244,241,235,.6);margin-bottom:24px;display:inline-flex;align-items:center;gap:10px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:#4E9A64;box-shadow:0 0 0 0 rgba(94,187,124,.6);animation:livePulse 2s ease-in-out infinite}
   @keyframes livePulse{
     0%,100%{box-shadow:0 0 0 0 rgba(94,187,124,.6)}
     50%{box-shadow:0 0 0 6px rgba(94,187,124,0)}
@@ -150,14 +149,14 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   .chat-avatar b{color:var(--accent);font-weight:700;font-size:18px}
   .chat-avatar::after{
     content:"";position:absolute;bottom:1px;right:1px;
-    width:11px;height:11px;border-radius:50%;background:#5EBB7C;
+    width:11px;height:11px;border-radius:50%;background:#4E9A64;
     border:2px solid #fff;
   }
   .chat-meta{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
   .chat-meta .name{font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
   .chat-meta .name b{color:var(--accent);font-weight:700}
   .chat-meta .status{font-size:12px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
-  .chat-meta .status .dot{width:6px;height:6px;border-radius:50%;background:#5EBB7C}
+  .chat-meta .status .dot{width:6px;height:6px;border-radius:50%;background:#4E9A64}
   .chat-clear{
     background:transparent;border:1px solid var(--line);color:var(--ink-2);
     font-family:inherit;font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
@@ -283,7 +282,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
 </head>
 <body>
 
-<nav class="top">
+<nav class="top" aria-label="{{t:crm.nav.01}}">
   <a href="index.html" class="logo">{{t:index.head.02}}<b>.</b></a>
   <div style="display:flex;align-items:center;gap:14px">
     {{langswitch:nav}}
@@ -291,7 +290,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
   </div>
 </nav>
 
-<div class="page">
+<main class="page">
 
   <!-- LEFT -->
   <div class="panel-left">
@@ -362,7 +361,7 @@ if(localStorage.getItem('cookie-consent')==='accepted'){loadGA();}
     </p>
   </div>
 
-</div>
+</main>
 
 <script>
 /* ---------- copy and knowledge base: i18n/pt.json + i18n/en.json (trusted, written by FORMA) ---------- */
@@ -543,7 +542,7 @@ greet();
 chatInput.focus();
 </script>
 <!-- Cookie Consent Banner -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;border-top:1px solid rgba(244,241,235,.1)">
+<div id="cookieBanner" role="region" aria-label="Cookies" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(14,14,12,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 24px;border-top:1px solid rgba(244,241,235,.1)">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
     <p style="color:rgba(244,241,235,.8);font-size:13px;line-height:1.5;margin:0;max-width:680px">{{t:contacto.contactform.17}}</p>
     <div style="display:flex;gap:10px;flex-shrink:0">
