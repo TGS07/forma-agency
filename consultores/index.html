@@ -1210,6 +1210,42 @@ html.cores .palette{display:flex}
 @media (max-width:640px){
   .ctas-m .btn-accent,.steps .center .btn-accent{width:auto;min-width:0;height:50px;padding:0 30px;font-size:16px}
 }
+
+/* testemunhos */
+.rev-sec{background:var(--page)}
+.rev-sec .title{margin-bottom:48px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:760px;margin:0 auto}
+.rev-grid:has(.rev+.rev){max-width:1100px}
+.rev{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:36px 36px 30px;position:relative;box-shadow:0 30px 60px -40px rgba(40,25,15,.35)}
+.rev::before{content:"“";position:absolute;right:28px;top:-6px;font:800 120px/1 "Bricolage Grotesque",Geist,sans-serif;color:var(--tint)}
+.rev-stars{display:flex;gap:4px;margin-bottom:18px;color:var(--accent)}
+.rev-stars svg{width:22px;height:22px;fill:currentColor}
+.rev blockquote{margin:0;font-size:1.12rem;line-height:1.6;color:var(--ink,#2B1A12);position:relative}
+.rev figcaption{display:flex;align-items:center;gap:14px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.rev figcaption img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none}
+.rev figcaption b{display:block;font-size:1.05rem}
+.rev figcaption small{color:var(--muted);font-size:.92rem}
+@media (max-width:640px){
+  .rev-sec{min-height:100svh;display:flex;align-items:center;padding:80px 0}
+  .rev-sec .wrap{width:100%}
+  .rev-sec .title{margin-bottom:28px;font-size:34px}
+  .rev{padding:26px 22px 22px;border-radius:24px}
+  .rev::before{font-size:96px;right:18px}
+  .rev-stars svg{width:20px;height:20px}
+  .rev blockquote{font-size:16px;line-height:1.55}
+  .rev figcaption{margin-top:20px;padding-top:18px}
+  .rev figcaption img{width:52px;height:52px}
+}
+
+/* testemunhos: lado a lado no computador, a deslizar no telemóvel */
+.rev{display:flex;flex-direction:column}
+.rev blockquote{flex:1}
+@media (max-width:640px){
+  .rev-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:4px 20px 30px;scrollbar-width:none;max-width:none}
+  .rev-grid::-webkit-scrollbar{display:none}
+  .rev-grid .rev{flex:0 0 calc(100% - 26px);scroll-snap-align:center}
+  .rev-sec .cdots{margin-top:0}
+}
 </style>
 </head>
 <body>
@@ -1336,6 +1372,27 @@ html.cores .palette{display:flex}
 
     <div class="cdots m-only" data-for="workTrack"><i class="on"></i><i></i></div>
     <!-- TESTEMUNHO: acrescentar aqui quando houver um real e autorizado pelo cliente -->
+  </div>
+</section>
+
+<!-- ================= TESTEMUNHOS ================= -->
+<section class="rev-sec">
+  <div class="wrap">
+    <h2 class="title c">O que dizem os clientes</h2>
+    <div class="rev-grid" id="revTrack">
+      <figure class="rev">
+        <div class="rev-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></div>
+        <blockquote>“Fiquei muito satisfeito com o programa desenvolvido pelo Tomás, o mesmo responde a todos os nossos pedidos e necessidades, tendo inclusivamente superado as expectativas iniciais. Depois de anos com outras soluções de gestão de caixa e clientes que não aproveitaram o potencial da nossa base de dados, felizmente conhecemos o Tomás e tudo mudou! Não podia ter ficado mais satisfeito, pela prontidão e rapidez, bem como no cumprimento de prazos definidos antes da implantação. Parabéns Tomás!”</blockquote>
+        <figcaption><img src="img/filipe.jpg" alt="Filipe Matos, da AAS Documentação" loading="lazy"><span><b>Filipe Matos</b><small>AAS Documentação</small></span></figcaption>
+      </figure>
+      <!-- TESTEMUNHO DA SATUS: texto provisório (lorem ipsum). Trocar pela mensagem real do Afonso antes de enviar os SMS. -->
+      <figure class="rev">
+        <div class="rev-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></div>
+        <blockquote>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”</blockquote>
+        <figcaption><img src="img/afonso.jpg" alt="Afonso Lucas, da equipa Satus" loading="lazy"><span><b>Afonso Lucas</b><small>Equipa Satus · Century 21 Lux</small></span></figcaption>
+      </figure>
+    </div>
+    <div class="cdots m-only" data-for="revTrack"><i class="on"></i><i></i></div>
   </div>
 </section>
 
